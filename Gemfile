@@ -66,3 +66,6 @@ gem 'omniauth-facebook'
 
 # API
 gem 'figaro'
+
+# Display
+gem 'table_print'

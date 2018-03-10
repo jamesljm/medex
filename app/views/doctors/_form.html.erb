@@ -1,0 +1,23 @@
+<!-- Doctor's Sign Up Form -->
+<h2>Doctor's Sign Up</h2>
+<%= form_for @doctor do |form| %>
+    <div>
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, type: 'text', required: 'required' %>
+    </div>
+    <div>
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, type: 'text', required: 'required' %>
+    </div>
+    <div>
+        <%= form.label :email %>
+            <%= form.text_field :email, type: 'email', required: 'required' %>
+    </div>
+    <div>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

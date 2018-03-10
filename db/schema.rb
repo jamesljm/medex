@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_09_091613) do
+ActiveRecord::Schema.define(version: 2018_03_10_132719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,51 @@ ActiveRecord::Schema.define(version: 2018_03_09_091613) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email", null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "type"
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.date "birthdate"
+    t.string "email"
+    t.integer "gender", default: 0
+    t.string "phone"
+    t.string "identification"
+    t.string "profile_picture"
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "booked_time"
+    t.date "booked_date"
+    t.string "specialist"
+    t.integer "experienced_years"
+    t.integer "license"
+    t.string "clinic_name"
+    t.string "clinic_phone"
+    t.string "clinic_address"
+    t.string "clinic_city"
+    t.string "clinic_state"
+    t.string "clinic_country"
+    t.string "blood_type"
+    t.string "med_history"
+    t.string "allergies"
+    t.string "family_history"
+    t.string "social_history"
+    t.boolean "drinker"
+    t.boolean "smoker"
     t.index ["email"], name: "index_users_on_email"
+    t.index ["gender"], name: "index_users_on_gender"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 

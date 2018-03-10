@@ -50,10 +50,12 @@ en:
   sessions:
     form:
       forgot_password: Forgot password?
-      sign_up: Sign up
+      sign_up_desc: Don't have an account yet?
+      sign_up: Sign up here.
     new:
       title: Sign in
   users:
     new:
-      sign_in: Sign in
+      sign_in_desc: Already have an account?
+      sign_in: Sign in here.
       title: Sign up

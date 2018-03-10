@@ -1,9 +1,10 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
-
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+<div id="sign-up-wrapper">
+  <!-- Patient -->
+  <div id="patient-sign-up">
+    <%= render "/patients/form" %>
+  </div>
+  <!-- Doctor -->
+  <div id="doctor-sign-up">
+    <%= render "/doctors/form" %>    
+  </div>
 </div>

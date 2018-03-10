@@ -1,16 +1,10 @@
 <div id="clearance" class="sign-up">
   <h2><%= t(".title") %></h2>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+    <%= render partial: '/users/form' %>
 
     <div class="other-links">
+      <span><%= t(".sign_in_desc") %></span>
       <%= link_to t(".sign_in"), sign_in_path %>
     </div>
-  <% end %>
 </div>

@@ -1,7 +1,42 @@
 <!-- Sign In Form -->
 <div id="sign-in-wrapper">
-  <div id="user-sign-in">
-    <%= form_for :session, url: session_path do |form| %>
+  <!-- Patient Sign in -->
+  <h2>Patient Sign In</h2>
+  <div id="patient-sign-in">
+    <%= form_for :session, url: create_patient_session_path do |form| %>
+      <div class="text-field">
+        <%= form.label :email %>
+        <%= form.text_field :email, type: 'email' %>
+      </div>
+    
+      <div class="password-field">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+
+      <div class="facebook-sign-in">
+        <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+      </div>
+    
+      <div class="submit-field">
+        <%= form.submit %>
+      </div>
+    
+      <div class="other-links">
+        <% if Clearance.configuration.allow_sign_up? %>
+          <span><%= t(".sign_up_desc") %></span>
+          <%= link_to t(".sign_up"), sign_up_path %>
+        <% end %>
+        <br>
+        <%= link_to t(".forgot_password"), new_password_path %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Doctor Sign in -->
+  <h2>Doctor Sign In</h2>
+  <div id="doctor-sign-in">
+    <%= form_for :session, url: create_doctor_session_path do |form| %>
       <div class="text-field">
         <%= form.label :email %>
         <%= form.text_field :email, type: 'email' %>

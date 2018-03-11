@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-03-11
+  start_time: 2018-03-11 03:39:17
+  end_time: 2018-03-11 03:39:17
+  doctor: one
+  user: one
+  bill: false
+  doc_recommendations: MyString
+
+two:
+  date: 2018-03-11
+  start_time: 2018-03-11 03:39:17
+  end_time: 2018-03-11 03:39:17
+  doctor: two
+  user: two
+  bill: false
+  doc_recommendations: MyString

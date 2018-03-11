@@ -1,5 +1,14 @@
+<!--stylesheet-->
+<%= provide :head do %>
+    <%= stylesheet_link_tag "users/new", :media => "all" %>
+<% end %>
+
+<!-- JS -->
+<%= provide :js do %>
+    <%= javascript_include_tag "users/sign_up_form", :media => "all" %>
+<% end %>
+
 <div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
 
     <%= render partial: '/users/form' %>
 

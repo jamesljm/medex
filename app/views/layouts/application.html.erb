@@ -3,6 +3,9 @@
 <head>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
+  <% if content_for?(:head) %>
+    <%= yield(:head) %>
+  <% end %>
 </head>
 <body>
   <div id="header">
@@ -20,5 +23,9 @@
   </div>
 
   <%= yield %>
+
+  <% if content_for?(:js) %>
+    <%= yield(:js) %>
+  <% end %>
 </body>
 </html>

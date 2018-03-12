@@ -6,6 +6,7 @@ class PatientsController < Clearance::UsersController
   end
 
   def show
+    @user = current_user
   end
 
   def _form
@@ -16,7 +17,7 @@ class PatientsController < Clearance::UsersController
 
     if @patient.save
       sign_in @patient
-      redirect_to root_path
+      redirect_to patients_path
     else
       flash[:notice] = "Failed to created..."
       redirect_to new_user_path

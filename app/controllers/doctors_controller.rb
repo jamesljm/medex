@@ -1,8 +1,11 @@
 class DoctorsController < Clearance::UsersController
+  before_action :require_login
+
   def index
   end
 
   def edit
+    
   end
 
   def show

@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   end
 
   # Doctor & Patients
-<<<<<<< HEAD
   # resources :doctors
   resources :doctors do
     member do
@@ -29,11 +28,6 @@ Rails.application.routes.draw do
       get 'profile' => 'patients#profile', as: "profile", action: "profile"
     end
   end
-=======
-  resources :doctors
-
-  resources :patients
->>>>>>> master
 
   resources :bookings
 

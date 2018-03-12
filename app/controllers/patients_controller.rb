@@ -1,5 +1,5 @@
 class PatientsController < Clearance::UsersController
-  before_action :require_login
+  before_action :require_login, except: :create
 
   def index
   end

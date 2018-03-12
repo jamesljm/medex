@@ -1,17 +1,11 @@
-$body-bg: #c1bdba;
-$form-bg: #13232f;
-$white: #ffffff;
-$main: #1ab188;
-$main-light: lighten($main, 5%);
-$main-dark: darken($main, 5%);
-$gray-light: #a0b3b0;
-$gray: #ddd;
-$thin: 300;
-$normal: 400;
-$bold: 600;
-$br: 4px;
+/* ========================================================================== */
+/* Sign Up Page */
+/* ========================================================================== */
 
-.tab-btn {
+@import 'variables';
+
+.tab-btn,
+a {
   text-decoration: none;
   color: $main;
   transition: .5s ease;
@@ -21,7 +15,7 @@ $br: 4px;
   }
 }
 
-.sign-up-form {
+.entry-form {
   background: rgba($form-bg, .9);
   padding: 40px;
   max-width: 480px;
@@ -154,7 +148,8 @@ textarea {
   }
 }
 
-.button {
+.button,
+.facebook-sign-in {
   margin: auto;
   border: 0;
   outline: none;
@@ -175,6 +170,11 @@ textarea {
   &:focus {
     background: $main-dark;
   }
+}
+
+.facebook-sign-in {
+  background: $fb-color;
+  color: $white;
 }
 
 .btn-wrap {

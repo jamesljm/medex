@@ -1,10 +1,14 @@
 // Page layout
+$body-bg: #c1bdba;
 $form-bg: #13232f;
-$white: #fff;
-
-$pri-color: #1ab188;
-$pri-color-light: lighten($pri-color,5%);
-$pri-color-dark: darken($pri-color,5%);
-
+$white: #ffffff;
+$main: #1aa7b1;
+$main-light: lighten($main, 5%);
+$main-dark: darken($main, 5%);
 $gray-light: #a0b3b0;
 $gray: #ddd;
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+$fb-color: #3b5998;

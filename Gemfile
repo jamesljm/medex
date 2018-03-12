@@ -73,6 +73,6 @@ gem 'table_print'
 # Front-end Stuff
 gem 'jquery-rails'
 # = libraries
-gem 'bourbon', '5.0.0'
-gem 'neat', '2.1.0'
-gem 'bitters', '1.8.0'
+# gem 'bourbon', '5.0.0'
+# gem 'neat', '2.1.0'
+# gem 'bitters', '1.8.0'

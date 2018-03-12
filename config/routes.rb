@@ -16,8 +16,19 @@ Rails.application.routes.draw do
   end
 
   # Doctor & Patients
-  resources :doctors
-  resources :patients
+  # resources :doctors
+  resources :doctors do
+    member do
+      get 'profile' => 'doctors#profile', as: "profile", action: "profile"
+    end
+  end
+
+  resources :patients do
+    member do
+      get 'profile' => 'patients#profile', as: "profile", action: "profile"
+    end
+  end
+
   resources :bookings
   resources :records
   # === Home Page

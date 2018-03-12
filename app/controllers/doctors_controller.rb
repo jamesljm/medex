@@ -16,7 +16,7 @@ class DoctorsController < Clearance::UsersController
 
     if @doctor.save
       sign_in @doctor
-      redirect_to root_path
+      redirect_to doctor_path(@doctor.id)
     else
       flash[:notice] = "Failed to created..."
       redirect_to new_user_path

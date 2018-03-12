@@ -1,7 +1,26 @@
+<!--stylesheet-->
+<%= provide :head do %>
+    <%= stylesheet_link_tag "entry", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<!-- JS -->
+<%= provide :js do %>
+    <%= javascript_include_tag "entry_form", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <!-- Sign In Page -->
 <div id="clearance" class="sign-in">
   <h2><%= t(".title") %></h2>
 
   <%= render partial: '/sessions/form' %>
+
+  <div class="other-links">
+    <% if Clearance.configuration.allow_sign_up? %>
+      <span><%= t(".sign_up_desc") %></span>
+      <%= link_to t(".sign_up"), sign_up_path %>
+    <% end %>
+    <br>
+    <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
 
 </div>

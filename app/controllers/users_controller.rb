@@ -2,7 +2,6 @@ class UsersController < Clearance::UsersController
   # before_action :find_user_with_id, only: [:edit, :update]
 
   def new
-    @user = User.new
     @patient = Patient.new
     @doctor = Doctor.new
   end

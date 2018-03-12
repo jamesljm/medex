@@ -69,3 +69,6 @@ gem 'figaro'
 
 # Display
 gem 'table_print'
+
+# Front-end Stuff
+gem 'jquery-rails'

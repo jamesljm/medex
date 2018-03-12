@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_10_132719) do
+ActiveRecord::Schema.define(version: 2018_03_10_194322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,85 @@ ActiveRecord::Schema.define(version: 2018_03_10_132719) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
+  create_table "authorizations", force: :cascade do |t|
+    t.bigint "record_id"
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_authorizations_on_doctor_id"
+    t.index ["record_id"], name: "index_authorizations_on_record_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "doctor_id"
+    t.bigint "user_id"
+    t.boolean "bill"
+    t.string "doc_recommendations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_bookings_on_doctor_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "healths", force: :cascade do |t|
+    t.date "date"
+    t.float "height"
+    t.float "weight"
+    t.integer "blood_pressure"
+    t.bigint "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_healths_on_patient_id"
+  end
+
+  create_table "lab_tests", force: :cascade do |t|
+    t.bigint "record_id"
+    t.string "test_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_id"], name: "index_lab_tests_on_record_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_likes_on_doctor_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.bigint "record_id"
+    t.string "drug_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_id"], name: "index_prescriptions_on_record_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string "prescription"
+    t.date "record_date"
+    t.bigint "booking_id"
+    t.string "referral"
+    t.string "note"
+    t.string "consultation_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_records_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,4 +145,11 @@ ActiveRecord::Schema.define(version: 2018_03_10_132719) do
   end
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "authorizations", "doctors"
+  add_foreign_key "authorizations", "records"
+  add_foreign_key "bookings", "doctors"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "lab_tests", "records"
+  add_foreign_key "prescriptions", "records"
+  add_foreign_key "records", "bookings"
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prescription: MyString
+  record_date: 2018-03-11
+  booking: one
+  referral: MyString
+  note: MyString
+  consultation_type: MyString
+
+two:
+  prescription: MyString
+  record_date: 2018-03-11
+  booking: two
+  referral: MyString
+  note: MyString
+  consultation_type: MyString

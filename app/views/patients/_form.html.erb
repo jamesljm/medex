@@ -1,23 +1,29 @@
 <!-- Patient's Sign Up Form -->
-<h2>Patient's Sign Up</h2>
 <%= form_for @patient do |form| %>
-    <div>
-        <%= form.label :first_name %>
-        <%= form.text_field :first_name, type: 'text', required: 'required' %>
+    <!-- Name -->
+    <div class="field-wrap">
+        <%= form.label :first_name do %>First Name:<span class="req">*</span><% end %>
+        <%= form.text_field :first_name, type: 'text', required: 'required', autocomplete: 'off' %>
     </div>
-    <div>
-        <%= form.label :last_name %>
+    <div class="field-wrap">
+        <%= form.label :last_name do %>Last Name:<span class="req">*</span><% end %>
         <%= form.text_field :last_name, type: 'text', required: 'required' %>
     </div>
-    <div>
-        <%= form.label :email %>
+    
+    <!-- Email -->
+    <div class="field-wrap">
+        <%= form.label :email do %>Email:<span class="req">*</span><% end %>
         <%= form.text_field :email, type: 'email', required: 'required' %>
     </div>
-    <div>
-        <%= form.label :password %>
+    
+    <!-- Password -->
+    <div class="field-wrap">
+        <%= form.label :password do %>Password:<span class="req">*</span><% end %>
         <%= form.password_field :password %>
     </div>
-    <div>
-        <%= form.submit %>
+
+    <!-- Submit Button -->
+    <div class="btn-wrap">
+        <%= form.submit class: "button" %>
     </div>
 <% end %>

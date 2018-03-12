@@ -1,68 +1,76 @@
 <!-- Sign In Form -->
-<div id="sign-in-wrapper">
-  <!-- Patient Sign in -->
-  <h2>Patient Sign In</h2>
-  <div id="patient-sign-in">
-    <%= form_for :session, url: create_patient_session_path do |form| %>
-      <div class="text-field">
-        <%= form.label :email %>
-        <%= form.text_field :email, type: 'email' %>
-      </div>
-    
-      <div class="password-field">
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-      </div>
+<div class="entry-form">
 
-      <div class="facebook-sign-in">
-        <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-      </div>
-    
-      <div class="submit-field">
-        <%= form.submit %>
-      </div>
-    
-      <div class="other-links">
-        <% if Clearance.configuration.allow_sign_up? %>
-          <span><%= t(".sign_up_desc") %></span>
-          <%= link_to t(".sign_up"), sign_up_path %>
-        <% end %>
-        <br>
-        <%= link_to t(".forgot_password"), new_password_path %>
-      </div>
-    <% end %>
-  </div>
+  <!-- 	Heading -->
+  <h2 class='form-heading'>Sign In</h2>
 
-  <!-- Doctor Sign in -->
-  <h2>Doctor Sign In</h2>
-  <div id="doctor-sign-in">
-    <%= form_for :session, url: create_doctor_session_path do |form| %>
-      <div class="text-field">
-        <%= form.label :email %>
-        <%= form.text_field :email, type: 'email' %>
-      </div>
-    
-      <div class="password-field">
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-      </div>
+  <!-- 	Tabs -->
+  <ul class="tab-group">
+    <li class="tab active">
+      <a href="#patient-form" class="tab-btn">Patient</a>
+    </li>
+    <li class="tab">
+      <a href="#doctor-form" class="tab-btn">Doctor</a>
+    </li>
+  </ul>
 
-      <div class="facebook-sign-in">
-        <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-      </div>
-    
-      <div class="submit-field">
-        <%= form.submit %>
-      </div>
-    
-      <div class="other-links">
-        <% if Clearance.configuration.allow_sign_up? %>
-          <span><%= t(".sign_up_desc") %></span>
-          <%= link_to t(".sign_up"), sign_up_path %>
-        <% end %>
-        <br>
-        <%= link_to t(".forgot_password"), new_password_path %>
-      </div>
+  <!-- 	Tab Wrapper -->
+  <div class="tab-content">
+
+    <!-- 	Patient's Form -->
+    <div id="patient-form">
+
+      <%= form_for :session, url: create_patient_session_path do |form| %>
+        <div class="field-wrap">
+          <%= form.label :email %>
+          <%= form.text_field :email, type: 'email' %>
+        </div>
+      
+        <div class="field-wrap">
+          <%= form.label :password %>
+          <%= form.password_field :password %>
+        </div>
+
+        <div class="facebook-sign-in">
+          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+        </div>
+      
+        <div class="btn-wrap">
+          <%= form.submit class: "button" %>
+        </div>
+        
       <% end %>
+
+    </div>
+
+    <!-- Doctor's Form -->
+    <div id="doctor-form">
+
+      <%= form_for :session, url: create_doctor_session_path do |form| %>
+        <div class="field-wrap">
+          <%= form.label :email %>
+          <%= form.text_field :email, type: 'email' %>
+        </div>
+      
+        <div class="field-wrap">
+          <%= form.label :password %>
+          <%= form.password_field :password %>
+        </div>
+
+        <div class="facebook-sign-in">
+          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+        </div>
+      
+        <div class="btn-wrap">
+          <%= form.submit class: "button" %>
+        </div>
+
+      <% end %>
+
+    </div>
+
   </div>
+  <!-- tab-content -->
+
 </div>
+<!-- /form -->

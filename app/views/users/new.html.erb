@@ -1,5 +1,14 @@
+<!--stylesheet-->
+<%= provide :head do %>
+    <%= stylesheet_link_tag "entry", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<!-- JS -->
+<%= provide :js do %>
+    <%= javascript_include_tag "entry_form", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
 
     <%= render partial: '/users/form' %>
 

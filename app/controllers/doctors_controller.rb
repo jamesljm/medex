@@ -1,14 +1,33 @@
 class DoctorsController < Clearance::UsersController
   before_action :require_login, except: :create
 
+  def home
+  end
+
   def index
   end
 
   def edit
-    
+    @doctor = Doctor.find(params[:id])
+  end
+
+  def update
+    @doctor = Doctor.find(params[:id])
+      if @doctor.update(doctor_params)
+        redirect_to @doctor
+      else
+        render 'edit'
+      end
   end
 
   def show
+    @doctor = Doctor.find(params[:id])
+    @doctor.verify = 'Pending'
+    
+    if @doctor.birthdate == nil
+      render 'edit'
+    end
+  
   end
 
   def _form
@@ -32,6 +51,6 @@ class DoctorsController < Clearance::UsersController
 
 private
   def doctor_params
-  	params.require(:doctor).permit(:first_name, :last_name, :password, :email)
+  	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify)
   end
 end

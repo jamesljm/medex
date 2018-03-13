@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_10_194322) do
+ActiveRecord::Schema.define(version: 2018_03_13_031430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,10 @@ ActiveRecord::Schema.define(version: 2018_03_10_194322) do
     t.string "social_history"
     t.boolean "drinker"
     t.boolean "smoker"
+    t.string "verify"
+    t.string "education"
+    t.string "qualifications"
+    t.string "clinic_postcode"
     t.index ["email"], name: "index_users_on_email"
     t.index ["gender"], name: "index_users_on_gender"
     t.index ["remember_token"], name: "index_users_on_remember_token"

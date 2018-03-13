@@ -1,5 +1,39 @@
 <%= provide :head do %>
     <%= stylesheet_link_tag "navigation", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "dashboard", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 <% end %>
 
+<!-- Top navbar -->
+<nav class="navbar navbar-expand-sm navbar-light sticky-top bg-light d-flex justify-content-between">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MEDEX</a>
+    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+    <ul class="navbar-nav px-3">
+        <!-- Dropdown -->
+        <% if signed_in? -%> 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <%= current_user.last_name %>
+                        <%# <%= image_tag current_user.avatar.thumb.url, :class => "avatar" if current_user.avatar? %>
+                </a>
+                
+                <div class="dropdown-menu dropdown-menu-right">
+                    <%= link_to "Profile", patient_path(current_user.id), class: 'dropdown-item' %>
+                    <%= link_to "Contact Us", '#', class: 'dropdown-item' %>
+                    <%= link_to "Sign Out", sign_out_path, method: :delete, class: 'dropdown-item' %>
+                </div>
+            </li>
 
+        <% else %>
+            <%= link_to "Sign In", sign_in_path %>   
+        <% end %>    
+    </ul>
+</nav>

@@ -14,5 +14,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(
                                                 entry.css
+                                                users/profile.css
+                                                dashboard.css
+                                                navigation.css
+                                                
+                                                users/profile.js
                                                 entry_form.js 
                                                 )

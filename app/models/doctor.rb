@@ -4,4 +4,7 @@ class Doctor < User
     has_many :authorizations
 
     # validates :email, uniqueness: true
+    if @current_user != nil
+      validates :license, presence: true
+    end 
 end

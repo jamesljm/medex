@@ -1,8 +1,13 @@
 <h1>HomePage</h1>
 <p>Hi i am homepage</p>
 
-<% if signed_in? -%>
-  <p><%= link_to t("Patient DashBoard"), patient_path(current_user.id) %></p>
+<% if signed_in? && @user.type == 'Doctor' %>
+  
   <p><%= link_to t("Doctor DashBoard"), doctor_path(current_user.id) %></p>
-<% end -%>
+
+<% elsif signed_in? && @user.type =='Patient' %>
+
+  <p><%= link_to t("Patient DashBoard"), patient_path(current_user.id) %></p>
+
+<% end %>
 

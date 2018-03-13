@@ -1,4 +1,147 @@
 <h1>Doctors Edit Form here!</h1>
 <p>(form)</p>
 <br>
+
+<!-- Personal Information -->
+<%= form_for @doctor do |f| %>
+
+  <h2>Personal Information</h2>
+
+    <!-- First Name -->
+    <div class="field-wrap">
+      <%= f.label :first_name do %>First Name:<span class="req">*</span><% end %>
+      <%= f.text_field :first_name, type: 'text', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Last Name -->
+    <div class="field-wrap">
+        <%= f.label :last_name do %>Last Name:<span class="req">*</span><% end %>
+        <%= f.text_field :last_name, type: 'text', required: 'required' %>
+    </div>
+
+    <!-- Email -->
+    <div class="field-wrap">
+        <%= f.label :email do %>Email:<span class="req">*</span><% end %>
+        <%= f.text_field :email, type: 'email', required: 'required' %>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="field-wrap">
+        <%= f.label :phone do %>Phone No. (Number will not be reviewed to patients and will be used for notification purposes):<span class="req">*</span><% end %>
+        <%= f.text_field :phone, type: 'number', required: 'required' %>
+    </div>
+
+    <!-- Birthdate -->
+    <div class="field-wrap">
+        <%= f.label :birthdate do %>Birthdate:<span class="req">*</span><% end %>
+        <%= f.text_field :birthdate, required: 'required' %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="btn-wrap">
+        <%= f.submit class: "button" %>
+    </div>
+<% end %>
+
+<!-- Professional Experience -->
+<%= form_for @doctor do |f| %>
+
+  <h2>Professional Experience</h2>
+    
+    <!-- License -->
+    <div class="field-wrap">
+        <%= f.label :license do %>License No.:<span class="req">*</span><% end %>
+        <%= f.text_field :license %>
+    </div>
+    
+    <!-- Area of expertise -->
+    <div class="field-wrap">
+      <%= f.label :specialist do %>Areas of Expertise:<span class="req">*</span><% end %>
+      <%= f.text_field :specialist, type: 'text', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Years of Experience -->
+    <div class="field-wrap">
+      <%= f.label :experienced_years do %>Years of Experience:<span class="req">*</span><% end %>
+      <%= f.text_field :experienced_years, type: 'integer', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Education -->
+    <div class="field-wrap">
+        <%= f.label :education do %>Education:<span class="req">*</span><% end %>
+        <%= f.text_field :education, required: 'required' %>
+    </div>
+
+    <!-- Qualifications -->
+    <div class="field-wrap">
+        <%= f.label :qualifications do %>Qualifications:<span class="req">*</span><% end %>
+        <%= f.text_field :qualifications, required: 'required' %>
+    </div>
+
+<!-- Submit Button -->
+<div class="btn-wrap">
+    <%= f.submit class: "button" %>
+</div>
+
+<% end %>
+
+
+<!-- Clinic Information -->
+<%= form_for @doctor do |f| %>
+
+  <h2>Clinic Information</h2>
+    
+    <!-- Clinic Name -->
+    <div class="field-wrap">
+        <%= f.label :clinic_name do %>Name of Clinic:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_name %>
+    </div>
+    
+    <!-- Clinic Phone -->
+    <div class="field-wrap">
+      <%= f.label :clinic_phone do %>Clinic's Phone No.:<span class="req">*</span><% end %>
+      <%= f.text_field :clinic_phone, type: 'text', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Clinic Address -->
+    <div class="field-wrap">
+        <%= f.label :clinic_address do %>Address:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_address, required: 'required' %>
+    </div>
+
+    <!-- Clinic Postcode -->
+    <div class="field-wrap">
+        <%= f.label :clinic_postcode do %>Postcode:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_postcode, required: 'required' %>
+    </div>
+
+    <!-- Clinic City -->
+    <div class="field-wrap">
+        <%= f.label :clinic_city do %>City:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_city, required: 'required' %>
+    </div>
+
+    <!-- Clinic State -->
+    <div class="field-wrap">
+        <%= f.label :clinic_state do %>State:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_state, required: 'required' %>
+    </div>
+
+    <!-- Clinic Country -->
+    <div class="field-wrap">
+        <%= f.label :clinic_country do %>Country:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_country, required: 'required' %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="btn-wrap">
+        <%= f.submit class: "button" %>
+    </div>
+<% end %>
+
+
+
+
+<br>
+
 <p><%= link_to t("Back to Doctor Profile"), doctor_path(current_user.id) %></p>

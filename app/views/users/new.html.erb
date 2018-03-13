@@ -1,3 +1,7 @@
+<!-- ======================================================================= -->
+<!-- Sign Up Layout -->
+<!-- ======================================================================= -->
+
 <!--stylesheet-->
 <%= provide :head do %>
     <%= stylesheet_link_tag "entry", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,9 +13,7 @@
 <% end %>
 
 <div id="clearance" class="sign-up">
-
     <%= render partial: '/users/form' %>
-
     <div class="other-links">
       <span><%= t(".sign_in_desc") %></span>
       <%= link_to t(".sign_in"), sign_in_path %>

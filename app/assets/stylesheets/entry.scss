@@ -4,10 +4,17 @@
 
 @import 'variables';
 
+#clearance {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+}
+
 .tab-btn,
-a {
+a:link {
   text-decoration: none;
-  color: $main;
+  color: $white;
   transition: .5s ease;
 
   &:hover {
@@ -16,12 +23,14 @@ a {
 }
 
 .entry-form {
+  margin: auto;
   background: rgba($form-bg, .9);
   padding: 40px;
-  max-width: 480px;
-  margin: 40px auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px 4px rgba($form-bg, .3);
+  min-width: 480px;
+  border-radius: $br;
+  -webkit-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.65);
+  box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.65);
 }
 
 .tab-group {
@@ -38,13 +47,13 @@ a {
   li a {
     width: 100%;
     margin: auto;
-    border-radius: 10px;
+    border-radius: $br;
     display: block;
     text-decoration: none;
     padding: .5em 1.5em;
     background: rgba($gray-light, .25);
     color: $gray-light;
-    font-size: 1.125em;
+    font-size: 1em;
     text-align: center;
     cursor: pointer;
     transition: .5s ease;
@@ -74,13 +83,13 @@ a {
 
 label {
   position: absolute;
-  transform: translateY(6px);
-  left: 13px;
+  transform: translateY(.5em);
+  left: 1em;
   color: rgba($white, .5);
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
-  font-size: 1.25em;
+  font-size: 1em;
 
   .req {
     margin: 2px;
@@ -91,7 +100,7 @@ label {
 label.active {
   transform: translateY(2.5em);
   left: 2px;
-  font-size: 14px;
+  font-size: 1em;
 
   .req {
     opacity: 0;
@@ -104,14 +113,14 @@ label.highlight {
 
 input,
 textarea {
-  font-size: 1.125em;
+  font-size: 1em;
   width: 100%;
   display: block;
-  padding: 5px 0;
+  padding: 5px 1em;
   background-color: none;
   border: 1px solid $gray-light;
+  border-radius: $br;
   color: $white;
-  border-radius: 0;
   transition: border-color .25s ease, box-shadow .25s ease;
 
   &:focus {
@@ -158,7 +167,7 @@ textarea {
   margin: auto;
   border: 0;
   outline: none;
-  border-radius: 15px;
+  border-radius: $br;
   padding: 1em;
   font-size: 1em;
   text-transform: uppercase;
@@ -168,6 +177,7 @@ textarea {
   transition: all.5s ease;
   -webkit-appearance: none;
   width: auto;
+  text-align: center;
   cursor: pointer;
   
   &:hover,
@@ -179,9 +189,26 @@ textarea {
 .facebook-sign-in {
   background: $fb-color;
   color: $white;
+  // font-size: 1em;
+
+  &:hover,
+  a:link,
+  a:visited {
+    background: $fb-color;
+    color: $white;
+  }
 }
 
 .btn-wrap {
   display: flex;
   width: 100%;
+}
+
+.other-links {
+  margin: auto;
+
+  a:link,
+  a:visited {
+    color: $main;
+  }
 }

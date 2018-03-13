@@ -1,37 +1,121 @@
-<!-- Doctor's Edit Form -->
-<%= form_for @doctor do |form| %>
-    <!-- Name -->
+<!-- ======================================================================= -->
+<!-- Doctor's Profile Tab Edit Form -->
+<!-- ======================================================================= -->
+<h1>Doctors Edit</h1>
+
+<!-- Personal Information -->
+<%= form_for @doctor do |f| %>
+
+  <h2>Personal Information</h2>
+
+    <!-- First Name -->
     <div class="form-group">
-        <%= form.label :first_name do %>First Name:
-        <span class="req">*</span>
-        <% end %>
-        <%= form.text_field :first_name, type: 'text', required: 'required', autocomplete: 'off', class: "form-control" %>
+      <%= f.label :first_name do %>First Name:<span class="req">*</span><% end %>
+      <%= f.text_field :first_name, type: 'text', required: 'required', autocomplete: 'off' %>
     </div>
+
+    <!-- Last Name -->
     <div class="form-group">
-        <%= form.label :last_name do %>Last Name:
-        <span class="req">*</span>
-        <% end %>
-        <%= form.text_field :last_name, type: 'text', required: 'required', class: "form-control" %>
+        <%= f.label :last_name do %>Last Name:<span class="req">*</span><% end %>
+        <%= f.text_field :last_name, type: 'text', required: 'required' %>
     </div>
 
     <!-- Email -->
     <div class="form-group">
-        <%= form.label :email do %>Email:
-        <span class="req">*</span>
-        <% end %>
-        <%= form.text_field :email, type: 'email', required: 'required', class: "form-control" %>
+        <%= f.label :email do %>Email:<span class="req">*</span><% end %>
+        <%= f.text_field :email, type: 'email', required: 'required' %>
     </div>
 
-    <!-- Password -->
+    <!-- Phone Number -->
     <div class="form-group">
-        <%= form.label :password do %>Password:
-        <span class="req">*</span>
-        <% end %>
-        <%= form.password_field :password, class: "form-control" %>
+        <%= f.label :phone do %>Phone No. (Number will not be reviewed to patients and will be used for notification purposes):<span class="req">*</span><% end %>
+        <%= f.text_field :phone, type: 'number', required: 'required' %>
+    </div>
+
+    <!-- Birthdate -->
+    <div class="form-group">
+        <%= f.label :birthdate do %>Birthdate:<span class="req">*</span><% end %>
+        <%= f.text_field :birthdate, required: 'required' %>
+    </div>
+
+    <h2>Professional Experience</h2>
+    
+    <!-- License -->
+    <div class="form-group">
+        <%= f.label :license do %>License No.:<span class="req">*</span><% end %>
+        <%= f.text_field :license %>
+    </div>
+    
+    <!-- Area of expertise -->
+    <div class="form-group">
+      <%= f.label :specialist do %>Areas of Expertise:<span class="req">*</span><% end %>
+      <%= f.text_field :specialist, type: 'text', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Years of Experience -->
+    <div class="form-group">
+      <%= f.label :experienced_years do %>Years of Experience:<span class="req">*</span><% end %>
+      <%= f.text_field :experienced_years, type: 'integer', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Education -->
+    <div class="form-group">
+        <%= f.label :education do %>Education:<span class="req">*</span><% end %>
+        <%= f.text_field :education, required: 'required' %>
+    </div>
+
+    <!-- Qualifications -->
+    <div class="form-group">
+        <%= f.label :qualifications do %>Qualifications:<span class="req">*</span><% end %>
+        <%= f.text_field :qualifications, required: 'required' %>
+    </div>
+
+    <h2>Clinic Information</h2>
+    
+    <!-- Clinic Name -->
+    <div class="form-group">
+        <%= f.label :clinic_name do %>Name of Clinic:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_name %>
+    </div>
+    
+    <!-- Clinic Phone -->
+    <div class="form-group">
+      <%= f.label :clinic_phone do %>Clinic's Phone No.:<span class="req">*</span><% end %>
+      <%= f.text_field :clinic_phone, type: 'text', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Clinic Address -->
+    <div class="form-group">
+        <%= f.label :clinic_address do %>Address:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_address, required: 'required' %>
+    </div>
+
+    <!-- Clinic Postcode -->
+    <div class="form-group">
+        <%= f.label :clinic_postcode do %>Postcode:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_postcode, required: 'required' %>
+    </div>
+
+    <!-- Clinic City -->
+    <div class="form-group">
+        <%= f.label :clinic_city do %>City:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_city, required: 'required' %>
+    </div>
+
+    <!-- Clinic State -->
+    <div class="form-group">
+        <%= f.label :clinic_state do %>State:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_state, required: 'required' %>
+    </div>
+
+    <!-- Clinic Country -->
+    <div class="form-group">
+        <%= f.label :clinic_country do %>Country:<span class="req">*</span><% end %>
+        <%= f.text_field :clinic_country, required: 'required' %>
     </div>
 
     <!-- Submit Button -->
     <div class="btn-wrap">
-        <%= form.submit class: "button" %>
+        <%= f.submit class: "button" %>
     </div>
 <% end %>

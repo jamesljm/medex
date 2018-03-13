@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 2018_03_13_021809) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "doctor_id"
-    t.bigint "user_id"
+    t.bigint "patient_id"
     t.boolean "bill"
     t.string "doc_recommendations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_bookings_on_doctor_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["patient_id"], name: "index_bookings_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -159,12 +159,8 @@ ActiveRecord::Schema.define(version: 2018_03_13_021809) do
   end
 
   add_foreign_key "authentications", "users"
-  add_foreign_key "authorizations", "doctors"
   add_foreign_key "authorizations", "records"
-  add_foreign_key "bookings", "doctors"
-  add_foreign_key "bookings", "users"
   add_foreign_key "lab_tests", "records"
   add_foreign_key "prescriptions", "records"
   add_foreign_key "records", "bookings"
-  add_foreign_key "records", "patients"
 end

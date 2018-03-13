@@ -16,6 +16,12 @@
         <%= form.text_field :email, type: 'email', required: 'required' %>
     </div>
 
+    <!-- License -->
+    <div class="field-wrap">
+        <%= form.label :license do %>License No.:<span class="req">*</span><% end %>
+        <%= form.text_field :license, type: 'text', required: 'required' %>
+    </div>
+
     <!-- Password -->
     <div class="field-wrap">
         <%= form.label :password do %>Password:<span class="req">*</span><% end %>
@@ -24,7 +30,7 @@
 
     <!-- Password -->
     <div class="field-wrap">
-        <%= form.label :password do %>Password:<span class="req">*</span><% end %>
+        <%= form.label :password do %>Confirm Password:<span class="req">*</span><% end %>
         <%= form.password_field :password %>
     </div>
 

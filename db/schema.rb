@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_12_103614) do
+ActiveRecord::Schema.define(version: 2018_03_13_021809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2018_03_12_103614) do
     t.string "prescription"
     t.date "record_date"
     t.bigint "booking_id"
-    t.string "referral"
+    t.string "referral_note"
     t.string "note"
     t.string "diagnosis"
     t.datetime "created_at", null: false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2018_03_12_103614) do
     t.string "encounter", array: true
     t.string "symptoms"
     t.boolean "follow_up"
+    t.boolean "referral"
     t.index ["booking_id"], name: "index_records_on_booking_id"
     t.index ["patient_id"], name: "index_records_on_patient_id"
   end

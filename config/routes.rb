@@ -17,8 +17,11 @@ Rails.application.routes.draw do
 
   # Doctor & Patients
   resources :doctors
+
   resources :patients
+
   resources :bookings
+
   resources :records
   # === Home Page
   root :to => "pages#index"

@@ -5,10 +5,11 @@ class PatientsController < Clearance::UsersController
   end
 
   def edit
+    find_patient_with_id
   end
 
   def show
-    @user = current_user
+    @patient = current_user
   end
 
   def _form
@@ -29,5 +30,9 @@ class PatientsController < Clearance::UsersController
 private
   def patient_params
   	params.require(:patient).permit(:first_name, :last_name, :password, :email)
+  end
+
+  def find_patient_with_id
+    @patient = Patient.find(params[:id])
   end
 end

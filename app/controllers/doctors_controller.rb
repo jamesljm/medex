@@ -5,6 +5,7 @@ class DoctorsController < Clearance::UsersController
   end
 
   def index
+    @doctor = Doctor.all
   end
 
   def edit
@@ -43,6 +44,10 @@ class DoctorsController < Clearance::UsersController
       flash[:notice] = "Failed to created..."
       redirect_to new_user_path
     end
+  end
+
+  def profile
+    @doctor = Doctor.find(params[:id])
   end
 
 private

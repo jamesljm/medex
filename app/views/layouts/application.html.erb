@@ -16,6 +16,7 @@
       <%= link_to t(".sign_in"), sign_in_path %>
       <%= link_to t(".sign_up"), sign_up_path %>
     <% end -%>
+    <%= render  "layouts/navigation" %>
   </div>
 
   <div id="flash">
@@ -28,6 +29,7 @@
 
   <% if content_for?(:js) %>
     <%= yield(:js) %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <% end %>
 </body>
 </html>

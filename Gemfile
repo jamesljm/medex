@@ -37,6 +37,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker', '~> 1.6', '>= 1.6.6'
+  
 end
 
 group :development do
@@ -73,6 +75,9 @@ gem 'table_print'
 # Front-end Stuff
 gem 'jquery-rails'
 # = libraries
-gem 'bourbon', '5.0.0'
-gem 'neat', '2.1.0'
-gem 'bitters', '1.8.0'
+# gem 'bourbon', '5.0.0'
+# gem 'neat', '2.1.0'
+# gem 'bitters', '1.8.0'
+gem 'bootstrap', '~> 4.0.0'
+gem 'popper_js', '~> 1.12.9'
+

@@ -1,3 +1,20 @@
+<!-- ======================================================================= -->
+<!-- Patient's show -->
+<!-- ======================================================================= -->
+
+<!-- JS -->
+<%= provide :js do %>
+
+    <!-- initial dashboard load -->
+    <script>
+        $(document).on('turbolinks:load', function () {
+            $('#dashboard-content').append('<%= j render "patients/edit" %>');
+        });
+    </script>
+
+<% end %>
+
+
 <% content_for :sidebar do %>
     <li class="nav-item">
         <%= link_to edit_patient_path(current_user), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
@@ -25,3 +42,5 @@
         <% end %>
     </li>
 <% end %>
+
+<%= render "layouts/dashboard" %>

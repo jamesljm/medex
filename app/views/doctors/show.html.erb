@@ -1,3 +1,19 @@
+<!-- ======================================================================= -->
+<!-- Patient's show -->
+<!-- ======================================================================= -->
+
+<!-- JS -->
+<%= provide :js do %>
+
+    <!-- initial dashboard load -->
+    <script>
+        $(document).on('turbolinks:load', function () {
+            $('#dashboard-content').append('<%= j render "doctors/edit" %>');
+        });
+    </script>
+
+<% end %>
+
 <% content_for :sidebar do %>
     <li class="nav-item">
         <%= link_to edit_doctor_path(current_user), remote: true, id: 'profile-btn', class: 'nav-link active' do %>

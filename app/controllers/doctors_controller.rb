@@ -24,10 +24,6 @@ class DoctorsController < Clearance::UsersController
   def show
     @doctor = Doctor.find(params[:id])
     @doctor.verify = 'Pending'
-    
-    if @doctor.birthdate == nil
-      render 'edit'
-    end
   
   end
 

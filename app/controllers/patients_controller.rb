@@ -12,9 +12,6 @@ class PatientsController < Clearance::UsersController
     @patient = current_user
   end
 
-  def _form
-  end
-
   def create
     @patient = Patient.new(patient_params)
 

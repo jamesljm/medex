@@ -1,3 +1,6 @@
+<!-- ======================================================================= -->
+<!-- Dashboard Layout -->
+<!-- ======================================================================= -->
 
 <p><%#= link_to 'View Your Medical Records', records_path %></p>
 <p><%#= link_to 'Add Your Past Medical Records', new_record_path %></p>
@@ -14,37 +17,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <% end %>
-
-<!-- JS -->
-<%= provide :js do %>
-
-    <!-- initial dashboard load -->
-    <script>
-        $(document).on('turbolinks:load', function () {
-            $('#dashboard-content').append('<%= j render "patients/edit" %>');
-        });
-    </script>
-
-<% end %>
-
-<!-- Top navbar -->
-<nav class="navbar navbar-expand-sm navbar-light sticky-top bg-light d-flex justify-content-between">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Medex</a>
-    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-    <ul class="navbar-nav px-3">
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Dropdown link
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-                <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-        </li>
-    </ul>
-</nav>
 
 <!-- Side navbar -->
 <div class="container-fluid">

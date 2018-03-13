@@ -10,12 +10,12 @@
 </head>
 <body>
   <div id="header">
-    <%# if signed_in? -%>
-      <%#= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <%# else -%>
-      <%#= link_to t(".sign_in"), sign_in_path %>
-      <%#= link_to t(".sign_up"), sign_up_path %>
-    <%# end -%>
+    <% if signed_in? -%>
+      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+    <% else -%>
+      <%= link_to t(".sign_in"), sign_in_path %>
+      <%= link_to t(".sign_up"), sign_up_path %>
+    <% end -%>
     <%= render  "layouts/navigation" %>
   </div>
 

@@ -8,7 +8,6 @@
 
 user = {}
 user['password'] = 'asdf'
-user['password_confirmation'] = 'asdf'
 
 ActiveRecord::Base.transaction do
   20.times do 
@@ -18,10 +17,9 @@ ActiveRecord::Base.transaction do
     user['email'] = Faker::Internet.email
     user['gender'] = rand(1..2)
     user['phone'] = Faker::PhoneNumber.phone_number
-    user['country'] = Faker::Address.country
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = rand(0000000001..9999999999)
-    user['specialist'] = ['Endocrinologist, General Medical Physician, Cardiologist, Neurologist'].sample
+    user['specialist'] = ['Endocrinologist', 'General Medical Physician', 'Cardiologist', 'Neurologist'].sample
     user['experienced_years'] = rand(1..20)
     user['license'] = rand(0000001..1234567)
     user['clinic_name'] = Faker::Company.name

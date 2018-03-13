@@ -9,7 +9,7 @@ class PatientsController < Clearance::UsersController
   end
 
   def show
-    @user = current_user
+    @patient = current_user
   end
 
   def _form

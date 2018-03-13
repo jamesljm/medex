@@ -7,6 +7,14 @@
 
 <!-- JS -->
 <%= provide :js do %>
+
+    <!-- initial dashboard load -->
+    <script>
+        $(document).on('turbolinks:load', function () {
+            $('#dashboard-content').append('<%= j render "patients/edit" %>');
+        });
+    </script>
+
 <% end %>
 
 <!-- Top navbar -->
@@ -38,13 +46,12 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <%= link_to cat.name, fetch_items_path(:cat_id => cat.id), :remote => true %>
-                        
+                        <%= link_to edit_patient_path(current_user), remote: true, id: 'patient-btn', class: 'nav-link active' do %>
                         <!-- <a class="nav-link active" href="#"> -->
                             <span data-feather="users"></span>
                             Profile
                             <span class="sr-only">(current)</span>
-                        </a>
+                        <% end %>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -69,10 +76,8 @@
         </nav>
 
         
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id='dashboard-content'>
             
-
-            <%= render "patients/edit" %>
             
         </main>
     </div>

@@ -1,8 +1,6 @@
 class PatientsController < Clearance::UsersController
   before_action :require_login, except: :create
 
-  respond_to :html, :js
-
   def index
   end
 

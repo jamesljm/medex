@@ -4,8 +4,8 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.date        :date
       t.time        :start_time
       t.time        :end_time
-      t.references  :doctor, foreign_key: true
-      t.references  :user, foreign_key: true
+      t.references  :doctor
+      t.references  :patient
       t.boolean     :bill
       t.string      :doc_recommendations
 

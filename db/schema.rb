@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "doctor_id"
-    t.bigint "user_id"
+    t.bigint "patient_id"
     t.boolean "bill"
     t.string "doc_recommendations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_bookings_on_doctor_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["patient_id"], name: "index_bookings_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -91,6 +91,13 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
     t.string "drug_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "pres_start_date"
+    t.date "pres_end_date"
+    t.string "dosage"
+    t.boolean "meal"
+    t.string "morning", limit: 255
+    t.string "noon", limit: 255
+    t.string "night", limit: 255
     t.index ["record_id"], name: "index_prescriptions_on_record_id"
   end
 
@@ -98,12 +105,19 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
     t.string "prescription"
     t.date "record_date"
     t.bigint "booking_id"
-    t.string "referral"
+    t.string "referral_note"
     t.string "note"
-    t.string "consultation_type"
+    t.string "diagnosis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "patient_id"
+    t.string "title", limit: 255
+    t.string "encounter", array: true
+    t.string "symptoms"
+    t.boolean "follow_up"
+    t.boolean "referral"
     t.index ["booking_id"], name: "index_records_on_booking_id"
+    t.index ["patient_id"], name: "index_records_on_patient_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -149,10 +163,7 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
   end
 
   add_foreign_key "authentications", "users"
-  add_foreign_key "authorizations", "doctors"
   add_foreign_key "authorizations", "records"
-  add_foreign_key "bookings", "doctors"
-  add_foreign_key "bookings", "users"
   add_foreign_key "lab_tests", "records"
   add_foreign_key "prescriptions", "records"
   add_foreign_key "records", "bookings"

@@ -1,0 +1,11 @@
+<h1>Your Medical Journey here!!<h1>
+<p><%= link_to 'Back to Patient DashBoard', patient_path(@user.id) %></p>
+
+
+<% @records.each do |r| %>
+    <div><%= "Record ID: #{r.id}" %></div>
+    <div><%= "Date recorded: #{r.record_date}" %></div>
+    <div><h2><%= r.title %></h2></div>
+    <div><%= r.patient_id %></div>
+
+<% end %>

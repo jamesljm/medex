@@ -11,17 +11,15 @@
   <div class="row">
     <div class="col-8">
       <% @doctor.each do |doctor| %>
-        
-        <div> 
-          Profile Pic
-        </div>
-
-        <div>
-          <%= doctor.first_name %> <%= doctor.last_name %>
-          <%= doctor.specialist %>
-          <%= doctor.clinic_name %>
+        <div class="media">
+           <img class="align-self-center mr-3" src="..." alt="Generic placeholder image">
+        <div class="media-body">
+          <p class=mt-0><%= doctor.first_name %> <%= doctor.last_name %></p>
+          <p class=mb-0><%= doctor.specialist %></p>
+          <p class=mb-0><%= doctor.clinic_name %></p>
           <p><button>View</button> <button>Book Now</button></p>
         </div>
+      </div>
       <% end %>
     </div>
 

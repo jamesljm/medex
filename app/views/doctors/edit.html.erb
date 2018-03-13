@@ -27,14 +27,14 @@
 
     <!-- Phone Number -->
     <div class="field-wrap">
-        <%= f.label :phone do %>Phone No. (Number will not be reviewed to patients and will be used for notification purposes):<span class="req">*</span><% end %>
-        <%= f.text_field :phone, type: 'number', required: 'required' %>
+        <%= f.label :phone do %>Phone No. (Number will not be revealed to patients and will be used for notification purposes):<span class="req">*</span><% end %>
+        <%= f.text_field :phone, type: 'text', required: 'required' %>
     </div>
 
     <!-- Birthdate -->
     <div class="field-wrap">
         <%= f.label :birthdate do %>Birthdate:<span class="req">*</span><% end %>
-        <%= f.text_field :birthdate, required: 'required' %>
+        <%= f.date_field :birthdate, required: 'required' %>
     </div>
 
     <!-- Submit Button -->

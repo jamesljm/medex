@@ -1,1 +1,32 @@
+<div> Navbar </div>
+
+<div> Search Bar </div>
+
 <h1>Doctor Index Page</h1>
+
+<div>Doctor Panel</div>
+
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @doctor.each do |doctor| %>
+        
+        <div> 
+          Profile Pic
+        </div>
+
+        <div>
+          <%= doctor.first_name %> <%= doctor.last_name %>
+          <%= doctor.specialist %>
+          <%= doctor.clinic_name %>
+          <p><button>View</button> <button>Book Now</button></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-4">
+      <div>Maps</div>
+    </div>
+  </div>
+</div>

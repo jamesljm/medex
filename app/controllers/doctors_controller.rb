@@ -5,6 +5,7 @@ class DoctorsController < Clearance::UsersController
   end
 
   def index
+    @doctor = Doctor.all
   end
 
   def edit

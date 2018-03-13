@@ -1,45 +1,40 @@
-<div class="col-lg-4 pull-lg-8 text-xs-center">
-    <img src="//placehold.it/150" class="m-x-auto img-fluid rounded-circle" alt="avatar">
-    <h6 class="m-t-2">Upload a different photo</h6>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <!-- Profile Tab -->
+                <div class="tab-pane active" id="profile">
+                    <h5>User Profile</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>First Name : </strong><%= @patient.first_name %></li>
+                        <li class="list-group-item"><strong>Last Name : </strong><%= @patient.last_name %></li>
+                        <li class="list-group-item"><strong>Birthdate : </strong><%= @patient.birthdate %></li>
+                        <li class="list-group-item"><strong>Gender : </strong><%= @patient.gender %></li>
+                        <li class="list-group-item"><strong>Email : </strong><%= @patient.email %></li>
+                    </ul>
+                </div>
+                <!-- Edit Tab -->
+                <div class="tab-pane" id="edit">
+                    <h5>User Edit</h5>
+                    <%= render  "patients/edit_form" %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 order-lg-1 text-center">
+            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            <h6 class="mt-2">Upload a different photo</h6>
+            <label class="custom-file">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control">Choose file</span>
+            </label>
+        </div>
     </div>
-</div>
-
-<h2>Toggleable Tabs</h2>
-<br>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-    </li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-    <div id="home" class="container tab-pane active">
-        <br>
-        <h3>HOME</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua.
-        </p>
-    </div>
-    <div id="menu1" class="container tab-pane fade">
-        <br>
-        <h3>Menu 1</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div id="menu2" class="container tab-pane fade">
-        <br>
-        <h3>Menu 2</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-</div>
 </div>

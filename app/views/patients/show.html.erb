@@ -1,51 +1,10 @@
-<h1>Patient DashBoard Here! </h1>
-<p><%= link_to 'View Your Medical Records', record_path(@user.id) %></p>
-<br>
+<!-- ======================================================================= -->
+<!-- Patient's show -->
+<!-- ======================================================================= -->
 
-<p>Appointments Confirmed</p>
-<table border>
-  <thead>
-  <tr>
-    <th>Date</th>
-    <th>Schedule</th>
-    <th>Patient name</th>
-  </tr>
-  </thead>
+<!-- JS -->
+<%= provide :js do %>
 
-<<<<<<< HEAD
-  <tbody>
-    <% @booking.each do |p| %> 
-      <tr>
-        <td>
-          <%= p.date %> 
-        </td>
-        <td>
-           <%= p.start_time %> 
-        </td>
-        <td>
-           <%= p.doctor.first_name %> <%= p.doctor.last_name %> 
-        </td>
-        <td> 
-          <%= link_to 'Delete', booking_path(p), 
-            class: 'btn btn-sm btn-danger',
-            method: :Delete, 
-            data: {confirm: 'Are you sure?'}  %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<p>Appointments Pending</p>
-<table border>
-  <thead>
-  <tr>
-    <th>Date</th>
-    <th>Schedule</th>
-    <th>Doctor name</th>
-  </tr>
-  </thead>
-  
     <!-- initial dashboard load -->
     <script>
         $(document).on('turbolinks:load', function () {
@@ -53,28 +12,35 @@
         });
     </script>
 
+<% end %>
 
-  <tbody>
-    <% @pending_booking.each do |p| %> 
-      <tr>
-        <td>
-          <%= p.date %> 
-        </td>
-        <td>
-           <%= p.start_time %> 
-        </td>
-        <td>
-           <%= p.doctor.first_name %> <%= p.doctor.last_name %> 
-        </td>
-        <td> 
-          <%= link_to 'Cancel Appointments', pending_booking_path(p), 
-            class: 'btn btn-sm btn-danger',
-            method: :Delete, 
-            data: {confirm: 'Are you sure?'}  %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<p><%= link_to 'Pick Your Doctor', doctors_path %></p>
+
+<% content_for :sidebar do %>
+    <li class="nav-item">
+        <%= link_to edit_patient_path(current_user), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
+            <span data-feather="users"></span>
+            Profile
+            <span class="sr-only">(current)</span>
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to edit_patient_path(current_user), remote: true, id: 'appointment-btn', class: 'nav-link' do %>
+            <span data-feather="calendar"></span>
+            Appointments
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to records_path, remote: true, id: 'record-btn', class: 'nav-link' do %>
+            <span data-feather="book-open"></span>
+            Medical Journal
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to edit_patient_path(current_user), remote: true, id: 'prescriptions-btn', class: 'nav-link' do %>
+            <span data-feather="plus-circle"></span>
+            Prescriptions
+        <% end %>
+    </li>
+<% end %>
+
+<%= render "layouts/dashboard" %>

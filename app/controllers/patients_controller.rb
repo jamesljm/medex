@@ -9,7 +9,7 @@ class PatientsController < Clearance::UsersController
   end
 
   def show
-    @user = current_user
+    @patient = current_user
     @pending_booking= PendingBooking.where('patient_id='+current_user.id.to_s)
     @booking=Booking.where('patient_id='+current_user.id.to_s)
   end

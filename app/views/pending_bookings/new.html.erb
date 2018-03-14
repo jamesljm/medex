@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 <h1>Schedule Booking here!</h1>
 
 <%= form_for :pending_booking, url: pending_bookings_path do |f| %>
@@ -28,16 +26,10 @@
     <%= f.submit "Book now", class: 'btn btn-lg btn-success'%>
 <% end %>
 
-
+<p><%= link_to 'View all Doctor', doctors_path %></p>
 <p><%= link_to 'Back to Patient DashBoard', patient_path(@user.id) %></p>
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $( function() {
-    $( "#datepicker" ).datepicker();
-    } );
-</script>
+
 
 
 

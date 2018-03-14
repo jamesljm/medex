@@ -9,14 +9,38 @@
 <p>2. Appointments Confirmed 2</p>
 <br>
 <p>Appointments Pending</p>
-<p>1. Appointments Pending 1 </p>
-<p>2. Appointments Pending 2 </p>
-<p>3. Appointments Pending 3 </p>
+<table border>
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Schedule</th>
+    <th>Doctor name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @pending_booking.each do |p| %> 
+      <tr>
+        <td>
+          <%= p.date %> 
+        </td>
+        <td>
+           <%= p.start_time %> 
+        </td>
+        <td>
+           <%= p.doctor.first_name %> <%= p.doctor.last_name %> 
+        </td>
+        <td> 
+          <%= link_to 'Cancel Appointments', pending_booking_path(p), 
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you sure?'}  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <br>
-<p>Pick Your Doctor</p>
-<br>
-<p><%= link_to 'Booking Request', new_pending_booking_path %></p>
+<p><%= link_to 'Pick Your Doctor', doctors_path %></p>
 <br>
 <p>Payments(Use Braintree Gem)</p>
-
-<%= link_to t("Back to Home Page"), root_path %>

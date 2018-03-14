@@ -9,7 +9,7 @@ class PatientsController < Clearance::UsersController
   end
 
   def update
-    byebug
+    
     if @patient.update(patient_params)
     redirect_to patient_path, notice: "Your record has been updated."
     else

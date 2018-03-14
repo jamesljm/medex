@@ -9,9 +9,11 @@
   <!-- Libraries TODO: -->
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
 
   <% if content_for?(:head) %>
     <%= stylesheet_link_tag "navigation", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -22,10 +24,11 @@
 <body>
   <!-- Header -->
   <div id="header">
-    <%# if current_page?('/sign_in') || current_page?('/sign_up') %>
-    <%# else %>
+    <% if request.path_info.include?('doctors') || request.path_info.include?('patients') %>
+    <!-- do not render navbar in dashboard page -->
+    <% else %>
       <%= render "layouts/navigation" %>
-    <%# end %>
+    <% end %>
     <% if content_for?(:header) %>
       <%= yield :header %>
     <% end %>

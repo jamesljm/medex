@@ -33,10 +33,7 @@ class RecordsController < ApplicationController
   end
   
   def show
-    @record = current_user.records
-    @user=current_user
-    
-    
+    @user=current_user  
   end
 
   def index

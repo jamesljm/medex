@@ -2,5 +2,9 @@
 <p><%= link_to 'Back to Patient DashBoard', patient_path(@user.id) %></p>
 
 
-<%= button_to 'Edit Record', edit_record_path(current_user), method: :get %>
+<%= button_to 'Edit Record', edit_record_path(@record.id), method: :get %>
 
+<div><%= @record.title %></div>
+<div><%= @record.record_date %></div>
+<div>TO ADD A LOT MORE DEETS LATER</div>
+<div>TO ADD CSS TO SHOW TABLE</div>

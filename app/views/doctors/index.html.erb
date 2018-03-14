@@ -18,19 +18,8 @@
         <div class="media-body">
           <p class=mt-0><%= doctor.first_name %> <%= doctor.last_name %></p>
           <p class=mb-0><%= doctor.specialist %></p>
-          <p class=mb-0><%= doctor.clinic_name %></p>
-          <p><button>View</button> <button>Book Now</button></p>
-
-        
-        <div> 
-          Profile Pic
-        </div>
-
-        <div>
-          <%= doctor.first_name %> <%= doctor.last_name %>
-          <%= doctor.specialist %>
-          <%= doctor.clinic_name %>
-          <p><button>View</button> 
+          <!-- <p class=mb-0><%#= doctor.clinic_name %></p> -->
+          <p><button>View</button>
             <button><%= link_to "Book An Appointment", 'pending_bookings/new?param1='+doctor.id.to_s %></button></p>
 
         </div>

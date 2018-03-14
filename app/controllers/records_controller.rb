@@ -1,4 +1,7 @@
 class RecordsController < ApplicationController
+  
+  before_action :require_login, only: [:create, :edit, :update, :destroy]
+  before_action :set_listing, only: [:edit, :update, :destroy]
 
   def new
     @user=current_user
@@ -21,8 +24,13 @@ class RecordsController < ApplicationController
   end
   
   def edit
+
   end
 
+  def update
+    @record = @record.update(record_params)
+    redirect_to record_path
+  end
   
   def show
     @record = current_user.records

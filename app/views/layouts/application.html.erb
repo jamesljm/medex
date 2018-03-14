@@ -23,10 +23,11 @@
 <body>
   <!-- Header -->
   <div id="header">
-    <%# if current_page?('/sign_in') || current_page?('/sign_up') %>
-    <%# else %>
+    <% if request.path_info.include?('doctors') || request.path_info.include?('patients') %>
+    <!-- do not render navbar in dashboard page -->
+    <% else %>
       <%= render "layouts/navigation" %>
-    <%# end %>
+    <% end %>
     <% if content_for?(:header) %>
       <%= yield :header %>
     <% end %>

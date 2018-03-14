@@ -74,7 +74,15 @@ gem 'table_print'
 
 # Front-end Stuff
 gem 'jquery-rails'
-# = libraries
+
+# Datepicker
+gem 'bootstrap-sass', '3.2.0.2'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
+
+gem 'bootstrap-timepicker-rails'
+
 # gem 'bourbon', '5.0.0'
 # gem 'neat', '2.1.0'
 # gem 'bitters', '1.8.0'

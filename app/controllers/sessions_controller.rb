@@ -44,33 +44,28 @@ class SessionsController < Clearance::SessionsController
 
     # Patient Sign In
     def create_patient
-        @user = authenticate(params)
-
-        if @user.type == "Patient"
-            sign_in(@user) do |status|    
-                if status.success?
-                    redirect_to patient_path(@user.id)
-                end
-            end
-        else
-            # flash.now.notice = status.failure_message
-            render template: "sessions/new", status: :unauthorized
-        end
+        authenticate_user("Patient")
     end
     
     # Doctor Sign In
     def create_doctor
+        authenticate_user("Doctor")
+    end
+
+private
+    def authenticate_user(user_type)
         @user = authenticate(params)
 
-        if @user.type == "Doctor"
+        if @user.nil?
+            # flash.now.notice = status.failure_message
+            flash[:error] = "Failed to created user"
+            redirect_to sign_in_path
+        elsif @user.type == user_type
             sign_in(@user) do |status|
                 if status.success?
-                    redirect_to doctor_path(@user.id)
+                    redirect_to @user
                 end
             end
-        else
-            # flash.now.notice = status.failure_message
-            render template: "sessions/new", status: :unauthorized
         end
     end
 end

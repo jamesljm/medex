@@ -27,12 +27,15 @@ class RecordsController < ApplicationController
   def show
     @record = current_user.records
     @user=current_user
+    
+    
   end
 
   def index
     @records = current_user.records
-    @user=current_user
-    
+    respond_to do |format|
+      format.js
+    end
   end
 
 

@@ -1,19 +1,6 @@
-
-<p><%#= link_to 'View Your Medical Records', records_path %></p>
-<p><%#= link_to 'Add Your Past Medical Records', new_record_path %></p>
-
-<!--stylesheet-->
-<%= provide :head do %>
-    <%= stylesheet_link_tag "dashboard", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<% end %>
+<!-- ======================================================================= -->
+<!-- Patient's show -->
+<!-- ======================================================================= -->
 
 <!-- JS -->
 <%= provide :js do %>
@@ -27,110 +14,33 @@
 
 <% end %>
 
-<%# <!-- Top navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light sticky-top bg-light d-flex justify-content-between">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Medex</a>
-        <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-        <ul class="navbar-nav px-3">
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-        </ul>
-    </nav> %>
 
-<!-- Side navbar -->
-<div class="container-fluid">
-    <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <%= link_to edit_patient_path(current_user), remote: true, id: 'patient-btn', class: 'nav-link active' do %>
-                            <span data-feather="users"></span>
-                            Profile
-                            <span class="sr-only">(current)</span>
-                        <% end %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to edit_patient_path(current_user), remote: true, id: 'patient-btn', class: 'nav-link' do %>
-                            <span data-feather="calendar"></span>
-                            Appointments
-                        <% end %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to edit_patient_path(current_user), remote: true, id: 'patient-btn', class: 'nav-link' do %>
-                            <span data-feather="book-open"></span>
-                            Medical Journal
-                        <% end %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to edit_patient_path(current_user), remote: true, id: 'patient-btn', class: 'nav-link' do %>
-                            <span data-feather="plus-circle"></span>
-                            Prescriptions
-                        <% end %>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<% content_for :sidebar do %>
+    <li class="nav-item">
+        <%= link_to edit_patient_path(current_user), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
+            <span data-feather="users"></span>
+            Profile
+            <span class="sr-only">(current)</span>
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to edit_patient_path(current_user), remote: true, id: 'appointment-btn', class: 'nav-link' do %>
+            <span data-feather="calendar"></span>
+            Appointments
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to records_path, remote: true, id: 'record-btn', class: 'nav-link' do %>
+            <span data-feather="book-open"></span>
+            Medical Journal
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to edit_patient_path(current_user), remote: true, id: 'prescriptions-btn', class: 'nav-link' do %>
+            <span data-feather="plus-circle"></span>
+            Prescriptions
+        <% end %>
+    </li>
+<% end %>
 
-        
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id='dashboard-content'>
-            <!-- Dashboard content goes here -->
-        </main>
-    </div>
-</div>
-
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../../../assets/js/vendor/popper.min.js"></script>
-<script src="../../../../dist/js/bootstrap.min.js"></script>
-
-<!-- Icons -->
-<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-<script>
-    feather.replace()
-</script>
-
-<!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
+<%= render "layouts/dashboard" %>

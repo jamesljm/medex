@@ -1,62 +1,40 @@
-<h1>Doctor DashBoard Here! =D</h1>
 
-<div class="profile-placard">
-  <div class="profile-social">
-    <div class="image">
-    </div>
-    <div class="likes">
-    </div>
-  </div>
+<!-- ======================================================================= -->
+<!-- Doctors's show -->
+<!-- ======================================================================= -->
 
-  <div class="profile-highlights">
-    <div class="profile-contact">
-    </div>
-    <div class="profile-actionable">
-      <div class="book">
-      </div>
-      <div class="like">
-      </div>
-    </div>
+<!-- JS -->
+<%= provide :js do %>
 
-  </div>
+    <!-- initial dashboard load -->
+    <script>
+        $(document).on('turbolinks:load', function () {
+            $('#dashboard-content').append('<%= j render "doctors/edit" %>');
+        });
+    </script>
 
-</div>
+<% end %>
 
-<div class="profile-overview">
-  <div class="profile-detail">
-    <div class="profile-professional">
-    </div>
-    <div class="profile-clinic">
-    </div>
-  </div>
+<% content_for :sidebar do %>
+    <li class="nav-item">
+        <%= link_to edit_doctor_path(current_user), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
+            <span data-feather="users"></span>
+            Profile
+            <span class="sr-only">(current)</span>
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to edit_doctor_path(current_user), remote: true, id: 'appointment-btn', class: 'nav-link' do %>
+            <span data-feather="calendar"></span>
+            Appointments
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to patients_path, remote: true, id: 'record-btn', class: 'nav-link' do %>
+            <span data-feather="user"></span>
+            Patients
+        <% end %>
+    </li>
+<% end %>
 
-  <div class="booking">
-  </div>
-
-</div>
-
-
-
-
-
-
-<p>Profile(doctor info)</p>
-<p>(Doctor's info show over this page)</p>
-<br>
-<p><%= link_to t("Edit Doctor Profile"), edit_doctor_path(current_user.id) %></p>
-<br>
-<p>Booking(aleady confirm)</p>
-<p>The logic behind should be if booking.status == true and booking.doctor_id == current_user.id, show the particular
- booking here, design as a sidebar</p>
-<br>
-<p>Patient Pending( already book but havent consent by doctor yet)</p>
-<p>The logic behind should be if booking.status == false and booking.doctor_id == current_user.id, show the particular
- booking here, then if u click the link, it will render a new
-page that will show patient's info base on patient_id</p>
-<br>
-<p>Available Time Slot</p>
-<br>
-<p><%= link_to t("Upload Patient Medical Record"), new_record_path %></p>
-
-
-
+<%= render "layouts/dashboard" %>

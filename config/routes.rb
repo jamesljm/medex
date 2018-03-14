@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   resources :bookings
 
   resources :records
+
+  resources :pending_bookings
+
+  resources :before_pay_bookings
   # === Home Page
   root :to => "pages#index"
 

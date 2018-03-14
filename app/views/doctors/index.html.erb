@@ -5,12 +5,14 @@
 <h1>Doctor Index Page</h1>
 
 <div>Doctor Panel</div>
-
+<div><%= link_to t("Back to Your DashBoard"),  patient_path(current_user.id) %></div>
+<div><%= link_to t("Back to Home Page"), root_path %></div>
 <hr>
 <div class="container">
   <div class="row">
     <div class="col-8">
       <% @doctor.each do |doctor| %>
+
         <div class="media">
            <img class="align-self-center mr-3" src="..." alt="Generic placeholder image">
         <div class="media-body">
@@ -18,6 +20,19 @@
           <p class=mb-0><%= doctor.specialist %></p>
           <p class=mb-0><%= doctor.clinic_name %></p>
           <p><button>View</button> <button>Book Now</button></p>
+
+        
+        <div> 
+          Profile Pic
+        </div>
+
+        <div>
+          <%= doctor.first_name %> <%= doctor.last_name %>
+          <%= doctor.specialist %>
+          <%= doctor.clinic_name %>
+          <p><button>View</button> 
+            <button><%= link_to "Book An Appointment", 'pending_bookings/new?param1='+doctor.id.to_s %></button></p>
+
         </div>
       </div>
       <% end %>

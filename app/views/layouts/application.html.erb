@@ -44,6 +44,11 @@
   <!-- Body Content -->
   <%= yield %>
 
+  <!-- Footer -->
+  <p style="position: fixed; right: 1em; bottom: 0; color: grey;"><strong>Development Mode</strong><br><strong>Version : </strong> 1.1<br><strong>Updated at : </strong>14/03/2018 15:46</p>
+  <% if content_for?(:footer) %>
+    <%= yield(:footer) %>
+  <% end %>
   <!-- Bottom JS -->
   <% if content_for?(:js) %>
     <%= yield(:js) %>

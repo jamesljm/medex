@@ -1,3 +1,114 @@
 // Place all the styles related to the Doctors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hidden {
+  display:none;
+}
+
+//Doctors Card Area//
+
+.card-area {                    /*contains entire card area*/
+  margin-top: 100px;
+  border: 2px solid black;
+  width: 100%;
+}
+
+.card-placard{                  /*doctor placard at top*/
+  border:2px solid blue;
+  width: 100%;
+  display: inline-flex;
+}
+
+.card-social{                   /*image and like area*/
+  border:2px solid red;
+  width: 30%;
+  height: 100%;
+}
+  
+.card-highlights{               /*other information area*/
+  border:2px solid red;
+  width:70%;
+}
+
+.card-image{                    /*image*/
+  border:2px solid blue;
+  width: 200px;
+  height: 200px;
+  margin-top:5%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.card-likes{                    /*likes*/
+  border: 2px solid blue;
+  margin-top: 5%;
+  font: green;
+  text-align: center;
+}
+
+.card-contact{                  /*name, specialisation and email*/
+  border: 2px solid blue;
+  width: 100%;
+  height: 80%;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.card-actionable{               /*like & unlike area */
+  border:2px solid red;
+  width: 100%;
+  height: 20%;
+  display: inline-flex;
+}
+
+.like, .unlike{                 /*like & unlike button*/
+  border: 2px solid green;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-selector{                 /*selection bar for info and clinic*/
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 2px solid black;
+  width: 20%;
+  height: 50px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.card-general, .card-clinic{    /*selection panels*/
+  border: 2px solid red;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card-overview{               /*detail and booking area*/
+  border: 2px solid blue;
+  width: 100%;
+  display: inline-flex;
+}
+
+.card-detail{                 /*information area for toggling of info and clinic*/
+  width: 50%;
+  height: 100px;              /*placeholder. to remove once content is placed*/
+  border: 2px solid red;
+}
+
+.card-general-info, .card-clinic-info{      /*One or other to be hidden based on toggle click*/
+  border:2px solid green;
+  width: 100%;
+}
+  
+.card-booking{                /*booking area*/
+  border: 2px solid red;
+  width: 50%;
+  height: 100px;              /*placeholder. to remove once content is placed*/                 
+}

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_03_14_110014) do
+=======
+ActiveRecord::Schema.define(version: 2018_03_14_075528) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +64,21 @@ ActiveRecord::Schema.define(version: 2018_03_14_110014) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_bookings_on_doctor_id"
     t.index ["patient_id"], name: "index_bookings_on_patient_id"
+  end
+
+  create_table "clinics", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "postcode"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.string "operation_hour"
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_clinics_on_doctor_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -168,12 +187,6 @@ ActiveRecord::Schema.define(version: 2018_03_14_110014) do
     t.string "specialist"
     t.integer "experienced_years"
     t.integer "license"
-    t.string "clinic_name"
-    t.string "clinic_phone"
-    t.string "clinic_address"
-    t.string "clinic_city"
-    t.string "clinic_state"
-    t.string "clinic_country"
     t.string "blood_type"
     t.string "med_history", array: true
     t.string "allergies", array: true
@@ -184,7 +197,7 @@ ActiveRecord::Schema.define(version: 2018_03_14_110014) do
     t.string "verify"
     t.string "education"
     t.string "qualifications"
-    t.string "clinic_postcode"
+    t.text "summary"
     t.index ["email"], name: "index_users_on_email"
     t.index ["gender"], name: "index_users_on_gender"
     t.index ["remember_token"], name: "index_users_on_remember_token"

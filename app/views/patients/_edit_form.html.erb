@@ -22,13 +22,99 @@
         <%= form.text_field :email, type: 'email', required: 'required', class: "form-control" %>
     </div>
 
-    <!-- Password -->
+    <!-- Password remember to add old and new password -->
     <div class="form-group">
         <%= form.label :password do %>Password:
         <span class="req">*</span>
         <% end %>
         <%= form.password_field :password, class: "form-control" %>
     </div>
+
+    <!-- Identification -->
+    <div class="form-group">
+        <%= form.label :identification do %>Identification:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :identification, class: "form-control" %>
+    </div>    
+
+    <!-- gender -->
+    <div class="form-group">
+        <%= form.label :gender do %>Gender:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.select :gender, options_for_select([["Male", "male"], ["Female", "female"], ["Not Sure", "not Sure"], ["Prefer not to disclose", "prefer not to disclose"]]) %>
+    </div>   
+
+    <!-- birthdate -->
+    <div class="form-group">
+        <%= form.label :birthdate do %>Birthdate:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.date_field :birthdate, class: "form-control" %>
+    </div>       
+
+    <!-- blood_type -->
+    <div class="form-group">
+        <%= form.label :blood_type do %>Blood type:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :blood_type, class: "form-control" %>
+    </div>    
+
+    <!-- med_history -->
+    <div class="form-group">
+        <%= form.label :med_history do %>Medical history:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :med_history, class: "form-control" %>
+    </div>    
+
+    <!-- allergies -->
+    <div class="form-group">
+        <%= form.label :allergies do %>Allergies:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :allergies, class: "form-control" %>
+    </div>    
+
+    <!-- family_history -->
+    <div class="form-group">
+        <%= form.label :family_history do %>Family history:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :family_history, class: "form-control" %>
+    </div>   
+
+    <!-- social_history -->
+    <div class="form-group">
+        <%= form.label :social_history do %>Social history:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :social_history, class: "form-control" %>
+    </div>  
+
+    <!-- drinker -->
+    <div class="form-group">
+        <%= form.label :drinker do %>Drinker:
+        <span class="req">*</span>
+        <% end %>
+        <div class="radio">
+            <div><%= form.radio_button :drinker, true %>Yes</div>
+            <div><%= form.radio_button :drinker, false %>No</div>
+        </div>    
+    </div>   
+
+    <!-- smoker -->
+    <div class="form-group">
+        <%= form.label :smoker do %>Smoker:
+        <span class="req">*</span>
+        <% end %>
+        <div class="radio">
+            <div><%= form.radio_button :smoker, true %>Yes</div>
+            <div><%= form.radio_button :smoker, false %>No</div>
+        </div>    
+    </div>       
 
     <!-- Submit Button -->
     <div class="btn-wrap">

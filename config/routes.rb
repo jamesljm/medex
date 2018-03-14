@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   # Doctor & Patients
   # resources :doctors
   resources :doctors do
+    resources :clinics
     member do
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
+      get 'card' => 'doctors#card', as: "card", action: "card"
     end
   end
 

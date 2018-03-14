@@ -1,4 +1,6 @@
-<h1>Your Medical Record here!!<h1>
+<h1>Your Medical Record here!!</h1>
 <p><%= link_to 'Back to Patient DashBoard', patient_path(@user.id) %></p>
 
+
+<%= button_to 'Edit Record', edit_record_path(current_user), method: :get %>
 

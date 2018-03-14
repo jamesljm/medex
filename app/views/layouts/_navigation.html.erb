@@ -26,7 +26,11 @@
                 </a>
                 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <%= link_to "Profile", patient_path(current_user.id), class: 'dropdown-item' %>
+                    <% if current_user.type == "Doctor" %>
+                        <%= link_to "Profile", doctor_path(current_user.id), class: 'dropdown-item' %>
+                    <% else %>
+                        <%= link_to "Profile", patient_path(current_user.id), class: 'dropwdown-item' %>
+                    <% end %>
                     <%= link_to "Contact Us", '#', class: 'dropdown-item' %>
                     <%= link_to "Sign Out", sign_out_path, method: :delete, class: 'dropdown-item' %>
                 </div>

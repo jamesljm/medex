@@ -2,6 +2,10 @@
 <p>(form)</p>
 <br>
 
+<%= provide :head do %>
+    <%= stylesheet_link_tag "dashboard", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <!-- Personal Information -->
 <%= form_for @doctor do |f| %>
 

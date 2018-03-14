@@ -5,7 +5,6 @@ class PatientsController < Clearance::UsersController
   def index
   end
 
-<<<<<<< HEAD
   def edit
   end
 
@@ -18,8 +17,6 @@ class PatientsController < Clearance::UsersController
     end
   end  
 
-=======
->>>>>>> master
   def show
     @patient = current_user
   end

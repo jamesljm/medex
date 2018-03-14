@@ -1,4 +1,7 @@
+<!-- ======================================================================= -->
 <!-- Sign In Form -->
+<!-- ======================================================================= -->
+
 <div class="entry-form">
 
   <!-- 	Heading -->
@@ -32,7 +35,11 @@
         </div>
 
         <div class="facebook-sign-in">
-          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+          <%#= link_to edit_patient_path(current_user), remote: true, id: 'appointment-btn', class: 'nav-link' do %>
+          <%= link_to(url: "/auth/facebook") do %>
+              <span data-feather="facebook"></span>
+              Sign in with Facebook
+          <% end %>
         </div>
       
         <div class="btn-wrap">
@@ -55,10 +62,6 @@
         <div class="field-wrap">
           <%= form.label :password %>
           <%= form.password_field :password %>
-        </div>
-
-        <div class="facebook-sign-in">
-          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
         </div>
       
         <div class="btn-wrap">

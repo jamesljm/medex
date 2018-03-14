@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_13_031430) do
+ActiveRecord::Schema.define(version: 2018_03_14_064506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,23 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
     t.index ["record_id"], name: "index_authorizations_on_record_id"
   end
 
-  create_table "bookings", force: :cascade do |t|
+  create_table "before_pay_bookings", force: :cascade do |t|
     t.date "date"
     t.time "start_time"
+    t.time "end_time"
+    t.bigint "doctor_id"
+    t.bigint "user_id"
+    t.boolean "bill"
+    t.string "doc_recommendations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_before_pay_bookings_on_doctor_id"
+    t.index ["user_id"], name: "index_before_pay_bookings_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "date"
+    t.string "start_time"
     t.time "end_time"
     t.bigint "doctor_id"
     t.bigint "patient_id"
@@ -84,6 +98,20 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
   create_table "patients", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pending_bookings", force: :cascade do |t|
+    t.string "date"
+    t.string "start_time"
+    t.time "end_time"
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.boolean "bill"
+    t.string "doc_recommendations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_pending_bookings_on_doctor_id"
+    t.index ["patient_id"], name: "index_pending_bookings_on_patient_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
@@ -164,6 +192,8 @@ ActiveRecord::Schema.define(version: 2018_03_13_031430) do
 
   add_foreign_key "authentications", "users"
   add_foreign_key "authorizations", "records"
+  add_foreign_key "before_pay_bookings", "doctors"
+  add_foreign_key "before_pay_bookings", "users"
   add_foreign_key "lab_tests", "records"
   add_foreign_key "prescriptions", "records"
   add_foreign_key "records", "bookings"

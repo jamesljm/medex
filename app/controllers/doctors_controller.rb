@@ -22,10 +22,12 @@ class DoctorsController < Clearance::UsersController
   end
 
   def show
+    @pending_booking=PendingBooking.where('doctor_id='+current_user.id.to_s)
+    @booking=Booking.where('doctor_id='+current_user.id.to_s)
     @doctor = Doctor.find(params[:id])
     @doctor.verify = 'Pending'
-  
   end
+
 
   def _form
   end

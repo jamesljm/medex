@@ -58,10 +58,12 @@ class PatientsController < Clearance::UsersController
 
 private
   def patient_params
-  	params.require(:patient).permit(:first_name, :last_name, :password, :phone, :email, :gender, :birthdate, :identification, :blood_type, :family_history, :social_history, :drinker, :smoker, med_history: [], allergies: [] )
+    allergies = params[:patient][:allergies].split(',')
+  	params.require(:patient).permit(:first_name, :last_name, :password, :phone, :email, :gender, :birthdate, :identification, :blood_type, :family_history, :social_history, :drinker, :smoker, med_history: []).merge(allergies: allergies)
   end
 
   def find_patient_with_id
     @patient = Patient.find(params[:id])
   end
+
 end

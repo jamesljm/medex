@@ -3,6 +3,7 @@
 // @import 'base/base';
 // @import 'neat';
 
+
 @import "bootstrap";
 @import 'variables';
 @import 'reset';
@@ -13,6 +14,8 @@
 @import 'bootstrap-datetimepicker';
 
 @import 'bootstrap-timepicker';
+@import 'selectize';
+@import 'selectize.default';
 
 body{
   background-color: white;

@@ -83,7 +83,7 @@
         <%= form.label :allergies do %>Allergies:
         <span class="req">*</span>
         <% end %>
-        <%= form.text_field :allergies, class: "form-control" %>
+        <%= form.text_field :allergies, class: "form-control", id: "multiple-input" %>
     </div>    
 
     <!-- family_history -->
@@ -129,3 +129,4 @@
         <%= form.submit class: "button" %>
     </div>
 <% end %>
+

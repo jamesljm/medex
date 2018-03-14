@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card-area">
+    <div class="card-placard">
+      <div class="card-social">
+        <div class="card-image">
+        </div>
+        <div class="card-likes">
+          100 Likes
+        </div>
+      </div>
+
+      <div class="card-highlights">
+        <div class="card-contact card">
+          <h3 class="card-title"> <%= @doctor.first_name + " " + @doctor.last_name %> </h3>
+          <h4 class="card-subtitle mb-2 text-muted"> <%= @doctor.specialist %> </h4>
+          <%= mail_to @doctor.email %>
+          <br>
+          <hr>
+        </div>
+        <div class="card-actionable">
+          <div class="like ">
+            Like
+          </div>
+          <div class="unlike">
+            Unlike
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card-selector">
+      <div class="card-general">
+        Info
+      </div>
+      <div class="card-clinic">
+        Clinic
+      </div>
+    </div>
+    
+    <div class="card-overview">
+      <div class="card-detail">
+        <div class="card-general-info">
+          
+        </div>
+        <div class="card-clinic-info">
+        </div>
+      </div>
+
+      <div class="booking">
+      </div>
+
+    </div>
+  </div>
+</div>

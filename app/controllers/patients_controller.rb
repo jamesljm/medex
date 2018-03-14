@@ -11,9 +11,9 @@ class PatientsController < Clearance::UsersController
   def update
     
     if @patient.update(patient_params)
-    redirect_to patient_path, notice: "Your record has been updated."
+      redirect_to patient_path, notice: "Your record has been updated."
     else
-      redirect_to edit_patient_path(@patient.id)
+      redirect_to patient_path, notice: "Update error."
     end
   end  
 
@@ -37,7 +37,7 @@ class PatientsController < Clearance::UsersController
 
 private
   def patient_params
-  	params.require(:patient).permit(:first_name, :last_name, :password, :email, :gender, :birthdate, :identification, :blood_type, :family_history, :social_history, :drinker, :smoker, med_history: [], allergies: [] )
+  	params.require(:patient).permit(:first_name, :last_name, :password, :phone, :email, :gender, :birthdate, :identification, :blood_type, :family_history, :social_history, :drinker, :smoker, med_history: [], allergies: [] )
   end
 
   def find_patient_with_id

@@ -30,6 +30,14 @@
         <%= form.password_field :password, class: "form-control" %>
     </div>
 
+    <!-- Phone -->
+    <div class="form-group">
+        <%= form.label :phone do %>Phone:
+        <span class="req">*</span>
+        <% end %>
+        <%= form.text_field :phone, class: "form-control" %>
+    </div> 
+
     <!-- Identification -->
     <div class="form-group">
         <%= form.label :identification do %>Identification:

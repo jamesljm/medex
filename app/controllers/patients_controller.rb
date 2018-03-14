@@ -11,10 +11,7 @@ class PatientsController < Clearance::UsersController
   def show
     @user = current_user
     @pending_booking= PendingBooking.where('patient_id='+current_user.id.to_s)
-    p @pending_booking
-  end
-
-  def _form
+    @booking=Booking.where('patient_id='+current_user.id.to_s)
   end
 
   def create

@@ -22,7 +22,11 @@ class PendingBookingsController < ApplicationController
   def destroy
     @pending_booking = PendingBooking.find(params[:id])
     @pending_booking.destroy
-    redirect_to patient_path(current_user.id)
+    if current_user.type == 'Patient'
+      redirect_to patient_path(current_user.id)
+    elsif current_user.type == 'Doctor'
+      redirect_to doctor_path(current_user.id) 
+    end
   end
 
   private

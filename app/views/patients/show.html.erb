@@ -1,12 +1,39 @@
-
 <h1>Patient DashBoard Here! </h1>
 <p><%= link_to 'View Your Medical Records', record_path(@user.id) %></p>
 <br>
 
-
 <p>Appointments Confirmed</p>
-<p>1. Appointments Confirmed 1</p>
-<p>2. Appointments Confirmed 2</p>
+<table border>
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Schedule</th>
+    <th>Patient name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @booking.each do |p| %> 
+      <tr>
+        <td>
+          <%= p.date %> 
+        </td>
+        <td>
+           <%= p.start_time %> 
+        </td>
+        <td>
+           <%= p.doctor.first_name %> <%= p.doctor.last_name %> 
+        </td>
+        <td> 
+          <%= link_to 'Delete', booking_path(p), 
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you sure?'}  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <br>
 <p>Appointments Pending</p>
 <table border>
@@ -42,5 +69,3 @@
 </table>
 <br>
 <p><%= link_to 'Pick Your Doctor', doctors_path %></p>
-<br>
-<p>Payments(Use Braintree Gem)</p>

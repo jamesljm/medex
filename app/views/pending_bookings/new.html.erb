@@ -27,7 +27,7 @@
 <% end %>
 
 <p><%= link_to 'View all Doctor', doctors_path %></p>
-<p><%= link_to 'Back to Patient DashBoard', patient_path(@user.id) %></p>
+<p><%= link_to 'Back to Patient DashBoard', patient_path(current_user.id) %></p>
 
 
 

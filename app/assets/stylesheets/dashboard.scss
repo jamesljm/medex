@@ -18,6 +18,13 @@ body {
     color: white;
 }
 
+.nav > li > a:link {
+    background: none;
+}
+.nav > li > a:hover {
+    background: none;
+}
+
 #mySidebar {
     width: 200px;
     -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, .9);

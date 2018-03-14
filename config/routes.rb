@@ -20,12 +20,14 @@ Rails.application.routes.draw do
   resources :doctors do
     member do
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
+      get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'
     end
   end
 
   resources :patients do
     member do
       get 'profile' => 'patients#profile', as: "profile", action: "profile"
+      get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'      
     end
   end
 

@@ -29,7 +29,7 @@ class DoctorsController < Clearance::UsersController
   def update
     @doctor = Doctor.find(params[:id])
       if @doctor.update(doctor_params)
-        redirect_to @doctor
+        redirect_to doctor_path
       else
         render 'edit'
       end

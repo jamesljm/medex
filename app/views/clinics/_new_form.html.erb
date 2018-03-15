@@ -1,3 +1,4 @@
+
 <%= form_for [@doctor,@clinic] do |f| %>
 
 <ul class="list-group list-group-flush">
@@ -5,23 +6,23 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :name do %>Name of Clinic:<span class="req">*</span><% end %>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, class:'form-control' %>
         </div>
     </li>
     
     <!-- Clinic Phone -->
     <li class="list-group-item">
         <div class="field-wrap">
-          <%= f.label 'Clinic Phone No.:' %>
-          <%= f.text_field :phone, type: 'text', autocomplete: 'off' %>
+          <%= f.label :phone %>
+          <%= f.text_field :phone, type: 'text', autocomplete: 'off', class:'form-control' %>
         </div>
     </li>
 
     <!-- Clinic Email -->
     <li class="list-group-item">
         <div class="field-wrap">
-          <%= f.label 'Clinic Email:' %>
-          <%= f.text_field :email, type: 'email', autocomplete: 'off' %>
+          <%= f.label :email %>
+          <%= f.text_field :email, type: 'email', autocomplete: 'off', class:'form-control' %>
         </div>
     </li>
 
@@ -29,7 +30,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :address do %>Address:<span class="req">*</span><% end %>
-            <%= f.text_field :address, required: 'required' %>
+            <%= f.text_field :address, required: 'required', class:'form-control' %>
         </div>
     </li>
 
@@ -37,7 +38,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :postcode do %>Postcode:<span class="req">*</span><% end %>
-            <%= f.text_field :postcode, required: 'required' %>
+            <%= f.text_field :postcode, required: 'required',class:'form-control' %>
         </div>
     </li>
 
@@ -45,7 +46,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :city do %>City:<span class="req">*</span><% end %>
-            <%= f.text_field :city, required: 'required' %>
+            <%= f.text_field :city, required: 'required', class:'form-control' %>
         </div>
     </li>
 
@@ -53,7 +54,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :state do %>State:<span class="req">*</span><% end %>
-            <%= f.text_field :state, required: 'required' %>
+            <%= f.text_field :state, required: 'required', class:'form-control' %>
         </div>
     </li>
 
@@ -61,13 +62,24 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :country do %>Country:<span class="req">*</span><% end %>
-            <%= f.text_field :country, required: 'required' %>
+            <%= f.text_field :country, required: 'required', class:'form-control' %>
         </div>
     </li>
 
+    <!-- Clinic Operation Hour -->
+    <li class="list-group-item">
+        <div class="field-wrap">
+        <%= f.fields_for :operation_hour do |op| %>
+            <%= op.radio_button
+
+        <% end %>
+        </div>
+    </li>
+
+    <br>
     <!-- Submit Button -->
-    <div class="btn-wrap">
-        <%= f.submit class: "button" %>
-    </div>
+        <div class="btn-wrap ">
+            <%= f.submit class: "button doctor-submit" %>
+        </div>
 <% end %>
 </ul>

@@ -71,13 +71,13 @@
     <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
   </div>
 
-  <h4>Subscribe Us Now!</h4>
+  <h4 class="text-white">Subscribe Us Now!</h4>
   <hr>
 
   <%= form_for :subscriber, url: subscribers_path do |f| %>
   <%= f.text_field :name, placeholder: "Your Name" %>
   <%= f.email_field :email, placeholder: "Your Email" %>
-  <%= f.submit 'Submit', class:"btn btn-light my-2 my-sm-0" %>
+  <%= f.submit 'Subscribe!', class:"btn btn-light my-2 my-sm-0" %>
   <% end %>
   <!-- /.container -->
 </footer>

@@ -10,7 +10,7 @@ class Doctor < User
   end 
 
   def self.search(params)
-    doctors = Doctor.where("first_name LIKE ? or last_name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+    doctors = Doctor.where("lower(first_name) LIKE ? or lower(last_name) LIKE ?", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%") if params[:search].present?
     doctors
   end
 end

@@ -1,3 +1,7 @@
+<div> Navbar </div>
+
+<div> Search Bar </div>
+
 <h1>Doctor Index Page</h1>
 
 <div>Doctor Panel</div>
@@ -9,36 +13,34 @@
 </div>
 <hr>
 <div class="container">
-  <% @doctors.each do |doctor| %>
-    <img class="align-self-center mr-3" src="http://via.placeholder.com/350x150" alt="Generic placeholder image">
-    <div class="media-body">
-      <p class=mt-0>
-        <%= doctor.first_name %>
-        <%= doctor.last_name %>
-      </p>
-      <p class=mb-0>
-        <%= doctor.specialist %>
-      </p>
-      <p class=mb-0>
-        <%#= doctor.clinic_name %>
-      </p>
-      <p>
-        <button>View</button>
-        <button><%= link_to "Book An Appointment", 'pending_bookings/new?param1='+doctor.id.to_s %></button>
-      </p>
+  <div class="row">
+    <div class="col-8">
+      <% @doctor.each do |doctor| %>
+
+        <div class="media">
+          <img class="align-self-center mr-3" src="..." alt="Generic placeholder image">
+          <div class="media-body">
+            <p class=mt-0>
+              <%= doctor.first_name %>
+                <%= doctor.last_name %>
+            </p>
+            <p class=mb-0>
+              <%= doctor.specialist %>
+            </p>
+            <!-- <p class=mb-0><%#= doctor.clinic_name %></p> -->
+            <p>
+              <button>View</button>
+              <button>
+                <%= link_to "Book An Appointment", 'pending_bookings/new?param1='+doctor.id.to_s %>
+              </button>
+            </p>
+
+          </div>
+        </div>
+        <% end %>
     </div>
-    <div>
-      Profile Pic
+    <div class="col-4">
+      <div>Maps</div>
     </div>
-    <div>
-      <%= doctor.first_name %>
-      <%= doctor.last_name %>
-      <%= doctor.specialist %>
-      <%#= doctor.clinic_name %>
-      <%#= link_to "Book An Appointment", 'pending_bookings/new?param1='+doctor.id.to_s %>
-    </div>
-  <% end %>
-</div>
-<div class="col-4">
-  <div>Maps</div>
+  </div>
 </div>

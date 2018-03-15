@@ -10,22 +10,41 @@
                     <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                    <a href="" data-target="#edit-personal" data-toggle="tab" class="nav-link">Edit Personal Info</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit-professional" data-toggle="tab" class="nav-link">Edit Professional Info</a>
                 </li>
             </ul>
             <div class="tab-content py-4">
                 <!-- Profile Tab -->
                 <div class="tab-pane active" id="profile">
-                    <h5>User Profile</h5>
+                    <div class="tab-header">
+                      <h5>Personal Information</h5>
+                    </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>First Name : </strong><%= @doctor.first_name %></li>
                         <li class="list-group-item"><strong>Last Name : </strong><%= @doctor.last_name %></li>
                         <li class="list-group-item"><strong>Birthdate : </strong><%= @doctor.birthdate %></li>
                         <li class="list-group-item"><strong>Gender : </strong><%= @doctor.gender %></li>
                         <li class="list-group-item"><strong>Email : </strong><%= @doctor.email %></li>
+                        <li class="list-group-item"><strong>Phone : </strong><%= @doctor.phone %></li>
+                    </ul>
+                    <br>
+                    <div class="tab-header">
+                      <h5>Professional Information</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Biography :
+                        <p> </strong><%= @doctor.summary %></p></li>
+                        <li class="list-group-item"><strong>MMC Registration No.: </strong><%= @doctor.license %></li>
+                        <li class="list-group-item"><strong>Specialization : </strong><%= @doctor.specialist %></li>
+                        <li class="list-group-item"><strong>Years of Experience : </strong><%= @doctor.experienced_years %></li>
+                        <li class="list-group-item"><strong>Qualifications : </strong><%= @doctor.qualifications %></li>
                     </ul>
                 </div>
 
+<br>
 
 <!-- Khang's code here -->
 <p>Appointments Confirmed</p>
@@ -100,11 +119,22 @@
 
 <!-- Khang's code here -->
 
-                <!-- Edit Tab -->
-                <div class="tab-pane" id="edit">
-                    <h5>User Edit</h5>
-                    <%= render  "doctors/edit_form" %>
+                <!-- Edit Personal Info Tab -->
+                <div class="tab-pane" id="edit-personal">
+                    <div class="tab-header">
+                    <h5>Edit Personal Info</h5>
+                    </div>
+                    <%= render  "doctors/edit_personal_form" %>
                 </div>
+
+                <!-- Edit Professional Info Tab -->
+                <div class="tab-pane" id="edit-professional">
+                    <div class="tab-header">
+                    <h5>Edit Professional Info</h5>
+                    </div>
+                    <%= render  "doctors/edit_professional_form" %>
+                </div>
+
             </div>
         </div>
         <div class="col-lg-4 order-lg-1 text-center">

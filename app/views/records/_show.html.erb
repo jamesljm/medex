@@ -1,0 +1,39 @@
+<!-- ======================================================================= -->
+<!-- Patient's Show Partial -->
+<!-- ======================================================================= -->
+
+<h1>Your Medical Journey here!!</h1>
+<p><%#= link_to 'Create new medical record or encounter', new_record_path %></p>
+<p><%#= link_to 'Back to Patient DashBoard', patient_path(current_user.id) %></p>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="records-tab" data-toggle="tab" href="#records" role="tab" aria-controls="records" aria-selected="true">Records</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="new-record-tab" data-toggle="tab" href="#new-record" role="tab" aria-controls="new-record" aria-selected="false">New</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="edit-record-tab" data-toggle="tab" href="#edit-record" role="tab" aria-controls="edit-record" aria-selected="false">Edit</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+    <!-- Records -->
+    <div class="tab-pane fade show active" id="records" role="tabpanel" aria-labelledby="records-tab">
+        <%= render  "records/timeline" %>
+    </div>
+    
+    <!-- New -->
+    <div class="tab-pane fade" id="new-record" role="tabpanel" aria-labelledby="new-record-tab">
+        <%= render  "records/new" %>
+    </div>
+    <!-- Edit -->
+    <div class="tab-pane fade" id="edit-record" role="tabpanel" aria-labelledby="edit-record-tab">
+        <%= render  "records/edit_cards" %>
+    </div>
+</div>
+
+
+
+

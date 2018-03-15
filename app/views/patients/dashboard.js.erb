@@ -18,4 +18,8 @@
 
     $('#dashboard-content').empty().append('<%= j render "records/index" %>');
 
+<% elsif !@doctors.nil? %>
+
+    $('#dashboard-content').empty().append('<%= j render "doctors/index" %>');
+
 <% end %>

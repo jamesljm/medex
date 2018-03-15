@@ -1,0 +1,52 @@
+<!-- ======================================================================= -->
+<!-- Pending Booking's New -->
+<!-- ======================================================================= -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book me Now!</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+</head>
+<h1>Schedule Booking here!</h1>
+
+<%= form_for :pending_booking, url: pending_bookings_path do |f| %>
+    <%= f.label :'Pick a date' %><br>
+    <%= f.text_field :date, id: 'datepicker' %>
+    <br>
+    <%= f.label :'Pick Your Timing' %><br>
+    <%= f.radio_button :start_time, '9am-10am' %>
+    <%= f.label :start_time, "9am-10am" %>
+    <br>
+    <%= f.radio_button :start_time, '10am-11am' %>
+    <%= f.label :start_time, "10am-11am" %>
+    <br>
+    <%= f.radio_button :start_time, '11am-12am' %>
+    <%= f.label :start_time, "11am-12am" %>
+    <br>
+    <%= f.radio_button :start_time, '2pm-3pm' %>
+    <%= f.label :start_time, "2pm-3pm" %>
+    <br>
+    <%= f.radio_button :start_time, '3pm-4pm' %>
+    <%= f.label :start_time, "3pm-4pm" %>  
+    <br>
+    <%= f.radio_button :start_time, '4pm-5pm' %>
+    <%= f.label :start_time, "4pm-5pm" %>  
+    <br><br>
+    <%= f.submit "Book now", class: 'btn btn-lg btn-success'%>
+<% end %>
+
+<p><%= link_to 'View all Doctor', doctors_path %></p>
+<p><%= link_to 'Back to Patient DashBoard', patient_path(current_user.id) %></p>
+
+
+
+
+

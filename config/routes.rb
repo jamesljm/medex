@@ -24,11 +24,15 @@ Rails.application.routes.draw do
       get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'
       get 'card' => 'doctors#card', as: "card", action: "card"
     end
+
+    collection do
+      get :search #creates a new path for the searching 
+    end
   end
 
   resources :patients do
     member do
-      get 'profile' => 'patients#profile', as: "profile", action: "profile"
+      get 'profile/:id' => 'patients#profile', as: "profile", action: "profile"
       get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'      
     end
   end
@@ -40,6 +44,8 @@ Rails.application.routes.draw do
   resources :pending_bookings
 
   resources :before_pay_bookings
+
+  resources :subscribers
   # === Home Page
   root :to => "pages#index"
 

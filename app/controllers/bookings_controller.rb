@@ -6,6 +6,11 @@ class BookingsController < ApplicationController
     @user = current_user
   end
 
+  def show
+    @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
+    @bookings = Booking.where('patient_id=' + current_user.id.to_s)
+  end
+
   def create
     @@param2 = params[:param2]
     @pending_booking = PendingBooking.find(@@param2) 

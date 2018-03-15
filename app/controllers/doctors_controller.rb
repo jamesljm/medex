@@ -4,8 +4,19 @@ class DoctorsController < Clearance::UsersController
   def home
   end
 
+  def search
+    if params[:search].blank?
+      @doctors=Doctor.all
+    else
+      @doctors=Doctor.search(params)
+    end
+  end
+
   def index
-    @doctor = Doctor.all
+    @doctors = Doctor.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit

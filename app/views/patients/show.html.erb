@@ -8,7 +8,7 @@
     <!-- initial dashboard load -->
     <script>
         $(document).on('turbolinks:load', function () {
-            $('#dashboard-content').empty().append('<%= j render "patients/edit" %>');
+            $('#dashboard-content').empty().append('<%= j render "patients/profile" %>');
         });
     </script>
 
@@ -17,20 +17,20 @@
 
 <% content_for :sidebar do %>
     <li class="nav-item">
-        <%= link_to dashboard_patient_path(:request => "edit"), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
+        <%= link_to profile_patient_path(params[:id]), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
             <span data-feather="users"></span>
             Profile
             <span class="sr-only">(current)</span>
         <% end %>
     </li>
     <li class="nav-item">
-        <%= link_to dashboard_patient_path(:request => "appointments"), remote: true, id: 'appointments-btn', class: 'nav-link' do %>
+        <%= link_to booking_path(params[:id]), remote: true, id: 'appointments-btn', class: 'nav-link' do %>
             <span data-feather="calendar"></span>
             Appointments
         <% end %>
     </li>
     <li class="nav-item">
-        <%= link_to dashboard_patient_path(:request => "journal"), remote: true, id: 'record-btn', class: 'nav-link' do %>
+        <%= link_to record_path(params[:id]), remote: true, id: 'records-btn', class: 'nav-link' do %>
             <span data-feather="book-open"></span>
             Medical Journal
         <% end %>

@@ -15,6 +15,7 @@
 <% end %>
 
 
+
 <% content_for :sidebar do %>
     <li class="nav-item">
         <%= link_to profile_patient_path(params[:id]), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
@@ -44,3 +45,25 @@
 <% end %>
 
 <%= render "layouts/dashboard" %>
+
+
+<%# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
+
+
+<script>
+    $('#multiple-input').selectize({
+        plugins: ['restore_on_backspace', 'remove_button'],
+        delimiter: ',',
+        persist: false,
+        placeholder: "Add ...",
+        create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+        }
+    })
+</script> %>

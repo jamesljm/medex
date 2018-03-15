@@ -3,6 +3,7 @@ class ClinicsController < ApplicationController
     def index
       @doctor = Doctor.find(params[:doctor_id])
       @clinic = Clinic.new
+      @clinic.build_operation_hour
       @clinics = Clinic.all
     end
 
@@ -34,7 +35,7 @@ class ClinicsController < ApplicationController
 
   private
   def clinic_params
-    params.require(:clinic).permit(:name, :address, :city, :postcode, :country, :phone, :email, :doctor_id, :state, operation_hour_attributes: [:mon, :tue, :wed, :thu, :fri, :sat, :sun, :hol])
+    params.require(:clinic).permit(:name, :address, :city, :postcode, :country, :phone, :email, :doctor_id, :state, operation_hours_attributes: [:id, :mon, :tue, :wed, :thu, :fri, :sat, :sun, :hol, :_destroy])
   end
 
 end

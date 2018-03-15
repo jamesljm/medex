@@ -65,15 +65,152 @@
             <%= f.text_field :country, required: 'required', class:'form-control' %>
         </div>
     </li>
-
-    <!-- Clinic Operation Hour -->
+    
     <li class="list-group-item">
         <div class="field-wrap">
         <%= f.fields_for :operation_hour do |op| %>
-            <%= op.radio_button
+            <table class="table ops-table table-bordered">
+                <thead class="thead-dark ">
+                    <tr>
+                        <th scope="col" class="ops-header"> Day </th>
+                        <th scope="col" class="ops-header"> Status </th>
+                        <th scope="col" class="ops-header"> Start Time - End Time </th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <tr>
+                        <th scope="row">Monday</th>
+                        <th scope="row">
+                            <%= label_tag(:mon, "Open") %>
+                            <%= radio_button_tag(:mon_status, "Open") %> |
+                            <%= label_tag(:mon, "Closed") %>
+                            <%= radio_button_tag(:mon_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'mon_start_hour') %> :
+                            <%= select_minute(field_name: 'mon_start_min') %> -
+                            <%= select_hour(field_name: 'mon_end_hour') %> :
+                            <%= select_minute(field_name: 'mon_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Tuesday</th>
+                        <th scope="row">
+                            <%= label_tag(:tue, "Open") %>
+                            <%= radio_button_tag(:tue_status, "Open") %> |
+                            <%= label_tag(:tue, "Closed") %>
+                            <%= radio_button_tag(:tue_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'tue_start_hour') %> :
+                            <%= select_minute(field_name: 'tue_start_min') %> -
+                            <%= select_hour(field_name: 'tue_end_hour') %> :
+                            <%= select_minute(field_name: 'tue_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <th scope="row">
+                            <%= label_tag(:wed, "Open") %>
+                            <%= radio_button_tag(:wed_status, "Open") %> |
+                            <%= label_tag(:wed, "Closed") %>
+                            <%= radio_button_tag(:wed_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'wed_start_hour') %> :
+                            <%= select_minute(field_name: 'wed_start_min') %> -
+                            <%= select_hour(field_name: 'wed_end_hour') %> :
+                            <%= select_minute(field_name: 'wed_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Thursday</th>
+                        <th scope="row">
+                            <%= label_tag(:thu, "Open") %>
+                            <%= radio_button_tag(:thu_status, "Open") %> |
+                            <%= label_tag(:thu, "Closed") %>
+                            <%= radio_button_tag(:thu_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'thu_start_hour') %> :
+                            <%= select_minute(field_name: 'thu_start_min') %> -
+                            <%= select_hour(field_name: 'thu_end_hour') %> :
+                            <%= select_minute(field_name: 'thu_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Friday</th>
+                        <th scope="row">
+                            <%= label_tag(:fri, "Open") %>
+                            <%= radio_button_tag(:fri_status, "Open") %> |
+                            <%= label_tag(:fri, "Closed") %>
+                            <%= radio_button_tag(:fri_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'fri_start_hour') %> :
+                            <%= select_minute(field_name: 'fri_start_min') %> -
+                            <%= select_hour(field_name: 'fri_end_hour') %> :
+                            <%= select_minute(field_name: 'fri_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <th scope="row">
+                            <%= label_tag(:sat, "Open") %>
+                            <%= radio_button_tag(:sat_status, "Open") %> |
+                            <%= label_tag(:sat, "Closed") %>
+                            <%= radio_button_tag(:sat_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'sat_start_hour') %> :
+                            <%= select_minute(field_name: 'sat_start_min') %> -
+                            <%= select_hour(field_name: 'sat_end_hour') %> :
+                            <%= select_minute(field_name: 'sat_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <th scope="row">
+                            <%= label_tag(:sun, "Open") %>
+                            <%= radio_button_tag(:sun_status, "Open") %> |
+                            <%= label_tag(:sun, "Closed") %>
+                            <%= radio_button_tag(:sun_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'sun_start_hour') %> :
+                            <%= select_minute(field_name: 'sun_start_min') %> -
+                            <%= select_hour(field_name: 'sun_end_hour') %> :
+                            <%= select_minute(field_name: 'sun_end_min') %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <th scope="row">
+                            <%= label_tag(:hol, "Open") %>
+                            <%= radio_button_tag(:hol_status, "Open") %> |
+                            <%= label_tag(:hol, "Closed") %>
+                            <%= radio_button_tag(:hol_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= select_hour(field_name: 'hol_start_hour') %> :
+                            <%= select_minute(field_name: 'hol_start_min') %> -
+                            <%= select_hour(field_name: 'hol_end_hour') %> :
+                            <%= select_minute(field_name: 'hol_end_min') %>
+                        </th>
+                    </tr>                    
+
+                </tbody>
+            </table>
         <% end %>
-        </div>
+         </div>
     </li>
 
     <br>

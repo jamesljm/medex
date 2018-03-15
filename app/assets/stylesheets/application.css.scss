@@ -10,12 +10,10 @@
 @import 'doctors';
 
 @import 'bootstrap-sprockets';
-@import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 
 @import 'bootstrap-timepicker';
-@import 'selectize';
-@import 'selectize.default';
+@import 'bootstrap-tagsinput.scss';
 
 body{
   background-color: white;

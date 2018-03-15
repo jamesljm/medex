@@ -15,6 +15,7 @@
 <% end %>
 
 
+
 <% content_for :sidebar do %>
     <li class="nav-item">
         <%= link_to dashboard_patient_path(:request => "edit"), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
@@ -46,7 +47,7 @@
 <%= render "layouts/dashboard" %>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<%# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap2.css" type="text/css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"></script>
@@ -65,4 +66,4 @@
         }
         }
     })
-</script>
+</script> %>

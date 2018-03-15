@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     member do
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
     end
+
+    collection do
+      get :search #creates a new path for the searching 
+    end
   end
 
   resources :patients do
@@ -36,6 +40,8 @@ Rails.application.routes.draw do
   resources :pending_bookings
 
   resources :before_pay_bookings
+
+  resources :subscribers
   # === Home Page
   root :to => "pages#index"
 

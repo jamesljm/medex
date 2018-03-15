@@ -35,11 +35,11 @@
   </div>
 
   <!-- Flashes -->
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
+  <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+              <%= value %>
+        </div>
+  <% end %>
 
   <!-- Body Content -->
   <%= yield %>

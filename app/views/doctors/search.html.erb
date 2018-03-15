@@ -1,0 +1,41 @@
+<div> Navbar </div>
+
+<div> Search Doctor By Name </div>
+<%= form_tag search_doctors_path, method: :get do %>
+<%= text_field_tag :search, nil, placeholder: "Search" %>
+<%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+<% end %>
+
+<h1>Doctor Index Page</h1>
+
+<div>Doctor Panel</div>
+<div><%= link_to t("Back to Your DashBoard"),  patient_path(current_user.id) %></div>
+<div><%= link_to t("Back to Home Page"), root_path %></div>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @doctors.each do |doctor| %>
+        
+        <div> 
+          Profile Pic
+        </div>
+
+        <div>
+          <%= doctor.first_name %> <%= doctor.last_name %>
+          <%= doctor.specialist %>
+          <%= doctor.clinic_name %>
+          <p><button>View</button> 
+            <button><%= link_to "Book An Appointment", pending_bookings_path+'/new?param1='+doctor.id.to_s %></button></p>
+        </div>
+
+      <% end %>
+    </div>
+    
+    <div class="col-4">
+      <div>Maps</div>
+    </div>
+    <br>
+    <div><%= link_to 'View all Doctor Again', doctors_path %></div>
+  </div>
+</div>

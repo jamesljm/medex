@@ -14,7 +14,9 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require moment
 //= require bootstrap-datetimepicker
 //= require bootstrap-timepicker
+//= require bootstrap-tagsinput
+//= require_tree .
+

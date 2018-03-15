@@ -1,0 +1,54 @@
+<!-- ======================================================================= -->
+<!-- Doctor's Profile Tab Edit Form -->
+<!-- ======================================================================= -->
+<!-- Personal Information -->
+<%= form_for @doctor do |f| %>
+
+<ul class="list-group list-group-flush">
+    <!-- First Name -->
+    <li class="list-group-item">
+      <%= f.label :first_name do %>First Name :<span class="req">*</span><% end %>
+      <%= f.text_field :first_name, type: 'text', required: 'required', autocomplete: 'off', class:'form-control' %>
+    </li>
+
+    <!-- Last Name -->
+    <li class="list-group-item">
+        <%= f.label :last_name do %>Last Name:<span class="req">*</span><% end %>
+        <%= f.text_field :last_name, type: 'text', required: 'required', class:'form-control' %>
+    </li>
+
+        <!-- Birthdate -->
+    <li class="list-group-item">
+        <%= f.label :birthdate do %>Birthdate:<span class="req">*</span><% end %>
+        <%= f.text_field :birthdate, required: 'required', class:'form-control' %>
+    </li>
+
+        <!-- Gender -->
+    <li class="list-group-item">
+        <%= f.label :gender do %>Gender:<% end %>
+        <p><%= f.label(:gender, "Male") %>
+            <%= f.radio_button(:gender, "Male") %> |
+            <%= f.label(:gender, "Female") %>
+            <%= f.radio_button(:gender, "Female") %>
+        </p>
+    </li>
+
+    <!-- Email -->
+    <li class="list-group-item">
+        <%= f.label :email do %>Email:<span class="req">*</span><% end %>
+        <%= f.text_field :email, type: 'email', required: 'required', class:'form-control' %>
+    </li>
+
+    <!-- Phone Number -->
+    <li class="list-group-item">
+        <%= f.label :phone do %>Phone No.:<span class="req">*</span><% end %>
+        <p><small>(Number will not be reviewed to patients and will be used for notification purposes)</small></p>
+        <p><%= f.text_field :phone, type: 'text', required: 'required', class:'form-control' %></p>
+    </li>
+
+    <!-- Submit Button -->
+    <div class="btn-wrap">
+        <%#= f.submit class: "button" %>
+    </div>
+<% end %>
+</ul>

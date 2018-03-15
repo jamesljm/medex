@@ -1,0 +1,37 @@
+<!-- ======================================================================= -->
+<!-- Doctor's Profile Tab Edit Form -->
+<!-- ======================================================================= -->
+
+<!-- Personal Information -->
+<%= form_for @doctor do |f| %>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <%= f.label :summary do %>Biography:<span class="req">*</span><% end %>
+        <p><%= f.text_area :summary, class:'form-control' %></p>
+    </li>
+
+    <!-- License -->
+    <li class="list-group-item">
+        <%= f.label :license do %>MMC Registration No.:<span class="req">*</span><% end %>
+        <%= f.text_field :license, class:'form-control' %>
+    </li>
+    
+    <!-- Area of expertise -->
+    <li class="list-group-item">
+      <%= f.label :specialist do %>Specialization:<span class="req">*</span><% end %>
+      <%= f.text_field :specialist, type: 'text', required: 'required', autocomplete: 'off', class:'form-control' %>
+    </li>
+
+    <!-- Years of Experience -->
+    <li class="list-group-item">
+      <%= f.label :experienced_years do %>Years of Experience:<span class="req">*</span><% end %>
+      <%= f.text_field :experienced_years, type: 'integer', required: 'required', autocomplete: 'off', class:'form-control' %>
+    </li>
+
+    <!-- Qualifications -->
+    <li class="list-group-item">
+        <%= f.label :qualifications do %>Qualifications:<span class="req">*</span><% end %>
+        <%= f.text_field :qualifications, required: 'required', class:'form-control' %>
+    </li>
+</ul>
+<% end %>

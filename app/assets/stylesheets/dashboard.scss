@@ -15,7 +15,11 @@ body {
 }
 
 .nav-link {
-    color: white;
+    color: grey;
+}
+
+.nav-link.active {
+    color: blue;
 }
 
 .nav > li > a:link {

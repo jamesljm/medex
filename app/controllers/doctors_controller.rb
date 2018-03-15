@@ -5,7 +5,10 @@ class DoctorsController < Clearance::UsersController
   end
 
   def index
-    @doctor = Doctor.all
+    @doctors = Doctor.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit

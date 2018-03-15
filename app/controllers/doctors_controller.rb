@@ -6,9 +6,12 @@ class DoctorsController < Clearance::UsersController
 
   def search
     if params[:search].blank?
-      @doctors=Doctor.all
+      @doctors = Doctor.all
     else
-      @doctors=Doctor.search(params)
+      @doctors = Doctor.search(params)
+    end
+    respond_to do |format|
+      format.js
     end
   end
 

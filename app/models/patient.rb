@@ -4,4 +4,7 @@ class Patient < User
     has_many :bookings
 
     # validates :email, uniqueness: true
+
+    mount_uploader :profile_picture, ProfilePictureUploader
+
 end

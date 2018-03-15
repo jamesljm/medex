@@ -89,3 +89,9 @@ gem 'bootstrap-timepicker-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'popper_js', '~> 1.12.9'
 
+
+gem 'bootstrap-tagsinput-rails'
+
+gem 'carrierwave', '~> 1.0'
+
+gem "mini_magick"

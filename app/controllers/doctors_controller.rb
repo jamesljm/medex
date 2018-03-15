@@ -10,6 +10,9 @@ class DoctorsController < Clearance::UsersController
     else
       @doctors=Doctor.search(params)
     end
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index

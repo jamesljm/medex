@@ -27,8 +27,8 @@
 
     <!-- Phone Number -->
     <div class="field-wrap">
-        <%= f.label :phone do %>Phone No. (Number will not be reviewed to patients and will be used for notification purposes):<span class="req">*</span><% end %>
-        <%= f.text_field :phone, type: 'number', required: 'required' %>
+        <%= f.label :phone do %>Phone No. (Number will not be revealed to patients and will be used for notification purposes):<span class="req">*</span><% end %>
+        <%= f.text_field :phone, type: 'text', required: 'required' %>
     </div>
 
     <!-- Birthdate -->
@@ -87,49 +87,51 @@
 
 
 <!-- Clinic Information -->
+
+
 <%= form_for @doctor do |f| %>
 
   <h2>Clinic Information</h2>
     
     <!-- Clinic Name -->
     <div class="field-wrap">
-        <%= f.label :clinic_name do %>Name of Clinic:<span class="req">*</span><% end %>
+        <%= f.label :clinic_name do %>Name of Clinic:<span class="req">*</span><%# end %>
         <%= f.text_field :clinic_name %>
     </div>
     
     <!-- Clinic Phone -->
     <div class="field-wrap">
-      <%= f.label :clinic_phone do %>Clinic's Phone No.:<span class="req">*</span><% end %>
+      <%= f.label :clinic_phone do %>Clinic's Phone No.:<span class="req">*</span><%# end %>
       <%= f.text_field :clinic_phone, type: 'text', required: 'required', autocomplete: 'off' %>
     </div>
 
     <!-- Clinic Address -->
     <div class="field-wrap">
-        <%= f.label :clinic_address do %>Address:<span class="req">*</span><% end %>
+        <%= f.label :clinic_address do %>Address:<span class="req">*</span><%# end %>
         <%= f.text_field :clinic_address, required: 'required' %>
     </div>
 
     <!-- Clinic Postcode -->
     <div class="field-wrap">
-        <%= f.label :clinic_postcode do %>Postcode:<span class="req">*</span><% end %>
+        <%= f.label :clinic_postcode do %>Postcode:<span class="req">*</span><%# end %>
         <%= f.text_field :clinic_postcode, required: 'required' %>
     </div>
 
     <!-- Clinic City -->
     <div class="field-wrap">
-        <%= f.label :clinic_city do %>City:<span class="req">*</span><% end %>
+        <%= f.label :clinic_city do %>City:<span class="req">*</span><%# end %>
         <%= f.text_field :clinic_city, required: 'required' %>
     </div>
 
     <!-- Clinic State -->
     <div class="field-wrap">
-        <%= f.label :clinic_state do %>State:<span class="req">*</span><% end %>
+        <%= f.label :clinic_state do %>State:<span class="req">*</span><%# end %>
         <%= f.text_field :clinic_state, required: 'required' %>
     </div>
 
     <!-- Clinic Country -->
     <div class="field-wrap">
-        <%= f.label :clinic_country do %>Country:<span class="req">*</span><% end %>
+        <%= f.label :clinic_country do %>Country:<span class="req">*</span><%# end %>
         <%= f.text_field :clinic_country, required: 'required' %>
     </div>
 

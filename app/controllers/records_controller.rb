@@ -1,4 +1,7 @@
 class RecordsController < ApplicationController
+  
+  before_action :require_login, only: [:create, :edit, :update, :destroy]
+  before_action :set_record, only: [:edit, :update, :destroy]
 
   def new
     @user=current_user
@@ -21,20 +24,35 @@ class RecordsController < ApplicationController
   end
   
   def edit
+
   end
 
+  def update
+    @record = @record.update(record_params)
+    redirect_to record_path, notice: "Your record has been updated."
+  end
   
   def show
-    @record = current_user.records
-    @user=current_user
     
+    @user = current_user
+    @records = current_user.records
+    @record = Record.new
     
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index
-    @records = current_user.records
-    respond_to do |format|
-      format.js
+
+  end
+
+  def destroy
+    if current_user.type == "Doctor"
+      redirect_to record_path, notice: "Sorry. You do not have the permission to delete this record."
+    elsif current_user.type == "Patient"
+      @listing = @listing.destroy
+      redirect_to records_path, notice: "You have deleted #{@record.title} dated #{@record.record_date}"
     end
   end
 

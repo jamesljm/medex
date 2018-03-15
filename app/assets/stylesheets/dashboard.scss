@@ -14,10 +14,19 @@ body {
     padding-top: 3em;
 }
 
-
-
 .nav-link {
-    color: white;
+    color: grey;
+}
+
+.nav-link.active {
+    color: blue;
+}
+
+.nav > li > a:link {
+    background: none;
+}
+.nav > li > a:hover {
+    background: none;
 }
 
 #mySidebar {

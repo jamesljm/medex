@@ -1,0 +1,25 @@
+// $(function() {
+//     // let index = 0;
+//     // $('#profile-btn').click(function() {
+//     //     alert('clicked');
+//     //     alert(index);
+//     // });
+// });
+
+<% if !@patient.nil? %>
+
+    $('#dashboard-content').empty().append('<%= j render "patients/edit" %>');
+
+<% elsif !@bookings.nil? %>
+
+    $('#dashboard-content').empty().append('<%= j render "patients/appointments" %>');
+
+<% elsif !@records.nil? %>
+
+    $('#dashboard-content').empty().append('<%= j render "records/index" %>');
+
+<% elsif !@doctors.nil? %>
+
+    $('#dashboard-content').empty().append('<%= j render "doctors/index" %>');
+
+<% end %>

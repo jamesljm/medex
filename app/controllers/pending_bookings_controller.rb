@@ -11,7 +11,9 @@ class PendingBookingsController < ApplicationController
     @pending_booking = PendingBooking.new(pending_booking_params)
     @pending_booking.patient_id=current_user.id
     @pending_booking.doctor_id=@@param1
-
+    
+    
+    
     if @pending_booking.save
       redirect_to patient_path(current_user)
     else

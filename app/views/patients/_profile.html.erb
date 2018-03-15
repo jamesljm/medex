@@ -73,9 +73,7 @@
                         <li class="list-group-item">
                             <strong>Smoker : </strong>
                             <%= @patient.smoker %>
-                        </li>                                     
-                                   
-
+                        </li>
                     </ul>
                 </div>
 
@@ -88,12 +86,10 @@
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
             <% if current_user.profile_picture? %>
-                <%= image_tag current_user.profile_picture.url, :class => "profile_picture" if current_user.profile_picture? %>
+                <%= image_tag current_user.profile_picture.url, :class => "profile_picture mx-auto img-fluid img-circle d-block" if current_user.profile_picture? %>
             <% else %>
                 <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt= :remote_avatar_url>
             <% end %>
-
-            <h6 class="mt-2">Upload a different photo</h6>
 
             <%= form_for @patient do |form| %>
                 <div class="file-field">
@@ -107,11 +103,6 @@
                     <div><%= form.submit :name => "Update photo", class: "button" %></div>
                 </div>
             <% end %>    
-
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
         </div>
     </div>
 </div>

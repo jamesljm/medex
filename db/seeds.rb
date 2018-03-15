@@ -22,13 +22,6 @@ ActiveRecord::Base.transaction do
     user['specialist'] = ['Endocrinologist', 'General Medical Physician', 'Cardiologist', 'Neurologist'].sample
     user['experienced_years'] = rand(1..20)
     user['license'] = rand(0000001..1234567)
-    user['clinic_name'] = Faker::Company.name
-    user['clinic_phone'] = Faker::PhoneNumber.phone_number
-    user['clinic_address'] = Faker::Address.street_address
-    user['clinic_city'] = Faker::Address.city
-    user['clinic_state'] = Faker::Address.state
-    user['clinic_country'] = Faker::Address.country
-    user['clinic_postcode'] = Faker::Address.postcode
     user["verify"] = rand(0..2)
     user['education'] = Faker::RickAndMorty.location
     user['qualifications'] = Faker::Educator.course

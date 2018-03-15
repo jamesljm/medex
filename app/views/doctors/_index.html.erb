@@ -1,6 +1,8 @@
-<div> Navbar </div>
-
-<div> Search Bar </div>
+<div> Search Doctor by Name </div>
+<%= form_tag search_doctors_path, method: :get do %>
+<%= text_field_tag :search, nil, placeholder: "Search" %>
+<%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+<% end %>
 
 <h1>Doctor Index Page</h1>
 

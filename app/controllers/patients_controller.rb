@@ -6,6 +6,14 @@ class PatientsController < Clearance::UsersController
   end
 
   def edit
+    
+  end
+
+  def profile
+    @patient = Patient.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
@@ -35,31 +43,30 @@ class PatientsController < Clearance::UsersController
 
   def dashboard
 
-    case params[:request]
-      when 'edit'
-        @patient = find_patient_with_id
-      when 'appointments'
-        @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
-        @bookings = Booking.where('patient_id=' + current_user.id.to_s)
-      when 'journal'
-        @records = current_user.records
-      when 'prescriptions'
+    # case params[:request]
+    #   when 'edit'
+    #     @patient = find_patient_with_id
+    #   when 'appointments'
+    #     @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
+    #     @bookings = Booking.where('patient_id=' + current_user.id.to_s)
+    #   when 'journal'
+    #     @records = current_user.records
+    #   when 'prescriptions'
 
-      when 'doctors'
+    #   # Inner Lyaer
+    #   when 'doctors'
+    #     @doctors = Doctor.all
 
-        
-        # byebug
-        
-        @doctors = Doctor.all
+    #   when 'pending_bookings'
+    #     @pending_bookings = 
+    #   else
+    #     redirect_to root_path
+    # end
 
-      else
-        redirect_to root_path
-    end
-
-    # required for remote
-    respond_to do |format|
-      format.js
-    end
+    # # required for remote
+    # respond_to do |format|
+    #   format.js
+    # end
     
   end
 

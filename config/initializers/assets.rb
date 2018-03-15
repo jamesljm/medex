@@ -15,6 +15,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w(
                                                 entry.css
                                                 users/profile.css
+                                                records/show.css
                                                 dashboard.css
                                                 navigation.css
                                                 

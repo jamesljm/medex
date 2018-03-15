@@ -7,6 +7,11 @@
 
 <!--stylesheet-->
 <%= provide :head do %>
+    <%= stylesheet_link_tag "records/show", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<!--stylesheet-->
+<%= provide :head do %>
     <%= stylesheet_link_tag "dashboard", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 

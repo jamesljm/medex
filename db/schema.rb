@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_03_15_031128) do
 
   # These are extensions that must be enabled in order to support this database
@@ -185,8 +186,8 @@ ActiveRecord::Schema.define(version: 2018_03_15_031128) do
     t.integer "experienced_years"
     t.integer "license"
     t.string "blood_type"
-    t.string "med_history"
-    t.string "allergies"
+    t.string "med_history", array: true
+    t.string "allergies", array: true
     t.string "family_history"
     t.string "social_history"
     t.boolean "drinker"

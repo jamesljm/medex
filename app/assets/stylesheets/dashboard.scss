@@ -18,6 +18,10 @@ body {
     color: white;
 }
 
+.nav-link.active {
+    color: blue;
+}
+
 .nav > li > a:link {
     background: none;
 }

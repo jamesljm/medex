@@ -32,6 +32,13 @@ class PatientsController < Clearance::UsersController
         @records = current_user.records
       when 'prescriptions'
 
+      when 'doctors'
+
+        
+        # byebug
+        
+        @doctors = Doctor.all
+
       else
         redirect_to root_path
     end

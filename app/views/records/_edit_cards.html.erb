@@ -2,152 +2,31 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <% if !@records.empty? %>
+                    <% @records.each do |record| %>
+                <%# (0..100).each_with_index do |record, i| %>
+                <!-- TODO: Ascending the records' created date -->
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header"><%= record.title %></div>
+                            <div class="card-body">
+                                <p class="card-text"><%= record.referral_note %></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <%= link_to "edit", edit_record_path(record.id), remote: true, class: 'btn btn-sm btn-outline-secondary' %>
+                                    </div>
+                                    <small class="text-muted"><%= record.record_date %></small>
+                                </div>
                             </div>
-                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <% end %>
+            <% else %>
+                <p>There's no record</p>
+            <% end %>
+
         </div>
     </div>
 </div>

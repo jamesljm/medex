@@ -1,8 +1,50 @@
+<script>
+  $(function () {
+    var projects = [];
+
+    <% Doctor.all.each do |doctor| %>
+      //projects.push()
+      projects.push({
+          value: "<%= doctor.first_name %>",
+          desc: "<%= doctor.specialist %>"
+        });
+    <% end %>
+
+    console.log(projects);
+
+    $("#project").autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function (event, ui) {
+        $("#project").val(ui.item.label);
+        return false;
+      },
+      select: function (event, ui) {
+        $("#project").val(ui.item.label);
+        $("#project-id").val(ui.item.value);
+        $("#project-description").html(ui.item.desc);
+        $("#project-icon").attr("src", "images/" + ui.item.icon);
+
+        return false;
+      }
+    })
+      .autocomplete("instance")._renderItem = function (ul, item) {
+        return $("<li>")
+          .append("<div>" + item.label + "<br>" + item.desc + "</div>")
+          .appendTo(ul);
+      };
+  });
+</script>
+
 <div> Search Doctor by Name </div>
-<%= form_tag search_doctors_path, method: :get do %>
-<%= text_field_tag :search, nil, placeholder: "Search" %>
-<%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+<%= form_tag search_doctors_path, method: :get, remote: true do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Doctors" %>
+  <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
+<div id="project-label">Select a project (type "j" for a start):</div>
+<img id="project-icon" src="images/transparent_1x1.png" class="ui-state-default" alt="">
+<input id="project">
+<input type="hidden" id="project-id">
 
 <h1>Doctor Index Page</h1>
 
@@ -17,37 +59,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <% @doctors.each do |doctor| %>
-
-        <div class="media">
-          <img class="align-self-center mr-3" src="http://via.placeholder.com/150x150" alt="Generic placeholder image">
-          <div class="media-body">
-            <p class=mt-0>
-              <%= doctor.first_name %>
-              <%= doctor.last_name %>
-            </p>
-            <p class=mb-0>
-              <%= doctor.specialist %>
-            </p>
-            <!-- <p class=mb-0><%#= doctor.clinic_name %></p> -->
-            <p>
-              <button>View</button>
-              <button>
-                <%= link_to doctor_path(doctor.id), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
-                  <span data-feather="users"></span>
-                  Profile
-                  <span class="sr-only">(current)</span>
-                <% end %>
-              </button>
-              <button>
-                <%= link_to "Book An Appointment", pending_bookings_path+'/new?param1='+doctor.id.to_s, remote: true, id: 'pending-booking-btn' %>
-              </button>
-              </p>
-            </p>
-
-          </div>
-        </div>
-        <% end %>
+      <%= render  "doctors/search" %>
     </div>
     <div class="col-4">
       <div>Maps</div>

@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
   
   before_action :require_login, only: [:create, :edit, :update, :destroy]
-  before_action :set_record, only: [:edit, :update, :show, :destroy]
+  before_action :set_record, only: [:edit, :update, :destroy]
 
   def new
     @user=current_user
@@ -33,14 +33,18 @@ class RecordsController < ApplicationController
   end
   
   def show
+    
     @user = current_user
-  end
-
-  def index
     @records = current_user.records
+    @record = Record.new
+    
     respond_to do |format|
       format.js
     end
+  end
+
+  def index
+
   end
 
   def destroy

@@ -1,9 +1,16 @@
 class ClinicsController < ApplicationController
     
+    def index
+      @doctor = Doctor.find(params[:doctor_id])
+      @clinic = @doctor.clinics.all
+    end
+
+
     def create
 
     @doctor = Doctor.find(params[:doctor_id])
     @clinic = @doctor.clinic.create(clinic_params)
+    @clinic.doctor_id = @doctor.id
 
     redirect_to doctor_clinics_path(@doctor,@clinic)
    
@@ -13,20 +20,16 @@ class ClinicsController < ApplicationController
       @clinic = Clinic.find(params[:id])
     end
 
-  def update
-    @clinic = Clinic.find(params[:id])
-      if @doctor.update(doctor_params)
-        redirect_to @doctor
-      else
-        render 'edit'
-      end
-  end
+    def update
+      @clinic = Clinic.find(params[:id])
+        if @clinic.update(clinic_params)
+          redirect_to doctor_clinics_path(@doctor,@clinic)
+        else
+          render 'edit'
+        end
+    end
 
 
-  def index
-    @doctor = Doctor.find(params[:doctor_id])
-    @clinic = @doctor.clinics.all
-  end
 
   private
   def clinic_params

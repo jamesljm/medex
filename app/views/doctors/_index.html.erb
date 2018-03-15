@@ -3,7 +3,6 @@
     var projects = [];
 
     <% Doctor.all.each do |doctor| %>
-      //projects.push()
       projects.push({
           value: "<%= doctor.first_name %>",
           desc: "<%= doctor.specialist %>"
@@ -38,13 +37,9 @@
 
 <div> Search Doctor by Name </div>
 <%= form_tag search_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Doctors" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Doctors", id: 'project' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
-<div id="project-label">Select a project (type "j" for a start):</div>
-<img id="project-icon" src="images/transparent_1x1.png" class="ui-state-default" alt="">
-<input id="project">
-<input type="hidden" id="project-id">
 
 <h1>Doctor Index Page</h1>
 

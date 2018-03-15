@@ -1,0 +1,54 @@
+<!-- ======================================================================= -->
+<!-- Clinics tab -->
+<!-- ======================================================================= -->
+
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#clinic-info" data-toggle="tab" class="nav-link active">Clinic</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#clinic-new" data-toggle="tab" class="nav-link">Add New</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#clinic-edit" data-toggle="tab" class="nav-link hidden" id="clinic-edit">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <!-- Clinic Info -->
+                <div class="tab-pane active" id="clinic-info">
+                    <div class="tab-header">
+                      <h5>Clinic Info</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>First Name : </strong><%= @doctor.first_name %></li>
+                        <li class="list-group-item"><strong>Last Name : </strong><%= @doctor.last_name %></li>
+                        <li class="list-group-item"><strong>Birthdate : </strong><%= @doctor.birthdate %></li>
+                        <li class="list-group-item"><strong>Gender : </strong><%= @doctor.gender %></li>
+                        <li class="list-group-item"><strong>Email : </strong><%= @doctor.email %></li>
+                        <li class="list-group-item"><strong>Phone : </strong><%= @doctor.phone %></li>
+                    </ul>
+                </div>
+
+                <!-- Add New Clinic Tab -->
+                <div class="tab-pane" id="clinic-new">
+                    <div class="tab-header">
+                    <h5>Add New Clinic</h5>
+                    </div>
+                    <%= render  "clinics/new_form" %>
+                </div>
+
+                <!-- Edit Professional Info Tab -->
+                <div class="tab-pane" id="edit-professional">
+                    <div class="profile-header">
+                    <h5>Edit Professional Info</h5>
+                    </div>
+                    <%= render  "doctors/edit_professional_form" %>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

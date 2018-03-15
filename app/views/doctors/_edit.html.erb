@@ -19,7 +19,7 @@
             <div class="tab-content py-4">
                 <!-- Profile Tab -->
                 <div class="tab-pane active" id="profile">
-                    <div class="profile-header">
+                    <div class="tab-header">
                       <h5>Personal Information</h5>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -31,7 +31,7 @@
                         <li class="list-group-item"><strong>Phone : </strong><%= @doctor.phone %></li>
                     </ul>
                     <br>
-                    <div class="profile-header">
+                    <div class="tab-header">
                       <h5>Professional Information</h5>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -121,7 +121,7 @@
 
                 <!-- Edit Personal Info Tab -->
                 <div class="tab-pane" id="edit-personal">
-                    <div class="profile-header">
+                    <div class="tab-header">
                     <h5>Edit Personal Info</h5>
                     </div>
                     <%= render  "doctors/edit_personal_form" %>
@@ -129,7 +129,7 @@
 
                 <!-- Edit Professional Info Tab -->
                 <div class="tab-pane" id="edit-professional">
-                    <div class="profile-header">
+                    <div class="tab-header">
                     <h5>Edit Professional Info</h5>
                     </div>
                     <%= render  "doctors/edit_professional_form" %>

@@ -1,0 +1,62 @@
+<%= form_for @clinic do |f| %>
+
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "postcode"
+    t.string "country"
+    t.string "phone"
+    t.string "email"
+    t.string "operation_hour"
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_clinics_on_doctor_id"
+
+    <!-- Clinic Name -->
+    <div class="field-wrap">
+        <%= f.label :name do %>Name of Clinic:<span class="req">*</span><%# end %>
+        <%= f.text_field :name %>
+    </div>
+    
+    <!-- Clinic Phone -->
+    <div class="field-wrap">
+      <%= f.label :phone do %>Clinic's Phone No.:<span class="req">*</span><%# end %>
+      <%= f.text_field :phone, type: 'text', required: 'required', autocomplete: 'off' %>
+    </div>
+
+    <!-- Clinic Address -->
+    <div class="field-wrap">
+        <%= f.label :address do %>Address:<span class="req">*</span><%# end %>
+        <%= f.text_field :address, required: 'required' %>
+    </div>
+
+    <!-- Clinic Postcode -->
+    <div class="field-wrap">
+        <%= f.label :postcode do %>Postcode:<span class="req">*</span><%# end %>
+        <%= f.text_field :postcode, required: 'required' %>
+    </div>
+
+    <!-- Clinic City -->
+    <div class="field-wrap">
+        <%= f.label :city do %>City:<span class="req">*</span><%# end %>
+        <%= f.text_field :city, required: 'required' %>
+    </div>
+
+    <!-- Clinic State -->
+    <div class="field-wrap">
+        <%= f.label :state do %>State:<span class="req">*</span><%# end %>
+        <%= f.text_field :state, required: 'required' %>
+    </div>
+
+    <!-- Clinic Country -->
+    <div class="field-wrap">
+        <%= f.label :country do %>Country:<span class="req">*</span><%# end %>
+        <%= f.text_field :country, required: 'required' %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="btn-wrap">
+        <%= f.submit class: "button" %>
+    </div>
+<% end %>

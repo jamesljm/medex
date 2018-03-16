@@ -51,6 +51,7 @@ class DoctorsController < Clearance::UsersController
     @doctor.verify = 'Pending'
 
     if @doctor.save
+      ExampleMailer.sample_email(@doctor).deliver
       sign_in @doctor
       redirect_to doctor_path(@doctor.id)
     else

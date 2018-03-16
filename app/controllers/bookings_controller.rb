@@ -22,7 +22,6 @@ class BookingsController < ApplicationController
     else
       render doctor_path(current_user.id) 
     end
-    # then destroy pending
 
   end
 

@@ -1,0 +1,74 @@
+<!-- Khang's code here -->
+<p>Appointments Confirmed</p>
+<table border>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Schedule</th>
+            <th>Patient name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @bookings.each do |p| %>
+            <tr>
+                <td>
+                    <%= p.date %>
+                </td>
+                <td>
+                    <%= p.start_time %>
+                </td>
+                <td>
+                    <%= p.patient.first_name %>
+                        <%= p.patient.last_name %>
+                </td>
+                <td>
+                    <%= link_to 'Delete', booking_path(p), 
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you sure?'}  %>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+<br>
+<p>Appointments Pending</p>
+<table border>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Schedule</th>
+            <th>Patient name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @pending_bookings.each do |p| %>
+            <tr>
+                <td>
+                    <%= p.date %>
+                </td>
+                <td>
+                    <%= p.start_time %>
+                </td>
+                <td>
+                    <%= p.patient.first_name %>
+                        <%= p.patient.last_name %>
+                </td>
+                <td>
+                    <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, method: :Create %>
+                </td>
+
+                <td>
+                    <%= link_to 'Reject Appointments', pending_booking_path(p), 
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you sure?'}  %>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<!-- Khang's code here -->

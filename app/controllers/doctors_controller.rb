@@ -1,7 +1,13 @@
 class DoctorsController < Clearance::UsersController
   before_action :require_login, except: :create
 
-  def home
+  def appointment
+    @pending_bookings = PendingBooking.where('doctor_id='+current_user.id.to_s)
+    @bookings = Booking.where('doctor_id=' + current_user.id.to_s)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def search
@@ -34,6 +40,8 @@ class DoctorsController < Clearance::UsersController
   end
 
   def edit
+    @pending_booking=PendingBooking.where('doctor_id='+current_user.id.to_s)
+    @booking=Booking.where('doctor_id='+current_user.id.to_s)
     @doctor = Doctor.find(params[:id])
     respond_to do |format|
       format.js

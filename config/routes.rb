@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
       get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'
       get 'card' => 'doctors#card', as: "card", action: "card"
+      get 'appointment' => 'doctors#appointment', as: "appointment", action: "appointment"
     end
 
     collection do

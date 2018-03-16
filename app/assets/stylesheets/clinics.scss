@@ -1,3 +1,31 @@
 // Place all the styles related to the Clinics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//Dashboard -- Clinic -- View All//
+.clinic-row{
+  display: inline-flex;
+}
+
+.clinic-number, .clinic-location-display{
+  margin-right: 5%;
+}
+
+.clinic-label{
+  color: #1aa7b1;
+  font-weight: bold;
+}
+
+.thead-ops-view{
+  background-color: #343a40! important;
+  color:white;
+  font-weight: none;
+}
+
+
+//Dashboard -- Clinic//
+.thead-ops{
+  background-color: #1aa7b1! important;
+  color: white;
+}

@@ -34,7 +34,8 @@
             <%= link_to 'Delete', booking_path(p), 
         class: 'btn btn-sm btn-danger',
         method: :Delete, 
-        data: {confirm: 'Are you sure?'}  %>
+        data: {confirm: 'Are you sure?'},
+        remote: true %>
         </td>
         </tr>
         <% end %>

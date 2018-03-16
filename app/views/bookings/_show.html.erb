@@ -31,7 +31,7 @@
             <%= p.doctor.last_name %>
         </td>
         <td>
-            <%= link_to 'Delete', booking_path(p), 
+            <%= link_to 'Delete', booking_path(p), remote: true,
         class: 'btn btn-sm btn-danger',
         method: :Delete, 
         data: {confirm: 'Are you sure?'}  %>
@@ -65,7 +65,7 @@
             <%= link_to t(p.doctor.first_name + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
         </td>
         <td>
-            <%= link_to 'Cancel Appointments', pending_booking_path(p), 
+            <%= link_to 'Cancel Appointments', pending_booking_path(p), remote: true,
         class: 'btn btn-sm btn-danger',
         method: :Delete, 
         data: {confirm: 'Are you sure?'}  %>

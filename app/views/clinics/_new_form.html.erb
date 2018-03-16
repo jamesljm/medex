@@ -1,5 +1,5 @@
 
-<%= form_for [@doctor,@clinic] do |f| %>
+<%= form_for [@doctor,@clinic], remote: true do |f| %>
 
 <ul class="list-group list-group-flush">
     <!-- Clinic Name -->
@@ -68,6 +68,7 @@
     
     <li class="list-group-item">
         <div class="field-wrap">
+        <%= f.label "Operation Hour:" %>
         <%= f.fields_for :operation_hour do |op| %>
             <table class="table ops-table table-bordered">
                 <thead class="thead-ops ">

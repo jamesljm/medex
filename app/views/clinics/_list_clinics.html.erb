@@ -18,6 +18,10 @@
         <%= clinic.address %> <br>
         <%= clinic.city%>, <%= clinic.postcode %> <br>
         <%= clinic.state %>, <%= clinic.country %>
+
+        <p></p>
+
+        [<%= link_to 'Edit',doctor_clinic_path(@doctor,clinic.id), remote:true %> | <%= link_to 'Delete', doctor_clinic_path(@doctor, clinic.id), remote:true, method: :delete, data: {confirm: 'Sure to delete?'} %>]
       
     </div>
 

@@ -3,13 +3,9 @@ class ClinicsController < ApplicationController
     def index
       @doctor = Doctor.find(params[:doctor_id])
       @clinic = Clinic.new
-      # @clinic.build_operation_hour
       @clinics = Clinic.all
       @doctors = Doctor.all
 
-      respond_to do |format|
-        format.js
-      end
     end
 
 
@@ -20,29 +16,73 @@ class ClinicsController < ApplicationController
       @clinic.doctor_id = @doctor.id
 
       if @clinic.save
-        redirect_to doctor_clinics_path(@doctor)
+        @doctor = Doctor.find(params[:doctor_id])
+        @clinic = Clinic.new
+        @clinics = Clinic.all
+        @doctors = Doctor.all
+        
+        # redirect_to doctor_clinics_path(@doctor)
+      
       else
         flash[:notice] = "Failed to save..."
-        redirect_to new_doctor_clinic_path
+        # redirect_to new_doctor_clinic_path
       end
 
-      
+      respond_to do |format|
+        format.js
+      end
 
    end
 
     def edit
       @clinic = Clinic.find(params[:id])
+
+      respond_to do |format|
+        format.js
+      end
+
     end
 
     def update
       @clinic = Clinic.find(params[:id])
         if @clinic.update(clinic_params)
-          redirect_to doctor_clinics_path(@doctor)
+          @doctor = Doctor.find(params[:doctor_id])
+          @clinic = Clinic.new
+          @clinics = Clinic.all
+          @doctors = Doctor.all
+
         else
           render 'edit'
         end
+
+      respond_to do |format|
+        format.js
+      end
+      
     end
 
+    def show
+      @doctor = Doctor.find(params[:doctor_id])
+      @clinic = Clinic.find(params[:id])
+
+      respond_to do |format|
+        format.js
+      end
+    end
+
+    def destroy
+      @doctor = Doctor.find(params[:doctor_id])
+      @clinic = Clinic.find(params[:id])
+      
+      @clinic.destroy
+
+      @clinics = Clinic.all
+      @doctors = Doctor.all
+
+      respond_to do |format|
+        format.js
+      end
+    end
 
 
   private

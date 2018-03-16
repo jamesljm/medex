@@ -13,4 +13,9 @@ class Doctor < User
     doctors = Doctor.where("lower(first_name) LIKE ? or lower(last_name) LIKE ?", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%") if params[:search].present?
     doctors
   end
+
+  def self.search_specialist(params)
+    doctors = Doctor.where("lower(specialist) LIKE ?", "%#{params[:search].downcase}%") if params[:search].present?
+    doctors
+  end
 end

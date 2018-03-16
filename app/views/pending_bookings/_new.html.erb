@@ -9,15 +9,11 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
 </head>
 <h1>Schedule Booking here!</h1>
 
-<%= form_for :pending_booking, url: pending_bookings_path do |f| %>
+
+<%= form_for :pending_booking, url: pending_bookings_path, remote: true do |f| %>
     <%= f.label :'Pick a date' %><br>
     <%= f.text_field :date, id: 'datepicker' %>
     <br>
@@ -43,8 +39,14 @@
     <%= f.submit "Book now", class: 'btn btn-lg btn-success'%>
 <% end %>
 
-<p><%= link_to 'View all Doctor', doctors_path %></p>
-<p><%= link_to 'Back to Patient DashBoard', patient_path(current_user.id) %></p>
+<p><%= link_to 'View all Doctor', doctors_path, remote: true %></p>
+<p><%= link_to 'Back to Patient DashBoard', patient_path(current_user.id), remote: true %></p>
+
+<script>
+    $(function () {
+      $("#datepicker").datepicker({ minDate: new Date(), maxDate: "+1M" });
+    });
+</script>
 
 
 

@@ -33,6 +33,7 @@ class PatientsController < Clearance::UsersController
     @patient = Patient.new(patient_params)
 
     if @patient.save
+      ExampleMailer.sample_email(@patient).deliver
       sign_in @patient
       redirect_to patient_path(@patient.id)
     else

@@ -1,59 +1,57 @@
 <p></p>
-<% x = 1 %>
 
-<% @doctor.clinics.each do |clinic| %>
+<% @doctor.clinics.each_with_index do |clinic, i| %>
   <div class="row">
-    <div class="clinic-number col-0.5 clinic-label"><h6><%= x %>.</h6></div>
+    <div class="clinic-number col-0.5 clinic-label"><h6><%= i + 1 %>.</h6></div>
     
     <div class="clinic-location-display col-3">
-      <div class="clinic-label">
+        <div class="clinic-label">
         <h6>Clinic Name: </h6>
-      </div>
-      <%= clinic.name %>
+    </div>
+    <%= clinic.name %>
       
-      <p></p>
+    <p></p>
 
-      <div class="clinic-label">
+    <div class="clinic-label">
         <h6>Clinic Address: </h6>
-      </div>
-        <%= clinic.address %> <br>
-        <%= clinic.city%>, <%= clinic.postcode %> <br>
-        <%= clinic.state %>, <%= clinic.country %>
+    </div>
+    <%= clinic.address %> <br>
+    <%= clinic.city%>, <%= clinic.postcode %> <br>
+    <%= clinic.state %>, <%= clinic.country %>
 
-        <p></p>
+    <p></p>
 
-      <div class="clinic-label">
+    <div class="clinic-label">
         <h6>Visit Duration: </h6>
-      </div>
-        <%= clinic.duration %>
+    </div>
+    <%= clinic.duration %>
 
-        <p></p>
+    <p></p>
 
-      <div class="clinic-label">
+    <div class="clinic-label">
         <h6>Booking Fee: </h6>
-      </div>
-        <%= clinic.booking== 1 ? "RM " + clinic.fee : "N/A" %>
+    </div>
+    <%= clinic.booking ? "RM " + clinic.fee.to_s : "N/A" %>
 
-        <p></p>
+    <p></p>
 
-        [<%= link_to 'Edit',doctor_clinic_path(@doctor,clinic.id), remote:true %> | <%= link_to 'Delete', doctor_clinic_path(@doctor, clinic.id), remote:true, method: :delete, data: {confirm: 'Sure to delete?'} %>]
+    [<%= link_to 'Edit',doctor_clinic_path(@doctor,clinic.id), remote:true %> | <%= link_to 'Delete', doctor_clinic_path(@doctor, clinic.id), remote:true, method: :delete, data: {confirm: 'Sure to delete?'} %>]
       
     </div>
 
     <div class="clinic-ops-display col-7">
-      <div class="clinic-label">
-        <h6>Operation Hour: </h6>
-      </div>
+        <div class="clinic-label">
+            <h6>Operation Hour: </h6>
+        </div>
 
-      <table class="table ops-table table-bordered">
-                <thead class="thead-ops-view ">
-                    <tr>
-                        <th scope="col" class="ops-header"> Day </th>
-                        <th scope="col" class="ops-header"> Status </th>
-                        <th scope="col" class="ops-header"> Start Time - End Time </th>
-                    </tr>
+        <table class="table ops-table table-bordered">
+            <thead class="thead-ops-view ">
+                <tr>
+                    <th scope="col" class="ops-header"> Day </th>
+                    <th scope="col" class="ops-header"> Status </th>
+                    <th scope="col" class="ops-header"> Start Time - End Time </th>
+                </tr>
                 </thead>
-
                 <tbody>
                     <tr>
                         <th scope="row">Monday</th>
@@ -64,7 +62,6 @@
                             <%= clinic.operation_hour["mon_status"] == "Closed"? "-" : ((clinic.operation_hour["mon_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["mon_start(4i)"].to_s) + " : " + (clinic.operation_hour["mon_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["mon_start(5i)"].to_s) + " - " + (clinic.operation_hour["mon_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["mon_end(4i)"].to_s) + " : " + (clinic.operation_hour["mon_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["mon_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Tuesday</th>
                         <th scope="row">
@@ -74,7 +71,6 @@
                             <%= clinic.operation_hour["tue_status"] == "Closed"? "-" : ((clinic.operation_hour["tue_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["tue_start(4i)"].to_s) + " : " + (clinic.operation_hour["tue_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["tue_start(5i)"].to_s) + " - " + (clinic.operation_hour["tue_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["tue_end(4i)"].to_s) + " : " + (clinic.operation_hour["tue_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["tue_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Wednesday</th>
                         <th scope="row">
@@ -84,7 +80,6 @@
                             <%= clinic.operation_hour["wed_status"] == "Closed"? "-" : ((clinic.operation_hour["wed_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["wed_start(4i)"].to_s) + " : " + (clinic.operation_hour["wed_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["wed_start(5i)"].to_s) + " - " + (clinic.operation_hour["wed_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["wed_end(4i)"].to_s) + " : " + (clinic.operation_hour["wed_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["wed_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Thursday</th>
                         <th scope="row">
@@ -94,7 +89,6 @@
                             <%= clinic.operation_hour["thu_status"] == "Closed"? "-" : ((clinic.operation_hour["thu_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["thu_start(4i)"].to_s) + " : " + (clinic.operation_hour["thu_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["thu_start(5i)"].to_s) + " - " + (clinic.operation_hour["thu_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["thu_end(4i)"].to_s) + " : " + (clinic.operation_hour["thu_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["thu_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Friday</th>
                         <th scope="row">
@@ -104,7 +98,6 @@
                             <%= clinic.operation_hour["fri_status"] == "Closed"? "-" : ((clinic.operation_hour["fri_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["fri_start(4i)"].to_s) + " : " + (clinic.operation_hour["fri_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["fri_start(5i)"].to_s) + " - " + (clinic.operation_hour["fri_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["fri_end(4i)"].to_s) + " : " + (clinic.operation_hour["fri_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["fri_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Saturday</th>
                         <th scope="row">
@@ -114,7 +107,6 @@
                             <%= clinic.operation_hour["sat_status"] == "Closed"? "-" : ((clinic.operation_hour["mon_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["sat_start(4i)"].to_s) + " : " + (clinic.operation_hour["sat_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["sat_start(5i)"].to_s) + " - " + (clinic.operation_hour["sat_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["sat_end(4i)"].to_s) + " : " + (clinic.operation_hour["sat_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["sat_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Sunday</th>
                         <th scope="row">
@@ -124,7 +116,6 @@
                             <%= clinic.operation_hour["sun_status"] == "Closed"? "-" : ((clinic.operation_hour["sun_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["sun_start(4i)"].to_s) + " : " + (clinic.operation_hour["sun_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["sun_start(5i)"].to_s) + " - " + (clinic.operation_hour["sun_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["sun_end(4i)"].to_s) + " : " + (clinic.operation_hour["sun_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["sun_end(5i)"].to_s))%>
                         </th>
                     </tr>
-
                     <tr>
                         <th scope="row">Public Holiday</th>
                         <th scope="row">
@@ -133,8 +124,7 @@
                         <th scope="row">
                             <%= clinic.operation_hour["hol_status"] == "Closed"? "-" : ((clinic.operation_hour["hol_start(4i)"].to_s == "" ? "00" :  clinic.operation_hour["hol_start(4i)"].to_s) + " : " + (clinic.operation_hour["hol_start(5i)"].to_s == "" ? "00" : clinic.operation_hour["mon_start(5i)"].to_s) + " - " + (clinic.operation_hour["hol_end(4i)"].to_s == "" ? "00" :  clinic.operation_hour["hol_end(4i)"].to_s) + " : " + (clinic.operation_hour["hol_end(5i)"].to_s == "" ? "00" : clinic.operation_hour["hol_end(5i)"].to_s))%>
                         </th>
-                    </tr>                    
-
+                    </tr>
                 </tbody>
             </table>
     </div>
@@ -142,7 +132,5 @@
 
   <p></p>
   <hr>
-
-    <% x = x + 1 %>
 
 <% end %>

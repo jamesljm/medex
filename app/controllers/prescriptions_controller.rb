@@ -1,6 +1,6 @@
 class PrescriptionsController < ApplicationController
   before_action :require_login, except: :create
-  before_action :find_record_with_id, only: [:index, :new, :create, :edit, :update, :show, :destory]
+  before_action :find_record_with_id, only: [:new, :create, :edit, :update, :show, :destory]
   before_action :find_prescription_with_id, only: [:edit, :update, :show, :destroy]
   
   def index

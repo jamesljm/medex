@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_03_15_172555) do
-=======
-ActiveRecord::Schema.define(version: 2018_03_16_082342) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2018_03_16_152121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,18 +114,6 @@ ActiveRecord::Schema.define(version: 2018_03_16_082342) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "body"
-    t.bigint "conversation_id"
-    t.bigint "patient_id"
-    t.bigint "doctor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["doctor_id"], name: "index_messages_on_doctor_id"
-    t.index ["patient_id"], name: "index_messages_on_patient_id"
-  end
-
   create_table "patients", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -141,7 +125,7 @@ ActiveRecord::Schema.define(version: 2018_03_16_082342) do
     t.time "end_time"
     t.bigint "doctor_id"
     t.bigint "patient_id"
-    t.boolean "bill"
+    t.boolean "bill", default: false
     t.string "doc_recommendations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

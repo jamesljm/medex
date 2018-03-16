@@ -35,8 +35,7 @@ Rails.application.routes.draw do
 
   resources :patients do
     member do
-      get 'profile/:id' => 'patients#profile', as: "profile", action: "profile"
-      get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'      
+      get 'profile/:id' => 'patients#profile', as: "profile", action: "profile" 
     end
   end
 
@@ -44,9 +43,6 @@ Rails.application.routes.draw do
 
   resources :records do
     resources :prescriptions
-    member do 
-
-    end
   end
 
   resources :pending_bookings

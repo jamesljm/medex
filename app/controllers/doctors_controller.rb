@@ -24,6 +24,9 @@ class DoctorsController < Clearance::UsersController
 
   def edit
     @doctor = Doctor.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update

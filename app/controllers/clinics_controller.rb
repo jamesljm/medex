@@ -5,6 +5,11 @@ class ClinicsController < ApplicationController
       @clinic = Clinic.new
       # @clinic.build_operation_hour
       @clinics = Clinic.all
+      @doctors = Doctor.all
+
+      respond_to do |format|
+        format.js
+      end
     end
 
 
@@ -15,11 +20,14 @@ class ClinicsController < ApplicationController
       @clinic.doctor_id = @doctor.id
 
       if @clinic.save
-        redirect_to doctor_clinics_path
+        redirect_to doctor_clinics_path(@doctor)
       else
         flash[:notice] = "Failed to save..."
         redirect_to new_doctor_clinic_path
       end
+
+      
+
    end
 
     def edit

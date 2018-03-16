@@ -10,6 +10,7 @@
         <h6>Clinic Name: </h6>
       </div>
       <%= clinic.name %>
+      
       <p></p>
 
       <div class="clinic-label">
@@ -18,6 +19,20 @@
         <%= clinic.address %> <br>
         <%= clinic.city%>, <%= clinic.postcode %> <br>
         <%= clinic.state %>, <%= clinic.country %>
+
+        <p></p>
+
+      <div class="clinic-label">
+        <h6>Visit Duration: </h6>
+      </div>
+        <%= clinic.duration %>
+
+        <p></p>
+
+      <div class="clinic-label">
+        <h6>Booking Fee: </h6>
+      </div>
+        <%= clinic.booking== 1 ? "RM " + clinic.fee : "N/A" %>
 
         <p></p>
 

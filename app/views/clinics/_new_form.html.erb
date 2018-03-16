@@ -66,6 +66,35 @@
         </div>
     </li>
     
+    <!-- Booking Fee Required? -->
+    <li class="list-group-item">
+        <div class="field-wrap">
+            <%= f.label :booking do %>Require Booking Fee?:     <span class="req">*</span><% end %>
+            <%= f.label(:booking, "Yes") %>
+            <%= f.radio_button(:booking, true , required: 'required') %> |
+            <%= f.label(:booking, "No") %>
+            <%= f.radio_button(:booking, false) %>
+        </div>
+    </li>
+
+    <!-- Booking Fee -->
+    <li class="list-group-item">
+        <div class="field-wrap">
+            <%= f.label :fee, 'Booking Fee (RM):' %>
+            <%= f.number_field :fee, type:'number', class:'form-control'%>
+        </div>
+    </li>
+
+    <!-- Visit Duration -->
+    <li class="list-group-item">
+        <div class="field-wrap">
+            <%= f.label :duration, 'Duration of Visit:     ' %>
+            <%= f.select :duration, options_for_select([[15,15],[20,20],[25,25],[30,30],[35,35],[40,40],[45,45],[50,50],[55,55],[60,60]]), class:'form-control'%>      Minutes
+        </div>
+    </li>
+
+
+    <!-- Operation Hour -->
     <li class="list-group-item">
         <div class="field-wrap">
         <%= f.label "Operation Hour:" %>

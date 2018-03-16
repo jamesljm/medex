@@ -29,7 +29,7 @@ class DoctorsController < Clearance::UsersController
   def update
     @doctor = Doctor.find(params[:id])
       if @doctor.update(doctor_params)
-        redirect_to @doctor
+        redirect_to doctor_path
       else
         render 'edit'
       end
@@ -51,6 +51,7 @@ class DoctorsController < Clearance::UsersController
     @doctor.verify = 'Pending'
 
     if @doctor.save
+      ExampleMailer.sample_email(@doctor).deliver
       sign_in @doctor
       redirect_to doctor_path(@doctor.id)
     else

@@ -12,10 +12,10 @@ class PendingBookingsController < ApplicationController
     @pending_booking.patient_id=current_user.id
     @pending_booking.doctor_id=@@param1
     
-    
-    
     if @pending_booking.save
-      redirect_to patient_path(current_user)
+      respond_to do |format|
+        format.js
+      end
     else
       render 'new'
     end

@@ -37,7 +37,7 @@
         <% end %>
     </li>
     <li class="nav-item">
-        <%= link_to root_path, remote: true, id: 'prescriptions-btn', class: 'nav-link' do %>
+        <%= link_to record_prescriptions_path(params[:id]), remote: true, id: 'prescriptions-btn', class: 'nav-link' do %>
             <span data-feather="plus-circle"></span>
             Prescriptions
         <% end %>

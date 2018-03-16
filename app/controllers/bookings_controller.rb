@@ -9,6 +9,9 @@ class BookingsController < ApplicationController
   def show
     @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
     @bookings = Booking.where('patient_id=' + current_user.id.to_s)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -22,7 +25,6 @@ class BookingsController < ApplicationController
     else
       render doctor_path(current_user.id) 
     end
-    # then destroy pending
 
   end
 

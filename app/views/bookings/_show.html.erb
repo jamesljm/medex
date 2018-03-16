@@ -14,6 +14,7 @@
         <th>Date</th>
         <th>Schedule</th>
         <th>Patient name</th>
+
     </tr>
     </thead>
     <tbody>
@@ -40,6 +41,9 @@
     </tbody>
 </table>
 <br>
+<!-- ======================================================================= -->
+<!-- Pending Bookings -->
+<!-- ======================================================================= -->
 <p>Appointments Pending</p>
 <table border>
     <thead>
@@ -47,6 +51,7 @@
         <th>Date</th>
         <th>Schedule</th>
         <th>Doctor name</th>
+        <th>Payment Status</th>
     </tr>
     </thead>
 
@@ -63,6 +68,10 @@
         <td>
             <%= p.doctor.first_name %>
             <%= p.doctor.last_name %>
+        </td>
+        <td>
+            <%= p.bill %>
+            <%= link_to  "payment", payment_pages_path(:booking_id => p.id), remote: true %>
         </td>
         <td>
             <%= link_to 'Cancel Appointments', pending_booking_path(p), 

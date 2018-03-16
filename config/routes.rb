@@ -46,6 +46,14 @@ Rails.application.routes.draw do
   resources :before_pay_bookings
 
   resources :subscribers
+
+  resources :pages do
+    collection do
+      get 'payment/:booking_id' => 'pages#payment', as: "payment", action: "payment"
+      get 'confirm/:booking_id' => 'pages#confirm', as: 'confirm', action: 'confirm'
+    end
+  end
+
   # === Home Page
   root :to => "pages#index"
 

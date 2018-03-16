@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   # resource :session, controller: "sessions", only: [:create]
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
     collection do
       get :search #creates a new path for the searching 
+      get :search_specialist
     end
   end
 
@@ -39,7 +41,12 @@ Rails.application.routes.draw do
 
   resources :bookings
 
-  resources :records
+  resources :records do
+    resources :prescriptions
+    member do 
+
+    end
+  end
 
   resources :pending_bookings
 

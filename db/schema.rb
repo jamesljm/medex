@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_15_080836) do
+ActiveRecord::Schema.define(version: 2018_03_15_185000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 2018_03_15_080836) do
     t.index ["doctor_id"], name: "index_clinics_on_doctor_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,19 +120,16 @@ ActiveRecord::Schema.define(version: 2018_03_15_080836) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "operation_hours", force: :cascade do |t|
-    t.text "mon"
-    t.text "tue"
-    t.text "wed"
-    t.text "thu"
-    t.text "fri"
-    t.text "sat"
-    t.text "sun"
-    t.text "hol"
-    t.bigint "clinic_id"
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clinic_id"], name: "index_operation_hours_on_clinic_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["doctor_id"], name: "index_messages_on_doctor_id"
+    t.index ["patient_id"], name: "index_messages_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|

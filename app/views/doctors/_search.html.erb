@@ -4,14 +4,13 @@
     <div class="media-body">
       <p class=mt-0>
         <%= doctor.first_name %>
-          <%= doctor.last_name %>
+        <%= doctor.last_name %>
       </p>
       <p class=mb-0>
         <%= doctor.specialist %>
       </p>
       <!-- <p class=mb-0><%#= doctor.clinic_name %></p> -->
       <p>
-        <button>View</button>
         <button>
           <%= link_to doctor_path(doctor.id), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
             <span data-feather="users"></span>

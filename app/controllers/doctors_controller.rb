@@ -15,6 +15,17 @@ class DoctorsController < Clearance::UsersController
     end
   end
 
+  def search_specialist
+    if params[:search].blank?
+      @doctors = Doctor.all
+    else
+      @doctors = Doctor.search_specialist(params)
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def index
     @doctors = Doctor.all
     respond_to do |format|
@@ -39,7 +50,6 @@ class DoctorsController < Clearance::UsersController
     @pending_booking=PendingBooking.where('doctor_id='+current_user.id.to_s)
     @booking=Booking.where('doctor_id='+current_user.id.to_s)
     @doctor = Doctor.find(params[:id])
-
   end
 
 
@@ -66,6 +76,9 @@ class DoctorsController < Clearance::UsersController
 
   def card
     @doctor = Doctor.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
 private

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     collection do
       get :search #creates a new path for the searching 
+      get :search_specialist
     end
   end
 

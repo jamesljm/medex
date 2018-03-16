@@ -34,10 +34,52 @@
       };
   });
 </script>
+<script>
+  $(function () {
+    var projects = [];
+
+    <% Doctor.all.each do |doctor| %>
+      projects.push({
+          value: "<%= doctor.specialist %>"
+          desc: " "
+        });
+    <% end %>
+
+    console.log(projects);
+
+    $("#project2").autocomplete({
+      minLength: 0,
+      source: projects,
+      focus: function (event, ui) {
+        $("#project2").val(ui.item.label);
+        return false;
+      },
+      select: function (event, ui) {
+        $("#project2").val(ui.item.label);
+        $("#project-id").val(ui.item.value);
+        $("#project-description").html(ui.item.desc);
+        $("#project-icon").attr("src", "images/" + ui.item.icon);
+
+        return false;
+      }
+    })
+      .autocomplete("instance")._renderItem = function (ul, item) {
+        return $("<li>")
+          .append("<div>" + item.label + "<br>" + item.desc + "</div>")
+          .appendTo(ul);
+      };
+  });
+</script>
 
 <div> Search Doctor by Name </div>
 <%= form_tag search_doctors_path, method: :get, remote: true do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Doctors", id: 'project' %>
+  <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+<% end %>
+
+<div> Search Doctor by Specialist </div>
+<%= form_tag search_specialist_doctors_path, method: :get, remote: true do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Specialist", id: 'project2' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
@@ -56,6 +98,7 @@
   <div class="row">
     <div class="col-8">
       <%= render  "doctors/search" %>
+      <%= render  "doctors/search_specialist" %>
     </div>
     <div class="col-4">
       <div>Maps</div>

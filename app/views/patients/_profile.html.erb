@@ -88,9 +88,9 @@
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
             <% if current_user.profile_picture? %>
-                <%= image_tag current_user.profile_picture.url, :class => "profile_picture mx-auto img-fluid img-circle d-block" if current_user.profile_picture? %>
+                <%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture mx-auto img-fluid rounded-circle d-block" if current_user.profile_picture? %>
             <% else %>
-                <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt= :remote_avatar_url>
+                <img src="//placehold.it/150" class="mx-auto img-fluid rounded-circle d-block" alt= :remote_avatar_url>
             <% end %>
 
             <%= form_for @patient do |form| %>

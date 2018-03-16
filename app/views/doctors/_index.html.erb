@@ -83,11 +83,6 @@
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
-<div> Search Doctor by Location </div>
-<%= form_tag search_location_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search, nil, placeholder: "Search Location", id: 'project1' %>
-  <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
-<% end %>
 
 <h1>Doctor Index Page</h1>
 

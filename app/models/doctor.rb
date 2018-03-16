@@ -21,8 +21,4 @@ class Doctor < User
     doctors
   end
 
-  def self.search_location(params)
-    doctors = Doctors.clinics.where("lower(state) LIKE ? or lower(city) LIKE ?", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%") if params[:search].present?
-    doctors
-  end
 end

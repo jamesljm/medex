@@ -2,6 +2,7 @@
 <!-- Booking's Show partial -->
 <!-- ======================================================================= -->
 
+
 <%= link_to doctors_path, remote: true, class: 'nav-link active' do %>
   Pick Your Doctors
   <span class="sr-only">(current)</span>
@@ -61,8 +62,7 @@
             <%= p.start_time %>
         </td>
         <td>
-            <%= p.doctor.first_name %>
-            <%= p.doctor.last_name %>
+            <%= link_to t(p.doctor.first_name + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
         </td>
         <td>
             <%= link_to 'Cancel Appointments', pending_booking_path(p), 
@@ -74,3 +74,4 @@
         <% end %>
     </tbody>
 </table>
+

@@ -2,4 +2,12 @@
 // Booking Show AJAX
 // =============================================================================
 
-$('#dashboard-content').empty().append('<%= j render "bookings/show" %>');
+<% if current_user.type == 'Patient' %>
+  
+  $('#dashboard-content').empty().append('<%= j render "bookings/show" %>');
+
+<% elsif current_user.type == 'Doctor' %>
+
+  $('#dashboard-content').empty().append('<%= j render "bookings/doctor_index" %>');
+
+<% end %>

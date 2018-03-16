@@ -1,20 +1,25 @@
 class ClinicsController < ApplicationController
-    
+
     def index
       @doctor = Doctor.find(params[:doctor_id])
       @clinic = Clinic.new
+      # @clinic.build_operation_hour
       @clinics = Clinic.all
     end
 
 
     def create
 
-    @doctor = Doctor.find(params[:doctor_id])
-    @clinic = @doctor.clinic.create(clinic_params)
-    @clinic.doctor_id = @doctor.id
+      @doctor = Doctor.find(params[:doctor_id])
+      @clinic = @doctor.clinics.new(clinic_params)
+      @clinic.doctor_id = @doctor.id
 
-    redirect_to doctor_clinics_path(@doctor,@clinic)
-   
+      if @clinic.save
+        redirect_to doctor_clinics_path
+      else
+        flash[:notice] = "Failed to save..."
+        redirect_to new_doctor_clinic_path
+      end
    end
 
     def edit
@@ -24,7 +29,7 @@ class ClinicsController < ApplicationController
     def update
       @clinic = Clinic.find(params[:id])
         if @clinic.update(clinic_params)
-          redirect_to doctor_clinics_path(@doctor,@clinic)
+          redirect_to doctor_clinics_path(@doctor)
         else
           render 'edit'
         end
@@ -34,7 +39,7 @@ class ClinicsController < ApplicationController
 
   private
   def clinic_params
-    params.require(:clinic).permit(:name, :address, :city, :postcode, :country, :phone, :email, :doctor_id, :state, operation_hour_attributes: [:mon, :tue, :wed, :thu, :fri, :sat, :sun, :hol])
+    params.require(:clinic).permit(:name, :address, :city, :postcode, :country, :phone, :email, :doctor_id, :state, :operation_hour=>{})
   end
 
 end

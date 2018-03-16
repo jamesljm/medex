@@ -1,2 +1,7 @@
 <h1>Prescription#show</h1>
 <p>Find me in app/views/prescription/show.html.erb</p>
+
+<%= @prescription %>
+<%= @record %>
+<%= link_to "Edit", edit_record_prescription_path(@record.id, @prescription.id) %>
+<%= link_to "Delete", record_prescription_path(@record.id, @prescription.id), method: :delete %>

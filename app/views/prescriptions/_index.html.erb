@@ -1,3 +1,29 @@
-<h1>Prescription#index</h1>
-<p>Find me in app/views/prescription/index.html.erb</p>
+<h1>Your past prescriptions</h1>
 
+
+<h1>Your past prescriptions</h1>
+<p></p>
+
+<% @prescriptions.each do |p| %>
+    <% p.each do |p1| %>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div><%= p1.drug_name %></div>
+                <div><%= p1.record_id %></div>
+                <div><%# <%= p1.record.booking.doctor.last_name %></div>
+                <div><%= p1.pres_start_date %></div>
+                <div><%= p1.pres_end_date %></div>
+                <div><%= p1.dosage %></div>
+                <div><%= p1.meal %></div>
+                <div><h5>Intake</h5>
+                    <div class="col-mb-12"><%= p1.morning %></div>
+                    <div class="col-mb-12"><%= p1.noon %></div>
+                    <div class="col-mb-12"><%= p1.night %></div>
+                </div>
+                
+
+                <%= link_to "See prescription", record_prescription_path(p1.record_id, p1.id) %>
+            </div>    
+        </div>
+    <% end %>
+<% end %>

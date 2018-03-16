@@ -13,8 +13,10 @@
                     <div class="timeline-content js--fadeInLeft">
                         <h2><%= record.title %></h2>
                         <div class="date"><%= record.record_date %></div>
+                        <% if record.encounter.nil? == false %>
                         <% record.encounter.each do |en| %>
                             <div class="symptoms"><%= en %>></div>
+                        <% end %>
                         <% end %>
                         <div class="symptoms"><%= record.symptoms %></div>
                         <div class="symptoms"><%= record.diagnosis %></div>

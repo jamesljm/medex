@@ -1,3 +1,4 @@
+
 <%= form_for [@doctor,@clinic] do |f| %>
 
 <ul class="list-group list-group-flush">
@@ -5,23 +6,23 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :name do %>Name of Clinic:<span class="req">*</span><% end %>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, required: 'required', class:'form-control' %>
         </div>
     </li>
     
     <!-- Clinic Phone -->
     <li class="list-group-item">
         <div class="field-wrap">
-          <%= f.label 'Clinic Phone No.:' %>
-          <%= f.text_field :phone, type: 'text', autocomplete: 'off' %>
+          <%= f.label :phone %>
+          <%= f.text_field :phone, type: 'text', autocomplete: 'off', class:'form-control' %>
         </div>
     </li>
 
     <!-- Clinic Email -->
     <li class="list-group-item">
         <div class="field-wrap">
-          <%= f.label 'Clinic Email:' %>
-          <%= f.text_field :email, type: 'email', autocomplete: 'off' %>
+          <%= f.label :email %>
+          <%= f.text_field :email, type: 'email', autocomplete: 'off', class:'form-control' %>
         </div>
     </li>
 
@@ -29,7 +30,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :address do %>Address:<span class="req">*</span><% end %>
-            <%= f.text_field :address, required: 'required' %>
+            <%= f.text_field :address, required: 'required', class:'form-control' %>
         </div>
     </li>
 
@@ -37,7 +38,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :postcode do %>Postcode:<span class="req">*</span><% end %>
-            <%= f.text_field :postcode, required: 'required' %>
+            <%= f.text_field :postcode, required: 'required',class:'form-control' %>
         </div>
     </li>
 
@@ -45,7 +46,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :city do %>City:<span class="req">*</span><% end %>
-            <%= f.text_field :city, required: 'required' %>
+            <%= f.text_field :city, required: 'required', class:'form-control' %>
         </div>
     </li>
 
@@ -53,7 +54,7 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :state do %>State:<span class="req">*</span><% end %>
-            <%= f.text_field :state, required: 'required' %>
+            <%= f.text_field :state, required: 'required', class:'form-control' %>
         </div>
     </li>
 
@@ -61,13 +62,145 @@
     <li class="list-group-item">
         <div class="field-wrap">
             <%= f.label :country do %>Country:<span class="req">*</span><% end %>
-            <%= f.text_field :country, required: 'required' %>
+            <%= f.text_field :country, required: 'required', class:'form-control' %>
         </div>
     </li>
+    
+    <li class="list-group-item">
+        <div class="field-wrap">
+        <%= f.fields_for :operation_hour do |op| %>
+            <table class="table ops-table table-bordered">
+                <thead class="thead-ops ">
+                    <tr>
+                        <th scope="col" class="ops-header"> Day </th>
+                        <th scope="col" class="ops-header"> Status </th>
+                        <th scope="col" class="ops-header"> Start Time - End Time </th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <tr>
+                        <th scope="row">Monday</th>
+                        <th scope="row">
+                            <%= op.label(:mon, "Open") %>
+                            <%= op.radio_button(:mon_status, "Open", required: 'required') %> |
+                            <%= op.label(:mon, "Closed") %>
+                            <%= op.radio_button(:mon_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :mon_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :mon_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Tuesday</th>
+                        <th scope="row">
+                            <%= op.label(:tue, "Open") %>
+                            <%= op.radio_button(:tue_status, "Open", required: 'required') %> |
+                            <%= op.label(:tue, "Closed") %>
+                            <%= op.radio_button(:tue_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :tue_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :tue_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Wednesday</th>
+                        <th scope="row">
+                            <%= op.label(:wed, "Open") %>
+                            <%= op.radio_button(:wed_status, "Open", required: 'required') %> |
+                            <%= op.label(:wed, "Closed") %>
+                            <%= op.radio_button(:wed_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :wed_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :wed_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Thursday</th>
+                        <th scope="row">
+                            <%= op.label(:thu, "Open") %>
+                            <%= op.radio_button(:thu_status, "Open", required: 'required') %> |
+                            <%= op.label(:thu, "Closed") %>
+                            <%= op.radio_button(:thu_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :thu_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :thu_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Friday</th>
+                        <th scope="row">
+                            <%= op.label(:fri, "Open") %>
+                            <%= op.radio_button(:fri_status, "Open", required: 'required') %> |
+                            <%= op.label(:fri, "Closed") %>
+                            <%= op.radio_button(:fri_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :fri_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :fri_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Saturday</th>
+                        <th scope="row">
+                            <%= op.label(:sat, "Open") %>
+                            <%= op.radio_button(:sat_status, "Open", required: 'required') %> |
+                            <%= op.label(:sat, "Closed") %>
+                            <%= op.radio_button(:sat_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :sat_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :sat_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Sunday</th>
+                        <th scope="row">
+                            <%= op.label(:sun, "Open") %>
+                            <%= op.radio_button(:sun_status, "Open", required: 'required') %> |
+                            <%= op.label(:sun, "Closed") %>
+                            <%= op.radio_button(:sun_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :sun_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :sun_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Public Holiday</th>
+                        <th scope="row">
+                            <%= op.label(:hol, "Open") %>
+                            <%= op.radio_button(:hol_status, "Open", required: 'required') %> |
+                            <%= op.label(:hol, "Closed") %>
+                            <%= op.radio_button(:hol_status, "Closed") %>
+                        </th>
+                        <th scope="row">
+                            <%= op.time_select :hol_start, prompt:{hour:"00",minute:"00"} %> -
+                            <%= op.time_select :hol_end, prompt:{hour:"00",minute:"00"} %>
+                        </th>
+                    </tr>                    
+
+                </tbody>
+            </table>
+        <% end %>
+         </div>
+    </li>
+
+    <br>
     <!-- Submit Button -->
-    <div class="btn-wrap">
-        <%= f.submit class: "button" %>
-    </div>
+        <div class="btn-wrap ">
+            <%= f.submit class: "button doctor-submit" %>
+        </div>
 <% end %>
 </ul>

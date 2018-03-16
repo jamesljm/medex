@@ -7,10 +7,20 @@
 
 <!--stylesheet-->
 <%= provide :head do %>
+    <%= stylesheet_link_tag "records/show", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<% end %>
+
+<!--stylesheet-->
+<%= provide :head do %>
     <%= stylesheet_link_tag "dashboard", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -20,10 +30,15 @@
 <%= provide :js do %>
 <script>
     function w3_open() {
+        document.getElementById("main").style.marginLeft = "180px";
+        document.getElementById("mySidebar").style.width = "180px";
         document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("openNav").style.display = 'none';
     }
     function w3_close() {
+        document.getElementById("main").style.marginLeft = "0";
         document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("openNav").style.display = "inline-block";
     }
     function myAccFunc() {
         var x = document.getElementById("demoAcc");
@@ -48,6 +63,9 @@
                 x.previousElementSibling.className.replace(" w3-green", "");
         }
     }
+    $('#mySidebar .nav-link').click((e)=>{
+        $(e).addClass('active');
+    });
 </script>
 <% end %>
 
@@ -56,24 +74,26 @@
 <!-- Side navbar -->
 <div class="container-fluid">
     <div class="row">
-        <!-- <nav class="col-md-2 d-none d-md-block bg-dark sidebar-dark">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <%= yield :sidebar %>
-                </ul>
+        <div class="w3-sidebar w3-card-4 w3-animate-left bg-dark sidebar-dark" style="width:200px" id="mySidebar">
+            <div>
+                <button onclick="w3_close()" class="w3-button w3-right w3-padding-16" title="close Sidebar">&times;</button>
             </div>
-        </nav> -->
-
-        <nav class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left col-md-2 d-none d-md-block bg-dark sidebar-dark" id="mySidebar">
             <ul class="nav flex-column">
                 <%= yield :sidebar %>
             </ul>
-        </nav>
-
+        </div>
         
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id='dashboard-content'>
-            <!-- Dashboard content goes here -->
-        </main>
+        <div id="main" style="margin-left:200px">
+            <div class="w3-container w3-display-container">
+                <span title="open Sidebar" style="position: fixed; display:none; margin-top: 3em;" id="openNav" class="w3-button w3-transparent w3-display-topleft w3-xlarge"
+                    onclick="w3_open()">&#9776;</span>
+            </div>
+            <main role="main" id='dashboard-content'>
+                <span title="open Sidebar" style="display:none" id="openNav" class="w3-button w3-transparent w3-display-topleft w3-xlarge"
+                onclick="w3_open()">&#9776;</span>
+                <!-- Dashboard content goes here -->
+            </main>
+        </div>
     </div>
 </div>
 
@@ -92,34 +112,3 @@
     feather.replace()
 </script>
 
-<!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>

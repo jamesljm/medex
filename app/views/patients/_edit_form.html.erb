@@ -75,7 +75,7 @@
         <%= form.label :med_history do %>Medical history:
         <span class="req">*</span>
         <% end %>
-        <%= form.text_field :med_history, class: "form-control" %>
+        <%= form.text_field :med_history, class: "form-control addrun", id: "multiple-input", 'data-role' => 'tagsinput'  %>
     </div>    
 
     <!-- allergies -->
@@ -83,7 +83,7 @@
         <%= form.label :allergies do %>Allergies:
         <span class="req">*</span>
         <% end %>
-        <%= form.text_field :allergies, class: "form-control" %>
+        <%= form.text_field :allergies, class: "form-control addrun", id: "multiple-input", 'data-role' => 'tagsinput'  %>
     </div>    
 
     <!-- family_history -->
@@ -129,3 +129,23 @@
         <%= form.submit class: "button" %>
     </div>
 <% end %>
+
+<script>
+// $('#multiple-input').tagsinput('refresh');
+/** 
+ * On <div id="addrun"> on click,
+ * pre-apend it with an new Input
+ *
+ * Then refresh Bootstrap. 
+**/
+$('#addrun').click(function () {
+
+        // $('#addrun').before('<input type="text" ' +
+        //                     'value="Amsterdam,Washington,Sydney,Beijing" '+
+        //                     'data-role="tagsinput" />'); 
+
+        //Now run bootstrap.js to re-search
+        //new data-* elements
+        $('#multiple-input').tagsinput('refresh');   
+});
+</script>

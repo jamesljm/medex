@@ -6,9 +6,12 @@ class DoctorsController < Clearance::UsersController
 
   def search
     if params[:search].blank?
-      @doctors=Doctor.all
+      @doctors = Doctor.all
     else
-      @doctors=Doctor.search(params)
+      @doctors = Doctor.search(params)
+    end
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -26,7 +29,7 @@ class DoctorsController < Clearance::UsersController
   def update
     @doctor = Doctor.find(params[:id])
       if @doctor.update(doctor_params)
-        redirect_to @doctor
+        redirect_to doctor_path
       else
         render 'edit'
       end

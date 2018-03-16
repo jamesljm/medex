@@ -1,35 +1,23 @@
-/*
- * Sidebar
- */
+/* ========================================================================== */
+/* Dashboard SCSS */
+/* ========================================================================== */
 
 body {
     // font-size: .9em;
 }
 
 #dashboard-content {
-    margin-top: 3.5em;
+    margin-top: 8em;
+    padding: 0 3em;
 }
 
 .nav {
     padding-top: 3em;
 }
 
-.nav-link {
-    color: grey;
-}
-
-.nav-link.active {
-    color: blue;
-}
-
-.nav > li > a:link {
-    background: none;
-}
-.nav > li > a:hover {
-    background: none;
-}
 
 #mySidebar {
+    padding-top: 4em;
     width: 200px;
     -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, .9);
     -moz-box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, .9);
@@ -38,4 +26,31 @@ body {
     .nav-item {
         padding: 1em 0;
     }
+    .nav-link {
+        color: white;
+    }
+
+    .nav>li>a:link,
+    .nav>li>a:visited {
+        background: none;
+        color: white;
+    }
+
+    .nav-link.active {
+        color: teal !important;
+    }
+
+    .nav>li>a:hover {
+        background: none;
+        color: teal;
+    }
+}
+
+#main {
+    width: 100vw;
+}
+
+.profile-edit {
+    overflow-y: auto;
+    height: 70vh;
 }

@@ -86,6 +86,6 @@
 
 <% end %>
 
-<div><%= button_to "Delete", record_path, method: :destroy %></div>
+<div><%= button_to "Delete", record_path, method: :delete %></div>
 
 <div><%= link_to "Back to records", record_path(params[:id]), remote: true, id: 'records-btn', class: 'nav-link' %></div>

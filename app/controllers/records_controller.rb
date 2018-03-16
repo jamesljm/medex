@@ -48,11 +48,11 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    if current_user.type == "Doctor"
-      redirect_to record_path, notice: "Sorry. You do not have the permission to delete this record."
-    elsif current_user.type == "Patient"
-      @listing = @listing.destroy
-      redirect_to records_path, notice: "You have deleted #{@record.title} dated #{@record.record_date}"
+    @record.destroy
+    if current_user.type == 'Patient'
+      redirect_to patient_path(current_user.id)
+    elsif current_user.type == 'Doctor'
+      redirect_to doctor_path(current_user.id) 
     end
   end
 

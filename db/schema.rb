@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_15_172555) do
+
+ActiveRecord::Schema.define(version: 2018_03_16_082342) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +77,9 @@ ActiveRecord::Schema.define(version: 2018_03_15_172555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "state"
+    t.boolean "booking"
+    t.integer "fee"
+    t.integer "duration"
     t.index ["doctor_id"], name: "index_clinics_on_doctor_id"
   end
 
@@ -110,7 +115,15 @@ ActiveRecord::Schema.define(version: 2018_03_15_172555) do
     t.index ["doctor_id"], name: "index_likes_on_doctor_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+  
+>>>>>>> master
+>>>>>>> master
   create_table "patients", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

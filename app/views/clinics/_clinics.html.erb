@@ -22,14 +22,7 @@
                     <div class="tab-header">
                       <h5>Clinic Info</h5>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>First Name : </strong><%= @doctor.first_name %></li>
-                        <li class="list-group-item"><strong>Last Name : </strong><%= @doctor.last_name %></li>
-                        <li class="list-group-item"><strong>Birthdate : </strong><%= @doctor.birthdate %></li>
-                        <li class="list-group-item"><strong>Gender : </strong><%= @doctor.gender %></li>
-                        <li class="list-group-item"><strong>Email : </strong><%= @doctor.email %></li>
-                        <li class="list-group-item"><strong>Phone : </strong><%= @doctor.phone %></li>
-                    </ul>
+                    <%= render "clinics/list_clinics" %>
                 </div>
 
                 <!-- Add New Clinic Tab -->

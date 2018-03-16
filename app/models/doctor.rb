@@ -4,6 +4,8 @@ class Doctor < User
     has_many :authorizations
     has_many :clinics
 
+    mount_uploader :profile_picture, ProfilePictureUploader
+
   # validates :email, uniqueness: true
   if @current_user != nil
     validates :license, presence: true

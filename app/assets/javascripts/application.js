@@ -18,5 +18,5 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap-timepicker
 //= require bootstrap-tagsinput
-//= require_tree .
+
 

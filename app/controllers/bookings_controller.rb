@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  protect_from_forgery except: :show
   before_action :require_login
   @@param2 = 0
 
@@ -16,7 +17,7 @@ class BookingsController < ApplicationController
 
   def create
     @@param2 = params[:param2]
-    @pending_booking = PendingBooking.find(@@param2) 
+    @pending_booking = PendingBooking.find(@@param2)
     @booking = Booking.new(:date=>@pending_booking.date, :start_time=>@pending_booking.start_time, :doctor_id=>@pending_booking.doctor_id, :patient_id=>@pending_booking.patient_id) 
     # add to booking
     if @booking.save

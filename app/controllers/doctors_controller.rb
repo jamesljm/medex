@@ -55,10 +55,6 @@ class DoctorsController < Clearance::UsersController
     @doctor = Doctor.find(params[:id])
   end
 
-
-  def _form
-  end
-
   def create
     @doctor = Doctor.new(doctor_params)
     @doctor.verify = 'Pending'

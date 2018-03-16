@@ -13,6 +13,8 @@ class PendingBookingsController < ApplicationController
     @pending_booking.doctor_id=@@param1
     
     if @pending_booking.save
+      @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
+      @bookings = Booking.where('patient_id=' + current_user.id.to_s)
       respond_to do |format|
         format.js
       end

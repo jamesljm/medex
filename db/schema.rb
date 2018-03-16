@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_15_080836) do
+ActiveRecord::Schema.define(version: 2018_03_15_172555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,21 +109,6 @@ ActiveRecord::Schema.define(version: 2018_03_15_080836) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_likes_on_doctor_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "operation_hours", force: :cascade do |t|
-    t.text "mon"
-    t.text "tue"
-    t.text "wed"
-    t.text "thu"
-    t.text "fri"
-    t.text "sat"
-    t.text "sun"
-    t.text "hol"
-    t.bigint "clinic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["clinic_id"], name: "index_operation_hours_on_clinic_id"
   end
 
   create_table "patients", force: :cascade do |t|

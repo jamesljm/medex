@@ -1,3 +1,6 @@
+<!-- ======================================================================= -->
+<!-- Doctor's Search Partial -->
+<!-- ======================================================================= -->
 
 <p><%= link_to 'View all Doctor', doctors_path, remote: true %></p>
 <% @doctors.each do |doctor| %>
@@ -13,16 +16,12 @@
       </p>
       <!-- <p class=mb-0><%#= doctor.clinic_name %></p> -->
       <p>
-        <button>
-          <%= link_to card_doctor_path(doctor.id), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
-            <span data-feather="users"></span>
-            Profile
-            <span class="sr-only">(current)</span>
-            <% end %>
-        </button>
-        <button>
-          <%= link_to "Book An Appointment", pending_bookings_path+'/new?param1='+doctor.id.to_s, remote: true, id: 'pending-booking-btn' %>
-        </button>
+        <%= link_to card_doctor_path(doctor.id), remote: true, id: 'profile-btn', class: 'btn btn-primary' do %>
+          <span data-feather="users"></span>
+          Profile
+          <span class="sr-only">(current)</span>
+        <% end %>
+        <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-primary' %>
       </p>
       </p>
 

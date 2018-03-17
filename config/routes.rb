@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   resources :patients do
     member do
       get 'profile/:id' => 'patients#profile', as: "profile", action: "profile" 
+      get 'card' => 'patients#card', as: "card", action: "card"
     end
   end
 

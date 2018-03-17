@@ -17,7 +17,6 @@ class PatientsController < Clearance::UsersController
   end
 
   def update
-    
     if @patient.update(patient_params)
       redirect_to patient_path, notice: "Your record has been updated."
     else
@@ -40,35 +39,6 @@ class PatientsController < Clearance::UsersController
       flash[:notice] = "Failed to created..."
       redirect_to new_user_path
     end
-  end
-
-  def dashboard
-
-    # case params[:request]
-    #   when 'edit'
-    #     @patient = find_patient_with_id
-    #   when 'appointments'
-    #     @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
-    #     @bookings = Booking.where('patient_id=' + current_user.id.to_s)
-    #   when 'journal'
-    #     @records = current_user.records
-    #   when 'prescriptions'
-
-    #   # Inner Lyaer
-    #   when 'doctors'
-    #     @doctors = Doctor.all
-
-    #   when 'pending_bookings'
-    #     @pending_bookings = 
-    #   else
-    #     redirect_to root_path
-    # end
-
-    # # required for remote
-    # respond_to do |format|
-    #   format.js
-    # end
-    
   end
 
 private

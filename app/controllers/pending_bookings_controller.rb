@@ -9,10 +9,11 @@ class PendingBookingsController < ApplicationController
 
   def create
     @pending_booking = PendingBooking.new(pending_booking_params)
-    @pending_booking.patient_id=current_user.id
-    @pending_booking.doctor_id=@@param1
+    @pending_booking.patient_id = current_user.id
+    @pending_booking.doctor_id = @@param1
     
     if @pending_booking.save
+      # to pass objects to partial @bookings#show
       @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
       @bookings = Booking.where('patient_id=' + current_user.id.to_s)
       respond_to do |format|

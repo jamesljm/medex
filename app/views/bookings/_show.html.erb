@@ -71,14 +71,14 @@
             <%= link_to t(p.doctor.first_name + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
         </td>
         <td>
-            <%= p.bill %>
-            <%= link_to  "payment", payment_pages_path(:booking_id => p.id), remote: true %>
+            <% if p.bill %>
+                <span>Paid!</span>
+            <% else %>
+                <%= link_to "Make Payment", payment_pages_path(:booking_id => p.id), remote: true %>
+            <% end %>
         </td>
         <td>
-            <%= link_to 'Cancel Appointments', pending_booking_path(p), 
-        class: 'btn btn-sm btn-danger',
-        method: :Delete, 
-        data: {confirm: 'Are you sure?'}  %>
+        <%= link_to 'Cancel Appointments', pending_booking_path(p), class: 'btn btn-sm btn-danger',method: :Delete, data: {confirm: 'Are you sure?'}  %>
         </td>
         </tr>
         <% end %>

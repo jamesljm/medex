@@ -34,14 +34,31 @@
 </script>
 <script>
   $(function () {
+    function removeDuplicates(arr) {
+      let unique_array = []
+      for (let i = 0; i < arr.length; i++) {
+        if (unique_array.indexOf(arr[i]) == -1) {
+          unique_array.push(arr[i])
+        }
+      }
+      return unique_array
+    }
     var projects = [];
+    var temp = [];
 
-    <% Doctor.all.each do |doctor| %>
-      projects.push({
-          value: "<%= doctor.specialist %>",
-          desc: "<%= doctor.first_name %>"
-        });
+
+    <% Doctor.all.each do | doctor | %>
+      temp.push("<%= doctor.specialist %>");
     <% end %>
+
+    temp = removeDuplicates(temp);
+
+    for (let i = 0; i < temp.length; i++) {
+      projects.push({
+        value: temp[i],
+        desc: " "
+      });
+    }
 
     console.log(projects);
 
@@ -94,7 +111,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <%= render  "doctors/search" %>
+      <%= render "doctors/search" %>
     </div>
     <div class="col-4">
       <div>Maps</div>

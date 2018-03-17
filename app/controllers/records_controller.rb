@@ -6,6 +6,10 @@ class RecordsController < ApplicationController
   def new
     @user=current_user
     @record = Record.new
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -57,7 +61,7 @@ class RecordsController < ApplicationController
   end
 
 
-  private
+private
   def record_params
     params.require(:record).permit(:record_date, :title, :symptoms, :diagnosis, :note, :follow_up, :referral, :referral_note, {encounter: []} )
   end

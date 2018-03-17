@@ -50,8 +50,6 @@ class DoctorsController < Clearance::UsersController
   end
 
   def show
-    @pending_booking=PendingBooking.where('doctor_id='+current_user.id.to_s)
-    @booking=Booking.where('doctor_id='+current_user.id.to_s)
     @doctor = Doctor.find(params[:id])
   end
 
@@ -82,6 +80,6 @@ class DoctorsController < Clearance::UsersController
 
 private
   def doctor_params
-  	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify, :phone, :birthdate, :specialist, :experienced_years, :education, :qualification)
+  	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify, :phone, :birthdate, :specialist, :experienced_years, :education, :qualification, :summary)
   end
 end

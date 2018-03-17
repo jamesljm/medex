@@ -1,66 +1,44 @@
-<!-- ======================================================================= -->
-<!-- Doctor == booking tab -->
-<!-- ======================================================================= -->
-
 <div class="container">
     <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
+        <div class="col-lg-10 order-lg-2">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="" data-target="#pending" data-toggle="tab" class="nav-link active">Pending</a>
+                    <a href="" data-target="#booking-pending" data-toggle="tab" class="nav-link active">Pending</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#upcoming" data-toggle="tab" class="nav-link active">Upcoming</a>
+                    <a href="" data-target="#booking-confirmed" data-toggle="tab" class="nav-link">Upcoming</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#past" data-toggle="tab" class="nav-link">Past</a>
+                    <a href="" data-target="#booking-past" data-toggle="tab" class="nav-link">Past</a>
                 </li>
             </ul>
-                
-
             <div class="tab-content py-4">
-                
-                <!-- Pending Tab -->
-                <div class="tab-pane active" id="upcoming">
+                <!-- Pending -->
+                <div class="tab-pane active" id="booking-pending">
                     <div class="tab-header">
-                      <h5>Pending Approval</h5>
+                      <h5>Appointments Pending Approval</h5>
                     </div>
-
+                    <%= render "bookings/doctor_pending" %>
                 </div>
 
-                <!-- Upcoming Tab -->
-                <div class="tab-pane active" id="upcoming">
+                <!-- Confirmed -->
+                <div class="tab-pane" id="booking-confirmed">
                     <div class="tab-header">
-                      <h5>Upcoming Booking</h5>
+                        <h5>Confirmed and Upcoming Appointments</h5>
                     </div>
-
+                    <%= render "bookings/doctor_confirmed" %>
                 </div>
 
-                <!-- Past Tab -->
-                <div class="tab-pane" id="past">
+                <!-- past -->
+                <div class="tab-pane" id="booking-past">
                     <div class="tab-header">
-                    <h5>Past Bookings</h5>
+                        <h5>Past Appointments</h5>
                     </div>
-                    <%= render  "bookings/doctor_past" %>
+                    <%= render "bookings/doctor_past" %>
                 </div>
 
-                <!-- Edit Professional Info Tab -->
-                <div class="tab-pane" id="edit-professional">
-                    <div class="tab-header">
-                    <h5>Edit Professional Info</h5>
-                    </div>
-                    
-                </div>
 
             </div>
-        </div>
-        <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
         </div>
     </div>
 </div>

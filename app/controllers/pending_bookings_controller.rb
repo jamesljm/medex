@@ -15,9 +15,9 @@ class PendingBookingsController < ApplicationController
     # TODO: calculate actual payment price AND shouldn't include the hidden field as it is hackable
     if @clinic.booking #booking = clinic's booking fee required
       @pending_booking.total_price = @clinic.fee
-      @pending_booking.bill = true
+      @pending_booking.bill = false #bill - paid?
     else
-      @pending_booking.bill = false
+      @pending_booking.bill = true
     end
     @pending_booking.patient_id = current_user.id
     @pending_booking.doctor_id = params[:doctor_id]

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
       get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'
       get 'card' => 'doctors#card', as: "card", action: "card"
+      get 'appointment' => 'doctors#appointment', as: "appointment", action: "appointment"
     end
 
     collection do
@@ -54,6 +55,14 @@ Rails.application.routes.draw do
   resources :before_pay_bookings
 
   resources :subscribers
+
+  resources :pages do
+    collection do
+      get 'payment/:booking_id' => 'pages#payment', as: "payment", action: "payment"
+      get 'confirm/:booking_id' => 'pages#confirm', as: 'confirm', action: 'confirm'
+    end
+  end
+
   # === Home Page
   root :to => "pages#index"
 

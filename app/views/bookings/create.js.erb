@@ -2,6 +2,8 @@
 // Booking Show AJAX
 // =============================================================================
   
+
+<% if current_user.type =="Doctor" %>
   $('#dashboard-content').empty().append('<%= j render "bookings/doctor_index" %>');
 
   $('.tab-pending').removeClass("active");
@@ -10,3 +12,9 @@
 
   $('.tab-past').removeClass("active");
 
+
+<% else %>
+
+  $('#dashboard-content').empty().append('<%= j render "bookings/doctor_confirmed" %>');
+
+<% end %>

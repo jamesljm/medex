@@ -25,12 +25,12 @@
           <td>
              <%= p.patient.first_name %> <%= p.patient.last_name %> 
           </td>
+            <% if !p.record.nil? %> 
           <td>
-            <%= link_to new_record_path, remote:true, class: "btn btn-sm btn-info" do%>
-              <span data-feather="edit"></span>
-            View Record
-            <% end %>
+          <%# to create cards to see existing records %>
+            <%= link_to 'View Existing Record', doctor_record_path(:id=> p.record.id, :doctor_id => p.doctor_id)+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-secondary' %>
           </td>
+        <% end %>
         </tr>
       <% end %>
     <% end %>

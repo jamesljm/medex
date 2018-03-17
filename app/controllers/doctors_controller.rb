@@ -32,6 +32,7 @@ class DoctorsController < Clearance::UsersController
     end
   end
 
+
   def index
     @doctors = Doctor.all
     respond_to do |format|
@@ -81,6 +82,7 @@ class DoctorsController < Clearance::UsersController
 
   def card
     @doctor = Doctor.find(params[:id])
+    @like = Like.where('doctor_id='+params[:id])
     respond_to do |format|
       format.js
     end
@@ -92,6 +94,6 @@ class DoctorsController < Clearance::UsersController
 
 private
   def doctor_params
-  	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify, :phone, :birthdate, :specialist, :experienced_years, :education, :qualification, :summary)
+  	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify, :phone, :birthdate, :specialist, :experienced_years, :education, :qualification, :summary, :profile_picture, :remote_profile_picture_url)
   end
 end

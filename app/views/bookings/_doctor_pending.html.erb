@@ -26,7 +26,7 @@
              <%= p.start_time %> 
           </td>
           <td>
-             <%= p.patient.first_name %> <%= p.patient.last_name %> 
+            <%= link_to t(p.patient.first_name + p.patient.last_name),  card_patient_path(p.patient.id),remote: true %>
           </td>
           <td>
               <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, remote:true, method: :post, class: 'btn btn-sm btn-info' %> 

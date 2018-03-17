@@ -11,34 +11,36 @@
     </tr>
     </thead>
 
-    <tbody>
-      <% @bookings_doc.each do |p| %> 
-        <% if Date.strptime(p.date, '%m/%d/%Y') >= Date.today %>
-          <tr>
-            <td>
-              <%= p.date %> 
-            </td>
-            <td>
-               <%= p.start_time %> 
-            </td>
-            <td>
-               <%= p.patient.first_name %> <%= p.patient.last_name %> 
-            </td>
-            <td>
-              <%= link_to new_record_path, remote:true, class: 'btn btn-sm btn-info' do%>
-              <span data-feather="edit"></span>
-              Add Record
-              <% end %>
-            </td>
-            <td> 
-              <%= link_to 'Delete', booking_path(p), 
-                remote:true,
-                class: 'btn btn-sm btn-danger',
-                method: :Delete, 
-                data: {confirm: 'Are you sure?'}  %>
-            </td>
-          </tr>
+  <tbody>
+    <% @bookings_doc.each do |p| %> 
+      <tr>
+        <td>
+          <%= p.date %> 
+        </td>
+        <td>
+           <%= p.start_time %> 
+        </td>
+        <td>
+           <%= p.patient.first_name %> <%= p.patient.last_name %> 
+        </td>
+        <td>
+          <%= link_to 'Add Record', new_record_path+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-info' %>
+          
+        </td>
+        <% if !p.record.nil? %> 
+          <td>
+          <%# to create cards to see existing records %>
+            <%= link_to 'View Existing Record', doctor_record_path(:id=> p.record.id, :doctor_id => p.doctor_id)+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-secondary' %>
+          </td>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+        <td> 
+          <%= link_to 'Delete', booking_path(p), 
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you sure?'}  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -26,6 +26,7 @@ class PatientsController < Clearance::UsersController
 
   def show
     @patient = current_user
+    @user = current_user
   end
 
   def create
@@ -38,6 +39,13 @@ class PatientsController < Clearance::UsersController
     else
       flash[:notice] = "Failed to created..."
       redirect_to new_user_path
+    end
+  end
+
+  def card
+    @patient = Patient.find(params[:id])
+    respond_to do |format|
+      format.js
     end
   end
 

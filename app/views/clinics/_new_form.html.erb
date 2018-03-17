@@ -120,8 +120,8 @@
                             <%= op.radio_button(:mon_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :mon_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :mon_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :mon_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :mon_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -134,8 +134,8 @@
                             <%= op.radio_button(:tue_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :tue_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :tue_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :tue_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :tue_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -148,8 +148,8 @@
                             <%= op.radio_button(:wed_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :wed_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :wed_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :wed_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :wed_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -162,8 +162,8 @@
                             <%= op.radio_button(:thu_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :thu_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :thu_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :thu_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :thu_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -176,8 +176,8 @@
                             <%= op.radio_button(:fri_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :fri_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :fri_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :fri_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :fri_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -190,8 +190,8 @@
                             <%= op.radio_button(:sat_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :sat_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :sat_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :sat_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :sat_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -204,8 +204,8 @@
                             <%= op.radio_button(:sun_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :sun_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :sun_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :sun_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :sun_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>
 
@@ -218,8 +218,8 @@
                             <%= op.radio_button(:hol_status, "Closed") %>
                         </th>
                         <th scope="row">
-                            <%= op.time_select :hol_start, prompt:{hour:"00",minute:"00"} %> -
-                            <%= op.time_select :hol_end, prompt:{hour:"00",minute:"00"} %>
+                            <%= op.time_select :hol_start, {minute_step: 15, :ampm => true} %> -
+                            <%= op.time_select :hol_end, {minute_step: 15, :ampm => true} %>
                         </th>
                     </tr>                    
 

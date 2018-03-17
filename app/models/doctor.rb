@@ -9,7 +9,11 @@ class Doctor < User
   # validates :email, uniqueness: true
   if @current_user != nil
     validates :license, presence: true
-  end 
+  end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 
   def self.search(params)
     doctors = Doctor.where("lower(first_name) LIKE ? or lower(last_name) LIKE ?", "%#{params.downcase}%", "%#{params.downcase}%")
@@ -20,4 +24,5 @@ class Doctor < User
     doctors = Doctor.where("lower(specialist) LIKE ?", "%#{params.downcase}%")
     doctors
   end
+
 end

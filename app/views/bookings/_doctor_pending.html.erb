@@ -1,6 +1,13 @@
 <hr>
 <p></p>
-<table border>
+
+<% if @pending_bookings_doc.count == 0 %>
+      
+  <p>No Bookings Pending Confirmation</p>
+
+<% else %>
+
+<table class="table table-hover">
   <thead>
   <tr>
     <th>Date</th>
@@ -8,8 +15,8 @@
     <th>Patient name</th>
   </tr>
   </thead>
-
     <tbody>
+        
       <% @pending_bookings_doc.each do |p| %> 
         <tr>
           <td>
@@ -22,8 +29,12 @@
             <%= link_to t(p.patient.name),  card_patient_path(p.patient.id),remote: true %>
           </td>
           <td>
+<<<<<<< HEAD
             <!-- shifting from pending booking to booking -->
             <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, remote:true, method: :post %>
+=======
+              <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, remote:true, method: :post, class: 'btn btn-sm btn-info' %> 
+>>>>>>> master
           </td>
           <td> 
             <%= link_to 'Reject Appointments', pending_booking_path(p), 
@@ -33,7 +44,10 @@
               data: {confirm: 'Are you sure?'}  %>
           </td>
         </tr>
+
       <% end %>
+
+    <% end %>
   </tbody>
 </table>
   

@@ -1,14 +1,15 @@
+
 <hr>
 <p></p>
 
-<table border>
-  <thead>
-  <tr>
-    <th>Date</th>
-    <th>Schedule</th>
-    <th>Patient name</th>
-  </tr>
-  </thead>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Schedule</th>
+      <th>Patient name</th>
+    </tr>
+    </thead>
 
   <tbody>
     <% @bookings_doc.each do |p| %> 
@@ -23,18 +24,13 @@
            <%= p.patient.first_name %> <%= p.patient.last_name %> 
         </td>
         <td>
-          <%= link_to new_record_path+'?param3='+p.id.to_s, remote:true do%>
-          <span data-feather="edit"></span>
-          Add Record
-          <% end %>
+          <%= link_to 'Add Record', new_record_path+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-info' %>
+          
         </td>
         <% if !p.record.nil? %> 
           <td>
           <%# to create cards to see existing records %>
-            <%= link_to doctor_record_path(:id=> p.record.id, :doctor_id => p.doctor_id)+'?param3='+p.id.to_s, remote:true do%>
-            <span data-feather="edit"></span>
-            See Existing Record
-            <% end %>
+            <%= link_to 'View Existing Record', doctor_record_path(:id=> p.record.id, :doctor_id => p.doctor_id)+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-secondary' %>
           </td>
         <% end %>
         <td> 
@@ -47,3 +43,4 @@
     <% end %>
   </tbody>
 </table>
+

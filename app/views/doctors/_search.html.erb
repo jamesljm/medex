@@ -3,6 +3,9 @@
 <!-- ======================================================================= -->
 
 <p><%= link_to 'View all Doctor', doctors_path, remote: true %></p>
+
+<%= paginate @doctors, remote:true %>
+
 <% @doctors.each do |doctor| %>
   <div class="media">
     <img class="align-self-center mr-3" src="http://via.placeholder.com/150x150" alt="Generic placeholder image">

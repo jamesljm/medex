@@ -1,9 +1,10 @@
+
 <div class="container">
     <div class="row my-2">
         <div class="col-lg-10 order-lg-2">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="" data-target="#booking-pending" data-toggle="tab" class="nav-link active tab-pending" >Pending</a>
+                    <a href="" data-target="#booking-pending" data-toggle="tab" class="nav-link active tab-pending">Pending</a>
                 </li>
                 <li class="nav-item">
                     <a href="" data-target="#booking-confirmed" data-toggle="tab" class="nav-link tab-confirm">Upcoming</a>
@@ -14,8 +15,8 @@
             </ul>
             <div class="tab-content py-4">
                 <!-- Pending -->
-                <div class="tab-pane active tab-pending" id="booking-pending">
-                    <div class="tab-header">
+                <div class="tab-pane tab-pending active" id="booking-pending">
+                    <div class="tab-header ">
                       <h5>Appointments Pending Approval</h5>
                     </div>
                     <%= render "bookings/doctor_pending" %>

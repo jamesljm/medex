@@ -88,13 +88,13 @@
 
 <div> Search Doctor by Name </div>
 <%= form_tag search_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search, nil , placeholder: "Search Doctors", id: 'project' %>
+  <%= text_field_tag :search_name, nil , placeholder: "Search Doctors", id: 'project' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
 <div> Search Doctor by Specialist </div>
 <%= form_tag search_specialist_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search, nil, placeholder: "Search Specialist", id: 'project2' %>
+  <%= text_field_tag :search_specialist, nil, placeholder: "Search Specialist", id: 'project2' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 

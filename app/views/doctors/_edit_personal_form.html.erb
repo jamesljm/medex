@@ -2,6 +2,7 @@
 <!-- Doctor's Profile Tab Edit Form -->
 <!-- ======================================================================= -->
 <!-- Personal Information -->
+<%# byebug %>
 <%= form_for @doctor do |f| %>
 
 <ul class="list-group list-group-flush">
@@ -50,5 +51,5 @@
         <div class="btn-wrap">
             <%= f.submit class: "button doctor-submit" %>
         </div>
+    </ul>
 <% end %>
-</ul>

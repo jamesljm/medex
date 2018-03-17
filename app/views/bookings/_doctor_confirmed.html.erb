@@ -1,0 +1,40 @@
+<hr>
+<p></p>
+
+<table border>
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Schedule</th>
+    <th>Patient name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings_doc.each do |p| %> 
+      <tr>
+        <td>
+          <%= p.date %> 
+        </td>
+        <td>
+           <%= p.start_time %> 
+        </td>
+        <td>
+           <%= p.patient.first_name %> <%= p.patient.last_name %> 
+        </td>
+        <td>
+          <%= link_to new_record_path, remote:true do%>
+          <span data-feather="edit"></span>
+          Add Record
+          <% end %>
+        </td>
+        <td> 
+          <%= link_to 'Delete', booking_path(p), 
+            class: 'btn btn-sm btn-danger',
+            method: :Delete, 
+            data: {confirm: 'Are you sure?'}  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

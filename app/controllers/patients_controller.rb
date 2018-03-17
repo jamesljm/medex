@@ -17,7 +17,6 @@ class PatientsController < Clearance::UsersController
   end
 
   def update
-    
     if @patient.update(patient_params)
       redirect_to patient_path, notice: "Your record has been updated."
     else
@@ -42,39 +41,10 @@ class PatientsController < Clearance::UsersController
     end
   end
 
-  def dashboard
-
-    # case params[:request]
-    #   when 'edit'
-    #     @patient = find_patient_with_id
-    #   when 'appointments'
-    #     @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
-    #     @bookings = Booking.where('patient_id=' + current_user.id.to_s)
-    #   when 'journal'
-    #     @records = current_user.records
-    #   when 'prescriptions'
-
-    #   # Inner Lyaer
-    #   when 'doctors'
-    #     @doctors = Doctor.all
-
-    #   when 'pending_bookings'
-    #     @pending_bookings = 
-    #   else
-    #     redirect_to root_path
-    # end
-
-    # # required for remote
-    # respond_to do |format|
-    #   format.js
-    # end
-    
-  end
-
 private
   def patient_params
-    params[:patient][:allergies].nil? ? params[:patient][:allergies] = current_user.allergies : allergies = params[:patient][:allergies].split(',')
-    params[:patient][:med_history].nil? ? params[:patient][:med_history] = current_user.med_history : med_history = params[:patient][:med_history].split(',')
+    params[:patient][:allergies].nil? ? params[:patient][:allergies] = [] : allergies = params[:patient][:allergies].split(',')
+    params[:patient][:med_history].nil? ? params[:patient][:med_history] = [] : med_history = params[:patient][:med_history].split(',')
   	params.require(:patient).permit(:first_name, :last_name, :password, :phone, :email, :gender, :birthdate, :identification, :blood_type, :family_history, :social_history, :drinker, :smoker, :profile_picture, :remote_profile_picture_url).merge(med_history: med_history, allergies: allergies)
   end
 

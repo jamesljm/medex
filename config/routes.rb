@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     collection do
       get 'payment/:booking_id' => 'pages#payment', as: "payment", action: "payment"
       get 'confirm/:booking_id' => 'pages#confirm', as: 'confirm', action: 'confirm'
+      post '/:id/checkout' => 'pages#checkout', as: "checkout", action: "checkout"
     end
   end
 

@@ -52,7 +52,7 @@
         <th>Date</th>
         <th>Schedule</th>
         <th>Doctor name</th>
-        <th>Payment Status</th>
+        <th>Booking Status</th>
     </tr>
     </thead>
 
@@ -72,9 +72,9 @@
         </td>
         <td>
             <% if p.bill %>
-                <span>Paid!</span>
+                <button class="btn btn-secondary" disabled>Paid</button>
             <% else %>
-                <%= link_to "Make Payment", payment_pages_path(:booking_id => p.id), remote: true %>
+                <%= link_to "Make Payment", payment_pages_path(:booking_id => p.id), remote: true, class: "btn btn-primary" %>
             <% end %>
         </td>
         <td>

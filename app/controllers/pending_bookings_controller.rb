@@ -10,7 +10,15 @@ class PendingBookingsController < ApplicationController
 
   # create pending booking
   def create
+    @clinic = Clinic.find(params[:clinic_id])
     @pending_booking = PendingBooking.new(pending_booking_params)
+    # TODO: calculate actual payment price AND shouldn't include the hidden field as it is hackable
+    if @clinic.booking #booking = clinic's booking fee required
+      @pending_booking.total_price = @clinic.fee
+      @pending_booking.bill = true
+    else
+      @pending_booking.bill = false
+    end
     @pending_booking.patient_id = current_user.id
     @pending_booking.doctor_id = params[:doctor_id]
     

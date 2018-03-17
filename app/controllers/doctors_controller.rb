@@ -16,6 +16,9 @@ class DoctorsController < Clearance::UsersController
     else
       @doctors = Doctor.search(params[:search_name])
     end
+    
+    @doctors= @doctors.order(first_name: :desc).page(params[:page]).per(12)
+
     respond_to do |format|
       format.js
     end
@@ -27,6 +30,9 @@ class DoctorsController < Clearance::UsersController
     else
       @doctors = Doctor.search_specialist(params[:search_specialist])
     end
+
+    @doctors= @doctors.order(first_name: :desc).page(params[:page]).per(12)
+
     respond_to do |format|
       format.js
     end
@@ -35,6 +41,9 @@ class DoctorsController < Clearance::UsersController
 
   def index
     @doctors = Doctor.all
+    
+    @doctors= Doctor.order(first_name: :desc).page(params[:page]).per(12)
+
     respond_to do |format|
       format.js
     end

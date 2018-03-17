@@ -49,7 +49,10 @@ class RecordsController < ApplicationController
 
   def update
     @record = @record.update(record_params)
-    redirect_to record_path, notice: "Your record has been updated."
+    # redirect_to record_path, notice: "Your record has been updated."
+    respond_to do |format|
+      format.js
+    end
   end
   
   def show

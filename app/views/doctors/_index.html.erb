@@ -1,3 +1,7 @@
+<!-- ======================================================================= -->
+<!-- Doctor's Index Partial -->
+<!-- ======================================================================= -->
+
 <script>
   $(function () {
     var projects = [];
@@ -97,16 +101,17 @@
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
-
-<h1>Doctor Index Page</h1>
-
 <div>Doctor Panel</div>
+
 <div>
   <%= link_to t("Back to Your DashBoard"),  patient_path(current_user.id) %>
 </div>
 <div>
   <%= link_to t("Back to Home Page"), root_path %>
 </div>
+
+<h2>Select Your Doctor</h2>
+
 <hr>
 <div class="container">
   <div class="row">

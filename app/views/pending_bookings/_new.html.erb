@@ -10,8 +10,11 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
-<h1>Schedule Booking here!</h1>
+<h2>Schedule Booking here!</h2>
+<!-- Testing -->
+<h3>Clinic ID: <%= @clinic.id %></h3>
 
+<p><%= @clinic.operation_hour %></p>
 
 <%= form_for :pending_booking, url: pending_bookings_path, remote: true do |f| %>
     <%= f.label :'Pick a date' %><br>
@@ -34,7 +37,8 @@
     <%= f.label :start_time, "3pm-4pm" %>  
     <br>
     <%= f.radio_button :start_time, '4pm-5pm' %>
-    <%= f.label :start_time, "4pm-5pm" %>  
+    <%= f.label :start_time, "4pm-5pm" %>
+    <%= hidden_field_tag "doctor_id", "#{@doctor_id}" %>
     <br><br>
     <%= f.submit "Book now", class: 'btn btn-lg btn-success'%>
 <% end %>

@@ -45,7 +45,12 @@ Rails.application.routes.draw do
     resources :prescriptions
   end
 
-  resources :pending_bookings
+  resources :pending_bookings do
+    collection do
+      get 'clinic_selection/:doctor_id' => 'pending_bookings#clinic_selection', as: "clinic_selection", action: "clinic_selection"
+      get 'new/:doctor_id' => 'pending_bookings#new', as: "new", action: "new"
+    end
+  end
 
   resources :before_pay_bookings
 

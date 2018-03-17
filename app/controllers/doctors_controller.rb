@@ -86,6 +86,10 @@ class DoctorsController < Clearance::UsersController
     end
   end
 
+  def patient_profile
+    @patients = D
+  end
+
 private
   def doctor_params
   	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify, :phone, :birthdate, :specialist, :experienced_years, :education, :qualification, :summary)

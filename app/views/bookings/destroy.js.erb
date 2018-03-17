@@ -1,0 +1,8 @@
+
+$('#dashboard-content').empty().append('<%= j render "bookings/doctor_index" %>');
+
+$('.tab-pending').removeClass("active");
+
+$('.tab-past').removeClass("active");
+
+$('.tab-confirm').addClass("active");

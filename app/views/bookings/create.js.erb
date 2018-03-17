@@ -2,5 +2,11 @@
 // Booking Show AJAX
 // =============================================================================
   
-  $('#dashboard-content').empty().append('<%= j render "bookings/doctors_confirmed" %>');
+  $('#dashboard-content').empty().append('<%= j render "bookings/doctor_index" %>');
+
+  $('.tab-pending').removeClass("active");
+
+  $('.tab-confirm').addClass("active");
+
+  $('.tab-past').removeClass("active");
 

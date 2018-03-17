@@ -1,0 +1,39 @@
+<hr>
+<p></p>
+<table border>
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Schedule</th>
+    <th>Patient name</th>
+  </tr>
+  </thead>
+
+    <tbody>
+      <% @pending_bookings_doc.each do |p| %> 
+        <tr>
+          <td>
+            <%= p.date %> 
+          </td>
+          <td>
+             <%= p.start_time %> 
+          </td>
+          <td>
+            <%= link_to t(p.patient.first_name + p.patient.last_name),  card_patient_path(p.patient.id),remote: true %>
+          </td>
+          <td>
+              <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, remote:true, method: :post %> 
+          </td>
+
+          <td> 
+            <%= link_to 'Reject Appointments', pending_booking_path(p), 
+              remote:true,
+              class: 'btn btn-sm btn-danger',
+              method: :Delete, 
+              data: {confirm: 'Are you sure?'}  %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+  

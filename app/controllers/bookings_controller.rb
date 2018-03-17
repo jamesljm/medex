@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @pending_bookings_doc = PendingBooking.where('doctor_id='+current_user.id.to_s)
+    @bookings_doc = Booking.where('doctor_id=' + current_user.id.to_s)    
     @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
     @bookings = Booking.where('patient_id=' + current_user.id.to_s)
     respond_to do |format|
@@ -19,12 +21,16 @@ class BookingsController < ApplicationController
     @@param2 = params[:param2]
     @pending_booking = PendingBooking.find(@@param2)
     @booking = Booking.new(:date=>@pending_booking.date, :start_time=>@pending_booking.start_time, :doctor_id=>@pending_booking.doctor_id, :patient_id=>@pending_booking.patient_id) 
-    # add to booking
+    
     if @booking.save
       @pending_booking.destroy
-      redirect_to doctor_path(current_user.id) 
+      
     else
-      render doctor_path(current_user.id) 
+      flash[:notice] = "Failed to confirm..." 
+    end
+
+    respond_to do |format|
+      format.js
     end
 
   end

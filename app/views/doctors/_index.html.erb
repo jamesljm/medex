@@ -9,7 +9,7 @@
     <% Doctor.all.each do |doctor| %>
       projects.push({
           value: "<%= doctor.first_name %>",
-          desc: "<%= doctor.specialist %>"
+          desc: "<%= doctor.last_name %>"
         });
     <% end %>
 
@@ -49,6 +49,7 @@
     }
     var projects = [];
     var temp = [];
+
 
     <% Doctor.all.each do | doctor | %>
       temp.push("<%= doctor.specialist %>");
@@ -91,21 +92,25 @@
 
 <div> Search Doctor by Name </div>
 <%= form_tag search_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search_name, params[:search_name], placeholder: "Search Doctors", id: 'project' %>
+  <%= text_field_tag :search_name, nil , placeholder: "Search Doctors", id: 'project' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
 <div> Search Doctor by Specialist </div>
 <%= form_tag search_specialist_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search_specialist, params[:search_specialist], placeholder: "Search Specialist", id: 'project2' %>
+  <%= text_field_tag :search_specialist, nil, placeholder: "Search Specialist", id: 'project2' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
 <div>Doctor Panel</div>
 
+<<<<<<< HEAD
 <div>
   <%= link_to t("Back to Your DashBoard"),  patient_path(current_user.id) %>
 </div>
+=======
+<div><%= link_to ("View Your Appointment"), booking_path(current_user.id), remote: true %></div>
+>>>>>>> af315db9b7872ffe465cf21c83d3ff9913f96baf
 <div>
   <%= link_to t("Back to Home Page"), root_path %>
 </div>

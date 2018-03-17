@@ -24,4 +24,5 @@ class Doctor < User
     doctors = Doctor.where("lower(specialist) LIKE ?", "%#{params.downcase}%")
     doctors
   end
+
 end

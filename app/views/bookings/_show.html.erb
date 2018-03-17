@@ -78,7 +78,7 @@
             <% end %>
         </td>
         <td>
-        <%= link_to 'Cancel Appointments', pending_booking_path(p), class: 'btn btn-sm btn-danger',method: :Delete, data: {confirm: 'Are you sure?'}  %>
+        <%= link_to 'Cancel Appointments', pending_booking_path(p), class: 'btn btn-sm btn-danger',method: :Delete, data: {confirm: 'Are you sure?'}, remote: true  %>
         </td>
         </tr>
         <% end %>

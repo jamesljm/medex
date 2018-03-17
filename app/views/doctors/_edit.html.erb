@@ -63,12 +63,24 @@
             </div>
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
+            <% if current_user.profile_picture? %>
+                <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
+            <% else %>
+                <img src="//placehold.it/150" class="mx-auto img-fluid rounded-circle d-block" alt= :remote_avatar_url>
+            <% end %>
+
+            <%= form_for @doctor do |form| %>
+                <div class="file-field">
+                    <%= form.label "Upload profile picture" %>
+                    <%= form.file_field :profile_picture %><br/>
+                    <%= form.label :remote_profile_picture_url, "or image URL" %><br/> 
+                    <%= form.text_field :remote_profile_picture_url %>
+                </div>
+                <!-- Submit Button -->
+                <div class="btn-wrap">
+                    <div><%= form.submit :name => "Update photo", class: "button" %></div>
+                </div>
+            <% end %>    
         </div>
     </div>
 </div>

@@ -26,6 +26,7 @@ class PatientsController < Clearance::UsersController
 
   def show
     @patient = current_user
+    @user = current_user
   end
 
   def create

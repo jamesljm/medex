@@ -46,6 +46,10 @@ Rails.application.routes.draw do
   resources :likes
 
   resources :records do
+    member do
+      get 'doctor/:doctor_id' => 'records#doctor', as: "doctor", action: "doctor"
+    end
+
     resources :prescriptions
   end
 

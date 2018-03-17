@@ -20,7 +20,7 @@ class PendingBookingsController < ApplicationController
         format.js
       end
     else
-      render 'new'
+      flash[:notice] = "Failed to confirm..." 
     end
   end
 

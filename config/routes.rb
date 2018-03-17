@@ -43,6 +43,8 @@ Rails.application.routes.draw do
 
   resources :bookings
 
+  resources :likes
+
   resources :records do
     resources :prescriptions
   end

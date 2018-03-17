@@ -82,6 +82,7 @@ class DoctorsController < Clearance::UsersController
 
   def card
     @doctor = Doctor.find(params[:id])
+    @like = Like.where('doctor_id='+params[:id])
     respond_to do |format|
       format.js
     end

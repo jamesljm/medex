@@ -1,5 +1,7 @@
 class PendingBookingsController < ApplicationController
   before_action :require_login
+  @@param1 = 0
+  before_action :define_instances, only: [:destroy]
 
   # schedule booking page 
   def new  
@@ -36,16 +38,10 @@ class PendingBookingsController < ApplicationController
 
   def destroy
     @pending_booking = PendingBooking.find(params[:id])
-    # @pending_booking.destroy
-    if @pending_booking.destroy
-      @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
-      @bookings = Booking.where('patient_id=' + current_user.id.to_s)
-      respond_to do |format|
-        format.js
-      end
-      # redirect_to patient_path(current_user.id)
-    elsif current_user.type == 'Doctor'
-      redirect_to doctor_path(current_user.id) 
+
+    @pending_booking.destroy
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -60,6 +56,16 @@ class PendingBookingsController < ApplicationController
 private
   def pending_booking_params
     params.require(:pending_booking).permit(:date, :start_time, :doctor_id, :patient_id)
+  end
+
+  def define_instances
+    if current_user.type == "Doctor"
+      @pending_bookings_doc = PendingBooking.where('doctor_id='+current_user.id.to_s)
+      @bookings_doc = Booking.where('doctor_id=' + current_user.id.to_s)   
+    else 
+      @pending_bookings = PendingBooking.where('patient_id='+current_user.id.to_s)
+      @bookings = Booking.where('patient_id=' + current_user.id.to_s)
+    end
   end
 end
 

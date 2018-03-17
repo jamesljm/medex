@@ -1,0 +1,52 @@
+<h1>Prescription#edit</h1>
+<p>Find me in app/views/prescription/edit.html.erb</p>
+
+
+<%= form_for [@record, @prescription] do |f| %>
+    <div class="form-group">
+        <div><%= f.label :drug_name %></div>
+        <div><%= f.text_field :drug_name, autofocus: true %></div>
+    </div>
+
+    <div class="form-group">
+        <div><%= f.label :dosage %></div>
+        <div><%= f.text_field :dosage %></div>
+    </div>
+
+    <div class="form-group">
+        <div><%= f.label :pres_start_date %></div>
+        <div><%= f.date_field :pres_start_date %></div>
+    </div>
+
+    <div class="form-group">
+        <div><%= f.label :pres_end_date %></div>
+        <div><%= f.date_field :pres_end_date %></div>
+    </div>
+
+    <div class="form-group">
+        <div><%= f.label :meal %></div>
+        <div class="radio">
+            <div><%= f.radio_button :meal, true  %>Before meal</div>
+        </div>
+        <div class="radio">
+            <div><%= f.radio_button :meal, false %>After meal</div>
+        </div>
+    </div>
+
+    <div>Intake for each session
+        <div class="form-group">
+            <div><%= f.label :morning %></div>
+            <div><%= f.text_field :morning %></div>
+        </div>
+        <div class="form-group">
+            <div><%= f.label :noon %></div>
+            <div><%= f.text_field :noon %></div>
+        </div> 
+        <div class="form-group">
+            <div><%= f.label :night %></div>
+            <div><%= f.text_field :night %></div>
+        </div>               
+    </div>
+
+    <div><%= f.submit "Save Record" %></div>
+<% end %>

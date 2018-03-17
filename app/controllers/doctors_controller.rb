@@ -1,14 +1,20 @@
 class DoctorsController < Clearance::UsersController
   before_action :require_login, except: :create
 
-  def home
+  def appointment
+    @pending_bookings = PendingBooking.where('doctor_id='+current_user.id.to_s)
+    @bookings = Booking.where('doctor_id=' + current_user.id.to_s)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def search
-    if params[:search].blank?
+    if params[:search_name].blank?
       @doctors = Doctor.all
     else
-      @doctors = Doctor.search(params)
+      @doctors = Doctor.search(params[:search_name])
     end
     respond_to do |format|
       format.js
@@ -16,10 +22,10 @@ class DoctorsController < Clearance::UsersController
   end
 
   def search_specialist
-    if params[:search].blank?
+    if params[:search_specialist].blank?
       @doctors = Doctor.all
     else
-      @doctors = Doctor.search_specialist(params)
+      @doctors = Doctor.search_specialist(params[:search_specialist])
     end
     respond_to do |format|
       format.js
@@ -34,6 +40,8 @@ class DoctorsController < Clearance::UsersController
   end
 
   def edit
+    @pending_booking=PendingBooking.where('doctor_id='+current_user.id.to_s)
+    @booking=Booking.where('doctor_id='+current_user.id.to_s)
     @doctor = Doctor.find(params[:id])
     respond_to do |format|
       format.js

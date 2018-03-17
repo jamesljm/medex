@@ -14,6 +14,7 @@
         <th>Date</th>
         <th>Schedule</th>
         <th>Patient name</th>
+
     </tr>
     </thead>
     <tbody>
@@ -33,13 +34,17 @@
             <%= link_to 'Delete', booking_path(p), 
         class: 'btn btn-sm btn-danger',
         method: :Delete, 
-        data: {confirm: 'Are you sure?'}  %>
+        data: {confirm: 'Are you sure?'},
+        remote: true %>
         </td>
         </tr>
         <% end %>
     </tbody>
 </table>
 <br>
+<!-- ======================================================================= -->
+<!-- Pending Bookings -->
+<!-- ======================================================================= -->
 <p>Appointments Pending</p>
 <table border>
     <thead>
@@ -47,6 +52,7 @@
         <th>Date</th>
         <th>Schedule</th>
         <th>Doctor name</th>
+        <th>Payment Status</th>
     </tr>
     </thead>
 
@@ -65,10 +71,14 @@
             <%= p.doctor.last_name %>
         </td>
         <td>
-            <%= link_to 'Cancel Appointments', pending_booking_path(p), 
-        class: 'btn btn-sm btn-danger',
-        method: :Delete, 
-        data: {confirm: 'Are you sure?'}  %>
+            <% if p.bill %>
+                <span>Paid!</span>
+            <% else %>
+                <%= link_to "Make Payment", payment_pages_path(:booking_id => p.id), remote: true %>
+            <% end %>
+        </td>
+        <td>
+        <%= link_to 'Cancel Appointments', pending_booking_path(p), class: 'btn btn-sm btn-danger',method: :Delete, data: {confirm: 'Are you sure?'}  %>
         </td>
         </tr>
         <% end %>

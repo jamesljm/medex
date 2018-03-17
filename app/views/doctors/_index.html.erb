@@ -9,8 +9,6 @@
         });
     <% end %>
 
-    console.log(projects);
-
     $("#project").autocomplete({
       minLength: 0,
       source: projects,
@@ -36,14 +34,30 @@
 </script>
 <script>
   $(function () {
+    function removeDuplicates(arr) {
+      let unique_array = []
+      for (let i = 0; i < arr.length; i++) {
+        if (unique_array.indexOf(arr[i]) == -1) {
+          unique_array.push(arr[i])
+        }
+      }
+      return unique_array
+    }
     var projects = [];
+    var temp = [];
 
-    <% Doctor.all.each do |doctor| %>
-      projects.push({
-          value: "<%= doctor.specialist %>"
-          desc: " "
-        });
+    <% Doctor.all.each do | doctor | %>
+      temp.push("<%= doctor.specialist %>");
     <% end %>
+
+    temp = removeDuplicates(temp);
+
+    for (let i = 0; i < temp.length; i++) {
+      projects.push({
+        value: temp[i],
+        desc: " "
+      });
+    }
 
     console.log(projects);
 
@@ -73,13 +87,13 @@
 
 <div> Search Doctor by Name </div>
 <%= form_tag search_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Doctors", id: 'project' %>
+  <%= text_field_tag :search_name, params[:search_name], placeholder: "Search Doctors", id: 'project' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
 <div> Search Doctor by Specialist </div>
 <%= form_tag search_specialist_doctors_path, method: :get, remote: true do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Specialist", id: 'project2' %>
+  <%= text_field_tag :search_specialist, params[:search_specialist], placeholder: "Search Specialist", id: 'project2' %>
   <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
 <% end %>
 
@@ -97,8 +111,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <%= render  "doctors/search" %>
-      <%= render  "doctors/search_specialist" %>
+      <%= render "doctors/search" %>
     </div>
     <div class="col-4">
       <div>Maps</div>

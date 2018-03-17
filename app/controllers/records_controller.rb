@@ -6,6 +6,10 @@ class RecordsController < ApplicationController
   def new
     @user=current_user
     @record = Record.new
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create

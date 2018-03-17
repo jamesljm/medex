@@ -1,4 +1,6 @@
 <div class="container">
+  <div><%= link_to 'View all Doctor', doctors_path, remote: true %></div>
+  <div><%= link_to ("View Your Appointment"), booking_path(current_user.id), remote: true %></div>
   <div class="card-area">
     <div class="card-placard">
       <div class="card-social">

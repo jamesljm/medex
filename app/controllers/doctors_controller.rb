@@ -32,6 +32,7 @@ class DoctorsController < Clearance::UsersController
     end
   end
 
+
   def index
     @doctors = Doctor.all
     respond_to do |format|

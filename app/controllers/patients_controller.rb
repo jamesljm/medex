@@ -42,6 +42,13 @@ class PatientsController < Clearance::UsersController
     end
   end
 
+  def card
+    @patient = Patient.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
   def patient_params
     params[:patient][:allergies].nil? ? params[:patient][:allergies] = [] : allergies = params[:patient][:allergies].split(',')

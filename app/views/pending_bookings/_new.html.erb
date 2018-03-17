@@ -1,6 +1,7 @@
 <!-- ======================================================================= -->
 <!-- Pending Booking's New -->
 <!-- ======================================================================= -->
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,34 +10,125 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css"
+  />
 </head>
-<h1>Schedule Booking here!</h1>
+<h2>Schedule Booking here!</h2>
+<!-- Testing -->
+<h3>Clinic ID: <%= @clinic.id %></h3>
 
+<p><%= @clinic.operation_hour %></p>
+
+<div class="clinic-ops-display col-7">
+  <div class="clinic-label">
+    <h6>Operation Hour: </h6>
+  </div>
+
+  <table class="table ops-table table-bordered">
+    <thead class="thead-ops-view ">
+      <tr>
+        <th scope="col" class="ops-header"> Day </th>
+        <th scope="col" class="ops-header"> Status </th>
+        <th scope="col" class="ops-header"> Start Time - End Time </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Monday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["mon_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["mon_status"] == "Closed"? "-" : ((@clinic.operation_hour["mon_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["mon_start(4i)"].to_s) + " : " + (@clinic.operation_hour["mon_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["mon_start(5i)"].to_s) + " - " + (@clinic.operation_hour["mon_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["mon_end(4i)"].to_s) + " : " + (@clinic.operation_hour["mon_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["mon_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Tuesday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["tue_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["tue_status"] == "Closed"? "-" : ((@clinic.operation_hour["tue_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["tue_start(4i)"].to_s) + " : " + (@clinic.operation_hour["tue_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["tue_start(5i)"].to_s) + " - " + (@clinic.operation_hour["tue_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["tue_end(4i)"].to_s) + " : " + (@clinic.operation_hour["tue_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["tue_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Wednesday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["wed_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["wed_status"] == "Closed"? "-" : ((@clinic.operation_hour["wed_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["wed_start(4i)"].to_s) + " : " + (@clinic.operation_hour["wed_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["wed_start(5i)"].to_s) + " - " + (@clinic.operation_hour["wed_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["wed_end(4i)"].to_s) + " : " + (@clinic.operation_hour["wed_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["wed_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Thursday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["thu_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["thu_status"] == "Closed"? "-" : ((@clinic.operation_hour["thu_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["thu_start(4i)"].to_s) + " : " + (@clinic.operation_hour["thu_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["thu_start(5i)"].to_s) + " - " + (@clinic.operation_hour["thu_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["thu_end(4i)"].to_s) + " : " + (@clinic.operation_hour["thu_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["thu_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Friday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["fri_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["fri_status"] == "Closed"? "-" : ((@clinic.operation_hour["fri_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["fri_start(4i)"].to_s) + " : " + (@clinic.operation_hour["fri_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["fri_start(5i)"].to_s) + " - " + (@clinic.operation_hour["fri_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["fri_end(4i)"].to_s) + " : " + (@clinic.operation_hour["fri_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["fri_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Saturday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["sat_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["sat_status"] == "Closed"? "-" : ((@clinic.operation_hour["mon_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["sat_start(4i)"].to_s) + " : " + (@clinic.operation_hour["sat_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["sat_start(5i)"].to_s) + " - " + (@clinic.operation_hour["sat_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["sat_end(4i)"].to_s) + " : " + (@clinic.operation_hour["sat_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["sat_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Sunday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["sun_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["sun_status"] == "Closed"? "-" : ((@clinic.operation_hour["sun_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["sun_start(4i)"].to_s) + " : " + (@clinic.operation_hour["sun_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["sun_start(5i)"].to_s) + " - " + (@clinic.operation_hour["sun_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["sun_end(4i)"].to_s) + " : " + (@clinic.operation_hour["sun_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["sun_end(5i)"].to_s))%>
+        </th>
+      </tr>
+      <tr>
+        <th scope="row">Public Holiday</th>
+        <th scope="row">
+          <%= @clinic.operation_hour["hol_status"]%>
+        </th>
+        <th scope="row">
+          <%= @clinic.operation_hour["hol_status"] == "Closed"? "-" : ((@clinic.operation_hour["hol_start(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["hol_start(4i)"].to_s) + " : " + (@clinic.operation_hour["hol_start(5i)"].to_s == "" ? "00" : @clinic.operation_hour["mon_start(5i)"].to_s) + " - " + (@clinic.operation_hour["hol_end(4i)"].to_s == "" ? "00" :  @clinic.operation_hour["hol_end(4i)"].to_s) + " : " + (@clinic.operation_hour["hol_end(5i)"].to_s == "" ? "00" : @clinic.operation_hour["hol_end(5i)"].to_s))%>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Pricing : <%= @clinic.fee %></p>
 
 <%= form_for :pending_booking, url: pending_bookings_path, remote: true do |f| %>
     <%= f.label :'Pick a date' %><br>
     <%= f.text_field :date, id: 'datepicker' %>
     <br>
-    <%= f.label :'Pick Your Timing' %><br>
-    <%= f.radio_button :start_time, '9am-10am' %>
-    <%= f.label :start_time, "9am-10am" %>
-    <br>
-    <%= f.radio_button :start_time, '10am-11am' %>
-    <%= f.label :start_time, "10am-11am" %>
-    <br>
-    <%= f.radio_button :start_time, '11am-12am' %>
-    <%= f.label :start_time, "11am-12am" %>
-    <br>
-    <%= f.radio_button :start_time, '2pm-3pm' %>
-    <%= f.label :start_time, "2pm-3pm" %>
-    <br>
-    <%= f.radio_button :start_time, '3pm-4pm' %>
-    <%= f.label :start_time, "3pm-4pm" %>  
-    <br>
-    <%= f.radio_button :start_time, '4pm-5pm' %>
-    <%= f.label :start_time, "4pm-5pm" %>  
-    <br><br>
-    <%= f.submit "Book now", class: 'btn btn-lg btn-success'%>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <%= f.label :start_time %>
+      </div>
+      <%= f.select :start_time, options_for_select(["9am-10am", "10am-11pm", "11am-12pm", "1pm-2pm", "2pm-3pm", "3pm-4pm", "5pm-6pm"]) %>
+    </div>
+    
+
+    <!-- for retrieving doctor's id in booking creation -->
+    <%= hidden_field_tag "doctor_id", "#{@doctor_id}" %>
+    <%= hidden_field_tag "clinic_id", "#{@clinic.id}" %>
+
+    <%= f.submit "Book now", class: 'btn btn-lg btn-primary'%>
 <% end %>
 
 <p><%= link_to 'View all Doctor', doctors_path, remote: true %></p>
@@ -44,7 +136,11 @@
 
 <script>
     $(function () {
-      $("#datepicker").datepicker({ minDate: new Date(), maxDate: "+1M" });
+      $("#datepicker").datepicker({ 
+        minDate: new Date(), 
+        maxDate: "+1M",
+        daysOfWeekDisabled: [0, 6]
+      });
     });
 </script>
 

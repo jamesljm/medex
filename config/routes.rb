@@ -37,10 +37,13 @@ Rails.application.routes.draw do
   resources :patients do
     member do
       get 'profile/:id' => 'patients#profile', as: "profile", action: "profile" 
+      get 'card' => 'patients#card', as: "card", action: "card"
     end
   end
 
   resources :bookings
+
+  resources :likes
 
   resources :records do
     member do
@@ -50,7 +53,12 @@ Rails.application.routes.draw do
     resources :prescriptions
   end
 
-  resources :pending_bookings
+  resources :pending_bookings do
+    collection do
+      get 'clinic_selection/:doctor_id' => 'pending_bookings#clinic_selection', as: "clinic_selection", action: "clinic_selection"
+      get 'new/:doctor_id' => 'pending_bookings#new', as: "new", action: "new"
+    end
+  end
 
   resources :before_pay_bookings
 
@@ -60,6 +68,7 @@ Rails.application.routes.draw do
     collection do
       get 'payment/:booking_id' => 'pages#payment', as: "payment", action: "payment"
       get 'confirm/:booking_id' => 'pages#confirm', as: 'confirm', action: 'confirm'
+      post '/:id/checkout' => 'pages#checkout', as: "checkout", action: "checkout"
     end
   end
 

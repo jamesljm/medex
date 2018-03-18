@@ -8,7 +8,7 @@ class PatientsController < Clearance::UsersController
     # @bookings.each do |booking|
     #   @patient = Patient.where(:booking_id => booking.id)
     #   @patients << @patient
-    end
+    # end
   end
 
   def edit

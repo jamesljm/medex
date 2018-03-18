@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   # Doctor & Patients
   # resources :doctors
   resources :doctors do
-    resources :clinics
+    resources :clinics do
+      collection do
+        get 'search' => 'clinics#search', as: 'search', action: 'search'
+      end
+    end
     member do
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
       get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'

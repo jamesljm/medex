@@ -84,8 +84,14 @@ class ClinicsController < ApplicationController
       end
     end
 
-
-  private
+    def search
+      @clinics = Clinic.where(nil)
+      @clinics = @clinics.by_name(params[:name])
+      respond_to do |format|
+        format.js
+      end
+    end
+private
   def clinic_params
     params.require(:clinic).permit(:name, :address, :city, :postcode, :country, :phone, :email, :doctor_id, :state, :booking, :fee, :duration, :operation_hour=>{})
   end

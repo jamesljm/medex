@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'card' => 'doctors#card', as: "card", action: "card"
       get 'appointment' => 'doctors#appointment', as: "appointment", action: "appointment"
       get 'patient_profile' => 'doctors#patient_profile', as: "patient_profile", action: "patient_profile"
+      get 'patient_record' => 'doctors#patient_record', as: "patient_record", action: "patient_record"
     end
 
     collection do

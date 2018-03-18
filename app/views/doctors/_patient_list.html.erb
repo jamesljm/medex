@@ -1,0 +1,46 @@
+<div class="row search-area">
+  <div class="col search-name">
+  Search by First Name/Last Name
+  </div>
+
+  <div class="col search-id">
+  Search by ID
+  </div>
+
+</div>
+
+<p></p>
+<p></p>
+<hr>
+<p></p>
+<p></p>
+
+<div class="patient-list-area">
+    <% @patients_list.select('DISTINCT patient_id').each do |p| %> 
+    <div class="media">
+       <% if @patients.find(p.patient_id).profile_picture? %>
+                <%= image_tag @patients.find(p.patient_id).profile_picture.thumb.url, :class => "profile_picture" if @patients.find(p.patient_id).profile_picture? %>
+            <% else %>
+                <img src="//placehold.it/150X150" class="mx-auto img-fluid d-block" alt= :remote_avatar_url>
+            <% end %>
+      <div class = "patient-list-break">
+      </div>
+      <div class="media-body">
+        <table class="table">
+          <tr>
+            <th>Name: </th>
+            <td><%= @patients.find(p.patient_id).first_name +  @patients.find(p.patient_id).last_name%></td>
+          </tr>
+          <tr>
+            <th>ID Number: </th>
+            <td><%= @patients.find(p.patient_id).identification%></td>
+          </tr>
+          <tr>
+            <td><%= link_to "View Patient Profile", card_patient_path(@patients.find(p.patient_id)),remote: true, class:"btn btn-sm btn-info" %></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+      <% end %>
+</div>

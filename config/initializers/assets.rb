@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w(
                                                 records/show.css
                                                 dashboard.css
                                                 navigation.css
+                                                page_index.css
                                                 
                                                 users/profile.js
                                                 entry_form.js 

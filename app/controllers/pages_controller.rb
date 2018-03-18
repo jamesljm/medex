@@ -8,15 +8,15 @@ class PagesController < ApplicationController
 
   def payment
     @client_token = Braintree::ClientToken.generate
-    @booking = PendingBooking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
     @doctor = Doctor.find(@booking.doctor_id)
   end
 
   def checkout
-    @pending_booking = PendingBooking.find(params[:id])
+    @booking = Booking.find(params[:id])
     nonce_from_the_client = params[:payment_method_nonce]
     result = Braintree::Transaction.sale(
-      :amount => @pending_booking.total_price,
+      :amount => @booking.total_price,
       :payment_method_nonce => nonce_from_the_client,
       :options => {
           :submit_for_settlement => true
@@ -29,13 +29,7 @@ class PagesController < ApplicationController
       # redirect_to listing_reservation_path(params[:listing_id], params[:id])
       
       # === shift paid pending booking into booking table
-      @booking = Booking.create(:date => @pending_booking.date,
-                                :start_time => @pending_booking.start_time,
-                                :doctor_id => @pending_booking.doctor_id,
-                                :patient_id => @pending_booking.patient_id,
-                                :bill => true)
-      # @pending_booking.update(bill: true)
-      @pending_booking.destroy
+      @booking.update(bill: true)
       redirect_to patient_path(current_user.id)
     else
       flash[:error] = "Something went wrong"

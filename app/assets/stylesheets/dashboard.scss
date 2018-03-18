@@ -17,14 +17,16 @@ body {
 
 
 #mySidebar {
+    font-size: .8em;
     padding-top: 4em;
-    width: 200px;
+    max-width: 200px;
     -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, .9);
     -moz-box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, .9);
     box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, .9);
 
     .nav-item {
-        padding: 1em 0;
+        padding: .5em 0;
+        // background: blue;
     }
     .nav-link {
         color: white;
@@ -40,7 +42,7 @@ body {
         color: teal !important;
     }
 
-    .nav>li>a:hover {
+    .nav>li a:hover {
         background: none;
         color: teal;
     }

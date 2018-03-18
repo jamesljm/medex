@@ -7,7 +7,8 @@
     <tr>
       <th>Date</th>
       <th>Schedule</th>
-      <th>Patient name</th>
+      <th>Patient Name</th>
+      <th>Booking Fee Status</th>
     </tr>
     </thead>
 
@@ -24,6 +25,9 @@
           <%= link_to t(p.patient.first_name + p.patient.last_name),  card_patient_path(p.patient.id),remote: true %> 
        </td>
         <td>
+           <%= p.bill == 1 ? "Paid" : "Not Paid" %>
+        </td>
+        <td>
           <%= link_to 'Add Record', new_record_path+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-info' %>
           
         </td>
@@ -32,13 +36,15 @@
           <%# to create cards to see existing records %>
             <%= link_to 'View Existing Record', doctor_record_path(:id=> p.record.id, :doctor_id => p.doctor_id)+'?param3='+p.id.to_s, remote:true, class: 'btn btn-sm btn-secondary' %>
           </td>
-        <% end %>
+        
+        <% else %>
         <td> 
           <%= link_to 'Delete', booking_path(p), 
             class: 'btn btn-sm btn-danger',
             method: :Delete, 
             data: {confirm: 'Are you sure?'}  %>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,10 +1,10 @@
 <!-- ======================================================================= -->
-<!-- Patient's Show Partial -->
+<!-- Prescription's Index Partial -->
 <!-- ======================================================================= -->
 
+<div class="div-wrapper container">
+
 <h1>Your Medical Journey here!!</h1>
-<p><%#= link_to 'Create new medical record or encounter', new_record_path %></p>
-<p><%#= link_to 'Back to Patient DashBoard', patient_path(current_user.id) %></p>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -26,6 +26,7 @@
         <%= render  "prescriptions/new" %>
     <%# </div> %>
 
+</div>
 </div>
 
 

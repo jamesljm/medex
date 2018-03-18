@@ -4,51 +4,53 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" id="main-nav">
     <div class="container">
-
-    <%= link_to "MEDEX", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Who We Are</a>
-            </li>
-            <!-- Signed In -->
-            <% if signed_in? %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        You
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <!-- TODO: -->
-                        <% if current_user.type == "Patient" %>
-                            <%= link_to "Profile", patient_path(current_user), class: 'dropdown-item' %>
-                            <%= link_to "Dashboard", patient_path(current_user), class: 'dropdown-item' %>
-                            <div class="dropdown-divider"></div>
-                            <%= link_to "Sign Out", sign_out_path, method: :delete, class: 'dropdown-item' %>
-                        <% end %>
-                        <% if current_user.type == "Doctor" %>
-                            <%= link_to "Profile", doctor_path(current_user), class: 'dropdown-item' %>
-                            <%= link_to "Dashboard", doctor_path(current_user), class: 'dropdown-item' %>
-                            <div class="dropdown-divider"></div>
-                            <%= link_to "Sign Out", sign_out_path, method: :delete, class: 'dropdown-item' %>
-                        <% end %>
-                    </div>
+        <%= link_to "MEDEX", root_path, class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Who We Are</a>
+                </li> -->
+                <!-- Signed In -->
+                <% if signed_in? %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <strong>Hi, </strong>
+                            <% if current_user.type == 'Doctor' %>
+                                <%= current_user.gender == 'male' ? 'Dr.' : 'Drs.' %>
+                                <%= current_user.name %>
+                            <% else %>
+                                <%= current_user.gender == 'male' ? 'Mr.' : 'Mrs.' %>
+                                <%= current_user.name %>
+                            <% end %>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <% if current_user.type == "Patient" %>
+                                <%= link_to "Profile", patient_path(current_user), class: 'dropdown-item' %>
+                                <div class="dropdown-divider"></div>
+                                <%= link_to "Sign Out", sign_out_path, method: :delete, class: 'dropdown-item' %>
+                            <% end %>
+                            <% if current_user.type == "Doctor" %>
+                                <%= link_to "Profile", doctor_path(current_user), class: 'dropdown-item' %>
+                                <div class="dropdown-divider"></div>
+                                <%= link_to "Sign Out", sign_out_path, method: :delete, class: 'dropdown-item' %>
+                            <% end %>
+                        </div>
+                    </li>
+                <!-- Not Sign In -->
+                <% else %>
+                <li class="nav-item">
+                    <%= link_to 'Sign In', sign_in_path, class: 'nav-link' %>
                 </li>
-            <!-- Not Sign In -->
-            <% else %>
-            <li class="nav-item">
-                <%= link_to 'Sign In', sign_in_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-                <%= link_to 'Sign Up', sign_up_path, class: 'nav-link' %>
-            </li>
-            <% end %>
-        </ul>
-    </div>
-    </div>
-    
-</nav>
+                <li class="nav-item">
+                    <%= link_to 'Sign Up', sign_up_path, class: 'nav-link' %>
+                </li>
+                <% end %>
+            </ul>
+        </div> <!-- /right-nav-bar -->
+    </div> <!-- /container -->
+</nav> <!-- /#main-nav -->

@@ -2,9 +2,6 @@
 <!-- Dashboard Layout -->
 <!-- ======================================================================= -->
 
-<p><%#= link_to 'View Your Medical Records', records_path %></p>
-<p><%#= link_to 'Add Your Past Medical Records', new_record_path %></p>
-
 <!--stylesheet-->
 <%= provide :head do %>
     <%= stylesheet_link_tag "records/show", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -29,61 +26,37 @@
 
 <%= provide :js do %>
 <script>
-    function w3_open() {
-        document.getElementById("main").style.marginLeft = "180px";
-        document.getElementById("mySidebar").style.width = "180px";
-        document.getElementById("mySidebar").style.display = "block";
-        document.getElementById("openNav").style.display = 'none';
-    }
-    function w3_close() {
-        document.getElementById("main").style.marginLeft = "0";
-        document.getElementById("mySidebar").style.display = "none";
-        document.getElementById("openNav").style.display = "inline-block";
-    }
-    function myAccFunc() {
-        var x = document.getElementById("demoAcc");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-            x.previousElementSibling.className += " w3-green";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
-            x.previousElementSibling.className =
-                x.previousElementSibling.className.replace(" w3-green", "");
-        }
-    }
     $('#mySidebar .nav-link').click((e)=>{
         $(e).addClass('active');
     });
 </script>
 <% end %>
 
-<%= render  "layouts/navigation" %>
+<!-- ======================================================================= -->
 
-<!-- Side navbar -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="w3-sidebar w3-card-4 w3-animate-left bg-dark sidebar-dark" id="mySidebar">
-            <div>
-                <button onclick="w3_close()" class="w3-button w3-right w3-padding-16" title="close Sidebar">&times;</button>
-            </div>
-            <ul class="nav flex-column">
+<div id="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
                 <%= yield :sidebar %>
             </ul>
-        </div>
-        
-        <div id="main" style="margin-left:200px">
-            <div class="w3-container w3-display-container">
-                <span title="open Sidebar" style="position: fixed; display:none; margin-top: 3em;" id="openNav" class="w3-button w3-transparent w3-display-topleft w3-xlarge"
-                    onclick="w3_open()">&#9776;</span>
+        </nav>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <!-- Hamburger Menu Toggle -->
+                <a href="#menu-toggle" id="menu-toggle" class="hamburger" onclick="toggleHamburger(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </a>
+                <main role="main" id='dashboard-content'>
+                    <!-- Dashboard content goes here -->
+                </main>
             </div>
-            <main role="main" id='dashboard-content'>
-                <span title="open Sidebar" style="display:none" id="openNav" class="w3-button w3-transparent w3-display-topleft w3-xlarge"
-                onclick="w3_open()">&#9776;</span>
-                <!-- Dashboard content goes here -->
-            </main>
-        </div>
-    </div>
-</div>
+        </div> <!-- /#page-content-wrapper -->
+    </div> <!-- /#wrapper -->
+
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -97,6 +70,16 @@
 <!-- Icons -->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
-    feather.replace()
+    // Sidebar Navigation Icons(Feather)
+    feather.replace();
+    $("#wrapper").addClass("toggled");
+    // Menu Toggle Script
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    function toggleHamburger(x) {
+        x.classList.toggle("change");
+    }
 </script>
 

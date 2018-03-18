@@ -1,16 +1,5 @@
 <% content_for :head do %>
-<!-- TODO: -->
-  <style>
-    .carousel-item {
-      height: 100vh;
-      min-height: 300px;
-      background: no-repeat center center scroll;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-  </style>
+  <%= stylesheet_link_tag "page_index", :media => "all", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
 <% content_for :header do %>
@@ -57,18 +46,14 @@
 <!-- Body Content -->
 <section class="py-5">
   <div class="container">
-    <h1>Full Slider by Start Bootstrap</h1>
-    <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template
-      are contained within the
-      <code>full-slider.css</code> file.
-    </p>
+
   </div>
 </section>
 
 <!-- Footer -->
 <footer class="py-5 bg-dark">
   <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    <p class="m-0 text-center text-white">Medex &copy; Your Website 2018</p>
   </div>
 
   <h4 class="text-white">Subscribe Us Now!</h4>

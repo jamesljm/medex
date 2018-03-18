@@ -9,21 +9,27 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @bookings = Booking.all
+    @pending_bookings = PendingBooking.all
     respond_to do |format|
       format.js
     end
   end
 
+  # when doctor approve booking
   def create
     @@param2 = params[:param2]
     @pending_booking = PendingBooking.find(@@param2)
-    @booking = Booking.new(:date=>@pending_booking.date, :start_time=>@pending_booking.start_time, :doctor_id=>@pending_booking.doctor_id, :patient_id=>@pending_booking.patient_id) 
-    
+    @booking = Booking.new(:total_price => @pending_booking.total_price,
+                            :date=>@pending_booking.date,
+                            :start_time=>@pending_booking.start_time,
+                            :doctor_id=>@pending_booking.doctor_id,
+                            :patient_id=>@pending_booking.patient_id,
+                            :bill => @pending_booking.bill) 
     @bookings_doc = Booking.where('doctor_id=' + current_user.id.to_s)
     
     if @booking.save
       @pending_booking.destroy
-      
     else
       flash[:notice] = "Failed to confirm..." 
     end

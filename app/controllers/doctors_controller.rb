@@ -98,7 +98,7 @@ class DoctorsController < Clearance::UsersController
   end
 
   def patient_profile
-    @patients = D
+    @patients = Patient.
   end
 
 private

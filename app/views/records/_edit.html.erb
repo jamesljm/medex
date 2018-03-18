@@ -1,9 +1,10 @@
+<!-- ======================================================================= -->
+<!-- Patient's Record Edit Page -->
+<!-- ======================================================================= -->
+
 <h1>Patient / Encounter Record</h1>
 
-
-
 <%= form_for @record, remote: true do |f| %>
-
 
     <div>Logistics</div>
     <div class="form-group">
@@ -80,7 +81,7 @@
     <div class="form-group">
         <div><%= f.label :referral_note %></div>
         <div><%= f.text_field :referral_note %></div>
-    </div>     
+    </div>
     
     <div><%= f.submit "Save Record" %></div>
 

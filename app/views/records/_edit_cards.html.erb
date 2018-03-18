@@ -23,8 +23,17 @@
                                     <div class="btn-group">
                                         <%= link_to "add prescription", new_record_prescription_path(record.id), remote: true, class: 'btn btn-sm btn-outline-secondary' %>
                                     </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">    
+                                    <div class="btn-group">
+                                        <%= link_to "generate authorization code", authorization_record_path(:id => record.id), remote: true, class: 'btn btn-sm btn-outline-info' %>
+                                    </div>
                                     <small class="text-muted"><%= record.record_date %></small>
                                 </div>
+                            </div>
+                            <div class="card-footer bg-transparent" id="card-auth-<%= record.id %>">
+                                <strong>Generated Code : </strong>
+                                <span><%= record.authorization_code if !record.authorization_code.nil? %></span>
                             </div>
                         </div>
                     </div>

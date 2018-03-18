@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Record's Name</th>
+            <th scope="col">Patient's ID</th>
+            <th scope="col">Patient's Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @auth_records.nil? %>
+            <p>No record found.</p>
+        <% else %>
+            <% @auth_records.each_with_index do |record, i| %>
+                <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= link_to record.title, authorization_doctor_path(auth_record: record.id), remote: true, id: 'record-btn', class: 'nav-link' %></td>
+                    <td><%= Patient.find(record.patient_id).id %></td>
+                    <td><%= Patient.find(record.patient_id).name %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+<!-- ======================================================================= -->
+<!-- Doctor's Authorization Partial -->
+<!-- ======================================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js" integrity="sha256-Ld9+920D/5mOtGgV8hjGd4hX5fRTl0i3kjA2IDwvrqc="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha256-uKEg9s9/RiqVVOIWQ8vq0IIqdJTdnxDMok9XhiqnApU="
+    crossorigin="anonymous" />
+<style>
+    .bootstrap-tagsinput {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        display: block;
+        padding: 4px 6px;
+        color: #555;
+        vertical-align: middle;
+        border-radius: 4px;
+        max-width: 100%;
+        line-height: 22px;
+        cursor: text;
+    }
+
+    .bootstrap-tagsinput input {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        background-color: transparent;
+        padding: 0 6px;
+        margin: 0;
+        width: auto;
+        max-width: inherit;
+    }
+</style>
+
+<div id="auth-search">
+    <%= form_tag authorization_doctor_path, method: :get, remote: true do |f| %>
+        <%= label_tag :auth_record_key, "Enter Authentication Key : " %>
+        <%= text_field_tag(:auth_record_key, nil, 'data-role'=>'tagsinput', class: "form-control") %>
+        <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+    <% end %>
+</div>
+
+<section id="auth-records">
+    <%= render  "doctors/authorization_records" %>
+</section>
+
+<section id="auth-show-record">
+</section>

@@ -38,7 +38,6 @@ class PendingBookingsController < ApplicationController
 
   def destroy
     @pending_booking = PendingBooking.find(params[:id])
-
     @pending_booking.destroy
     respond_to do |format|
       format.js

@@ -1,0 +1,21 @@
+<!-- ======================================================================= -->
+<!-- Clinic's Index Partial(Patient's) -->
+<!-- ======================================================================= -->
+
+<%= form_tag(search_doctor_clinics_path(1), method: 'get', remote: true) do |f| %>
+  <%= label_tag :name, "Search Clinics : " %><br>
+  <%= text_field_tag :name, params[:name], placeholder: "Search Clinics" %>
+  <button type="submit">Search Clinics</button>
+<% end %>
+
+<h2>Choose Your Clinic</h2>
+
+<section class="album py-5 bg-light">
+  <div class="container">
+    <div class="row" id="clinic-search">
+
+      <%= render  "clinics/search" %>
+
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+</section> <!-- /album -->

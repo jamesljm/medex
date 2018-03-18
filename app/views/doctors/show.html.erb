@@ -1,4 +1,3 @@
-
 <!-- ======================================================================= -->
 <!-- Doctors's show -->
 <!-- ======================================================================= -->
@@ -20,7 +19,7 @@
 <% content_for :sidebar do %>
     <li class="nav-item">
         <%= link_to edit_doctor_path(current_user), remote: true, id: 'profile-btn', class: 'nav-link active' do %>
-            <span data-feather="users"></span>
+            <span data-feather="user"></span>
             Profile
             <span class="sr-only">(current)</span>
         <% end %>

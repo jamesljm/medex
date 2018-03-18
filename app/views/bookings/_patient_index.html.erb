@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-12 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#booking-pending" data-toggle="tab" class="nav-link active tab-pending" >Pending</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#booking-confirmed" data-toggle="tab" class="nav-link tab-confirm">Upcoming</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#booking-past" data-toggle="tab" class="nav-link tab-past">Past</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <!-- Pending -->
+                <div class="tab-pane active tab-pending" id="booking-pending">
+                    <div class="tab-header">
+                      <h5>Appointments Pending Approval</h5>
+                    </div>
+                    <%= render "bookings/patient_pending" %>
+                </div>
+
+                <!-- Confirmed -->
+                <div class="tab-pane tab-confirm" id="booking-confirmed">
+                    <div class="tab-header">
+                        <h5>Confirmed and Upcoming Appointments</h5>
+                    </div>
+                    <%= render "bookings/patient_confirmed" %>
+                </div>
+
+                <!-- past -->
+                <div class="tab-pane tab-past" id="booking-past">
+                    <div class="tab-header">
+                        <h5>Past Appointments</h5>
+                    </div>
+                    <%= render "bookings/patient_past" %>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

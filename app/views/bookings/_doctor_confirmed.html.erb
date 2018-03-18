@@ -22,8 +22,8 @@
            <%= p.start_time %> 
         </td>
         <td>
-           <%= p.patient.first_name %> <%= p.patient.last_name %> 
-        </td>
+          <%= link_to t(p.patient.first_name + p.patient.last_name),  card_patient_path(p.patient.id),remote: true %> 
+       </td>
         <td>
            <%= p.bill == 1 ? "Paid" : "Not Paid" %>
         </td>

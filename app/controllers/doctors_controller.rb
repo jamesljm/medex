@@ -1,5 +1,6 @@
 class DoctorsController < Clearance::UsersController
   before_action :require_login, except: :create
+  @@param4 = 0
 
   def appointment
     @pending_bookings = PendingBooking.where('doctor_id='+current_user.id.to_s)
@@ -69,6 +70,10 @@ class DoctorsController < Clearance::UsersController
 
   def show
     @doctor = Doctor.find(params[:id])
+    if current_user.type == "Patient"
+      flash[:error] = "Invalid Token."
+      redirect_to root_path
+    end
   end
 
   def create
@@ -98,7 +103,12 @@ class DoctorsController < Clearance::UsersController
   end
 
   def patient_profile
-    @patients = D
+    @patients_list = Booking.where("doctor_id=" + params[:id].to_s) 
+    @patients = Patient.all   
+  end
+
+  def patient_record
+    @patients_list = Booking.where("doctor_id=" + params[:id].to_s)
   end
 
   def authorization

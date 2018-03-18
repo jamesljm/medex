@@ -3,6 +3,12 @@ class PatientsController < Clearance::UsersController
   before_action :find_patient_with_id, only: [:edit, :update, :show, :destory]
 
   def index
+    # @patients = []
+    # @bookings = Booking.where(:doctor_id => current_user.id)
+    # @bookings.each do |booking|
+    #   @patient = Patient.where(:booking_id => booking.id)
+    #   @patients << @patient
+    # end
   end
 
   def edit
@@ -26,6 +32,11 @@ class PatientsController < Clearance::UsersController
 
   def show
     @patient = current_user
+    @user = current_user
+    if current_user.type == 'Doctor'
+      flash[:error] = "Invalid Token..."
+      redirect_to root_path
+    end
   end
 
   def create

@@ -1,41 +1,20 @@
 <!-- ======================================================================= -->
-<!-- Clinic's Index Partial -->
+<!-- Clinic's Index Partial(Patient's) -->
 <!-- ======================================================================= -->
+
+<%= form_tag(search_doctor_clinics_path(1), method: 'get', remote: true) do |f| %>
+  <%= label_tag :name, "Search Clinics : " %><br>
+  <%= text_field_tag :name, params[:name], placeholder: "Search Clinics" %>
+  <button type="submit">Search Clinics</button>
+<% end %>
 
 <h2>Choose Your Clinic</h2>
 
 <section class="album py-5 bg-light">
   <div class="container">
-    <div class="row">
+    <div class="row" id="clinic-search">
 
-      <% @clinics.each do |clinic| %>
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
-            <div class="card-body">
-              <h6>Clinic's Info</h6>
-              <ul class="card-desc">
-                <li><strong>Name : </strong><%= clinic.name %></li>
-                <li><strong>Address : </strong><%= clinic.address %></li>
-                <li><strong>City : </strong><%= clinic.city %></li>
-                <li><strong>Postcode : </strong><%= clinic.postcode %></li>
-                <li><strong>Country : </strong><%= clinic.country %></li>
-                <li><strong>State : </strong><%= clinic.state %></li>
-                <li><strong>Phone : </strong><%= clinic.phone %></li>
-                <li><strong>Email : </strong><%= clinic.email %></li>
-                <li><strong>Fee : </strong><%= clinic.fee %></li>
-                <li><strong>Bookable : </strong><%= clinic.booking %></li>
-              </ul>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= link_to "Book This", new_pending_booking_path(doctor_id: @doctor.id, clinic_id: clinic.id), remote: true, id: 'pending-booking-btn', class: 'btn btn-primary' %>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render  "clinics/search" %>
 
     </div> <!-- /row -->
   </div> <!-- /container -->

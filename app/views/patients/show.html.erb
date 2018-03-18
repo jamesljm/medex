@@ -23,19 +23,26 @@
             <span class="sr-only">(current)</span>
         <% end %>
     </li>
-    <li class="nav-item">
-        <!-- doctors/index -->
-        <%= link_to doctors_path, remote: true, id: 'search-doctors-btn', class: 'nav-link' do %>
-            <span data-feather="search"></span>
-            Search Doctors
-        <% end %>
+    <li>
+        <a class="w3-block w3-left-align" onclick="myAccFunc()" style="cursor: pointer"><span data-feather="search"></span>Search</a>
     </li>
-    <li class="nav-item">
-        <!-- doctors/index -->
-        <%= link_to doctor_clinics_path(1), remote: true, id: 'search-clinics-btn', class: 'nav-link' do %>
-            <span data-feather="home"></span>
-            Search Clinics
-            <% end %>
+    <li>
+        <ul id="demoAcc" class="w3-hide">
+            <li class="nav-item">
+                <!-- doctors/index -->
+                <%= link_to doctors_path, remote: true, id: 'search-doctors-btn', class: 'nav-link' do %>
+                    <span data-feather="search"></span>
+                    Search Doctors
+                <% end %>
+            </li>
+            <li class="nav-item">
+                <!-- doctors/index -->
+                <%= link_to doctor_clinics_path(1), remote: true, id: 'search-clinics-btn', class: 'nav-link' do %>
+                    <span data-feather="home"></span>
+                    Search Clinics
+                <% end %>
+            </li>
+        </ul>
     </li>
     <li class="nav-item">
         <!-- bookings/show -->

@@ -17,5 +17,8 @@ class Clinic < ApplicationRecord
   #   end
   # end
 
+  scope :by_name, -> (name){ where("name ILIKE ?", "%#{name}%") }
+  
+
 end
 

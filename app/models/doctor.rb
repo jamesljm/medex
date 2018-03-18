@@ -11,10 +11,6 @@ class Doctor < User
     validates :license, presence: true
   end
 
-  def name
-    "#{self.first_name} #{self.last_name}"
-  end
-
   def self.search(params)
     doctors = Doctor.where("lower(first_name) LIKE ? or lower(last_name) LIKE ?", "%#{params.downcase}%", "%#{params.downcase}%")
     doctors

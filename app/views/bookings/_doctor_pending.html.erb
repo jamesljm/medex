@@ -26,12 +26,12 @@
              <%= p.start_time %> 
           </td>
           <td>
-            <%= link_to t(p.patient.first_name + p.patient.last_name),  card_patient_path(p.patient.id),remote: true %>
+            <%= link_to t(p.patient.name),  card_patient_path(p.patient.id),remote: true %>
           </td>
           <td>
-              <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, remote:true, method: :post, class: 'btn btn-sm btn-info' %> 
+            <!-- shifting from pending booking to booking -->
+            <%= link_to 'Accept Appointment', bookings_path+"/?param2="+p.id.to_s, remote:true, method: :post, class: 'btn btn-sm btn-info' %> 
           </td>
-
           <td> 
             <%= link_to 'Reject Appointments', pending_booking_path(p), 
               remote:true,

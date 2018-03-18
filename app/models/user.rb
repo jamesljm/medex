@@ -19,4 +19,8 @@ class User < ApplicationRecord
     x = self.authentications.find_by(provider: 'facebook')
     return x.token unless x.nil?
   end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 end

@@ -2,32 +2,66 @@
 <!-- Doctor's Search Partial -->
 <!-- ======================================================================= -->
 
-<p><%= link_to 'View all Doctor', doctors_path, remote: true %></p>
+<style>
+  .card-profile {
+    margin: 0 1em;
+    background-color: #e6e5e1;
+    border-radius: 0;
+    border: 0;
+    -webkit-box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+            box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+  }
+  .card-profile .card-img-top {
+    border-radius: 0;
+  }
+  .card-profile .card-img-profile {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-top: -95px;
+    margin-bottom: 35px;
+    border: 5px solid #e6e5e1;
+  }
+  .card-profile .card-title {
+    margin-bottom: 50px;
+  }
+  .card-profile .card-title small {
+    display: block;
+    font-size: .6em;
+    margin: 1em 0;
+  }
+  .card-profile .card-links {
+    margin-bottom: 25px;
+    list-style: none;
+  }
+</style>
+
+<p><%#= link_to 'View all Doctor', doctors_path, remote: true %></p>
 
 <%= paginate @doctors, remote:true %>
 
-<% @doctors.each do |doctor| %>
-  <div class="media">
-    <img class="align-self-center mr-3" src="http://via.placeholder.com/150x150" alt="Generic placeholder image">
-    <div class="media-body">
-      <p class=mt-0>
-        <%= doctor.first_name %>
-        <%= doctor.last_name %>
-      </p>
-      <p class=mb-0>
-        <%= doctor.specialist %>
-      </p>
-      <!-- <p class=mb-0><%#= doctor.clinic_name %></p> -->
-      <p>
-        <%= link_to card_doctor_path(doctor.id), remote: true, id: 'profile-btn', class: 'btn btn-primary' do %>
-          <span data-feather="users"></span>
-          Profile
-          <span class="sr-only">(current)</span>
-        <% end %>
-        <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-primary' %>
-      </p>
-      </p>
-
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @doctors.each_with_index do |doctor, i| %>
+        <div class='card mb-4 box-shadow card-profile text-center'>
+          <img alt='' class='card-img-top' src='https://unsplash.it/340/160?image=<%= i + 10 %>'>
+          <div class='card-block'>
+            <img alt='' class='card-img-profile' src='https://placeimg.com/150/150/people/<%= i + 1 %>'>
+            <h4 class='card-title'>
+              <%= doctor.name %>
+              <small><%= doctor.specialist %></small>
+              <div>
+                <%= link_to card_doctor_path(doctor.id), remote: true, id: 'profile-btn', class: 'btn btn-light' do %>
+                  <span data-feather="users"></span>
+                  Profile
+                  <span class="sr-only">(current)</span>
+                <% end %>
+                <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-light' %>
+              </div>
+            </h4>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>

@@ -2,15 +2,15 @@
 <!-- Clinic's Index Partial(Patient's) -->
 <!-- ======================================================================= -->
 
-<%= form_tag(search_doctor_clinics_path(1), method: 'get', remote: true) do |f| %>
+<%= form_tag(search_doctor_clinics_path(1), method: 'get', remote: true, class: 'div-wrapper') do |f| %>
   <%= label_tag :name, "Search Clinics : " %><br>
   <%= text_field_tag :name, params[:name], placeholder: "Search Clinics" %>
-  <button type="submit">Search Clinics</button>
+  <button type="submit" class="btn btn-light">Search Clinics</button>
 <% end %>
 
-<h2>Choose Your Clinic</h2>
-
-<section class="album py-5 bg-light">
+<section class="album py-15 bg-light div-wrapper">
+  <h2>Choose Your Clinic</h2>
+  <hr>
   <div class="container">
     <div class="row" id="clinic-search">
 

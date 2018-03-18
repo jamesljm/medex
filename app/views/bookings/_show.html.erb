@@ -2,82 +2,89 @@
 <!-- Booking's Show partial -->
 <!-- ======================================================================= -->
 
-<p>Appointments Confirmed</p>
-<table border>
-    <thead>
-    <tr>
-        <th>Date</th>
-        <th>Schedule</th>
-        <th>Patient Name</th>
-        <th>Payment Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @bookings.each do |booking| %>
+<div class="div-wrapper container">
+    <h3>Appointments Confirmed</h3>
+    <table class="table table-hover">
+        <thead>
         <tr>
-            <td>
-                <%= booking.date %>
-            </td>
-            <td>
-                <%= booking.start_time %>
-            </td>
-            <td>
-                <%= booking.doctor.first_name %>
-                <%= booking.doctor.last_name %>
-            </td>
-            <td>
-                <%= link_to 'Delete', booking_path(booking), remote: true,
-                    class: 'btn btn-sm btn-danger',
-                    method: :Delete, 
-                    data: {confirm: 'Are you sure?'},
-                    remote: true %>
-            </td>
-            <td>
-                <% if booking.bill %>
-                    <button class="btn btn-success" disabled>Paid</button>
-                <% else %>
-                    <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-primary" %>
-                <% end %>
-            </td>
+            <th>Date</th>
+            <th>Schedule</th>
+            <th>Patient Name</th>
+            <th>Payment Status</th>
         </tr>
+        </thead>
+        <tbody>
+        <% if @bookings.empty? %>
+            <tr><td>No booking yet</tr></td>
         <% end %>
-    </tbody>
-</table>
-<br>
-<!-- ======================================================================= -->
-<!-- Pending Bookings -->
-<!-- ======================================================================= -->
-<p>Appointments Pending</p>
-<table border>
-    <thead>
-    <tr>
-        <th>Date</th>
-        <th>Schedule</th>
-        <th>Doctor name</th>
-        <th>Booking Status</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @pending_bookings.each do |p| %>
+        <% @bookings.each do |booking| %>
+            <tr>
+                <td>
+                    <%= booking.date %>
+                </td>
+                <td>
+                    <%= booking.start_time %>
+                </td>
+                <td>
+                    <%= booking.doctor.first_name %>
+                    <%= booking.doctor.last_name %>
+                </td>
+                <td>
+                    <%= link_to 'Delete', booking_path(booking), remote: true,
+                        class: 'btn btn-sm btn-danger',
+                        method: :Delete, 
+                        data: {confirm: 'Are you sure?'},
+                        remote: true %>
+                </td>
+                <td>
+                    <% if booking.bill %>
+                        <button class="btn btn-success" disabled>Paid</button>
+                    <% else %>
+                        <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-primary" %>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <!-- ======================================================================= -->
+    <!-- Pending Bookings -->
+    <!-- ======================================================================= -->
+    <h3>Appointments Pending</h3>
+    <table class="table table-hover">
+        <thead>
         <tr>
-        <td>
-            <%= p.date %>
-        </td>
-        <td>
-            <%= p.start_time %>
-        </td>
-        <td>
-            <%= link_to t(p.doctor.first_name + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
-        </td>
-        <td>
-            <button class="btn btn-secondary" disabled>Pending</button>
-        </td>
-        <td>
-        <%= link_to 'Cancel Appointments', pending_booking_path(p), class: 'btn btn-sm btn-danger',method: :Delete, data: {confirm: 'Are you sure?'}, remote: true  %>
-        </td>
+            <th>Date</th>
+            <th>Schedule</th>
+            <th>Doctor name</th>
+            <th>Booking Status</th>
         </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
 
+        <tbody>
+        <% if @pending_bookings.empty? %>
+            <tr><td>No booking yet</tr></td>
+        <% end %>
+        <% @pending_bookings.each do |p| %>
+            <tr>
+            <td>
+                <%= p.date %>
+            </td>
+            <td>
+                <%= p.start_time %>
+            </td>
+            <td>
+                <%= link_to t(p.doctor.first_name + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
+            </td>
+            <td>
+                <button class="btn btn-secondary" disabled>Pending</button>
+            </td>
+            <td>
+            <%= link_to 'Cancel Appointments', pending_booking_path(p), class: 'btn btn-sm btn-danger',method: :Delete, data: {confirm: 'Are you sure?'}, remote: true  %>
+            </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

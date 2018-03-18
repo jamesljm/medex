@@ -43,6 +43,12 @@
             Patients
         <% end %>
     </li>
+    <li class="nav-item">
+        <%= link_to authorization_doctor_path, remote: true, id: 'record-btn', class: 'nav-link' do %>
+            <span data-feather="copy"></span>
+            View Records
+        <% end %>
+    </li>
 <% end %>
 
 <%= render "layouts/dashboard" %>

@@ -1,0 +1,6 @@
+// =============================================================================
+// Record's Edit Partial
+// =============================================================================
+
+$('#card-auth-<%= @record.id %>').empty().append(`<strong>Generated Code : </strong><span><%= @record.authorization_code if !@record.authorization_code.nil? %></span>`);
+

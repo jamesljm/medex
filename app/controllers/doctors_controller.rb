@@ -111,6 +111,24 @@ class DoctorsController < Clearance::UsersController
     @patients_list = Booking.where("doctor_id=" + params[:id].to_s)
   end
 
+  def authorization
+    if params[:auth_record_key].present?
+      @auth_records = []
+      @auth_params = params[:auth_record_key]
+      @keys = Array.new(@auth_params.split(','))
+
+      @keys.each do |key|
+        @auth_records << Record.find_by(authorization_code: key) if Record.find_by(authorization_code: key) != nil
+      end
+    end
+
+    @record = Record.find(params[:auth_record]) if params[:auth_record].present?
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
   def doctor_params
   	params.require(:doctor).permit(:first_name, :last_name, :password, :email, :license, :verify, :phone, :birthdate, :specialist, :experienced_years, :education, :qualification, :summary, :profile_picture, :remote_profile_picture_url)

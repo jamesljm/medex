@@ -1,0 +1,11 @@
+// =============================================================================
+// Doctor's Authorization AJAX
+// =============================================================================
+
+<% if params[:auth_record].present? %>
+    $('#auth-show-record').empty().append('<%= j render "doctors/selected_record" %>');
+<% elsif params[:auth_record_key].nil? %>
+    $('#dashboard-content').empty().append('<%= j render "doctors/authorization" %>');
+<% else %>
+    $('#auth-records').empty().append('<%= j render "doctors/authorization_records" %>');
+<% end %>

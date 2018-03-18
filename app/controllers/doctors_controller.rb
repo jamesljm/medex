@@ -69,6 +69,10 @@ class DoctorsController < Clearance::UsersController
 
   def show
     @doctor = Doctor.find(params[:id])
+    if current_user.type == "Patient"
+      flash[:error] = "Invalid Token."
+      redirect_to root_path
+    end
   end
 
   def create

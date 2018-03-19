@@ -28,7 +28,7 @@
             <%= p.start_time %>
         </td>
         <td>
-            <%= link_to t(p.doctor.first_name + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
+            <%= link_to t(p.doctor.first_name + " " + p.doctor.last_name),  card_doctor_path(p.doctor.id),remote: true %>
         </td>
         <td>
             <button class="btn btn-sm btn-secondary" disabled>Pending Approval</button>

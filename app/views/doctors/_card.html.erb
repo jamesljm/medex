@@ -14,17 +14,18 @@
       <div class="card-highlights">
         <div class="card-contact card">
           <h3 class="card-title"> <%= @doctor.first_name + " " + @doctor.last_name %> </h3>
-          <h4 class="card-subtitle mb-2 text-muted"> <%= @doctor.specialist %> </h4>
+          <h4 class="card-subtitle mb-2 text-muted"> Speicialist:<%= @doctor.specialist %> </h4>
           <%= mail_to @doctor.email %>
           <br>
+          <p>Qualification : <%= @doctor.qualifications %></p>
           <hr>
         </div>
         <div class="card-actionable">
-          <div class="like ">
-            <%= link_to 'Like', likes_path+'?param12='+@doctor.id.to_s, method: :POST, remote: true %>
+          <div class="like">
+            <%= link_to 'Like', likes_path+'?param12='+@doctor.id.to_s, method: :POST, remote: true, class:'btn btn-primary' %>
           </div>
           <div class="unlike">
-            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true %>
+            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-warning' %>
           </div>
         </div>
 
@@ -37,20 +38,23 @@
         Info
       </div>
       <div class="card-clinic">
-        Clinic
+        Clinic : <%= @doctor.clinics.count %>
       </div>
     </div>
     
     <div class="card-overview">
       <div class="card-detail">
         <div class="card-general-info">
-          
+          <p>Experience Year : <%= @doctor.experienced_years %></p>
         </div>
         <div class="card-clinic-info">
+          <p>Education : <%= @doctor.education %></p>
         </div>
       </div>
 
       <div class="booking">
+        <p>Contact Number: <%= @doctor.phone %></p>
+          <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(@doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-info' %>
       </div>
 
     </div>

@@ -2,4 +2,13 @@
 // Records's New AJAX
 // =============================================================================
 
+<% if current_user.type =="Patient" %>
+
 $('#dashboard-content').empty().append('<%= j render "records/new" %>');
+
+<% else %>
+
+$('#dashboard-content').empty().append('<%= j render "records/new_doc" %>');
+
+<% end %>
+

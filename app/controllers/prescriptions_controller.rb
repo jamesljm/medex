@@ -29,7 +29,11 @@ class PrescriptionsController < ApplicationController
   def create
     @user = current_user
     @prescription = Prescription.new(prescription_params)
+    if current_user.type=="Patient"
     @prescription.record_id = params[:record_id]
+    else
+      @prescription.record_id = @@params3
+    end
     if @prescription.save
       redirect_to patient_path(@user) 
     else 

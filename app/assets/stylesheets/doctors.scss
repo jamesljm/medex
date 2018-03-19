@@ -8,9 +8,12 @@
 
 //Doctors Card Area//
 
+.card {
+  border: 0px;
+}
+
 .card-area {                    /*contains entire card area*/
   margin-top: 100px;
-  border: 2px solid black;
   width: 100%;
 }
 
@@ -28,18 +31,15 @@
 }
 
 .card-social{                   /*image and like area*/
-  border:2px solid red;
   width: 30%;
   height: 100%;
 }
   
 .card-highlights{               /*other information area*/
-  border:2px solid red;
   width:70%;
 }
 
 .card-image{                    /*image*/
-  border:2px solid blue;
   width: 200px;
   height: 200px;
   margin-top:5%;
@@ -48,14 +48,12 @@
 }
 
 .card-likes{                    /*likes*/
-  border: 2px solid blue;
   margin-top: 5%;
   font: green;
   text-align: center;
 }
 
 .card-contact{                  /*name, specialisation and email*/
-  border: 2px solid blue;
   width: 100%;
   height: 80%;
   padding-top: 2%;
@@ -64,14 +62,12 @@
 }
 
 .card-actionable{               /*like & unlike area */
-  border:2px solid red;
   width: 100%;
   height: 20%;
   display: inline-flex;
 }
 
 .like, .unlike{                 /*like & unlike button*/
-  border: 2px solid green;
   width: 50%;
   display: flex;
   justify-content: center;

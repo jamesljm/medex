@@ -4,4 +4,7 @@ class Record < ApplicationRecord
   has_many    :authorizations
   has_many     :prescriptions, dependent: :destroy
   has_many     :lab_tests
+
+  accepts_nested_attributes_for :prescriptions
+
 end

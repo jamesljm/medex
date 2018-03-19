@@ -4,4 +4,6 @@ class Record < ApplicationRecord
   has_many    :authorizations
   has_many     :prescriptions, dependent: :destroy
   has_many     :lab_tests
+
+  scope :by_title, -> (title){ where("title ILIKE ?", "%#{title}%") }
 end

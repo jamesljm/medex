@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class RecordsController < ApplicationController
   
   before_action :require_login, only: [:create, :edit, :update, :destroy]
@@ -10,9 +12,8 @@ class RecordsController < ApplicationController
     if @user.type == "Doctor"
       @@param3 = params[:param3]
       @booking = Booking.find(@@param3)
-
     end
-
+    
     respond_to do |format|
       format.js
     end
@@ -21,13 +22,12 @@ class RecordsController < ApplicationController
   def create
     @user=current_user
     if @user.type == "Doctor"
-            
       @booking = Booking.find(@@param3)
       @patient = Patient.find(@booking.patient_id)
       @record = @patient.records.new(record_params)
       @record.booking_id = @booking.id
       @record.patient_id = @patient.id
-    else  
+    else
       @record = current_user.records.new(record_params)
       @record.patient_id = current_user.id
     end
@@ -44,23 +44,40 @@ class RecordsController < ApplicationController
   end
   
   def edit
-
+    
   end
 
   def update
+    # if params[:record][:doctors_id].present?
+    #   @record.doctors_id.clear
+    #   @doctors_id = Array.new(params[:record][:doctors_id].split(','))
+    #   @doctors_id.each do |id|
+    #     @record.doctors_id << id.to_i
+    #   end
+    # end
+    # @record.save
     @record = @record.update(record_params)
+
+    @user = current_user
+    @records = current_user.records
+    @record = Record.new
+    
+    # @record.doctors_id << params[]
     # redirect_to record_path, notice: "Your record has been updated."
     respond_to do |format|
       format.js
     end
   end
+
+  def authorization
+    @record = Record.find(params[:id])
+    @record.update(authorization_code: SecureRandom.hex(10)) if @record.authorization_code.nil?
+  end
   
   def show
-    
     @user = current_user
     @records = current_user.records
     @record = Record.new
-    
     respond_to do |format|
       format.js
     end

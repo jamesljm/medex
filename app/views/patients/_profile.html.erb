@@ -52,10 +52,16 @@
                         <strong>Birthdate : </strong>
                         <%= @patient.birthdate %>
                     </li>
-                    <li class="list-group-item">
-                        <strong>Gender : </strong>
-                        <%= @patient.gender %>
-                    </li>
+                    <% if @patient.gender == "male"%>
+                        <li class="list-group-item"><strong>Gender : </strong>Male</li>
+                    <% elsif @patient.gender == "female" %>
+                        <li class="list-group-item"><strong>Gender : </strong>Female</li>
+                    <% elsif @patient.gender == "not_sure" %>
+                        <li class="list-group-item"><strong>Gender : </strong>Not Sure</li>
+                    <% elsif @patient.gender == "prefer_not_to_disclose" %>
+                        <li class="list-group-item"><strong>Gender : </strong>Prefer Not To Disclose</li>
+                    <% end %>
+
                     <li class="list-group-item">
                         <strong>Email : </strong>
                         <%= @patient.email %>

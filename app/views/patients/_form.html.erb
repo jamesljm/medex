@@ -15,7 +15,13 @@
         <%= form.label :email do %>Email:<span class="req">*</span><% end %>
         <%= form.text_field :email, type: 'email', required: 'required' %>
     </div>
-    
+
+   <!-- Password -->
+    <div class="field-wrap">
+        <%= form.label :password do %>Password:<span class="req">*</span><% end %>
+        <%= form.password_field :password %>
+    </div>
+
     <!-- Password -->
     <div class="field-wrap">
         <%= form.label :password do %>Confirm Password:<span class="req">*</span><% end %>

@@ -78,7 +78,7 @@
         <%= form.label :gender do %>Gender:
         <span class="req">*</span>
         <% end %>
-        <%= form.select :gender, options_for_select([["Male", "male"], ["Female", "female"], ["Not Sure", "not Sure"], ["Prefer not to disclose", "prefer not to disclose"]]) %>
+        <%= form.select :gender, options_for_select([["Male", "male"], ["Female", "female"], ["Not Sure", "not_sure"], ["Prefer not to disclose", "prefer_not_to_disclose"]]) %>
     </div>   
 
     <!-- birthdate -->
@@ -136,8 +136,8 @@
         <span class="req">*</span>
         <% end %>
         <div class="radio">
-            <div><%= form.radio_button :drinker, true %>Yes</div>
-            <div><%= form.radio_button :drinker, false %>No</div>
+            <div style="margin-left:2vw"><%= form.radio_button :drinker, true %>Yes</div>
+            <div style="margin-left:2vw"><%= form.radio_button :drinker, false %>No</div>
         </div>    
     </div>   
 
@@ -147,8 +147,8 @@
         <span class="req">*</span>
         <% end %>
         <div class="radio">
-            <div><%= form.radio_button :smoker, true %>Yes</div>
-            <div><%= form.radio_button :smoker, false %>No</div>
+            <div style="margin-left:2vw"><%= form.radio_button :smoker, true %>Yes</div>
+            <div style="margin-left:2vw"><%= form.radio_button :smoker, false %>No</div>
         </div>    
     </div>       
 

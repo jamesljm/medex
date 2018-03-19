@@ -33,12 +33,14 @@
     }
 </style>
 
+<div class="container div-wrapper">
 <div id="auth-search">
     <%= form_tag authorization_doctor_path, method: :get, remote: true do |f| %>
         <%= label_tag :auth_record_key, "Enter Authentication Key : " %>
         <%= text_field_tag(:auth_record_key, nil, 'data-role'=>'tagsinput', class: "form-control") %>
         <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
     <% end %>
+</div>
 </div>
 
 <section id="auth-records">

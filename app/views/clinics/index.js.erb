@@ -1,5 +1,5 @@
 <% if current_user.type == 'Doctor' %>
-    $('#dashboard-content').empty().append('<%= j render "clinics/clinics" %>');
+    $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "clinics/clinics" %>');
 <% elsif current_user.type == 'Patient' %>
-    $('#dashboard-content').empty().append('<%= j render "clinics/index" %>');
+    $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "clinics/index" %>');
 <% end %>

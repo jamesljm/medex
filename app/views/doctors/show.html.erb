@@ -8,7 +8,7 @@
     <!-- initial dashboard load -->
     <script>
         $(document).on('turbolinks:load', function () {
-            $('#dashboard-content').append('<%= j render "doctors/edit" %>');
+            $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "doctors/edit" %>');
         });
     </script>
 

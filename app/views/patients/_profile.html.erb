@@ -25,82 +25,90 @@
             <% end %>    
             </div>
         </div>
-        
-        <div class="col-lg-7 order-lg-2 div-wrapper" style="margin-left: 2em">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Edit</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane overflow fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <h3>Your Profile</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <strong>First Name : </strong>
-                            <%= @patient.first_name %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Last Name : </strong>
-                            <%= @patient.last_name %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Birthdate : </strong>
-                            <%= @patient.birthdate %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Gender : </strong>
-                            <%= @patient.gender %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Email : </strong>
-                            <%= @patient.email %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Phone : </strong>
-                            <%= @patient.phone %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Identification : </strong>
-                            <%= @patient.identification %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Blood type : </strong>
-                            <%= @patient.blood_type %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Med History : </strong>
-                            <%= @patient.med_history %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Allergies : </strong>
-                            <%= @patient.allergies %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Family History : </strong>
-                            <%= @patient.family_history %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Social History : </strong>
-                            <%= @patient.social_history %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Drinker : </strong>
-                            <%= @patient.drinker %>
-                        </li>
-                        <li class="list-group-item">
-                            <strong>Smoker : </strong>
-                            <%= @patient.smoker %>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab-pane fade overflow" id="edit" role="tabpanel" aria-labelledby="edit-tab">
-                    <h3>Edit</h3>
-                    <%= render  "patients/edit_form" %>
-                </div>
+    </div>
+    
+    <div class="col-lg-7 order-lg-2 div-wrapper" style="margin-left: 2em">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Edit</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane overflow fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h3>Your Profile</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>First Name : </strong>
+                        <%= @patient.first_name %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Last Name : </strong>
+                        <%= @patient.last_name %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Birthdate : </strong>
+                        <%= @patient.birthdate %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Gender : </strong>
+                        <%= @patient.gender %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Email : </strong>
+                        <%= @patient.email %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Phone : </strong>
+                        <%= @patient.phone %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Identification : </strong>
+                        <%= @patient.identification %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Blood type : </strong>
+                        <%= @patient.blood_type %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Med History : </strong>
+                        <ul>
+                            <% @patient.med_history.each do |med| %>
+                                <li style="list-style: none"><%= med %></li>
+                            <% end %>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Allergies : </strong>
+                         <ul>
+                            <% @patient.allergies.each do |allergy| %>
+                                <li style="list-style: none"><%= allergy %></li>
+                            <% end %>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Family History : </strong>
+                        <%= @patient.family_history %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Social History : </strong>
+                        <%= @patient.social_history %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Drinker : </strong>
+                        <%= @patient.drinker %>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Smoker : </strong>
+                        <%= @patient.smoker %>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade overflow" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                <h3>Edit</h3>
+                <%= render  "patients/edit_form" %>
             </div>
         </div>
     </div> <!-- /col -->

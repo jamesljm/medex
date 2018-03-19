@@ -13,15 +13,25 @@
                         <h2><%= record.title %></h2>
                         <div class="date"><%= record.record_date %></div>
                         <% if record.encounter.nil? == false %>
+                        <strong>Record type: </strong>
                         <% record.encounter.each do |en| %>
-                            <div class="symptoms"><%= en %>></div>
+                            <%= "#{en}," %>
                         <% end %>
                         <% end %>
-                        <div class="symptoms"><%= record.symptoms %></div>
-                        <div class="symptoms"><%= record.diagnosis %></div>
-                        <div class="symptoms"><%= record.note %></div>
-                        <div class="symptoms"><%= record.follow_up %></div>
-                        <div class="symptoms"><%= record.referral %></div>
+                        <div class="symptoms"><strong>Symptoms: </strong><%= "#{record.symptoms}" %></div>
+                        <div class="diagnosis"><strong>Diagnosis: </strong><%= "#{record.diagnosis}" %></div>
+                        <div class="referral_note"><strong>Note on referrals: </strong><%= "#{record.referral_note}" %></div>                        
+                        <div class="notes"><strong>Note: </strong><%= "#{record.note}" %></div>
+                        <% if record.follow_up? %>
+                            <div class="follow_up"><strong>Follow up recommended? </strong><%= "Yes" %></div>
+                        <% elsif !record.follow_up? %>
+                            <div class="follow_up"><strong>Follow up recommended? </strong><%= "No" %></div>
+                        <% end %>    
+                        <% if record.referral? %>    
+                            <div class="referral"><strong>Referral recommended? </strong><%= "Yes" %></div>
+                        <% elsif %>
+                            <div class="referral"><strong>Referral recommended? </strong><%= "No" %></div>
+                        <% end %>
                     </div>
                 </div>
             <% end %>

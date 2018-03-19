@@ -1,20 +1,25 @@
-<div class="container">
+<div class="container div-wrapper">
   <div><%= link_to 'View all Doctor', doctors_path, remote: true %></div>
   <div><%= link_to ("View Your Appointment"), booking_path(current_user.id), remote: true %></div>
   <div class="card-area">
-    <div class="card-placard">
+    <div class="card-placard div-namecard">
       <div class="card-social">
         <div class="card-image">
+           <% if current_user.profile_picture? %>
+                <%= image_tag @doctor.profile_picture.thumb.url, :class => "card-image", :style =>"margin-top: 0;" if @doctor.profile_picture? %>
+            <% else %>
+                <img src="//placehold.it/150" alt= :remote_avatar_url>
+            <% end %>
         </div>
         <div class="card-likes">
-          <p>Total Like: <%= @like.count %> </p>
+          <p style="font-weight: bold">Likes: <%= @like.count %> </p>
         </div>
       </div>
 
       <div class="card-highlights">
         <div class="card-contact card">
-          <h3 class="card-title"> <%= @doctor.first_name + " " + @doctor.last_name %> </h3>
-          <h4 class="card-subtitle mb-2 text-muted"> Speicialist : <%= @doctor.specialist %> </h4>
+          <h2 class="card-title"> <%= @doctor.first_name + " " + @doctor.last_name %> </h2>
+          <h4 class="card-subtitle mb-2 text-muted"><%= @doctor.specialist %> </h4>
           <%= mail_to @doctor.email %>
           <br>
           <p>Qualification : <%= @doctor.qualifications %></p>
@@ -22,17 +27,18 @@
         </div>
         <div class="card-actionable">
           <div class="like">
-            <%= link_to 'Like', likes_path+'?param12='+@doctor.id.to_s, method: :POST, remote: true, class:'btn btn-primary' %>
+            <%= link_to 'Like', likes_path+'?param12='+ @doctor.id.to_s, method: :POST, remote: true, class:'btn btn-primary', id:'like' %>
           </div>
           <div class="unlike">
-            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-warning' %>
+            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-warning', id:'unlike' %>
           </div>
         </div>
 
       </div>
 
     </div>
-
+    <br>
+    <br>
 
     <ul class="nav nav-tabs">
         <li class="nav-item">

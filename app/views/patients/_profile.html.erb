@@ -10,7 +10,7 @@
         <% else %>
             <img src="//placehold.it/150" class="mx-auto img-fluid rounded-circle d-block" alt= :remote_avatar_url>
         <% end %>
-
+                    
         <%= form_for @patient do |form| %>
             <div class="file-field">
                 <%= form.label "Upload profile picture" %>
@@ -25,6 +25,7 @@
         <% end %>    
         </div>
     </div>
+    
     <div class="col-lg-7 order-lg-2 div-wrapper" style="margin-left: 2em">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">

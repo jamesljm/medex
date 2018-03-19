@@ -12,7 +12,11 @@
                         <div class="card mb-4 box-shadow">
                             <div class="card-header"><%= record.title %></div>
                             <div class="card-body">
-                                <p class="card-text"><%= record.referral_note %></p>
+                                <% if !record.booking.nil? %>
+                                    <p class="card-text"><strong>Doctor name: </strong><br/><span class="card-text"><%= link_to Doctor.find(Booking.find(record.booking_id).doctor_id).name, card_doctor_path(Booking.find(record.booking_id).doctor_id), remote: true %></span></p>
+                                    <p class="card-text"><strong>Type of specialist: </strong><br/><span class="card-text"><%= Doctor.find(Booking.find(record.booking_id).doctor_id).specialist %></span></p>
+
+                                <% end %>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <%= link_to "edit", edit_record_path(record.id), remote: true, class: 'btn btn-sm btn-outline-secondary' %>
@@ -23,15 +27,15 @@
                                     <div class="btn-group">
                                         <%= link_to "add prescription", new_record_prescription_path(record.id), remote: true, class: 'btn btn-sm btn-outline-secondary' %>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">    
-                                    <div class="btn-group">
-                                        <%= link_to "generate authorization code", authorization_record_path(:id => record.id), remote: true, class: 'btn btn-sm btn-outline-info' %>
-                                    </div>
                                     <small class="text-muted"><%= record.record_date %></small>
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent" id="card-auth-<%= record.id %>">
+                                <div class="d-flex justify-content-between align-items-center">    
+                                    <div class="btn-group">
+                                        <%= link_to "generate authorization code", authorization_record_path(:id => record.id), remote: true, class: 'btn btn-sm btn-outline-info' %>
+                                    </div>
+                                </div>
                                 <strong>Generated Code : </strong>
                                 <span><%= record.authorization_code if !record.authorization_code.nil? %></span>
                             </div>

@@ -26,6 +26,8 @@ class PatientsController < Clearance::UsersController
     if @patient.update(patient_params)
       redirect_to patient_path, notice: "Your record has been updated."
     else
+      p @patient.profile_picture
+      p "hi"
       redirect_to patient_path, notice: "Update error."
     end
   end  

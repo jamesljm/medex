@@ -3,26 +3,27 @@
 <!-- ======================================================================= -->
 
 <div class="container">
-
-    <div class="col-lg-4 order-lg-1 text-center div-wrapper">
-        <% if current_user.profile_picture? %>
-            <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
-        <% else %>
-            <img src="//placehold.it/150" class="mx-auto img-fluid rounded-circle d-block" alt= :remote_avatar_url>
-        <% end %>
-                    
-        <%= form_for @patient do |form| %>
-            <div class="file-field">
-                <%= form.label "Upload profile picture" %>
-                <%= form.file_field :profile_picture %><br/>
-                <%= form.label :remote_profile_picture_url, "or image URL" %><br/> 
-                <%= form.text_field :remote_profile_picture_url %>
+    <div class="rol">
+        <div class="col-lg-4 order-lg-1 text-center div-wrapper">
+            <% if current_user.profile_picture? %>
+                <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
+            <% else %>
+                <img src="//placehold.it/150" class="mx-auto img-fluid rounded-circle d-block" alt= :remote_avatar_url>
+            <% end %>
+                        
+            <%= form_for @patient do |form| %>
+                <div class="file-field">
+                    <%= form.label "Upload profile picture" %>
+                    <%= form.file_field :profile_picture %><br/>
+                    <%= form.label :remote_profile_picture_url, "or image URL" %><br/> 
+                    <%= form.text_field :remote_profile_picture_url %>
+                </div>
+                <!-- Submit Button -->
+                <div class="btn-wrap">
+                    <div><%= form.submit :name => "Update photo", class: "button btn-light" %></div>
+                </div>
+            <% end %>    
             </div>
-            <!-- Submit Button -->
-            <div class="btn-wrap">
-                <div><%= form.submit :name => "Update photo", class: "button btn-light" %></div>
-            </div>
-        <% end %>    
         </div>
     </div>
     
@@ -73,11 +74,19 @@
                     </li>
                     <li class="list-group-item">
                         <strong>Med History : </strong>
-                        <%= @patient.med_history %>
+                        <ul>
+                            <% @patient.med_history.each do |med| %>
+                                <li style="list-style: none"><%= med %></li>
+                            <% end %>
+                        </ul>
                     </li>
                     <li class="list-group-item">
                         <strong>Allergies : </strong>
-                        <%= @patient.allergies %>
+                         <ul>
+                            <% @patient.allergies.each do |allergy| %>
+                                <li style="list-style: none"><%= allergy %></li>
+                            <% end %>
+                        </ul>
                     </li>
                     <li class="list-group-item">
                         <strong>Family History : </strong>
@@ -102,7 +111,5 @@
                 <%= render  "patients/edit_form" %>
             </div>
         </div>
-    </div>
-
-</div>
-
+    </div> <!-- /col -->
+</div> <!-- /container -->

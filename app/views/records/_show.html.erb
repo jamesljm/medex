@@ -1,12 +1,21 @@
 <!-- ======================================================================= -->
-<!-- Patient's Show Partial -->
+<!-- Record's Show Partial -->
 <!-- ======================================================================= -->
 
 <div class="div-wrapper container">
 
-    <h1 class="blue-font">Your Medical Journey</h1>
-    <p><%#= link_to 'Create new medical record or encounter', new_record_path %></p>
-    <p><%#= link_to 'Back to Patient DashBoard', patient_path(current_user.id) %></p>
+    <h2>Your Medical Journey here</h2>
+    <%= form_tag search_records_path, method: :get, remote: true do %>
+        <%= label_tag :search_doctor, "Search By Doctor's Name" %>
+        <%= text_field_tag :search_doctor, params[:search_doctor] , placeholder: "Enter Doctor's Name" %>
+        <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+    <% end %>
+
+    <%= form_tag search_records_path, method: :get, remote: true do %>
+        <%= label_tag :search_title, "Search By Title" %>
+        <%= text_field_tag :search_title, params[:search_title], placeholder: "Enter Record's Title" %>
+        <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+    <% end %>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -17,6 +26,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" id="edit-record-tab" data-toggle="tab" href="#edit-record" role="tab" aria-controls="edit-record" aria-selected="false">Edit / Authorization</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="data-record-tab" data-toggle="tab" href="#data-record" role="tab" aria-controls="data-record" aria-selected="false">Record Data</a>
         </li>
     </ul>
 
@@ -33,6 +45,10 @@
         <!-- Edit -->
         <div class="tab-pane fade" id="edit-record" role="tabpanel" aria-labelledby="edit-record-tab">
             <%= render  "records/edit_cards" %>
+        </div>
+        <!-- Record Data -->
+        <div class="tab-pane fade" id="data-record" role="tabpanel" aria-labelledby="data-record-tab">
+            <%= render  "records/record_chart" %>
         </div>
     </div>
 

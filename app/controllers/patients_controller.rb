@@ -53,7 +53,26 @@ class PatientsController < Clearance::UsersController
   end
 
   def card
+    @records = []
+    @prescriptions = []
+
     @patient = Patient.find(params[:id])
+    @bookings = Booking.where(:doctor_id=>current_user.id, :patient_id=>@patient.id)
+    @bookings.each do |booking|
+      @records << booking.record
+    end
+    
+    @records.each do |record|
+      if !record.nil?
+        if !record.prescriptions.empty?
+                    
+          record.prescriptions.each do |prescription|
+            @prescriptions << prescription
+          end
+        end
+      end
+    end 
+
     respond_to do |format|
       format.js
     end

@@ -1,50 +1,118 @@
-<div class="container">
+<div class="container div-wrapper">
   <div class="card-area">
     <div class="card-placard">
       <div class="card-social">
         <div class="card-image">
+          <%= image_tag @patient.profile_picture.thumb.url, :class => "card-image", :style => "margin-top: 0" if current_user.profile_picture? %>
         </div>
-        <div class="card-likes">
+        <%# <div class="card-likes">
           100 Likes
-        </div>
+        </div> %>
       </div>
 
       <div class="card-highlights">
         <div class="card-contact card">
           <h3 class="card-title"> <%= @patient.first_name + " " + @patient.last_name %> </h3>
           <h4 class="card-subtitle mb-2 text-muted"> <%= @patient.gender %> </h4>
-          <%= mail_to @patient.email %>
+          <div class="card-contact-details text-muted">Contact Details: 
+            <p><%= mail_to @patient.email %> | <%= @patient.phone %></p>
+          </div>
           <br>
           <hr>
         </div>
-        <div class="card-actionable">
+        <%# <div class="card-actionable">
           <div class="like ">
             Like
           </div>
           <div class="unlike">
             Unlike
           </div>
+        </div> %>
+
+      </div>
+
+    </div>
+
+    <%# ======== tab button start ========= %>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="" data-target="#patient_info" data-toggle="tab" class="nav-link active tab-pending" >Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="" data-target="#patient_record" data-toggle="tab" class="nav-link tab-confirm">Records: <%= @records.length %></a>
+        </li>
+        <li class="nav-item">
+            <a href="" data-target="#patient_prescription" data-toggle="tab" class="nav-link tab-past">Prescription: <%= @prescriptions.length %></a>
+        </li>
+    </ul>
+
+    <%# ======== tab button end ========= %>
+
+    <%# ======= tab contents start ======= %>
+
+    <div class="tab-content py-4">
+        <!-- Pending -->
+        <div class="tab-pane active tab-pending" id="patient_info">
+            <div class="tab-header">
+              <table class="table table-hover">
+                <tr>  
+                  <td>Blood Type : </td>
+                  <td><%= @patient.blood_type %></td>
+                </tr>
+                <tr>
+                  <td>Identification : </td>
+                  <td><%= @patient.identification %></td>
+                </tr>
+                <tr>  
+                  <td>Family History : </td>
+                  <td><%= @patient.family_history %></td>
+                </tr>
+                <tr>
+                  <td>Social History / Habits : </td>
+                  <td><%= @patient.social_history %></td>
+                </tr>
+              </table>
+            </div>
         </div>
 
-      </div>
+        <!-- Confirmed -->
+        <div class="tab-pane tab-confirm" id="patient_record">
+            <div class="tab-header">
+                <p><%= render "patients/doctor_view_records" %></p>
+            </div>
+        </div>
 
+        <!-- past -->
+        <div class="tab-pane tab-past" id="patient_prescription">
+            <div class="tab-header">
+                <p><%= render "patients/doctor_view_prescriptions" %></p>
+            </div>
+        </div>
     </div>
+    <%# ======= tab contents end ======= %>
 
-    <div class="card-selector">
-      <div class="card-general">
-        Info
-      </div>
-      <div class="card-clinic">
-        Clinic
-      </div>
-    </div>
-    
     <div class="card-overview">
-      <div class="card-detail">
-        <div class="card-general-info">
-          
+      <div class="card-detail col-md">
+        <div class="card-med-info col-md-6">
+          <h4 class="blue-font">Medical History</h3>
+          <ul style="list-style: none">   
+            <% if !@patient.med_history.nil? %>        
+              <% @patient.med_history.each do |m| %>
+                <li><%= m %></li>
+              <% end %>
+            <% end %>  
+          </ul>  
         </div>
-        <div class="card-clinic-info">
+        <div class="card-allergy-info col-md-6">
+          <h4 class="blue-font">Allergies</h3>
+          <ul style="list-style: none">
+            <% if !@patient.med_history.nil? %>        
+              <% @patient.allergies.each do |allergy| %>
+                <li><%= allergy %></li>
+              <% end %>
+            <% end %>  
+          </ul>  
         </div>
       </div>
 

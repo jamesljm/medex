@@ -4,10 +4,11 @@
 
 <% if current_user.type == 'Patient' %>
   
-  $('#dashboard-content').empty().append('<%= j render "bookings/show" %>');
+  $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "bookings/patient_index" %>');
+
 
 <% elsif current_user.type == 'Doctor' %>
 
-  $('#dashboard-content').empty().append('<%= j render "bookings/doctor_index" %>');
+  $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "bookings/doctor_index" %>');
 
 <% end %>

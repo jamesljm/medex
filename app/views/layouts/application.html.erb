@@ -26,16 +26,15 @@
 </head>
 <body>
   <!-- Header -->
-  <div id="header">
-    <% if request.path_info.include?('doctors') || request.path_info.include?('patients') %>
-    <!-- do not render navbar in dashboard page -->
-    <% else %>
-      <%= render "layouts/navigation" %>
-    <% end %>
+  <header id="header">
+    <%= render "layouts/navigation" %>
+    <%# if request.path_info.include?('doctors') || request.path_info.include?('patients') %>
+    <%# else %>
+    <%# end %>
     <% if content_for?(:header) %>
       <%= yield :header %>
     <% end %>
-  </div>
+  </header>
 
   <!-- Flashes -->
   <% flash.each do |key, value| %>
@@ -48,7 +47,6 @@
   <%= yield %>
 
   <!-- Footer -->
-  <p style="position: fixed; right: 1em; bottom: 0; color: grey;"><strong>Development Mode</strong><br><strong>Version : </strong> 1.1<br><strong>Updated at : </strong>14/03/2018 15:46</p>
   <% if content_for?(:footer) %>
     <%= yield(:footer) %>
   <% end %>

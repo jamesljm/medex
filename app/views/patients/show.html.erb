@@ -4,11 +4,10 @@
 
 <!-- JS -->
 <%= provide :js do %>
-
     <!-- initial dashboard partial load -->
     <script>
         $(document).on('turbolinks:load', function () {
-            $('#dashboard-content').empty().append('<%= j render "patients/profile" %>');
+            $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "patients/profile" %>');
         });
     </script>
 
@@ -16,33 +15,26 @@
 
 <% content_for :sidebar do %>
     <li class="nav-item">
-        <!-- patients/show -->
+        <!-- patients/profile -->
         <%= link_to profile_patient_path(params[:id]), remote: true, id: 'profile-btn', class: 'nav-link' do %>
             <span data-feather="user"></span>
             Profile
             <span class="sr-only">(current)</span>
         <% end %>
     </li>
-    <li>
-        <a class="w3-block w3-left-align nav-link" onclick="myAccFunc()" style="cursor: pointer"><span data-feather="search"></span>Search</a>
+    <li class="nav-item">
+        <!-- doctors/index -->
+        <%= link_to doctors_path, remote: true, id: 'search-doctors-btn', class: 'nav-link' do %>
+            <span data-feather="users"></span>
+            Search Doctors
+        <% end %>
     </li>
-    <li>
-        <ul id="demoAcc" class="w3-hide">
-            <li class="nav-item">
-                <!-- doctors/index -->
-                <%= link_to doctors_path, remote: true, id: 'search-doctors-btn', class: 'nav-link' do %>
-                    <span data-feather="users"></span>
-                    Search Doctors
-                <% end %>
-            </li>
-            <li class="nav-item">
-                <!-- doctors/index -->
-                <%= link_to doctor_clinics_path(1), remote: true, id: 'search-clinics-btn', class: 'nav-link' do %>
-                    <span data-feather="home"></span>
-                    Search Clinics
-                <% end %>
-            </li>
-        </ul>
+    <li class="nav-item">
+        <!-- doctors/index -->
+        <%= link_to doctor_clinics_path(1), remote: true, id: 'search-clinics-btn', class: 'nav-link' do %>
+            <span data-feather="home"></span>
+            Search Clinics
+        <% end %>
     </li>
     <li class="nav-item">
         <!-- bookings/show -->
@@ -59,7 +51,7 @@
         <% end %>
     </li>
     <li class="nav-item">
-        <!-- prescription/show -->
+        <!-- prescription/index -->
         <%= link_to record_prescriptions_path(1), remote: true, id: 'prescriptions-btn', class: 'nav-link' do %>
             <span data-feather="plus-circle"></span>
             Prescriptions

@@ -4,7 +4,7 @@
   
 
 <% if current_user.type =="Doctor" %>
-  $('#dashboard-content').empty().append('<%= j render "bookings/doctor_index" %>');
+  $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "bookings/doctor_index" %>');
 
   $('.tab-pending').removeClass("active");
 
@@ -15,6 +15,12 @@
 
 <% else %>
 
-  $('#dashboard-content').empty().append('<%= j render "bookings/doctor_confirmed" %>');
+  $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "bookings/patient_index" %>');
+
+  $('.tab-pending').removeClass("active");
+
+  $('.tab-confirm').addClass("active");
+
+  $('.tab-past').removeClass("active");
 
 <% end %>

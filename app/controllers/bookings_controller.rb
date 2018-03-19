@@ -9,8 +9,8 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @bookings = Booking.all
-    @pending_bookings = PendingBooking.all
+    @booking = Booking.all
+    @pending_booking = PendingBooking.all
     respond_to do |format|
       format.js
     end

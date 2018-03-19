@@ -48,7 +48,15 @@
                         <li class="list-group-item"><strong>First Name : </strong><%= @doctor.first_name %></li>
                         <li class="list-group-item"><strong>Last Name : </strong><%= @doctor.last_name %></li>
                         <li class="list-group-item"><strong>Birthdate : </strong><%= @doctor.birthdate %></li>
-                        <li class="list-group-item"><strong>Gender : </strong><%= @doctor.gender %></li>
+                        <% if @doctor.gender == "male"%>
+                            <li class="list-group-item"><strong>Gender : </strong>Male</li>
+                        <% elsif @doctor.gender == "female" %>
+                            <li class="list-group-item"><strong>Gender : </strong>Female</li>
+                        <% elsif @doctor.gender == "not_sure" %>
+                            <li class="list-group-item"><strong>Gender : </strong>Not Sure</li>
+                        <% elsif @doctor.gender == "prefer_not_to_disclose" %>
+                            <li class="list-group-item"><strong>Gender : </strong>Prefer Not To Disclose</li>
+                        <% end %>
                         <li class="list-group-item"><strong>Email : </strong><%= @doctor.email %></li>
                         <li class="list-group-item"><strong>Phone : </strong><%= @doctor.phone %></li>
                     </ul>

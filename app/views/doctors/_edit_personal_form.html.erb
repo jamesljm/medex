@@ -2,7 +2,6 @@
 <!-- Doctor's Profile Tab Edit Form -->
 <!-- ======================================================================= -->
 <!-- Personal Information -->
-<%# byebug %>
 <%= form_for @doctor do |f| %>
 
 <ul class="list-group list-group-flush">
@@ -21,17 +20,15 @@
         <!-- Birthdate -->
     <li class="list-group-item">
         <%= f.label :birthdate do %>Birthdate:<span class="req">*</span><% end %>
-        <%= f.text_field :birthdate, required: 'required', class:'form-control' %>
+        <%= f.date_field :birthdate, required: 'required', class:'form-control' %>
     </li>
 
         <!-- Gender -->
     <li class="list-group-item">
-        <%= f.label :gender do %>Gender:<% end %>
-        <p><%= f.label(:gender, "Male") %>
-            <%= f.radio_button(:gender, "male") %> |
-            <%= f.label(:gender, "Female") %>
-            <%= f.radio_button(:gender, "female") %>
-        </p>
+        <%= f.label :gender do %>Gender:
+        <span class="req">*</span>
+        <% end %>
+        <%= f.select :gender, options_for_select([["Male", "male"], ["Female", "female"], ["Not Sure", "not_sure"], ["Prefer not to disclose", "prefer_not_to_disclose"]]) %>
     </li>
 
     <!-- Email -->
@@ -43,7 +40,7 @@
     <!-- Phone Number -->
     <li class="list-group-item">
         <%= f.label :phone do %>Phone No.:<span class="req">*</span><% end %>
-        <p><small>(Number will not be reviewed to patients and will be used for notification purposes)</small></p>
+        <p><small>(Number will not be revealed to patients and will be used for notification purposes)</small></p>
         <p><%= f.text_field :phone, type: 'text', required: 'required', class:'form-control' %></p>
     </li>
 

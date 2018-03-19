@@ -108,6 +108,16 @@ class RecordsController < ApplicationController
 
   end
 
+  def search
+    @user = current_user
+    @records = current_user.records.by_title(params[:search_title])
+    # @records = current_user.records.by_doctor_name
+    @record = Record.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
   def record_params
     params.require(:record).permit(:booking_id, :record_date, :title, :symptoms, :diagnosis, :note, :follow_up, :referral, :referral_note, {encounter: []} )

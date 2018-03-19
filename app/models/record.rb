@@ -5,6 +5,9 @@ class Record < ApplicationRecord
   has_many     :prescriptions, dependent: :destroy
   has_many     :lab_tests
 
+
+  accepts_nested_attributes_for :prescriptions
+
   scope :by_title, -> (title){ where("title ILIKE ?", "%#{title}%") }
 
   # def self.by_doctor_name
@@ -17,4 +20,5 @@ class Record < ApplicationRecord
   #   byebug
     
   # end
+
 end

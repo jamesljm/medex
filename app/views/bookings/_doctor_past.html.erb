@@ -23,7 +23,7 @@
              <%= p.start_time %> 
           </td>
           <td>
-             <%= link_to (p.patient.first_name + p.patient.last_name), card_patient_path(p.patient.id), remote:true %>
+             <%= link_to (p.patient.first_name + " " + p.patient.last_name), card_patient_path(p.patient.id), remote:true %>
           </td>
             
           <td>

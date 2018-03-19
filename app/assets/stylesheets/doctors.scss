@@ -74,12 +74,21 @@
   display: inline-flex;
 }
 
-.like, .unlike{                 /*like & unlike button*/
+.like{                 /*like & unlike button*/
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.unlike{
+height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .card-selector{                 /*selection bar for info and clinic*/

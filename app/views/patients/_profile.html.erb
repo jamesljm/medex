@@ -73,11 +73,19 @@
                     </li>
                     <li class="list-group-item">
                         <strong>Med History : </strong>
-                        <%= @patient.med_history %>
+                        <ul>
+                            <% @patient.med_history.each do |med| %>
+                                <li style="list-style: none"><%= med %></li>
+                            <% end %>
+                        </ul>
                     </li>
                     <li class="list-group-item">
                         <strong>Allergies : </strong>
-                        <%= @patient.allergies %>
+                         <ul>
+                            <% @patient.allergies.each do |allergy| %>
+                                <li style="list-style: none"><%= allergy %></li>
+                            <% end %>
+                        </ul>
                     </li>
                     <li class="list-group-item">
                         <strong>Family History : </strong>

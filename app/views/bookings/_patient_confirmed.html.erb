@@ -12,6 +12,7 @@
     </tr>
     </thead>
     <tbody>
+    <% if @bookings.empty? == false %>
     <% @bookings.each do |booking| %>
         <% if Date.strptime(booking.date, '%m/%d/%Y') >= Date.today %>
         <tr>
@@ -25,7 +26,7 @@
                 <%= link_to (booking.doctor.first_name + " " + booking.doctor.last_name),  card_doctor_path(booking.doctor.id),remote: true %>
             </td>
             <td>
-                <% if booking.bill == 1 %>
+                <% if booking.bill == true %>
                     <button class="btn btn-sm btn-success" disabled>Paid</button>
                 <% else %>
                     <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-sm btn-primary" %>
@@ -40,6 +41,7 @@
             </td>
         </tr>
         <% end %>
+    <% end %>
     <% end %>
     </tbody>
 </table>

@@ -6,10 +6,10 @@
   <div class="container">
     <div class="row">
 
-      <% @doctor_clinics.each do |clinic| %>
+      <% @doctor_clinics.each_with_index do |clinic,i| %>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+            <img class="card-img-top" src="https://unsplash.it/350/150?image=<%= (i + 1).to_s %>" alt="Card image cap">
             <div class="card-body">
               <h6>Clinic's Info</h6>
               <ul class="card-desc">

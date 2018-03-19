@@ -14,6 +14,7 @@
 
   <tbody>
     <% @bookings_doc.each do |p| %> 
+      <% if Date.strptime(p.date, '%m/%d/%Y') >= Date.today %>
       <tr>
         <td>
           <%= p.date %> 
@@ -46,6 +47,7 @@
         </td>
         <% end %>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

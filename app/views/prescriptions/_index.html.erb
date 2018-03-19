@@ -2,32 +2,46 @@
 <!-- Prescription's Index Partial -->
 <!-- ======================================================================= -->
 
-<div class="div-wrapper container">
 
-<h1 class="blue-font">Your Prescriptions</h1>
+    <div class="container div-wrapper">
+        <p><h1 class="tab-header">Prescriptions</h1></p>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="prescriptions-tab" data-toggle="tab" href="#prescriptions" role="tab" aria-controls="prescriptions" aria-selected="true">Main</a>
-    </li>
-    <%# <li class="nav-item">
-        <a class="nav-link" id="new-prescription-tab" data-toggle="tab" href="#new-prescription" role="tab" aria-controls="new-prescription" aria-selected="false">New</a>
-    </li> %>
-</ul>
+    <div class="row my-2">
+        <div class="col-lg-12 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#current-drug" data-toggle="tab" class="nav-link active tab-pending" >Current</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#all-drug" data-toggle="tab" class="nav-link tab-confirm">All</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <!-- Current -->
+                <div class="tab-pane active tab-pending" id="current-drug">
+                    <div class="tab-header">
+                      <h5>Your Current Prescriptions</h5>
+                    </div>
+                    <%= render "prescriptions/current" %>
+                </div>
 
-<div class="tab-content" id="myTabContent">
-    <!-- main -->
-    <div class="tab-pane fade show active" id="prescriptions" role="tabpanel" aria-labelledby="prescriptions-tab">
-        <%= render  "prescriptions/main" %>
+                <!-- All -->
+                <div class="tab-pane tab-confirm" id="all-drug">
+                    <div class="tab-header">
+                        <h5>Current & Past Prescriptions</h5>
+                    </div>
+                    <%= render "prescriptions/all" %>
+                </div>
+
+
+            </div>
+        </div>
+>>>>>>> master
     </div>
+</div>
     
-    <!-- New -->
-    <%# <div class="tab-pane fade" id="new-prescription" role="tabpanel" aria-labelledby="new-prescription-tab">
-        <%= render  "prescriptions/new" %>
-    <%# </div> %>
 
-</div>
-</div>
+
 
 
 

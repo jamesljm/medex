@@ -7,12 +7,13 @@
     <tr>
         <th>Date</th>
         <th>Schedule</th>
-        <th>Patient Name</th>
+        <th>Doctor Name</th>
         <th>Payment Status</th>
     </tr>
     </thead>
     <tbody>
     <% @bookings.each do |booking| %>
+        <% if Date.strptime(booking.date, '%m/%d/%Y') >= Date.today %>
         <tr>
             <td>
                 <%= booking.date %>
@@ -21,7 +22,7 @@
                 <%= booking.start_time %>
             </td>
             <td>
-                <%= link_to t(booking.doctor.first_name+booking.doctor.last_name),  card_doctor_path(booking.doctor.id), remote: true %>
+                <%= link_to (booking.doctor.first_name + " " + booking.doctor.last_name),  card_doctor_path(booking.doctor.id),remote: true %>
             </td>
             <td>
                 <% if booking.bill == 1 %>
@@ -39,6 +40,7 @@
             </td>
         </tr>
         <% end %>
+    <% end %>
     </tbody>
 </table>
 <br>

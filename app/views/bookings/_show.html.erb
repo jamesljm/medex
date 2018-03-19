@@ -9,7 +9,7 @@
         <tr>
             <th>Date</th>
             <th>Schedule</th>
-            <th>Patient Name</th>
+            <th>Doctor Name</th>
             <th>Payment Status</th>
         </tr>
         </thead>
@@ -26,8 +26,9 @@
                     <%= booking.start_time %>
                 </td>
                 <td>
-                    <%= booking.doctor.first_name %>
-                    <%= booking.doctor.last_name %>
+                    <%= link_to (booking.doctor.first_name + booking.doctor.last_name),  card_doctor_path(booking.doctor.id), remote: true %>
+
+                     
                 </td>
                 <td>
                     <%= link_to 'Delete', booking_path(booking), remote: true,

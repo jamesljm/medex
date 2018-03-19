@@ -9,6 +9,7 @@ class LikesController < ApplicationController
         respond_to do |format|
           format.js
         end
+        flash[:notice] = "Failed to Like..." 
       else
         flash[:notice] = "Failed to Like..." 
       end

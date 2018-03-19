@@ -3,3 +3,14 @@
 // =============================================================================
 
 $('#dashboard-content').empty().removeClass('fade-in').addClass('fade-in').append('<%= j render "doctors/card" %>');
+
+
+<% if @checking.count == 0 %>
+  $('#unlike').addClass("hidden");
+<% else %>
+  $('#like').addClass("hidden");
+<% end %> 
+
+
+
+

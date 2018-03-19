@@ -95,6 +95,8 @@ class DoctorsController < Clearance::UsersController
   end
 
   def card
+    @checking= Like.where('patient_id='+current_user.id.to_s).where('doctor_id='+params[:id].to_s)
+    p @checking.count
     @doctor = Doctor.find(params[:id])
     @like = Like.where('doctor_id='+params[:id])
     respond_to do |format|

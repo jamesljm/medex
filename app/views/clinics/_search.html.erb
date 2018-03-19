@@ -1,7 +1,7 @@
 <% @clinics.each_with_index do |clinic, i| %>
     <div class="col-md-6">
         <div class="card mb-4 box-shadow div-wrapper">
-        <img class="card-img-top" src="https://unsplash.it/350/200?image=<%= i + 10 %>" alt="Card image cap">
+        <img class="card-img-top" src="https://unsplash.it/350/200?image=<%= (i + 1).to_s %>" alt="Card image cap">
         <div class="card-body">
             <h6>Clinic's Info</h6>
             <ul class="card-desc">

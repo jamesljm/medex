@@ -1,8 +1,9 @@
 <hr>
 <p></p>
 
-        <% @prescriptions.each do |p| %>
-            <% p.each do |p1| %>
+
+<% @prescriptions.each do |p| %>
+        <% p.each do |p1| %>
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         <div class="card-header card-title"><h6><%= p1.drug_name %></h6></div>
@@ -26,9 +27,11 @@
                         </div>
                         
 
-                        <%= link_to "Edit", edit_record_prescription_path(p1.record_id, p1.id), remote: true %>
-                        <%= link_to "Delete", record_prescription_path(p1.record_id, p1.id), method: :delete %>
+                        [<%= link_to "Edit", edit_record_prescription_path(p1.record_id, p1.id), remote: true %> |
+                        <%= link_to "Delete", record_prescription_path(p1.record_id, p1.id), method: :delete %>]
                     </div>    
                 </div>
-            <% end %>
+              </div>           
         <% end %>
+    <% end %>
+

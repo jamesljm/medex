@@ -27,6 +27,9 @@
         <li class="nav-item">
             <a class="nav-link" id="edit-record-tab" data-toggle="tab" href="#edit-record" role="tab" aria-controls="edit-record" aria-selected="false">Edit / Authorization</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="data-record-tab" data-toggle="tab" href="#data-record" role="tab" aria-controls="data-record" aria-selected="false">Record Data</a>
+        </li>
     </ul>
 
     <div class="tab-content" id="myTabContent">
@@ -42,6 +45,10 @@
         <!-- Edit -->
         <div class="tab-pane fade" id="edit-record" role="tabpanel" aria-labelledby="edit-record-tab">
             <%= render  "records/edit_cards" %>
+        </div>
+        <!-- Record Data -->
+        <div class="tab-pane fade" id="data-record" role="tabpanel" aria-labelledby="data-record-tab">
+            <%= render  "records/record_chart" %>
         </div>
     </div>
 

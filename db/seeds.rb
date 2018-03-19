@@ -115,7 +115,7 @@ ActiveRecord::Base.transaction do
     record ["record_date"] = Booking.find(b).date
     record ["patient_id"] = Booking.find(b).patient_id
     record ["referral_note"] = ["Refer to specialist", "Refer for lab test", "Hospitalization for monitoring", "Colonoscopy to evaluate the colon for presence of polyps or tumors", "Require follow-up visit next week", "ICU", "No referral needed"].sample
-    record ["note"]= ["Advised patient to drink less coke", "Advised patient to smoke less", "Patient to monitor blood sugar level", "Therapeutic plan: Continue Prozac 20mg po qd for now. Consider switching to a different anti-depressant. Discuss counseling and therapy options."]
+    record ["note"]= ["Advised patient to drink less coke", "Advised patient to smoke less", "Patient to monitor blood sugar level", "Therapeutic plan: Continue Prozac 20mg po qd for now. Consider switching to a different anti-depressant. Discuss counseling and therapy options."].sample
     record ["diagnosis"] = med.sample
     record ["symptoms"] = "Vital signs: Ht 5’10” Wt 160lbs HR 72 RR 16 BP 126/78 Temp Not measured
 

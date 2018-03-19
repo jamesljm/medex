@@ -15,6 +15,7 @@
 @import 'bootstrap-timepicker';
 @import 'bootstrap-tagsinput.scss';
 
+
 body{
   background-color: white;
 }
@@ -24,3 +25,31 @@ body{
   width: 12vw;
   object-fit: fill;
 }
+
+.blue-font{
+  color: #1aa7b1;
+  font-weight: bold;
+}
+
+.caption1{
+  color: #fafaed !important;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.caption2{
+  color: #1a2d46 !important;
+  text-shadow: 2px 2px 4px #000000;
+  margin-right: 70px;
+}
+
+.caption3{
+  color: #36feff !important;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.alert{
+  z-index: 1
+}
+
+
+

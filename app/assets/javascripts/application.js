@@ -19,4 +19,3 @@
 //= require bootstrap-timepicker
 //= require bootstrap-tagsinput
 
-

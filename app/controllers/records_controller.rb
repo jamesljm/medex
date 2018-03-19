@@ -111,6 +111,7 @@ class RecordsController < ApplicationController
   def search
     @user = current_user
     @records = current_user.records.by_title(params[:search_title])
+    # @records = current_user.records.by_doctor_name
     @record = Record.new
     respond_to do |format|
       format.js

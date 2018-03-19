@@ -36,6 +36,9 @@
     <% end %>
   </header>
 
+  <!-- Body Content -->
+  <%= yield %>
+
   <!-- Flashes -->
   <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>">
@@ -43,9 +46,6 @@
               <%= value %>
         </div>
   <% end %>
-
-  <!-- Body Content -->
-  <%= yield %>
 
   <!-- Footer -->
   <% if content_for?(:footer) %>

@@ -17,7 +17,6 @@ class Record < ApplicationRecord
   #   end
   #   Doctor.where("name ILIKE ?", params[:search_name])
     
-  #   byebug
     
   # end
 

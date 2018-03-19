@@ -14,17 +14,18 @@
       <div class="card-highlights">
         <div class="card-contact card">
           <h3 class="card-title"> <%= @doctor.first_name + " " + @doctor.last_name %> </h3>
-          <h4 class="card-subtitle mb-2 text-muted"> <%= @doctor.specialist %> </h4>
+          <h4 class="card-subtitle mb-2 text-muted"> Speicialist : <%= @doctor.specialist %> </h4>
           <%= mail_to @doctor.email %>
           <br>
+          <p>Qualification : <%= @doctor.qualifications %></p>
           <hr>
         </div>
         <div class="card-actionable">
-          <div class="like ">
-            <%= link_to 'Like', likes_path+'?param12='+@doctor.id.to_s, method: :POST, remote: true %>
+          <div class="like">
+            <%= link_to 'Like', likes_path+'?param12='+@doctor.id.to_s, method: :POST, remote: true, class:'btn btn-primary' %>
           </div>
           <div class="unlike">
-            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true %>
+            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-warning' %>
           </div>
         </div>
 
@@ -32,25 +33,48 @@
 
     </div>
 
-    <div class="card-selector">
-      <div class="card-general">
-        Info
-      </div>
-      <div class="card-clinic">
-        Clinic
-      </div>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="" data-target="#doctor_info" data-toggle="tab" class="nav-link active tab-pending" >Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="" data-target="#doctor_clinic" data-toggle="tab" class="nav-link tab-confirm">Clinic: <%= @doctor.clinics.count %></a>
+        </li>
+        <li class="nav-item">
+            <a href="" data-target="#doctor_summary" data-toggle="tab" class="nav-link tab-past">Biography</a>
+        </li>
+    </ul>
+
+    <div class="tab-content py-4">
+        <!-- Pending -->
+        <div class="tab-pane active tab-pending" id="doctor_info">
+            <div class="tab-header">
+              <p>Experience Year : <%= @doctor.experienced_years %></p>
+              <p>Education : <%= @doctor.education %></p>
+            </div>
+        </div>
+
+        <!-- Confirmed -->
+        <div class="tab-pane tab-confirm" id="doctor_clinic">
+            <div class="tab-header">
+                <p><%= render "doctors/clinics_info" %></p>
+            </div>
+        </div>
+
+        <!-- past -->
+        <div class="tab-pane tab-past" id="doctor_summary">
+            <div class="tab-header">
+                <p><%= @doctor.summary %></p>
+            </div>
+        </div>
     </div>
     
     <div class="card-overview">
-      <div class="card-detail">
-        <div class="card-general-info">
-          
-        </div>
-        <div class="card-clinic-info">
-        </div>
-      </div>
 
       <div class="booking">
+        <p>Contact Number: <%= @doctor.phone %></p>
+          <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(@doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-info' %>
       </div>
 
     </div>

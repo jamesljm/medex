@@ -31,7 +31,12 @@ class RecordsController < ApplicationController
     else
       @record = current_user.records.new(record_params)
       @record.patient_id = current_user.id
+      @record.save
     end
+
+    @user = current_user
+    @records = current_user.records
+    @record = Record.new
     
     # if @record.save
       respond_to do |format|

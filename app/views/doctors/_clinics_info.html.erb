@@ -18,7 +18,21 @@
     <%= clinic.state %>, <%= clinic.country %>
 
     <p></p>
+    <div class="clinic-label">
+        <h6>Phone: </h6>
+    </div>
+    
+    <%= clinic.phone %>
 
+    <p></p>
+
+    <div class="clinic-label">
+        <h6>Email: </h6>
+    </div>
+    
+    <%= clinic.email %>
+
+    <p></p>
     <div class="clinic-label">
         <h6>Visit Duration: </h6>
     </div>
@@ -32,6 +46,7 @@
     <%= clinic.booking ? "RM " + clinic.fee.to_s : "N/A" %>
 
     <p></p>
+
       
     </div>
 

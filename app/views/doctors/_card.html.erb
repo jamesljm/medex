@@ -22,7 +22,7 @@
           <h4 class="card-subtitle mb-2 text-muted"><%= @doctor.specialist %> </h4>
           <%= mail_to @doctor.email %>
           <br>
-          <p>Qualification : <%= @doctor.qualifications %></p>
+          <p><%= @doctor.qualifications %></p>
           <hr>
         </div>
         <div class="card-actionable">
@@ -39,49 +39,51 @@
     </div>
     <br>
     <br>
+
     <div class ="div-namecard">
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a href="" data-target="#doctor_info" data-toggle="tab" class="nav-link active tab-pending" >Info</a>
         </li>
         <li class="nav-item">
-            <a href="" data-target="#doctor_clinic" data-toggle="tab" class="nav-link tab-confirm">Clinic: <%= @doctor.clinics.count %></a>
-        </li>
-        <li class="nav-item">
-            <a href="" data-target="#doctor_summary" data-toggle="tab" class="nav-link tab-past">Biography</a>
+            <a href="" data-target="#doctor_clinic" data-toggle="tab" class="nav-link tab-confirm">Clinics: <%= @doctor.clinics.count %></a>
         </li>
     </ul>
 
     <div class="tab-content py-4">
         <!-- Pending -->
         <div class="tab-pane active tab-pending" id="doctor_info">
-            <div class="tab-header">
-              <p>Experience Year : <%= @doctor.experienced_years %></p>
-              <p>Education : <%= @doctor.education %></p>
-            </div>
+              <table class="table table-hover">
+                <tr>  
+                  <td class="tab-header">Biography : </td>
+                  <td><%= @doctor.summary %></td>
+                </tr>
+                <tr>
+                  <td class="tab-header">MMC Registration No. : </td>
+                  <td><%= @doctor.license %></td>
+                </tr>
+                <tr>  
+                  <td class="tab-header">Years of Experience : </td>
+                  <td><%= @doctor.experienced_years %></td>
+                </tr>
+              </table>
         </div>
 
         <!-- Confirmed -->
         <div class="tab-pane tab-confirm" id="doctor_clinic">
-            <div class="tab-header">
                 <p><%= render "doctors/clinics_info" %></p>
-            </div>
         </div>
 
-        <!-- past -->
-        <div class="tab-pane tab-past" id="doctor_summary">
-            <div class="tab-header">
-                <p><%= @doctor.summary %></p>
-            </div>
-        </div>
     </div>
   </div>
-    
+
+<br>
+
+
     <div class="card-overview div-namecard">
 
-      <div class="booking">
-        <p>Contact Number: <%= @doctor.phone %></p>
-          <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(@doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-info' %>
+      <div class="booking" style="margin-left:auto;margin-right:auto;">
+          <%= link_to "Book An Appointment", clinic_selection_pending_bookings_path(@doctor.id), remote: true, id: 'doctor-appoinment-btn', class: 'btn btn-info', style:'width: 100%' %>
       </div>
 
     </div>

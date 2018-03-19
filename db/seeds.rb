@@ -54,3 +54,110 @@ ActiveRecord::Base.transaction do
     Clinic.create(clinic)
   end
 end
+
+med = ["Artificial heart valve","Back problems","Cancer","Cortisone treatment","Dizziness", "AIDS", "Head injuries", "Artificial joints", "Chemical dependency", "Anemia", "Chemotherapy", "Arthtitis Rheumatism", "Diabetic", "Gout", "HIV positive", "Kidney disease", "Hemophilia", "Heart pacemaker", "Heart problems/attack", "Hip replacement", "Drug addiction", "High blood pressure", "Mental disorder", "Blood transfusion", "Epilepsy/seizures"]
+allergen = ["“Egg”, “Fish or shellfish”, “Fruit”, “Gluten”, “Garlic”, “Hot peppers”, “Oats”, “Meat”, “Milk”, “Peanut”, “Rice”, “Sesame”, “Soy”, “Sulfites”, “Tartrazine”, “Tree nut”, “Wheat”, “Tetracycline”, “Dilantin”, “Tegretol (carbamazepine)”, “Penicillin”, “Cephalosporins”, “Sulfonamides”, “Non-steroidal anti-inflammatories(cromolyn sodium, nedocromil sodium, etc.)”, “Intravenous contrast dye”, “Local anesthetics”, “Pollen”, “Cat”, “Dog”, “Insect sting”, “Mold”, “Perfume”, “Cosmetics”, “Latex”, “Water”, “House dust mite”, “Nickel (nickel sulfate hexahydrate)”, “Gold (gold sodium thiosulfate)”, “Chromium”, “Cobalt chloride”, “Formaldehyde”, “Photographic developers”, “Fungicide”, “Paraphenylenediamine (PPD)”, “Glyceryl monothioglycolate”"]
+social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime victim", "homeless"] 
+
+ActiveRecord::Base.transaction do
+  50.times do 
+    user['type'] = 'Patient'
+    user['first_name'] = Faker::Name.first_name 
+    user['last_name'] = Faker::Name.last_name
+    user['email'] = Faker::Internet.email
+    user['gender'] = rand(1..2)
+    user['phone'] = Faker::PhoneNumber.phone_number
+    user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
+    user['identification'] = "9#{rand(0..9)}#{rand(01..12)}#{rand(00..30)}-#{rand(00..99)}-#{rand(0000..9999)}"
+    user["password"] = 123
+    user['blood_type'] = "#{['O', 'A', 'B'].sample}#{["-","+"].sample}"
+    user['med_history'] = [med.sample, med.sample, med.sample, med.sample, med.sample]
+    user['allergies'] = [allergen.sample, allergen.sample, allergen.sample, allergen.sample, allergen.sample]
+    user["family_history"] = "#{med.sample}, #{med.sample}, #{med.sample}"
+    user['social_history'] = "#{social.sample}, #{social.sample}, #{social.sample}"
+    user['drinker'] = rand(0..1)
+    user['smoker'] = rand(0..1)
+
+    User.create(user)
+  end
+end
+
+
+booking = {}
+puids = []
+Patient.all.each { |p| puids << p.id }
+
+ActiveRecord::Base.transaction do
+  50.times do 
+    booking ["date"] = Faker::Date.between(7.year.ago, 1.year.from_now)
+    booking ["start_time"] = "9am-10am"
+    booking ["doctor_id"] = uids.sample
+    booking ["patient_id"] = puids.sample
+    booking ["bill"] = rand(0..1)
+    booking ["total_price"] = rand(50..100000)
+
+    Booking.create(booking)
+  end
+end
+
+record = {}
+buids = []
+Booking.all.each { |b| buids << b.id }
+
+ActiveRecord::Base.transaction do
+  50.times do 
+    b = buids.sample
+    
+    record ["encounter"] = [["Consultation", "Followup", "Procedures", "Immunizations", "Labtests"].sample]
+    record ["title"] = med.sample
+    record ["booking_id"] = b
+    record ["record_date"] = Booking.find(b).date
+    record ["patient_id"] = Booking.find(b).patient_id
+    record ["referral_note"] = ["Refer to specialist", "Refer for lab test", "Hospitalization for monitoring", "Colonoscopy to evaluate the colon for presence of polyps or tumors", "Require follow-up visit next week", "ICU", "No referral needed"].sample
+    record ["note"]= ["Advised patient to drink less coke", "Advised patient to smoke less", "Patient to monitor blood sugar level", "Therapeutic plan: Continue Prozac 20mg po qd for now. Consider switching to a different anti-depressant. Discuss counseling and therapy options."]
+    record ["diagnosis"] = med.sample
+    record ["symptoms"] = "Vital signs: Ht 5’10” Wt 160lbs HR 72 RR 16 BP 126/78 Temp Not measured
+
+    General: Mr. H is a depressed-appearing white male in no acute distress.
+
+    HEENT: Not examined
+
+    Lymph nodes: Non-tender, no palpable masses
+
+    Neck: No masses
+
+    Cardiovascular: Regular rate and rhythm; normal S1, S2; no murmurs, rubs, or gallops
+
+    Lungs: Lungs clear to auscultation bilaterally; No wheezes or crackles
+
+    Abdominal:
+
+    Abdomen soft and non-distended with no scars or striations
+    No pulsatile masses, no abdominal bruits ascultated
+    Spleen not palpable, liver not palpable
+    Tender to palpation in epigastric region and left upper quadrant; No reflex tenderness; No guarding; Murphy’s sign negative
+    Rectal: Hemoccult positive
+
+    Genito-urinary: Not examined
+
+    Neurologic: Not examined
+
+    Muskuloskeletal: Not examined
+
+    Laboratory Data: None collected
+
+    Diagnostic Tests: Hemoccult positive stool
+
+    Problem List
+    Abdominal pain, bloody stools
+    Depression
+    Hypertension
+    Problem #1: Abdominal pain, bloody stools
+
+    Differential diagnosis: colorectal adenocarcinoma, gastric ulcer, duodenal ulcer, GERD, intestinal obstruction, anxiety or depression related, abdominal aortic aneurysm, pancreatitis, pancreatic cancer"
+    record ["follow_up"] = rand(0..1)
+    record ["referral"] = rand(0..1)
+
+    Record.create(record)
+  end
+end

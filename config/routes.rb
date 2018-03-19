@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       end
     end
     member do
-      get 'authorization' => 'doctors#authorization', as: "authorization", action: "authorization"              
+      get 'authorization' => 'doctors#authorization', as: "authorization", action: "authorization"
       get 'profile' => 'doctors#profile', as: "profile", action: "profile"
       get 'dashboard/:request' => 'patients#dashboard', as: 'dashboard', action: 'dashboard'
       get 'card' => 'doctors#card', as: "card", action: "card"
@@ -56,6 +56,10 @@ Rails.application.routes.draw do
     member do
       get 'doctor/:doctor_id' => 'records#doctor', as: "doctor", action: "doctor"
       get 'authorization' => 'records#authorization', as: "authorization", action: "authorization"
+    end
+    
+    collection do
+      get 'search' => 'records#search', as: "search", action: "search"
     end
 
     resources :prescriptions

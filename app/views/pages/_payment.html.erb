@@ -97,7 +97,7 @@
     <li>Booking ID : <%= @booking.id %></li>
     <li>Booking Date : <%= @booking.date %></li>
     <li>Booking Time : <%= @booking.start_time %></li>
-    <li>Booking Price : <%= @booking.total_price %></li>
+    <li>Booking Price : RM <%= @booking.total_price %></li>
 </ul>
 
 <%= form_tag checkout_pages_path(@booking.id), id: "cardForm" do |form| %>

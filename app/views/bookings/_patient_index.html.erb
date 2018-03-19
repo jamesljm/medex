@@ -1,4 +1,4 @@
-<div class="container div-wrapper">
+<div class="div-wrapper container">
     <div class="row my-2">
         <div class="col-lg-12 order-lg-2">
             <ul class="nav nav-tabs">
@@ -18,7 +18,7 @@
                     <div class="tab-header">
                       <h5>Appointments Pending Approval</h5>
                     </div>
-                    <%= render "bookings/doctor_pending" %>
+                    <%= render "bookings/patient_pending" %>
                 </div>
 
                 <!-- Confirmed -->
@@ -26,7 +26,7 @@
                     <div class="tab-header">
                         <h5>Confirmed and Upcoming Appointments</h5>
                     </div>
-                    <%= render "bookings/doctor_confirmed" %>
+                    <%= render "bookings/patient_confirmed" %>
                 </div>
 
                 <!-- past -->
@@ -34,7 +34,7 @@
                     <div class="tab-header">
                         <h5>Past Appointments</h5>
                     </div>
-                    <%= render "bookings/doctor_past" %>
+                    <%= render "bookings/patient_past" %>
                 </div>
 
 

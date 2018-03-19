@@ -1,8 +1,6 @@
 <div class="container div-wrapper">
 
-<div class="tab-header">
-  <h5>List of Patients</h5>
-</div>
+<p><h1 class="tab-header">List of Patients</h1></p>
 
 <p></p>
 <hr>
@@ -11,11 +9,6 @@
   <div class="col search-name">
   Search by First Name/Last Name
   </div>
-
-  <div class="col search-id">
-  Search by ID
-  </div>
-
 </div>
 
 <p></p>
@@ -41,8 +34,8 @@
             <td><%= @patients.find(p.patient_id).first_name +  @patients.find(p.patient_id).last_name%></td>
           </tr>
           <tr>
-            <th>ID Number: </th>
-            <td><%= @patients.find(p.patient_id).identification%></td>
+            <th>Birthdate: </th>
+            <td><%= @patients.find(p.patient_id).birthdate %></td>
           </tr>
           <tr>
             <td><%= link_to "View Patient Profile", card_patient_path(@patients.find(p.patient_id)),remote: true, class:"btn btn-sm btn-info" %></td>

@@ -1,0 +1,34 @@
+<hr>
+<p></p>
+
+        <% @prescriptions.each do |p| %>
+            <% p.each do |p1| %>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header card-title"><h6><%= p1.drug_name %></h6></div>
+                        <div class="card-body">
+                        <p><div>Record Ref.:<%= p1.record_id %></div></p>
+                        <div><%# <%= p1.record.booking.doctor.last_name %></div>
+                        <div>Start Date: <%= p1.pres_start_date %></div>
+                        <div>End Date: <%= p1.pres_end_date %></div>
+                        <div>Dosage: <%= p1.dosage %></div>
+                        <div>
+                            <% if p1.meal == 1 %>
+                                Take <%= "Before meals" %>
+                            <% else %>
+                                <%= "After meals" %>
+                            <% end %>    
+                        </div>
+                        <div><h6>Intake</h6>
+                            <div class="col-mb-12">Morning: <%= p1.morning %></div>
+                            <div class="col-mb-12">Noon: <%= p1.noon %></div>
+                            <div class="col-mb-12">Night: <%= p1.night %></div>
+                        </div>
+                        
+
+                        <%= link_to "Edit", edit_record_prescription_path(p1.record_id, p1.id), remote: true %>
+                        <%= link_to "Delete", record_prescription_path(p1.record_id, p1.id), method: :delete %>
+                    </div>    
+                </div>
+            <% end %>
+        <% end %>

@@ -26,9 +26,9 @@
             </td>
             <td>
                 <% if booking.bill == 1 %>
-                    <button class="btn btn-success" disabled>Paid</button>
+                    <button class="btn btn-sm btn-success" disabled>Paid</button>
                 <% else %>
-                    <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-primary" %>
+                    <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-sm btn-primary" %>
                 <% end %>
             </td>
             <td>

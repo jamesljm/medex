@@ -75,16 +75,24 @@
                     <li class="list-group-item">
                         <strong>Med History : </strong>
                         <ul>
+                            <% if @patient.med_history == nil %>
+                                
+                            <% else %>
                             <% @patient.med_history.each do |med| %>
                                 <li style="list-style: none"><%= med %></li>
+                            <% end %>
                             <% end %>
                         </ul>
                     </li>
                     <li class="list-group-item">
                         <strong>Allergies : </strong>
                          <ul>
+                            <% if @patient.med_history == nil %>
+                                
+                            <% else %>
                             <% @patient.allergies.each do |allergy| %>
                                 <li style="list-style: none"><%= allergy %></li>
+                            <% end %>
                             <% end %>
                         </ul>
                     </li>

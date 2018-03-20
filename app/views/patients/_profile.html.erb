@@ -8,7 +8,7 @@
             <% if current_user.profile_picture? %>
                 <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
             <% else %>
-                <img src="//placehold.it/150" class="mx-auto img-fluid rounded-circle d-block" alt= :remote_avatar_url>
+                <div class="mx-auto img-fluid d-block profile_picture"><img src="//placehold.it/150" class="profile_picture rounded-circle">
             <% end %>
                         
             <%= form_for @patient do |form| %>

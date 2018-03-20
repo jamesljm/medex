@@ -1,11 +1,10 @@
 class ClinicsController < ApplicationController
 
     def index
-      @doctor = Doctor.find(params[:doctor_id])
+      @doctor = Doctor.find(params[:doctor_id]) if params[:doctor_id].to_i > 0
       @clinic = Clinic.new
       @clinics = Clinic.all
       @doctors = Doctor.all
-
     end
 
 

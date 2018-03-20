@@ -14,32 +14,33 @@
     <tbody>
     <% if @bookings.empty? == false %>
     <% @bookings.each do |booking| %>
-        <% if Date.strptime(booking.date, '%m/%d/%Y') >= Date.today %>
-        <tr>
-            <td>
-                <%= booking.date %>
-            </td>
-            <td>
-                <%= booking.start_time %>
-            </td>
-            <td>
-                <%= link_to (booking.doctor.first_name + " " + booking.doctor.last_name),  card_doctor_path(booking.doctor.id),remote: true %>
-            </td>
-            <td>
-                <% if booking.bill == true %>
-                    <button class="btn btn-sm btn-success" disabled>Paid</button>
-                <% else %>
-                    <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-sm btn-primary" %>
-                <% end %>
-            </td>
-            <td>
-                <%= link_to 'Delete', booking_path(booking), remote: true,
-                    class: 'btn btn-sm btn-danger',
-                    method: :Delete, 
-                    data: {confirm: 'Are you sure?'},
-                    remote: true %>
-            </td>
-        </tr>
+            
+        <% if (booking.date.include?('/') && (Date.strptime(booking.date, '%m/%d/%Y') >= Date.today)) || (booking.date.include?('-') && (Date.strptime(booking.date, '%Y-%m-%d') >=Date.today)) %>           
+            <tr>
+                <td>
+                    <%= booking.date %>
+                </td>
+                <td>
+                    <%= booking.start_time %>
+                </td>
+                <td>
+                    <%= link_to (booking.doctor.first_name + " " + booking.doctor.last_name),  card_doctor_path(booking.doctor.id),remote: true %>
+                </td>
+                <td>
+                    <% if booking.bill == true %>
+                        <button class="btn btn-sm btn-success" disabled>Paid</button>
+                    <% else %>
+                        <%= link_to "Make Payment", payment_pages_path(:booking_id => booking.id), remote: true, class: "btn btn-sm btn-primary" %>
+                    <% end %>
+                </td>
+                <td>
+                    <%= link_to 'Delete', booking_path(booking), remote: true,
+                        class: 'btn btn-sm btn-danger',
+                        method: :Delete, 
+                        data: {confirm: 'Are you sure?'},
+                        remote: true %>
+                </td>
+            </tr>
         <% end %>
     <% end %>
     <% end %>

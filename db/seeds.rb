@@ -11,7 +11,7 @@ user['password'] = 'asdf'
 x = 25
 
 ActiveRecord::Base.transaction do
-  50.times do 
+  5.times do 
     user['type'] = 'Doctor'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
@@ -38,7 +38,7 @@ uids = []
 Doctor.all.each { |u| uids << u.id }
 
 ActiveRecord::Base.transaction do
-  50.times do 
+  5.times do 
     clinic['name'] = Faker::App.name
     clinic['country'] = Faker::Address.country
     clinic['state'] = Faker::Address.state
@@ -52,7 +52,7 @@ ActiveRecord::Base.transaction do
     clinic['duration'] = [15,20,25,30,35,40,45,50,55,60].sample
     clinic['operation_hour'] = {"mon_status"=>"Open", "mon_start(1i)"=>"1", "mon_start(2i)"=>"1", "mon_start(3i)"=>"1", "mon_start(4i)"=>"09", "mon_start(5i)"=>"00", "mon_end(1i)"=>"1", "mon_end(2i)"=>"1", "mon_end(3i)"=>"1", "mon_end(4i)"=>"05", "mon_end(5i)"=>"30", "tue_status"=>"Open", "tue_start(1i)"=>"1", "tue_start(2i)"=>"1", "tue_start(3i)"=>"1", "tue_start(4i)"=>"09", "tue_start(5i)"=>"00", "tue_end(1i)"=>"1", "tue_end(2i)"=>"1", "tue_end(3i)"=>"1", "tue_end(4i)"=>"", "tue_end(5i)"=>"", "wed_status"=>"Open", "wed_start(1i)"=>"1", "wed_start(2i)"=>"1", "wed_start(3i)"=>"1", "wed_start(4i)"=>"09", "wed_start(5i)"=>"00", "wed_end(1i)"=>"1", "wed_end(2i)"=>"1", "wed_end(3i)"=>"1", "wed_end(4i)"=>"05", "wed_end(5i)"=>"30", "thu_status"=>"Open", "thu_start(1i)"=>"1", "thu_start(2i)"=>"1", "thu_start(3i)"=>"1", "thu_start(4i)"=>"09", "thu_start(5i)"=>"00", "thu_end(1i)"=>"1", "thu_end(2i)"=>"1", "thu_end(3i)"=>"1", "thu_end(4i)"=>"05", "thu_end(5i)"=>"30", "fri_status"=>"Open", "fri_start(1i)"=>"1", "fri_start(2i)"=>"1", "fri_start(3i)"=>"1", "fri_start(4i)"=>"09", "fri_start(5i)"=>"00", "fri_end(1i)"=>"1", "fri_end(2i)"=>"1", "fri_end(3i)"=>"1", "fri_end(4i)"=>"05", "fri_end(5i)"=>"30", "sat_status"=>"Open", "sat_start(1i)"=>"1", "sat_start(2i)"=>"1", "sat_start(3i)"=>"1", "sat_start(4i)"=>"09", "sat_start(5i)"=>"00", "sat_end(1i)"=>"1", "sat_end(2i)"=>"1", "sat_end(3i)"=>"1", "sat_end(4i)"=>"12", "sat_end(5i)"=>"00", "sun_status"=>"Closed", "sun_start(1i)"=>"1", "sun_start(2i)"=>"1", "sun_start(3i)"=>"1", "sun_start(4i)"=>"", "sun_start(5i)"=>"", "sun_end(1i)"=>"1", "sun_end(2i)"=>"1", "sun_end(3i)"=>"1", "sun_end(4i)"=>"", "sun_end(5i)"=>"", "hol_status"=>"Closed", "hol_start(1i)"=>"1", "hol_start(2i)"=>"1", "hol_start(3i)"=>"1", "hol_start(4i)"=>"", "hol_start(5i)"=>"", "hol_end(1i)"=>"1", "hol_end(2i)"=>"1", "hol_end(3i)"=>"1", "hol_end(4i)"=>"", "hol_end(5i)"=>""}
 
-    clinic['doctor_id'] = uids.sample
+    clinic['doctor_id'] = 12
 
     Clinic.create(clinic)
   end
@@ -63,7 +63,7 @@ allergen = ["“Egg”, “Fish or shellfish”, “Fruit”, “Gluten”, “G
 social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime victim", "homeless"] 
 x = 25
 ActiveRecord::Base.transaction do
-  30.times do 
+  5.times do 
 
     user['type'] = 'Patient'
     user['first_name'] = Faker::Name.first_name 
@@ -93,11 +93,11 @@ puids = []
 Patient.all.each { |p| puids << p.id }
 
 ActiveRecord::Base.transaction do
-  100.times do 
+  10.times do 
     booking ["date"] = Faker::Date.between(1.year.ago, 1.year.from_now)
     booking ["start_time"] = "9am-10am"
-    booking ["doctor_id"] = uids.sample
-    booking ["patient_id"] = puids.sample
+    booking ["doctor_id"] = 5
+    booking ["patient_id"] = 6
     booking ["bill"] = rand(0..1)
     booking ["total_price"] = rand(50..100000)
 
@@ -107,10 +107,10 @@ end
 
 record = {}
 buids = []
-Booking.all.each { |b| buids << b.id }
+Booking.where(:doctor_id => 5, :patient_id => 6).each { |b| buids << b.id }
 
 ActiveRecord::Base.transaction do
-  50.times do 
+  100.times do 
     b = buids.sample
     
     record ["encounter"] = [["Consultation", "Followup", "Procedures", "Immunizations", "Labtests"].sample]

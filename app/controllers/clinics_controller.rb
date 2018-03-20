@@ -1,7 +1,7 @@
 class ClinicsController < ApplicationController
 
     def index
-      @doctor = Doctor.find(params[:doctor_id])
+      # @doctor = Doctor.find(params[:doctor_id])
       @clinic = Clinic.new
       @clinics = Clinic.all
       @doctors = Doctor.all

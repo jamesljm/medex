@@ -93,13 +93,28 @@
 
 <div class="div-wrapper container">
     <h2>Your Payment</h2>
-    <ul>
-        <li>Doctor Name : <%= @doctor.name %></li>
-        <li>Booking ID : <%= @booking.id %></li>
-        <li>Booking Date : <%= @booking.date %></li>
-        <li>Booking Time : <%= @booking.start_time %></li>
-        <li>Booking Price : RM <%= @booking.total_price %></li>
-    </ul>
+    <table class="table table-hover">
+        <tr>
+            <td>Doctor Name : </td>
+            <td><%= @doctor.name %></td>
+        </tr>
+        <tr>
+            <td>Booking ID : </td>
+            <td><%= @booking.id %></td>
+        </tr>
+        <tr>
+            <td>Booking Date : </td>
+            <td><%= @booking.date %></td>
+        </tr>
+        <tr>
+            <td>Booking Time : </td>
+            <td><%= @booking.start_time %></td>
+        </tr>
+        <tr>
+            <td>Booking Price : RM </td>
+            <td><%= @booking.total_price %></td>
+        </tr>
+    </table>
 
     <%= form_tag checkout_pages_path(@booking.id), id: "cardForm" do |form| %>
         <%= label_tag "Credit Card Number" %>

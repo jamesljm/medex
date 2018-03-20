@@ -2,6 +2,7 @@
 <!-- Clinic's Index Partial(Patient's) -->
 <!-- ======================================================================= -->
 
+<div class="div-wrapper">
 <%= form_tag(search_doctor_clinics_path(1), method: 'get', remote: true, class: 'div-wrapper') do |f| %>
   <%= label_tag :name, "Search Clinics : " %><br>
   <%= text_field_tag :name, params[:name], placeholder: "Search Clinics" %>
@@ -19,3 +20,4 @@
     </div> <!-- /row -->
   </div> <!-- /container -->
 </section> <!-- /album -->
+</div>

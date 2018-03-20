@@ -33,11 +33,16 @@
                             <div class="card-footer bg-transparent" id="card-auth-<%= record.id %>">
                                 <div class="d-flex justify-content-between align-items-center">    
                                     <div class="btn-group">
-                                        <%= link_to "generate authorization code", authorization_record_path(:id => record.id), remote: true, class: 'btn btn-sm btn-outline-info' %>
+                                        <% if record.authorization_code.nil? %>
+                                            <%= link_to "generate authorization code", authorization_record_path(:id => record.id), remote: true, class: 'btn btn-sm btn-outline-info' %>
+                                        <% end %>
                                     </div>
                                 </div>
                                 <strong>Generated Code : </strong>
                                 <span><%= record.authorization_code if !record.authorization_code.nil? %></span>
+                                <% if !record.authorization_code.nil? %>
+                                    <%= link_to  "Delete Code", delete_code_records_path(id: record.id), remote: true, class: 'btn btn-danger' %>
+                                <% end %>
                             </div>
                         </div>
                     </div>

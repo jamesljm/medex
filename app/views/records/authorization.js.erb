@@ -2,5 +2,6 @@
 // Record's Edit Partial
 // =============================================================================
 
-$('#card-auth-<%= @record.id %>').empty().append(`<strong>Generated Code : </strong><span><%= @record.authorization_code if !@record.authorization_code.nil? %></span>`);
+$('#card-auth-<%= @record.id %>').empty().append(`<strong>Generated Code : </strong><span><%= @record.authorization_code %></span>
+                                    <%= link_to  "Delete Code", delete_code_records_path(id: @record.id), remote: true, class: 'btn btn-danger' %>`);
 

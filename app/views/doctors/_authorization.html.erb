@@ -35,18 +35,19 @@
 
 <div class="container div-wrapper">
     <p><h1 class="tab-header">View Records</h1></p>
-<div id="auth-search">
-    <%= form_tag authorization_doctor_path, method: :get, remote: true do |f| %>
-        <%= label_tag :auth_record_key, "Enter Authentication Key : " %>
-        <%= text_field_tag(:auth_record_key, nil, 'data-role'=>'tagsinput', class: "form-control") %>
-        <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
-    <% end %>
-</div>
+    <div id="auth-search">
+        <%= form_tag authorization_doctor_path, method: :get, remote: true do |f| %>
+            <%= label_tag :auth_record_key, "Enter Authentication Key : " %>
+            <%= text_field_tag(:auth_record_key, nil, 'data-role'=>'tagsinput', class: "form-control") %>
+            <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
+        <% end %>
+    </div>
+
+    <section id="auth-records">
+        <%= render  "doctors/authorization_records" %>
+    </section>
+
+    <section id="auth-show-record" class="div-wrapper">
+    </section>
 </div>
 
-<section id="auth-records">
-    <%= render  "doctors/authorization_records" %>
-</section>
-
-<section id="auth-show-record">
-</section>

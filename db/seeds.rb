@@ -11,7 +11,6 @@ user['password'] = 'asdf'
 x = 25
 
 ActiveRecord::Base.transaction do
-
   50.times do 
     user['type'] = 'Doctor'
     user['first_name'] = Faker::Name.first_name 
@@ -65,6 +64,7 @@ social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime
 x = 25
 ActiveRecord::Base.transaction do
   30.times do 
+
     user['type'] = 'Patient'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
@@ -93,8 +93,8 @@ puids = []
 Patient.all.each { |p| puids << p.id }
 
 ActiveRecord::Base.transaction do
-  40.times do 
-    booking ["date"] = Faker::Date.between(7.year.ago, 1.year.from_now)
+  100.times do 
+    booking ["date"] = Faker::Date.between(1.year.ago, 1.year.from_now)
     booking ["start_time"] = "9am-10am"
     booking ["doctor_id"] = uids.sample
     booking ["patient_id"] = puids.sample

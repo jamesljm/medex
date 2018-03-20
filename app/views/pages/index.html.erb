@@ -43,20 +43,5 @@
   </div>
 <% end %>
 
+<%= render 'footer' %>
 
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Medex &copy; Your Website 2018</p>
-  </div>
-
-  <h4 class="text-white">Subscribe Us Now!</h4>
-  <hr>
-
-  <%= form_for :subscriber, url: subscribers_path do |f| %>
-  <%= f.text_field :name, placeholder: "Your Name" %>
-  <%= f.email_field :email, placeholder: "Your Email" %>
-  <%= f.submit 'Subscribe!', class:"btn btn-light my-2 my-sm-0" %>
-  <% end %>
-  <!-- /.container -->
-</footer>

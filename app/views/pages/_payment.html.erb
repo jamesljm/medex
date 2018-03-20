@@ -91,31 +91,33 @@
 
 <!-- Page Content -->
 
-<h2>Your Payment</h2>
-<ul>
-    <li>Doctor Name : <%= @doctor.name %></li>
-    <li>Booking ID : <%= @booking.id %></li>
-    <li>Booking Date : <%= @booking.date %></li>
-    <li>Booking Time : <%= @booking.start_time %></li>
-    <li>Booking Price : RM <%= @booking.total_price %></li>
-</ul>
+<div class="div-wrapper container">
+    <h2>Your Payment</h2>
+    <ul>
+        <li>Doctor Name : <%= @doctor.name %></li>
+        <li>Booking ID : <%= @booking.id %></li>
+        <li>Booking Date : <%= @booking.date %></li>
+        <li>Booking Time : <%= @booking.start_time %></li>
+        <li>Booking Price : RM <%= @booking.total_price %></li>
+    </ul>
 
-<%= form_tag checkout_pages_path(@booking.id), id: "cardForm" do |form| %>
-    <%= label_tag "Creditt Card Number" %>
-    <div id="card-number" class="hosted-field"></div>
+    <%= form_tag checkout_pages_path(@booking.id), id: "cardForm" do |form| %>
+        <%= label_tag "Credit Card Number" %>
+        <div id="card-number" class="hosted-field"></div>
 
-    <%= label_tag "Expiration Date" %>
-    <div id="expiration-date" class="hosted-field"></div>
+        <%= label_tag "Expiration Date" %>
+        <div id="expiration-date" class="hosted-field"></div>
 
-    <%= label_tag "CVV" %>
-    <div id="cvv" class="hosted-field"></div>
+        <%= label_tag "CVV" %>
+        <div id="cvv" class="hosted-field"></div>
 
-    <%= hidden_field_tag "payment_method_nonce" %>
+        <%= hidden_field_tag "payment_method_nonce" %>
 
-    <div class="button-container">
-        <%= submit_tag "Confirm Payment", disabled: true, class: "btn btn-primary", id: "submit-payment-btn" %>
-    </div>
-<% end %>
+        <div class="button-container">
+            <%= submit_tag "Confirm Payment", disabled: true, class: "btn btn-primary", id: "submit-payment-btn" %>
+        </div>
+    <% end %>
+</div>
 
 
 <!-- Load the Client component. -->

@@ -8,14 +8,16 @@
 
 user = {}
 user['password'] = 'asdf'
+x = 25
 
 ActiveRecord::Base.transaction do
+
   10.times do 
     user['type'] = 'Doctor'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
     user['email'] = Faker::Internet.email
-    user['gender'] = rand(1..2)
+    user['gender'] = rand(0..3)
     user['phone'] = Faker::PhoneNumber.phone_number
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = rand(0000000001..9999999999)
@@ -26,8 +28,9 @@ ActiveRecord::Base.transaction do
     user['education'] = Faker::RickAndMorty.location
     user['qualifications'] = Faker::Educator.course
     user['summary'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
+    user['remote_profile_picture_url'] = "https://placeimg.com/200/200/face="+x.to_s
     User.create(user)
+    x =+ 1
   end
 end
 
@@ -36,7 +39,7 @@ uids = []
 Doctor.all.each { |u| uids << u.id }
 
 ActiveRecord::Base.transaction do
-  20.times do 
+  10.times do 
     clinic['name'] = Faker::App.name
     clinic['country'] = Faker::Address.country
     clinic['state'] = Faker::Address.state
@@ -48,7 +51,7 @@ ActiveRecord::Base.transaction do
     clinic['booking'] = rand(0..1)
     clinic['fee'] = rand(20..200)
     clinic['duration'] = [15,20,25,30,35,40,45,50,55,60].sample
-    clinic['operation_hour'] = {"mon_status"=>"Open", "mon_start(1i)"=>"1", "mon_start(2i)"=>"1", "mon_start(3i)"=>"1", "mon_start(4i)"=>"08", "mon_start(5i)"=>"", "mon_end(1i)"=>"1", "mon_end(2i)"=>"1", "mon_end(3i)"=>"1", "mon_end(4i)"=>"10", "mon_end(5i)"=>"", "tue_status"=>"Closed", "tue_start(1i)"=>"1", "tue_start(2i)"=>"1", "tue_start(3i)"=>"1", "tue_start(4i)"=>"", "tue_start(5i)"=>"", "tue_end(1i)"=>"1", "tue_end(2i)"=>"1", "tue_end(3i)"=>"1", "tue_end(4i)"=>"", "tue_end(5i)"=>"", "wed_status"=>"Closed", "wed_start(1i)"=>"1", "wed_start(2i)"=>"1", "wed_start(3i)"=>"1", "wed_start(4i)"=>"", "wed_start(5i)"=>"", "wed_end(1i)"=>"1", "wed_end(2i)"=>"1", "wed_end(3i)"=>"1", "wed_end(4i)"=>"", "wed_end(5i)"=>"", "thu_status"=>"Open", "thu_start(1i)"=>"1", "thu_start(2i)"=>"1", "thu_start(3i)"=>"1", "thu_start(4i)"=>"", "thu_start(5i)"=>"", "thu_end(1i)"=>"1", "thu_end(2i)"=>"1", "thu_end(3i)"=>"1", "thu_end(4i)"=>"", "thu_end(5i)"=>"", "fri_status"=>"Open", "fri_start(1i)"=>"1", "fri_start(2i)"=>"1", "fri_start(3i)"=>"1", "fri_start(4i)"=>"", "fri_start(5i)"=>"", "fri_end(1i)"=>"1", "fri_end(2i)"=>"1", "fri_end(3i)"=>"1", "fri_end(4i)"=>"", "fri_end(5i)"=>"", "sat_status"=>"Open", "sat_start(1i)"=>"1", "sat_start(2i)"=>"1", "sat_start(3i)"=>"1", "sat_start(4i)"=>"", "sat_start(5i)"=>"", "sat_end(1i)"=>"1", "sat_end(2i)"=>"1", "sat_end(3i)"=>"1", "sat_end(4i)"=>"", "sat_end(5i)"=>"", "sun_status"=>"Closed", "sun_start(1i)"=>"1", "sun_start(2i)"=>"1", "sun_start(3i)"=>"1", "sun_start(4i)"=>"", "sun_start(5i)"=>"", "sun_end(1i)"=>"1", "sun_end(2i)"=>"1", "sun_end(3i)"=>"1", "sun_end(4i)"=>"", "sun_end(5i)"=>"", "hol_status"=>"Closed", "hol_start(1i)"=>"1", "hol_start(2i)"=>"1", "hol_start(3i)"=>"1", "hol_start(4i)"=>"", "hol_start(5i)"=>"", "hol_end(1i)"=>"1", "hol_end(2i)"=>"1", "hol_end(3i)"=>"1", "hol_end(4i)"=>"", "hol_end(5i)"=>""}
+    clinic['operation_hour'] = {"mon_status"=>"Open", "mon_start(1i)"=>"1", "mon_start(2i)"=>"1", "mon_start(3i)"=>"1", "mon_start(4i)"=>"09", "mon_start(5i)"=>"00", "mon_end(1i)"=>"1", "mon_end(2i)"=>"1", "mon_end(3i)"=>"1", "mon_end(4i)"=>"05", "mon_end(5i)"=>"30", "tue_status"=>"Open", "tue_start(1i)"=>"1", "tue_start(2i)"=>"1", "tue_start(3i)"=>"1", "tue_start(4i)"=>"09", "tue_start(5i)"=>"00", "tue_end(1i)"=>"1", "tue_end(2i)"=>"1", "tue_end(3i)"=>"1", "tue_end(4i)"=>"", "tue_end(5i)"=>"", "wed_status"=>"Open", "wed_start(1i)"=>"1", "wed_start(2i)"=>"1", "wed_start(3i)"=>"1", "wed_start(4i)"=>"09", "wed_start(5i)"=>"00", "wed_end(1i)"=>"1", "wed_end(2i)"=>"1", "wed_end(3i)"=>"1", "wed_end(4i)"=>"05", "wed_end(5i)"=>"30", "thu_status"=>"Open", "thu_start(1i)"=>"1", "thu_start(2i)"=>"1", "thu_start(3i)"=>"1", "thu_start(4i)"=>"09", "thu_start(5i)"=>"00", "thu_end(1i)"=>"1", "thu_end(2i)"=>"1", "thu_end(3i)"=>"1", "thu_end(4i)"=>"05", "thu_end(5i)"=>"30", "fri_status"=>"Open", "fri_start(1i)"=>"1", "fri_start(2i)"=>"1", "fri_start(3i)"=>"1", "fri_start(4i)"=>"09", "fri_start(5i)"=>"00", "fri_end(1i)"=>"1", "fri_end(2i)"=>"1", "fri_end(3i)"=>"1", "fri_end(4i)"=>"05", "fri_end(5i)"=>"30", "sat_status"=>"Open", "sat_start(1i)"=>"1", "sat_start(2i)"=>"1", "sat_start(3i)"=>"1", "sat_start(4i)"=>"09", "sat_start(5i)"=>"00", "sat_end(1i)"=>"1", "sat_end(2i)"=>"1", "sat_end(3i)"=>"1", "sat_end(4i)"=>"12", "sat_end(5i)"=>"00", "sun_status"=>"Closed", "sun_start(1i)"=>"1", "sun_start(2i)"=>"1", "sun_start(3i)"=>"1", "sun_start(4i)"=>"", "sun_start(5i)"=>"", "sun_end(1i)"=>"1", "sun_end(2i)"=>"1", "sun_end(3i)"=>"1", "sun_end(4i)"=>"", "sun_end(5i)"=>"", "hol_status"=>"Closed", "hol_start(1i)"=>"1", "hol_start(2i)"=>"1", "hol_start(3i)"=>"1", "hol_start(4i)"=>"", "hol_start(5i)"=>"", "hol_end(1i)"=>"1", "hol_end(2i)"=>"1", "hol_end(3i)"=>"1", "hol_end(4i)"=>"", "hol_end(5i)"=>""}
 
     clinic['doctor_id'] = uids.sample
 
@@ -59,14 +62,14 @@ end
 med = ["Artificial heart valve","Back problems","Cancer","Cortisone treatment","Dizziness", "AIDS", "Head injuries", "Artificial joints", "Chemical dependency", "Anemia", "Chemotherapy", "Arthtitis Rheumatism", "Diabetic", "Gout", "HIV positive", "Kidney disease", "Hemophilia", "Heart pacemaker", "Heart problems/attack", "Hip replacement", "Drug addiction", "High blood pressure", "Mental disorder", "Blood transfusion", "Epilepsy/seizures"]
 allergen = ["“Egg”, “Fish or shellfish”, “Fruit”, “Gluten”, “Garlic”, “Hot peppers”, “Oats”, “Meat”, “Milk”, “Peanut”, “Rice”, “Sesame”, “Soy”, “Sulfites”, “Tartrazine”, “Tree nut”, “Wheat”, “Tetracycline”, “Dilantin”, “Tegretol (carbamazepine)”, “Penicillin”, “Cephalosporins”, “Sulfonamides”, “Non-steroidal anti-inflammatories(cromolyn sodium, nedocromil sodium, etc.)”, “Intravenous contrast dye”, “Local anesthetics”, “Pollen”, “Cat”, “Dog”, “Insect sting”, “Mold”, “Perfume”, “Cosmetics”, “Latex”, “Water”, “House dust mite”, “Nickel (nickel sulfate hexahydrate)”, “Gold (gold sodium thiosulfate)”, “Chromium”, “Cobalt chloride”, “Formaldehyde”, “Photographic developers”, “Fungicide”, “Paraphenylenediamine (PPD)”, “Glyceryl monothioglycolate”"]
 social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime victim", "homeless"] 
-
+x = 25
 ActiveRecord::Base.transaction do
-  50.times do 
+  10.times do 
     user['type'] = 'Patient'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
     user['email'] = Faker::Internet.email
-    user['gender'] = rand(1..2)
+    user['gender'] = rand(0..3)
     user['phone'] = Faker::PhoneNumber.phone_number
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = "9#{rand(0..9)}#{rand(01..12)}#{rand(00..30)}-#{rand(00..99)}-#{rand(0000..9999)}"
@@ -78,6 +81,7 @@ ActiveRecord::Base.transaction do
     user['social_history'] = "#{social.sample}, #{social.sample}, #{social.sample}"
     user['drinker'] = rand(0..1)
     user['smoker'] = rand(0..1)
+    user['remote_profile_picture_url'] = "https://placeimg.com/200/200/face="+x.to_s
 
     User.create(user)
   end
@@ -89,7 +93,7 @@ puids = []
 Patient.all.each { |p| puids << p.id }
 
 ActiveRecord::Base.transaction do
-  50.times do 
+  10.times do 
     booking ["date"] = Faker::Date.between(7.year.ago, 1.year.from_now)
     booking ["start_time"] = "9am-10am"
     booking ["doctor_id"] = uids.sample
@@ -106,7 +110,7 @@ buids = []
 Booking.all.each { |b| buids << b.id }
 
 ActiveRecord::Base.transaction do
-  50.times do 
+  10.times do 
     b = buids.sample
     
     record ["encounter"] = [["Consultation", "Followup", "Procedures", "Immunizations", "Labtests"].sample]

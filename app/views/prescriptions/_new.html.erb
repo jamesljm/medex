@@ -1,4 +1,7 @@
-<h1>Prescription#new</h1>
+<div class="container div-wrapper">
+
+
+<h2>Prescription#new</h2>
 <p>Find me in app/views/prescription/new.html.erb</p>
 
 
@@ -26,10 +29,10 @@
     <div class="form-group">
         <div><%= f.label :meal %></div>
         <div class="radio">
-            <div><%= f.radio_button :meal, true  %>Before meal</div>
+            <div style="margin-left:2vw"><%= f.radio_button :meal, true  %>Before meal</div>
         </div>
         <div class="radio">
-            <div><%= f.radio_button :meal, false %>After meal</div>
+            <div style="margin-left:2vw"><%= f.radio_button :meal, false %>After meal</div>
         </div>
     </div>
 
@@ -50,3 +53,4 @@
 
     <div><%= f.submit "Save Record" %></div>
 <% end %>
+</div>

@@ -9,6 +9,7 @@ class RecordsController < ApplicationController
   def new
     @user=current_user
     @record = Record.new
+    prescriptions = @record.prescriptions.build
     if @user.type == "Doctor"
       @@param3 = params[:param3]
       @booking = Booking.find(@@param3)
@@ -30,17 +31,20 @@ class RecordsController < ApplicationController
     else
       @record = current_user.records.new(record_params)
       @record.patient_id = current_user.id
+      @record.save
     end
+
+    @user = current_user
+    @records = current_user.records
+    @record = Record.new
     
-    if @record.save
-      if @user.type == "Doctor"
-        redirect_to doctor_path(@user.id)
-      else 
-        redirect_to patient_path(@user.id)
+    # if @record.save
+      respond_to do |format|
+        format.js
       end
-    else
-        redirect_back(fallback_location: new_record_path)
-    end
+    # else
+    #     redirect_back(fallback_location: new_record_path)
+    # end
   end
   
   def edit
@@ -108,9 +112,19 @@ class RecordsController < ApplicationController
 
   end
 
+  def search
+    @user = current_user
+    @records = current_user.records.by_title(params[:search_title])
+    # @records = current_user.records.by_doctor_name
+    @record = Record.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
   def record_params
-    params.require(:record).permit(:booking_id, :record_date, :title, :symptoms, :diagnosis, :note, :follow_up, :referral, :referral_note, {encounter: []} )
+    params.require(:record).permit(:booking_id, :record_date, :title, :symptoms, :diagnosis, :note, :follow_up, :referral, :referral_note, {encounter: []}, prescriptions_attributes:[:drug_name, :dosage, :pres_start_date, :pres_end_date, :meal, :morning, :noon, :night] )
   end
 
   def set_record

@@ -1,0 +1,63 @@
+        <% if !@records.empty? %>
+            <% @records.each do |record| %>
+            <% if !record.nil? %>
+            <!-- TODO: Ascending the records' created date -->
+                <div class="timeline-item">
+                    <div class="timeline-content js--fadeInLeft">
+                        <h2 class="tab-header"><%= record.title %></h2>
+                        <div class="date"><%= record.record_date %></div>
+
+                        <table class="table table-hover">  
+                            <tr>
+                                <% if record.encounter.nil? == false %>
+                                    <td><strong>Record type: </strong></td>
+                                    <td>
+                                        <ul>
+                                            <% record.encounter.each do |en| %>
+                                                <li><%= "#{en}" %></li>
+                                            <% end %>
+                                        </ul>
+                                    </td>                                                                        
+                                <% end %>        
+                            </tr>  
+                            <tr>                                    
+                                <td><strong>Symptoms: </strong></td>
+                                <td><%= "#{record.symptoms}" %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Diagnosis: </strong></td>
+                                <td><%= "#{record.diagnosis}" %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Note on referrals: </strong></td>
+                                <td><%= "#{record.referral_note}" %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Note: </strong></td>
+                                <td><%= "#{record.note}" %></td>
+                            </tr>
+                            <% if record.follow_up? %>
+                                <td><strong>Follow up recommended? </strong></td>
+                                <td><%= "Yes" %></td>
+                            <% elsif !record.follow_up? %>
+                                <td><strong>Follow up recommended? </strong></td>
+                                <td><%= "No" %></td>
+                            <% end %>    
+                            <tr>
+                                <% if record.referral? %>    
+                                    <td><strong>Referral recommended? </strong></td>
+                                    <td><%= "Yes" %></td>
+                                <% elsif %>
+                                    <td><strong>Referral recommended? </strong></td>
+                                    <td><%= "No" %></td>
+                                <% end %>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            <% end %>
+            <% end %>
+        <% else %>
+            <p>There's no record</p>
+        <% end %>

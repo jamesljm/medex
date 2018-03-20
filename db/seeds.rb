@@ -107,7 +107,7 @@ end
 
 record = {}
 buids = []
-Booking.where(:doctor_id => 6 AND :patient_id => 9).each { |b| buids << b.id }
+Booking.where("doctor_id = ? AND patient_id = ?",6, 9).each { |b| buids << b.id }
 
 ActiveRecord::Base.transaction do
   100.times do 

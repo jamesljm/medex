@@ -8,12 +8,12 @@
         <th>Date</th>
         <th>Schedule</th>
         <th>Doctor Name</th>
-        <th>Payment Status</th>
+
     </tr>
     </thead>
     <tbody>
     <% @bookings.each do |booking| %>
-        <% if (booking.date.include?('/') && (Date.strptime(booking.date, '%m/%d/%Y') >= Date.today)) || (booking.date.include?('-') && (Date.strptime(booking.date, '%Y-%m-%d') >=Date.today)) %>
+        <% if (booking.date.include?('/') && (Date.strptime(booking.date, '%m/%d/%Y') < Date.today)) || (booking.date.include?('-') && (Date.strptime(booking.date, '%Y-%m-%d') <Date.today)) %>
         <tr>
             <td>
                 <%= booking.date %>

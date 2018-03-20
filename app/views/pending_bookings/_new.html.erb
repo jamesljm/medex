@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css"
   />
 </head>
+
+<div class='div-wrapper'>
 <h2>Schedule Booking here!</h2>
 <!-- Testing -->
 <h3>Clinic ID: <%= @clinic.id %></h3>
@@ -133,6 +135,8 @@
 
 <p><%= link_to 'View all Doctor', doctors_path, remote: true %></p>
 <p><%= link_to 'Back to Patient DashBoard', patient_path(current_user.id), remote: true %></p>
+
+</div>
 
 <script>
     $(function () {

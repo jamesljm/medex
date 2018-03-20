@@ -11,7 +11,7 @@ user['password'] = 'asdf'
 x = 25
 
 ActiveRecord::Base.transaction do
-  5.times do 
+  1.times do 
     user['type'] = 'Doctor'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
@@ -38,7 +38,7 @@ uids = []
 Doctor.all.each { |u| uids << u.id }
 
 ActiveRecord::Base.transaction do
-  5.times do 
+  1.times do 
     clinic['name'] = Faker::App.name
     clinic['country'] = Faker::Address.country
     clinic['state'] = Faker::Address.state
@@ -63,7 +63,7 @@ allergen = ["“Egg”, “Fish or shellfish”, “Fruit”, “Gluten”, “G
 social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime victim", "homeless"] 
 x = 25
 ActiveRecord::Base.transaction do
-  5.times do 
+  1.times do 
 
     user['type'] = 'Patient'
     user['first_name'] = Faker::Name.first_name 
@@ -96,8 +96,8 @@ ActiveRecord::Base.transaction do
   10.times do 
     booking ["date"] = Faker::Date.between(1.year.ago, 1.year.from_now)
     booking ["start_time"] = "9am-10am"
-    booking ["doctor_id"] = 5
-    booking ["patient_id"] = 6
+    booking ["doctor_id"] = 6
+    booking ["patient_id"] = 9
     booking ["bill"] = rand(0..1)
     booking ["total_price"] = rand(50..100000)
 
@@ -107,7 +107,7 @@ end
 
 record = {}
 buids = []
-Booking.where(:doctor_id => 5, :patient_id => 6).each { |b| buids << b.id }
+Booking.where(:doctor_id => 6 AND :patient_id => 9).each { |b| buids << b.id }
 
 ActiveRecord::Base.transaction do
   100.times do 

@@ -21,10 +21,10 @@
                             aria-expanded="false">
                             <strong>Hi, </strong>
                             <% if current_user.type == 'Doctor' %>
-                                <%= current_user.gender == 'male' ? 'Dr.' : 'Drs.' %>
+                                <%= current_user.gender == 'male' ? 'Dr.' : 'Dr.' %>
                                 <%= current_user.name %>
                             <% else %>
-                                <%= current_user.gender == 'male' ? 'Mr.' : 'Mrs.' %>
+                                <%= current_user.gender == 'male' ? 'Mr.' : 'Mr.' %>
                                 <%= current_user.name %>
                             <% end %>
                         </a>

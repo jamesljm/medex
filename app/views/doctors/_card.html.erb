@@ -27,10 +27,10 @@
         </div>
         <div class="card-actionable">
           <div class="like">
-            <%= link_to 'Like', likes_path+'?param12='+ @doctor.id.to_s, method: :POST, remote: true, class:'btn btn-primary', id:'like' %>
+            <%= link_to 'Like', likes_path+'?param12='+ @doctor.id.to_s, method: :POST, remote: true, class:'btn btn-info', id:'like' %>
           </div>
           <div class="unlike">
-            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-warning', id:'unlike' %>
+            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-info', id:'unlike' %>
           </div>
         </div>
 

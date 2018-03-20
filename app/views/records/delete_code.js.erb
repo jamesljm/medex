@@ -1,0 +1,6 @@
+// =============================================================================
+// Record's Edit Partial
+// =============================================================================
+
+$('#card-auth-<%= @record.id %>').empty().append(`<%= link_to "generate authorization code", authorization_record_path(:id => @record.id), remote: true, class: 'btn btn-sm btn-outline-info' %><br><strong>Generated Code : </strong><span><%= @record.authorization_code if !@record.authorization_code.nil? %></span>`);
+

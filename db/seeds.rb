@@ -8,10 +8,10 @@
 
 user = {}
 user['password'] = 'asdf'
-# x = 25
+x = 25
 
 ActiveRecord::Base.transaction do
-  48.times do 
+  50.times do 
     user['type'] = 'Doctor'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
@@ -20,8 +20,8 @@ ActiveRecord::Base.transaction do
     user['phone'] = Faker::PhoneNumber.phone_number
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = rand(0000000001..9999999999)
-    user['specialist'] = ['Endocrinologist', 'General Medical Physician', 'Cardiologist', 'Neurologist','Dentist','Dermatolagist','Chiropractor','Obstetrician & Gynaecologist', 'Psychiatrist','Physiotherapy, rehabilitation & sports therapy','Orthopaedic'].sample
-    user['experienced_years'] = rand(5..20)
+    user['specialist'] = ['Endocrinologist', 'General Medical Physician', 'Cardiologist', 'Neurologist','Dentist','Psychiatrist','Obstetrician & Gynaecologist'].sample
+    user['experienced_years'] = rand(1..20)
     user['license'] = rand(0000001..1234567)
     user["verify"] = rand(0..2)
     user['education'] = Faker::RickAndMorty.location
@@ -29,7 +29,7 @@ ActiveRecord::Base.transaction do
     user['summary'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     user['remote_profile_picture_url'] = "https://placeimg.com/200/200/face="+x.to_s
     User.create(user)
-    # x =+ 1
+    x =+ 1
   end
 end
 
@@ -61,9 +61,10 @@ end
 med = ["Artificial heart valve","Back problems","Cancer","Cortisone treatment","Dizziness", "AIDS", "Head injuries", "Artificial joints", "Chemical dependency", "Anemia", "Chemotherapy", "Arthtitis Rheumatism", "Diabetic", "Gout", "HIV positive", "Kidney disease", "Hemophilia", "Heart pacemaker", "Heart problems/attack", "Hip replacement", "Drug addiction", "High blood pressure", "Mental disorder", "Blood transfusion", "Epilepsy/seizures"]
 allergen = ["“Egg”, “Fish or shellfish”, “Fruit”, “Gluten”, “Garlic”, “Hot peppers”, “Oats”, “Meat”, “Milk”, “Peanut”, “Rice”, “Sesame”, “Soy”, “Sulfites”, “Tartrazine”, “Tree nut”, “Wheat”, “Tetracycline”, “Dilantin”, “Tegretol (carbamazepine)”, “Penicillin”, “Cephalosporins”, “Sulfonamides”, “Non-steroidal anti-inflammatories(cromolyn sodium, nedocromil sodium, etc.)”, “Intravenous contrast dye”, “Local anesthetics”, “Pollen”, “Cat”, “Dog”, “Insect sting”, “Mold”, “Perfume”, “Cosmetics”, “Latex”, “Water”, “House dust mite”, “Nickel (nickel sulfate hexahydrate)”, “Gold (gold sodium thiosulfate)”, “Chromium”, “Cobalt chloride”, “Formaldehyde”, “Photographic developers”, “Fungicide”, “Paraphenylenediamine (PPD)”, “Glyceryl monothioglycolate”"]
 social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime victim", "homeless"] 
-# x = 25
+x = 25
 ActiveRecord::Base.transaction do
-  15.times do 
+  30.times do 
+
     user['type'] = 'Patient'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name

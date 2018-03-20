@@ -1,7 +1,28 @@
 <!-- ======================================================================= -->
 <!-- Record Chart Partial -->
 <!-- ======================================================================= -->
-
+<style>
+    .chart-label {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+    }
+    .label-1 {
+        background: rgba(0, 123, 255, 0.5);
+    }
+    .label-2 {
+        background: rgba(255, 0, 0, 0.5);
+    }
+    .label-3 {
+        background: rgba(255, 165, 0, 0.5);
+    }
+    .label-4 {
+        background: rgba(255, 0, 199, 0.5);
+    }
+    .label-5 {
+        background: rgba(85, 26, 139, 0.5);
+    }
+</style>
 <script>
     <% user_records = current_user.records %>
     <% record_arr1 = [] %>
@@ -37,6 +58,15 @@
     <% end %>
 </script>
 
+<div id="chart-labels">
+    <ul>
+        <li><span class="chart-label label-1"></span> Consultation</li>
+        <li><span class="chart-label label-2"></span> Procedures</li>
+        <li><span class="chart-label label-3"></span> Follow Up</li>
+        <li><span class="chart-label label-4"></span> Immunizations</li>
+        <li><span class="chart-label label-5"></span> Lab Tests</li>
+    </ul>
+</div>
 <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
 <!-- Graphs -->

@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     end
     
     collection do
+      get 'delete_code' => 'records#delete_code', as: "delete_code", action: "delete_code"
       get 'search' => 'records#search', as: "search", action: "search"
     end
 

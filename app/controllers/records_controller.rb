@@ -122,6 +122,11 @@ class RecordsController < ApplicationController
     end
   end
 
+  def delete_code
+    @record = Record.find(params[:id])
+    @record.update(authorization_code: nil)
+  end
+
 private
   def record_params
     params.require(:record).permit(:booking_id, :record_date, :title, :symptoms, :diagnosis, :note, :follow_up, :referral, :referral_note, {encounter: []}, prescriptions_attributes:[:drug_name, :dosage, :pres_start_date, :pres_end_date, :meal, :morning, :noon, :night] )

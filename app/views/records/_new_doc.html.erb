@@ -11,6 +11,7 @@
     <% if @user.type == "Doctor" %>
 
         <div><%= f.label 'Booking ID:' %> <%= @booking.id %></div>
+        <div><%= f.label ' Doctor Name: '%><%= Doctor.find(:booking_id => @booking.id).name %></div>
 
         
     

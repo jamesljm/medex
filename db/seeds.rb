@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
     user['email'] = Faker::Internet.email
-    user['gender'] = rand(1..2)
+    user['gender'] = rand(0..3)
     user['phone'] = Faker::PhoneNumber.phone_number
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = rand(0000000001..9999999999)
@@ -68,7 +68,7 @@ ActiveRecord::Base.transaction do
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
     user['email'] = Faker::Internet.email
-    user['gender'] = rand(1..2)
+    user['gender'] = rand(0..3)
     user['phone'] = Faker::PhoneNumber.phone_number
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = "9#{rand(0..9)}#{rand(01..12)}#{rand(00..30)}-#{rand(00..99)}-#{rand(0000..9999)}"

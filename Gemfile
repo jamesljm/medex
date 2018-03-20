@@ -103,3 +103,5 @@ gem 'braintree'
 gem 'rails_12factor', group: :production
 
 gem 'faker', '~> 1.6', '>= 1.6.6'
+
+gem 'sidekiq'

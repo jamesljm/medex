@@ -4,7 +4,7 @@
 
 <div class="div-wrapper container">
 
-    <h2>Your Medical Journey here</h2>
+    <p><h1 class="tab-header">Your Medical Journal</h1></p>
     <%= form_tag search_records_path, method: :get, remote: true do %>
         <%= label_tag :search_doctor, "Search By Doctor's Name" %>
         <%= text_field_tag :search_doctor, params[:search_doctor] , placeholder: "Enter Doctor's Name" %>
@@ -17,6 +17,8 @@
         <%= submit_tag "Search", class: "btn btn-light my-2 my-sm-0" %>
     <% end %>
 
+<hr>
+<p></p>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="records-tab" data-toggle="tab" href="#records" role="tab" aria-controls="records" aria-selected="true">Records</a>

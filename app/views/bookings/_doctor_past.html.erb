@@ -14,7 +14,7 @@
 
   <tbody>
     <% @bookings_doc.each do |p| %> 
-      <% if Date.strptime(p.date, '%m/%d/%Y') < Date.today %>
+      <% if (p.date.include?('/') && (Date.strptime(p.date, '%m/%d/%Y') < Date.today)) || (p.date.include?('-') && (Date.strptime(p.date, '%Y-%m-%d') <Date.today)) %>
         <tr>
           <td>
             <%= p.date %> 

@@ -6,7 +6,7 @@
       <div class="card-social">
         <div class="card-image">
            <% if current_user.profile_picture? %>
-                <%= image_tag @doctor.profile_picture.thumb.url, :class => "card-image", :style =>"margin-top: 0;" if @doctor.profile_picture? %>
+                <%= image_tag @doctor.profile_picture.url, :class => "card-image", :style =>"margin-top: 0;" if @doctor.profile_picture? %>
             <% else %>
                 <img src="//placehold.it/150" alt= :remote_avatar_url>
             <% end %>
@@ -27,10 +27,10 @@
         </div>
         <div class="card-actionable">
           <div class="like">
-            <%= link_to 'Like', likes_path+'?param12='+ @doctor.id.to_s, method: :POST, remote: true, class:'btn btn-primary', id:'like' %>
+            <%= link_to 'Like', likes_path+'?param12='+ @doctor.id.to_s, method: :POST, remote: true, class:'btn btn-info', id:'like' %>
           </div>
           <div class="unlike">
-            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-warning', id:'unlike' %>
+            <%= link_to 'Unlike', likes_path+'?param13='+@doctor.id.to_s, remote: true, class:'btn btn-info', id:'unlike' %>
           </div>
         </div>
 

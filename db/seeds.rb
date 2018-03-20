@@ -11,8 +11,7 @@ user['password'] = 'asdf'
 x = 25
 
 ActiveRecord::Base.transaction do
-
-  10.times do 
+  50.times do 
     user['type'] = 'Doctor'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
@@ -21,7 +20,7 @@ ActiveRecord::Base.transaction do
     user['phone'] = Faker::PhoneNumber.phone_number
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
     user['identification'] = rand(0000000001..9999999999)
-    user['specialist'] = ['Endocrinologist', 'General Medical Physician', 'Cardiologist', 'Neurologist'].sample
+    user['specialist'] = ['Endocrinologist', 'General Medical Physician', 'Cardiologist', 'Neurologist','Dentist','Psychiatrist','Obstetrician & Gynaecologist'].sample
     user['experienced_years'] = rand(1..20)
     user['license'] = rand(0000001..1234567)
     user["verify"] = rand(0..2)
@@ -39,7 +38,7 @@ uids = []
 Doctor.all.each { |u| uids << u.id }
 
 ActiveRecord::Base.transaction do
-  10.times do 
+  50.times do 
     clinic['name'] = Faker::App.name
     clinic['country'] = Faker::Address.country
     clinic['state'] = Faker::Address.state
@@ -64,7 +63,8 @@ allergen = ["“Egg”, “Fish or shellfish”, “Fruit”, “Gluten”, “G
 social = ["alcohol", "drug", "tobacco", "prison", "diet", "abuse victim", "crime victim", "homeless"] 
 x = 25
 ActiveRecord::Base.transaction do
-  10.times do 
+  30.times do 
+
     user['type'] = 'Patient'
     user['first_name'] = Faker::Name.first_name 
     user['last_name'] = Faker::Name.last_name
@@ -93,8 +93,8 @@ puids = []
 Patient.all.each { |p| puids << p.id }
 
 ActiveRecord::Base.transaction do
-  10.times do 
-    booking ["date"] = Faker::Date.between(7.year.ago, 1.year.from_now)
+  100.times do 
+    booking ["date"] = Faker::Date.between(1.year.ago, 1.year.from_now)
     booking ["start_time"] = "9am-10am"
     booking ["doctor_id"] = uids.sample
     booking ["patient_id"] = puids.sample
@@ -110,7 +110,7 @@ buids = []
 Booking.all.each { |b| buids << b.id }
 
 ActiveRecord::Base.transaction do
-  10.times do 
+  50.times do 
     b = buids.sample
     
     record ["encounter"] = [["Consultation", "Followup", "Procedures", "Immunizations", "Labtests"].sample]

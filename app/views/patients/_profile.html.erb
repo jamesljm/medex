@@ -6,9 +6,10 @@
     <div class="rol">
         <div class="col-lg-4 order-lg-1 text-center div-wrapper">
             <% if current_user.profile_picture? %>
-                <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
+                <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
             <% else %>
                 <div class="mx-auto img-fluid d-block profile_picture"><img src="//placehold.it/150" class="profile_picture rounded-circle">
+
             <% end %>
                         
             <%= form_for @patient do |form| %>
@@ -38,7 +39,7 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane overflow fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h3>Your Profile</h3>
+                <h3 class="tab-header">Your Profile</h3>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <strong>First Name : </strong>

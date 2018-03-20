@@ -2,6 +2,7 @@
 <!-- Clinic's Index Partial(Patient's) -->
 <!-- ======================================================================= -->
 
+<div class="div-wrapper">
 <%= form_tag(search_doctor_clinics_path(1), method: 'get', remote: true, class: 'div-wrapper') do |f| %>
   <%= label_tag :name, "Search Clinics : " %><br>
   <%= text_field_tag :name, params[:name], placeholder: "Search Clinics" %>
@@ -9,7 +10,7 @@
 <% end %>
 
 <section class="album py-15 bg-light div-wrapper">
-  <h2>Choose Your Clinic</h2>
+  <p><h1 class="tab-header">Choose Your Clinic</h1></p>
   <hr>
   <div class="container">
     <div class="row" id="clinic-search">
@@ -19,3 +20,4 @@
     </div> <!-- /row -->
   </div> <!-- /container -->
 </section> <!-- /album -->
+</div>

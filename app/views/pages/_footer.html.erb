@@ -1,0 +1,37 @@
+<section class="footer linktxt">
+  <div class="row">
+    <div class="col-md-4 darker">
+      <div class="col-md-12 padding white">
+        <h4 class="whitetext">General Info</h4>
+        <hr>
+        <h5 class="linktxt"><%= link_to 'About Us', root_path, class:"linktxt" %></h5>
+        <h5 class="linktxt"><%= link_to 'Careers', root_path, class:"linktxt" %></h5>
+        <h5 class="linktxt"><%= link_to 'Contact Us', root_path, class:"linktxt" %></h5>
+        <hr>
+        <p class="small-font grey", style="color:white;">&copy: Medex 2018 All Rights Reserved</p>
+      </div>
+    </div> <!-- col-md-4 -->
+    <div class="col-md-4">
+      <div class="col-md-12 padding white">
+        <h4 class="whitetext">Subscribe</h4>
+        <hr>
+
+          <%= form_for :subscriber, url: subscribers_path do |f| %>
+          <%= f.text_field :name, placeholder: "Your Name", class:"form-control mr-sm-2 sm_style" %>
+          <%= f.email_field :email, placeholder: "Your Email", class:"form-control mr-sm-2 sm_style" %>
+          <%= f.submit 'Subscribe!', class:"btn btn-light my-2 my-sm-0" %>
+          <% end %>
+
+      </div>
+    </div> <!-- col-md-4 -->
+    <div class="col-md-4 dark">
+      <div class="col-md-12 padding white">
+        <h4 class="whitetext">Social</h4>
+        <hr>
+        <h5><%= link_to 'Facebook', root_path, class:"linktxt" %></h5>
+        <h5><%= link_to 'Twitter', root_path, class:"linktxt" %></h5>
+        <h5><%= link_to 'Youtube', root_path, class:"linktxt" %></h5>
+      </div>
+    </div> <!-- col-md-4 -->
+  </div> <!-- row --> 
+</section>

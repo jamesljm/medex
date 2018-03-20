@@ -6,9 +6,7 @@
 
 
 <%= form_for @record, remote:true do |f| %>
-<div class="col-lg-5 order-lg-1 div-wrapper">
-    <h3 class="blue-font">Logistics</h3>
-    
+<div class="col-lg-5 order-lg-1 div-wrapper">    
     <%# ====== form created by doc, import existing info from booking ===== %>
     <% if @user.type == "Doctor" %>
 

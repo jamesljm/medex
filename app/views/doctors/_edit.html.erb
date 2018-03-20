@@ -6,7 +6,7 @@
     <div class="row my-2">
         <div class="col-lg-4 order-lg-1 text-center div-wrapper">
             <% if current_user.profile_picture? %>
-                <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.thumb.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
+                <div class="mx-auto img-fluid d-block profile_picture"><%= image_tag current_user.profile_picture.url, :class => "profile_picture rounded-circle" if current_user.profile_picture? %>
             <% else %>
                 <div class="mx-auto img-fluid d-block profile_picture"><img src="//placehold.it/150" class="profile_picture rounded-circle">
             <% end %>

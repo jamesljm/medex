@@ -6,7 +6,7 @@
       <div class="card-social">
         <div class="card-image">
            <% if current_user.profile_picture? %>
-                <%= image_tag @doctor.profile_picture.thumb.url, :class => "card-image", :style =>"margin-top: 0;" if @doctor.profile_picture? %>
+                <%= image_tag @doctor.profile_picture.url, :class => "card-image", :style =>"margin-top: 0;" if @doctor.profile_picture? %>
             <% else %>
                 <img src="//placehold.it/150" alt= :remote_avatar_url>
             <% end %>

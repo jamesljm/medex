@@ -3,7 +3,7 @@
     <div class="card-placard div-namecard">
       <div class="card-social">
         <div class="card-image">
-          <%= image_tag @patient.profile_picture.thumb.url, :class => "card-image", :style => "margin-top: 0" if current_user.profile_picture? %>
+          <%= image_tag @patient.profile_picture.url, :class => "card-image", :style => "margin-top: 0" if current_user.profile_picture? %>
         </div>
         <%# <div class="card-likes">
           100 Likes

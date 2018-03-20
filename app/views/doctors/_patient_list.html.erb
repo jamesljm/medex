@@ -21,7 +21,7 @@
     <% @patients_list.select('DISTINCT patient_id').each do |p| %> 
     <div class="media">
        <% if @patients.find(p.patient_id).profile_picture? %>
-                <%= image_tag @patients.find(p.patient_id).profile_picture.thumb.url, :class => "profile_picture" if @patients.find(p.patient_id).profile_picture? %>
+                <%= image_tag @patients.find(p.patient_id).profile_picture.url, :class => "profile_picture" if @patients.find(p.patient_id).profile_picture? %>
             <% else %>
                 <img src="//placehold.it/150X150" class="mx-auto img-fluid d-block" alt= :remote_avatar_url>
             <% end %>
